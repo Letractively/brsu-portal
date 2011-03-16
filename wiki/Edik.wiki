@@ -2,10 +2,8 @@
 
 = Introduction =
 АбраКадабра
-Add your content here.
+= Эдик = = Introduction =
 
-= Эдик =
-= Details =
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
