@@ -1,0 +1,86 @@
+1. NON-REGISTERED USER
+
+- View home page
+
+=System UC=
+- Register
+- Activate account
+- Use help
+
+=Project-related UC=
+- Search projects
+- View project pages
+
+
+=News-related UC=
+- Search news
+- View news pages
+
+=User-related UC=
+- Search users
+
+-----------------------------------
+
+2. REGISTERED USER/PROJECT MEMBER
+All uc of non-registered user except  "Register" and 
+
+=System UC=
+- Login
+
+=Project-related UC=
+- Add new project
+
+
+=News-related UC=
+- Add news
+- Edit own news
+- Delete own news
+- Add comment to news
+- Edit own comment
+
+=User-related UC=
+- View registered user profiles
+- View list of registered users
+- Edit own profile
+- Delete own profile
+ 
+
+-----------------------------------
+3. PROJECT OWNER
+All uc of REGISTERED USER/PROJECT MEMBER and 
+
+=System UC=
+
+
+=Project-related UC=
+- Edit own project
+- Delete own project
+- Add new project member
+- Delete project member
+- Change user responsibility
+
+
+=News-related UC=
+
+
+=User-related UC=
+
+-----------------------------------
+4. ADMIN
+All uc of PROJECT OWNER and
+
+=System UC=
+
+
+=Project-related UC=
+- Delete any project
+
+=News-related UC=
+- Delete any news
+- Delere any comment
+
+=User-related UC=
+
+-----------------------------------
+History
+Automatic generation of events
