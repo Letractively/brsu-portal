@@ -3,21 +3,21 @@
 - View home page
 
 =System UC=
-- Register
-- Activate account
-- Use help
+- Register - œ¿ÿ¿
+- Activate account - œ¿ÿ¿
+- Use help - ???
 
 =Project-related UC=
-- Search projects
-- View project pages
+- Search projects - ŒÀ≈√
+- View project pages - ???
 
 
 =News-related UC=
-- Search news
-- View news pages
+- Search news - ŒÀ≈√
+- View news pages -À≈ÿ¿
 
 =User-related UC=
-- Search users
+- Search users - ŒÀ≈√
 
 -----------------------------------
 
@@ -25,24 +25,24 @@
 All uc of non-registered user except  "Register" and 
 
 =System UC=
-- Login
+- Login - œ¿ÿ¿
 
 =Project-related UC=
-- Add new project
+- Add new project - –ŒÃ¿
 
 
 =News-related UC=
-- Add news
-- Edit own news
-- Delete own news
-- Add comment to news
-- Edit own comment
+- Add news - À≈ÿ¿
+- Edit own news - À≈ÿ¿
+- Delete own news - À≈ÿ¿
+- Add comment to news - À≈ÿ¿
+- Edit own comment - À≈ÿ¿
 
 =User-related UC=
-- View registered user profiles
-- View list of registered users
-- Edit own profile
-- Delete own profile
+- View registered user profiles -  –»—“»Õ¿
+- View list of registered users -  –»—“»Õ¿
+- Edit own profile - œ¿ÿ¿
+- Delete own profile -  –»—“»Õ¿
  
 
 -----------------------------------
@@ -53,11 +53,11 @@ All uc of REGISTERED USER/PROJECT MEMBER and
 
 
 =Project-related UC=
-- Edit own project
-- Delete own project
-- Add new project member
-- Delete project member
-- Change user responsibility
+- Edit own project - –ŒÃ¿
+- Delete own project - –ŒÃ¿
+- Add new project member - ¿–“”–
+- Delete project member - ¿–“”–
+- Change user responsibility - ¿–“”–
 
 
 =News-related UC=
@@ -70,17 +70,18 @@ All uc of REGISTERED USER/PROJECT MEMBER and
 All uc of PROJECT OWNER and
 
 =System UC=
-
+- Deactivate inactive users - »À‹ﬂ
 
 =Project-related UC=
-- Delete any project
+- Delete any project - –ŒÃ¿
 
 =News-related UC=
-- Delete any news
-- Delere any comment
+- Delete any news - À≈ÿ¿
+- Delere any comment -À≈ÿ¿
 
 =User-related UC=
+- «‡·‡ÌËÚ¸ ÔÓÎ¸ÁÓ‚‡ÚÂÎˇ -  –»—“»Õ¿
 
 -----------------------------------
-History
-Automatic generation of events
+History - —≈–√≈…
+Automatic generation of events - —≈–√≈…
