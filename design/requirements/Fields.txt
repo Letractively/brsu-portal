@@ -134,6 +134,13 @@ QA specilist
 Technical writer
 Business analyst
 
+===============
+-----UserGroup-----
+1. Administrator (Only one)
+2. Moderator
+3. Redactor
+4. Visitor
+===============
 
 ======
 Message
