@@ -1,0 +1,159 @@
+?? BB-code
+
+
+User
+----
+id_user
+name
+surname
+email=login
+date of birth
+telephone
+password
+sex
+list of sites
+list of messages
+skype
+icq
+IQ
+status: registered, active, deleted, banned
+picture
+date of last visit
+number of cautions 
+=======
+CV (נוח‏לו) 1 to 1 (User)
+----
+---> List of languages
+---> List of hobbies
+---> List of technologies as tags
+---> List of links (e.g. portfolio)
+List of experiences
+List of educations
+Additional information - מ סובו
+========
+Experience
+----
+start date
+end date (can be empty)
+company name
+position (can not be edited when id_project is not empty)
+additional information
+id_project (can be empty)
+========
+Education
+-----
+start date
+end date (can be empty)
+educational organization
+place
+category (Secondary education,Specialized secondary education,Higher education, Magistranture, Post-Graduate education, Courses/Sertificates)
+additional info
+
+- Secondary education - School, Liceum, gymnasium, 
+- Specialized secondary education ....
+- Higher education /University
+--speciality
+--faculty
+--specialization
+-Magistranture, Aspiranture, Doctoranture
+-- degree
+-- field of science
+-Courses/Sertificates
+--info
+=========
+Project
+----
+id_project
+id_user (owner's id)
+name
+description
+date of creation
+date of closing
+list of members and responsibilities
+list of tags/labels
+category/domain
+list of programming languages
+version
+license
+stage of development
+=========
+News
+----
+id_news
+title
+text
+date
+id_user (author's id)
+news category 
+important
+=======
+Comment
+----
+id_comment
+id_user
+id_news
+date of creation
+text
+=======
+ProjectHistory
+----
+id_pr_history
+id_project
+id_user (author of changes)
+stage
+name
+
+=======
+UserHistory
+------
+id_usr_history
+id_user
+date
+name
+surname
+status
+IQ
+number of cautions
+====
+UserResponsibilityHistory
+----
+id_usr_resp_history
+id_user
+date
+Position
+
+======
+Position
+----
+Developer
+Tester
+Designer
+Project manager
+Team leader
+QA specilist
+Technical writer
+Business analyst
+
+===============
+-----UserGroup-----
+1. Administrator (Only one)
+2. Moderator
+3. Redactor
+4. Visitor
+===============
+
+======
+Message
+----
+id_message
+title
+text
+data
+received/sent
+list of id_user_to
+list of id_user_cc
+list of id_user_bcc
+id_user_from (author)
+id_previous_message
+read/unread
+priority
