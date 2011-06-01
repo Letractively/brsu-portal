@@ -53,6 +53,8 @@ padding:0px 10px 0px 10px;}
 
 .navigation li {display:inline; padding:0 0px 0 0px;}
 
+.navigation a{color:#000}
+
 .menu {float:left; }
 
 .content {background-color:#600;
