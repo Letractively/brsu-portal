@@ -2,7 +2,7 @@
 /* CSS Document */
 
 .main {
-	
+	background-color:#009;
 	margin:0px auto 0 auto;
 	height:100%;
 	padding:0;
@@ -53,7 +53,7 @@ padding:0px 10px 0px 10px;}
 
 .navigation li {display:inline; padding:0 0px 0 0px;}
 
-.navigation a{color:#000}
+.navigation a{color:#FFF}
 
 .menu {float:left; }
 
