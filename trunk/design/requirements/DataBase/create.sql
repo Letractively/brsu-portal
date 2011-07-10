@@ -307,4 +307,29 @@ alter table Experience
 add foreign key (id_project) references projects(id_project),
 add foreign key (position) references Positions(id_pos);
 
- 
+create table jobs(
+id_job int not null auto_increment,
+title varchar(100) not null,
+id_owner int not null,
+text varchar(400) not null,
+id_project int null,
+foreign key (id_owner) references users(id_user),
+foreign key (id_project) references Projects(id_project),
+primary key(id_job) 
+);
+
+create table L_Lang_jobs(
+id_language int not null,
+id_job int not null,
+foreign key (id_job) references jobs(id_job),
+foreign key (id_language) references language(id_language),
+primary key (id_language,id_job)
+);
+
+create table L_Tech_jobs(
+id_tech int not null,
+id_job int not null,
+foreign key (id_tech) references technologies(id_tech),
+foreign key (id_job) references jobs(id_job),
+primary key (id_job,id_tech)
+);
