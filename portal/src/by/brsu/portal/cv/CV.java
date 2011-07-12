@@ -1,7 +1,15 @@
+/**
+ * BrSU Projects Portal
+ * (c) 2011, BrSU Java Group
+ */
 import java.util.List;
-
-class CV {
-	private List<Expirience> experiences;
+/**
+ * @author user
+ *
+ */
+public class CV {
+	
+	private List<Experience> experiences;
 	private List<String> langueges;
 	private List<String> hobbies;
 	private List<String> technologies;
@@ -9,11 +17,17 @@ class CV {
 	private List<Education> educations;
 	private String additional;
 
-	public List<Expirience> getExperiences() {
+	/**
+	 * 
+	 */
+	public CV() {
+		// TODO Auto-generated constructor stub
+	}
+	public List<Experience> getExperiences() {
 		return experiences;
 	}
 
-	public void addExperience(Expirience experience) {
+	public void addExperience(Experience experience) {
 		experiences.add(experience);
 	}
 
@@ -90,3 +104,5 @@ class CV {
 	}
 
 }
+
+
