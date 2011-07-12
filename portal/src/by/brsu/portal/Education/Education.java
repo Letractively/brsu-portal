@@ -32,6 +32,64 @@ public class Education {
 		this.additional = additional;
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((additional == null) ? 0 : additional.hashCode());
+		result = prime * result + ((edu_name == null) ? 0 : edu_name.hashCode());
+		result = prime * result + ((end_date == null) ? 0 : end_date.hashCode());
+		result = prime * result + (int) (id_edu ^ (id_edu >>> 32));
+		result = prime * result + ((place == null) ? 0 : place.hashCode());
+		result = prime * result + ((start_date == null) ? 0 : start_date.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Education other = (Education) obj;
+		if (additional == null) {
+			if (other.additional != null)
+				return false;
+		} else if (!additional.equals(other.additional))
+			return false;
+		if (edu_name == null) {
+			if (other.edu_name != null)
+				return false;
+		} else if (!edu_name.equals(other.edu_name))
+			return false;
+		if (end_date == null) {
+			if (other.end_date != null)
+				return false;
+		} else if (!end_date.equals(other.end_date))
+			return false;
+		if (id_edu != other.id_edu)
+			return false;
+		if (place == null) {
+			if (other.place != null)
+				return false;
+		} else if (!place.equals(other.place))
+			return false;
+		if (start_date == null) {
+			if (other.start_date != null)
+				return false;
+		} else if (!start_date.equals(other.start_date))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Education [id_edu=" + id_edu + ", start_date=" + start_date + ", end_date=" + end_date + ", edu_name="
+				+ edu_name + ", place=" + place + ", additional=" + additional + "]";
+	}
+
 	public long getId_edu() {
 		return id_edu;
 	}

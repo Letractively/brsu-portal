@@ -96,4 +96,10 @@ public class Experience {
 		this.user = user;
 	}
 
+	@Override
+	public String toString() {
+		return "Experience [id_experience=" + id_experience + ", start_date=" + start_date + ", end_date=" + end_date
+				+ ", company_name=" + company_name + ", additional=" + additional + "]";
+	}
+
 }
