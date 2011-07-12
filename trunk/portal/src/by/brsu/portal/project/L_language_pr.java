@@ -20,6 +20,12 @@ public class L_language_pr {
 		this.project = project;
 	}
 
+	@Override
+	public String toString() {
+		return "L_language_pr [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+
 	public Project getProject() {
 		return project;
 	}

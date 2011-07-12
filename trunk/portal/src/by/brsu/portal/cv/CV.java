@@ -3,12 +3,13 @@
  * (c) 2011, BrSU Java Group
  */
 import java.util.List;
+
 /**
  * @author user
- *
+ * 
  */
 public class CV {
-	
+
 	private List<Experience> experiences;
 	private List<Language> langueges;
 	private List<String> hobbies;
@@ -23,6 +24,7 @@ public class CV {
 	public CV() {
 		// TODO Auto-generated constructor stub
 	}
+
 	public List<Experience> getExperiences() {
 		return experiences;
 	}
@@ -103,6 +105,10 @@ public class CV {
 		this.additional = this.additional + additional;
 	}
 
+	@Override
+	public String toString() {
+		return "CV [hobbies=" + hobbies + ", technologies=" + technologies + ", links=" + links + ", additional="
+				+ additional + "]";
+	}
+
 }
-
-
