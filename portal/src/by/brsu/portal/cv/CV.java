@@ -10,7 +10,7 @@ import java.util.List;
 public class CV {
 	
 	private List<Experience> experiences;
-	private List<String> langueges;
+	private List<Language> langueges;
 	private List<String> hobbies;
 	private List<String> technologies;
 	private List<String> links;
