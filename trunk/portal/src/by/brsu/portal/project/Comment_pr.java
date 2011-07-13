@@ -1,8 +1,7 @@
 /**
  * BrSU Projects Portal
- * (c) 2011, BrSU Java Group
  */
-package by.brsu.portal.news;
+package by.brsu.portal.project;
 
 import java.util.*;
 
@@ -10,121 +9,101 @@ import by.brsu.portal.user.*;
 
 /**
  * @author Aliaksei Ryzhkou
- * @version 20110712
+ * @version 20110713
  */
-public class Comment {
-	private long id_comment;
 
+public class Comment_pr {
 	/**
 	 * @param id_comment
 	 * @param user
-	 * @param news
+	 * @param project
 	 * @param date
 	 * @param text
 	 */
-	public Comment(long id_comment, User user, News news, String text) {
-		// super();
+	public Comment_pr(long id_comment, User user, Project project, String text) {
+		//super();
 		this.id_comment = id_comment;
 		this.user = user;
-		this.news = news;
+		this.project = project;
 		this.date = new Date();
 		this.text = text;
 	}
-
 	/**
 	 * 
 	 */
-	public Comment() {
-		// super();
+	public Comment_pr() {
+		//super();
 	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Comment [text=" + text + "]";
+		return "Comments_pr [text=" + text + "]";
 	}
-
-	private User user;
-	private News news;
-	private Date date;
-	private String text;
-
 	/**
 	 * @return the id_comment
 	 */
 	public long getId_comment() {
 		return id_comment;
 	}
-
 	/**
-	 * @param id_comment
-	 *            the id_comment to set
+	 * @param id_comment the id_comment to set
 	 */
 	public void setId_comment(long id_comment) {
 		this.id_comment = id_comment;
 	}
-
 	/**
 	 * @return the user
 	 */
 	public User getUser() {
 		return user;
 	}
-
 	/**
-	 * @param user
-	 *            the user to set
+	 * @param user the user to set
 	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
-
 	/**
-	 * @return the news
+	 * @return the project
 	 */
-	public News getNews() {
-		return news;
+	public Project getProject() {
+		return project;
 	}
-
 	/**
-	 * @param news
-	 *            the news to set
+	 * @param project the project to set
 	 */
-	public void setNews(News news) {
-		this.news = news;
+	public void setProject(Project project) {
+		this.project = project;
 	}
-
 	/**
 	 * @return the date
 	 */
 	public Date getDate() {
 		return date;
 	}
-
 	/**
-	 * @param date
-	 *            the date to set
+	 * @param date the date to set
 	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
 	/**
 	 * @return the text
 	 */
 	public String getText() {
 		return text;
 	}
-
 	/**
-	 * @param text
-	 *            the text to set
+	 * @param text the text to set
 	 */
 	public void setText(String text) {
 		this.text = text;
 	}
+	private long id_comment;
+	private User user;
+	private Project project;
+	private Date date;
+	private String text;
 }
