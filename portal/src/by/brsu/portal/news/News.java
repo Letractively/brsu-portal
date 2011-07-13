@@ -6,11 +6,11 @@ package by.brsu.portal.news;
 
 import java.util.*;
 
-import by.brsu.portal.user.User;
+import by.brsu.portal.user.*;
 
 /**
  * @author Aliaksei Ryzhkou
- * @version 20110712
+ * @version 20110713
  */
 public class News {
 
