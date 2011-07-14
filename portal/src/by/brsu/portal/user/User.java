@@ -4,21 +4,24 @@
  */
 package by.brsu.portal.user;
 
-import java.sql.Blob;
 
+import java.sql.Blob;
+import java.util.List;
 import javax.xml.crypto.Data;
+import by.brsu.portal.cv.ProgrammingLanguage;
 
 /**
  * @author Hraznykh_Pavel
  *
  */
 public class User {
-	
+		
+		private List<ProgrammingLanguage> progrLanguages;
 		private long id_user;
 		private String name;
 		private String surname;
 		private String email;
-		private Data date_of_birth;
+		private Data dateOfBirth;
 		private String telephone;
 		private String password;
 		private String about;
@@ -26,17 +29,18 @@ public class User {
 		private String skype; 
 		private String isq;
 		private int IQ;
-		private long id_stat;
+		private long idStat;
 		private Blob picture;
-		private Data date_of_last_visit;
-		private int number_of_cautions;
-	
+		private Data dateOfLastVisit;
+		private int numberOfCautions;
+		private Status status;
 		/**
+		 * @param progrLanguages
 		 * @param id_user
 		 * @param name
 		 * @param surname
 		 * @param email
-		 * @param date_of_birth
+		 * @param dateOfBirth
 		 * @param telephone
 		 * @param password
 		 * @param about
@@ -44,20 +48,22 @@ public class User {
 		 * @param skype
 		 * @param isq
 		 * @param iQ
-		 * @param id_stat
+		 * @param idStat
 		 * @param picture
-		 * @param date_of_last_visit
-		 * @param number_of_cautions
+		 * @param dateOfLastVisit
+		 * @param numberOfCautions
+		 * @param status
 		 */
-		public User(long id_user, String name, String surname, String email, Data date_of_birth, String telephone,
-				String password, String about, int sex, String skype, String isq, int iQ, long id_stat, Blob picture,
-				Data date_of_last_visit, int number_of_cautions) {
+		public User(List<ProgrammingLanguage> progrLanguages, long id_user, String name, String surname, String email,
+				Data dateOfBirth, String telephone, String password, String about, int sex, String skype, String isq,
+				int iQ, long idStat, Blob picture, Data dateOfLastVisit, int numberOfCautions, Status status) {
 			super();
+			this.progrLanguages = progrLanguages;
 			this.id_user = id_user;
 			this.name = name;
 			this.surname = surname;
 			this.email = email;
-			this.date_of_birth = date_of_birth;
+			this.dateOfBirth = dateOfBirth;
 			this.telephone = telephone;
 			this.password = password;
 			this.about = about;
@@ -65,13 +71,24 @@ public class User {
 			this.skype = skype;
 			this.isq = isq;
 			IQ = iQ;
-			this.id_stat = id_stat;
+			this.idStat = idStat;
 			this.picture = picture;
-			this.date_of_last_visit = date_of_last_visit;
-			this.number_of_cautions = number_of_cautions;
+			this.dateOfLastVisit = dateOfLastVisit;
+			this.numberOfCautions = numberOfCautions;
+			this.status = status;
 		}
-
-		
+		/**
+		 * @return the progrLanguages
+		 */
+		public List<ProgrammingLanguage> getProgrLanguages() {
+			return progrLanguages;
+		}
+		/**
+		 * @param progrLanguages the progrLanguages to set
+		 */
+		public void setProgrLanguages(List<ProgrammingLanguage> progrLanguages) {
+			this.progrLanguages = progrLanguages;
+		}
 		/**
 		 * @return the id_user
 		 */
@@ -121,16 +138,16 @@ public class User {
 			this.email = email;
 		}
 		/**
-		 * @return the date_of_birth
+		 * @return the dateOfBirth
 		 */
-		public Data getDate_of_birth() {
-			return date_of_birth;
+		public Data getDateOfBirth() {
+			return dateOfBirth;
 		}
 		/**
-		 * @param date_of_birth the date_of_birth to set
+		 * @param dateOfBirth the dateOfBirth to set
 		 */
-		public void setDate_of_birth(Data date_of_birth) {
-			this.date_of_birth = date_of_birth;
+		public void setDateOfBirth(Data dateOfBirth) {
+			this.dateOfBirth = dateOfBirth;
 		}
 		/**
 		 * @return the telephone
@@ -217,16 +234,16 @@ public class User {
 			IQ = iQ;
 		}
 		/**
-		 * @return the id_stat
+		 * @return the idStat
 		 */
-		public long getId_stat() {
-			return id_stat;
+		public long getIdStat() {
+			return idStat;
 		}
 		/**
-		 * @param id_stat the id_stat to set
+		 * @param idStat the idStat to set
 		 */
-		public void setId_stat(long id_stat) {
-			this.id_stat = id_stat;
+		public void setIdStat(long idStat) {
+			this.idStat = idStat;
 		}
 		/**
 		 * @return the picture
@@ -241,39 +258,40 @@ public class User {
 			this.picture = picture;
 		}
 		/**
-		 * @return the date_of_last_visit
+		 * @return the dateOfLastVisit
 		 */
-		public Data getDate_of_last_visit() {
-			return date_of_last_visit;
+		public Data getDateOfLastVisit() {
+			return dateOfLastVisit;
 		}
 		/**
-		 * @param date_of_last_visit the date_of_last_visit to set
+		 * @param dateOfLastVisit the dateOfLastVisit to set
 		 */
-		public void setDate_of_last_visit(Data date_of_last_visit) {
-			this.date_of_last_visit = date_of_last_visit;
+		public void setDateOfLastVisit(Data dateOfLastVisit) {
+			this.dateOfLastVisit = dateOfLastVisit;
 		}
 		/**
-		 * @return the number_of_cautions
+		 * @return the numberOfCautions
 		 */
-		public int getNumber_of_cautions() {
-			return number_of_cautions;
+		public int getNumberOfCautions() {
+			return numberOfCautions;
 		}
 		/**
-		 * @param number_of_cautions the number_of_cautions to set
+		 * @param numberOfCautions the numberOfCautions to set
 		 */
-		public void setNumber_of_cautions(int number_of_cautions) {
-			this.number_of_cautions = number_of_cautions;
+		public void setNumberOfCautions(int numberOfCautions) {
+			this.numberOfCautions = numberOfCautions;
 		}
-		/* (non-Javadoc)
-		 * @see java.lang.Object#toString()
+		/**
+		 * @return the status
 		 */
-		@Override
-		public String toString() {
-			return "User [id_user=" + id_user + ", name=" + name + ", surname=" + surname + ", email=" + email
-					+ ", date_of_birth=" + date_of_birth + ", telephone=" + telephone + ", password=" + password
-					+ ", about=" + about + ", sex=" + sex + ", skype=" + skype + ", isq=" + isq + ", IQ=" + IQ
-					+ ", id_stat=" + id_stat + ", picture=" + picture + ", date_of_last_visit=" + date_of_last_visit
-					+ ", number_of_cautions=" + number_of_cautions + "]";
+		public Status getStatus() {
+			return status;
+		}
+		/**
+		 * @param status the status to set
+		 */
+		public void setStatus(Status status) {
+			this.status = status;
 		}
 		/* (non-Javadoc)
 		 * @see java.lang.Object#hashCode()
@@ -284,18 +302,20 @@ public class User {
 			int result = 1;
 			result = prime * result + IQ;
 			result = prime * result + ((about == null) ? 0 : about.hashCode());
-			result = prime * result + ((date_of_birth == null) ? 0 : date_of_birth.hashCode());
-			result = prime * result + ((date_of_last_visit == null) ? 0 : date_of_last_visit.hashCode());
+			result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
+			result = prime * result + ((dateOfLastVisit == null) ? 0 : dateOfLastVisit.hashCode());
 			result = prime * result + ((email == null) ? 0 : email.hashCode());
-			result = prime * result + (int) (id_stat ^ (id_stat >>> 32));
+			result = prime * result + (int) (idStat ^ (idStat >>> 32));
 			result = prime * result + (int) (id_user ^ (id_user >>> 32));
 			result = prime * result + ((isq == null) ? 0 : isq.hashCode());
 			result = prime * result + ((name == null) ? 0 : name.hashCode());
-			result = prime * result + number_of_cautions;
+			result = prime * result + numberOfCautions;
 			result = prime * result + ((password == null) ? 0 : password.hashCode());
 			result = prime * result + ((picture == null) ? 0 : picture.hashCode());
+			result = prime * result + ((progrLanguages == null) ? 0 : progrLanguages.hashCode());
 			result = prime * result + sex;
 			result = prime * result + ((skype == null) ? 0 : skype.hashCode());
+			result = prime * result + ((status == null) ? 0 : status.hashCode());
 			result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 			result = prime * result + ((telephone == null) ? 0 : telephone.hashCode());
 			return result;
@@ -319,22 +339,22 @@ public class User {
 					return false;
 			} else if (!about.equals(other.about))
 				return false;
-			if (date_of_birth == null) {
-				if (other.date_of_birth != null)
+			if (dateOfBirth == null) {
+				if (other.dateOfBirth != null)
 					return false;
-			} else if (!date_of_birth.equals(other.date_of_birth))
+			} else if (!dateOfBirth.equals(other.dateOfBirth))
 				return false;
-			if (date_of_last_visit == null) {
-				if (other.date_of_last_visit != null)
+			if (dateOfLastVisit == null) {
+				if (other.dateOfLastVisit != null)
 					return false;
-			} else if (!date_of_last_visit.equals(other.date_of_last_visit))
+			} else if (!dateOfLastVisit.equals(other.dateOfLastVisit))
 				return false;
 			if (email == null) {
 				if (other.email != null)
 					return false;
 			} else if (!email.equals(other.email))
 				return false;
-			if (id_stat != other.id_stat)
+			if (idStat != other.idStat)
 				return false;
 			if (id_user != other.id_user)
 				return false;
@@ -348,7 +368,7 @@ public class User {
 					return false;
 			} else if (!name.equals(other.name))
 				return false;
-			if (number_of_cautions != other.number_of_cautions)
+			if (numberOfCautions != other.numberOfCautions)
 				return false;
 			if (password == null) {
 				if (other.password != null)
@@ -360,12 +380,22 @@ public class User {
 					return false;
 			} else if (!picture.equals(other.picture))
 				return false;
+			if (progrLanguages == null) {
+				if (other.progrLanguages != null)
+					return false;
+			} else if (!progrLanguages.equals(other.progrLanguages))
+				return false;
 			if (sex != other.sex)
 				return false;
 			if (skype == null) {
 				if (other.skype != null)
 					return false;
 			} else if (!skype.equals(other.skype))
+				return false;
+			if (status == null) {
+				if (other.status != null)
+					return false;
+			} else if (!status.equals(other.status))
 				return false;
 			if (surname == null) {
 				if (other.surname != null)
@@ -380,4 +410,6 @@ public class User {
 			return true;
 		}
 	
+
+
 }
