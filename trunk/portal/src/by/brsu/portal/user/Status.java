@@ -8,49 +8,45 @@ package by.brsu.portal.user;
  * @author Hraznykh_Pavel
  *
  */
-public class Status {
+public class  Status {
 
-	private long id_stat;
+	private long idStat;
 	private String name;
 	
+		
 	/**
-	 * @param id_stat
+	 * @param idStat
 	 * @param name
 	 */
-	public Status(long id_stat, String name) {
+	public  Status(long idStat, String name) {
 		super();
-		this.id_stat = id_stat;
+		this.idStat = idStat;
 		this.name = name;
 	}
-
 	/**
-	 * @return the id_stat
+	 * @return the idStat
 	 */
-	public long getId_stat() {
-		return id_stat;
+	public long getIdStat() {
+		return idStat;
 	}
-
 	/**
-	 * @param id_stat the id_stat to set
+	 * @param idStat the idStat to set
 	 */
-	public void setId_stat(long id_stat) {
-		this.id_stat = id_stat;
+	public void setIdStat(long idStat) {
+		this.idStat = idStat;
 	}
-
 	/**
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
-
 	/**
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -58,11 +54,10 @@ public class Status {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id_stat ^ (id_stat >>> 32));
+		result = prime * result + (int) (idStat ^ (idStat >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -75,7 +70,7 @@ public class Status {
 		if (getClass() != obj.getClass())
 			return false;
 		Status other = (Status) obj;
-		if (id_stat != other.id_stat)
+		if (idStat != other.idStat)
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -84,6 +79,7 @@ public class Status {
 			return false;
 		return true;
 	}
+	
 	
 
 	

@@ -2,36 +2,51 @@
  * BrSU Projects Portal
  * (c) 2011, BrSU Java Group
  */
-package by.brsu.portal.user;
+package by.brsu.portal.cv;
 
 /**
  * @author Hraznykh_Pavel
  *
  */
-public class UserGroup {
-	
-	private long idUserGroup;
+public class ProgrammingLanguage {
+
+	private long idUser;
+	private long idLanguage;
 	private String name;
 	/**
-	 * @param idUserGroup
+	 * @param idUser
+	 * @param idLanguage
 	 * @param name
 	 */
-	public UserGroup(long idUserGroup, String name) {
+	public ProgrammingLanguage(long idUser, long idLanguage, String name) {
 		super();
-		this.idUserGroup = idUserGroup;
+		this.idUser = idUser;
+		this.idLanguage = idLanguage;
 		this.name = name;
 	}
 	/**
-	 * @return the idUserGroup
+	 * @return the idUser
 	 */
-	public long getIdUserGroup() {
-		return idUserGroup;
+	public long getIdUser() {
+		return idUser;
 	}
 	/**
-	 * @param idUserGroup the idUserGroup to set
+	 * @param idUser the idUser to set
 	 */
-	public void setIdUserGroup(long idUserGroup) {
-		this.idUserGroup = idUserGroup;
+	public void setIdUser(long idUser) {
+		this.idUser = idUser;
+	}
+	/**
+	 * @return the idLanguage
+	 */
+	public long getIdLanguage() {
+		return idLanguage;
+	}
+	/**
+	 * @param idLanguage the idLanguage to set
+	 */
+	public void setIdLanguage(long idLanguage) {
+		this.idLanguage = idLanguage;
 	}
 	/**
 	 * @return the name
@@ -52,7 +67,8 @@ public class UserGroup {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (idUserGroup ^ (idUserGroup >>> 32));
+		result = prime * result + (int) (idLanguage ^ (idLanguage >>> 32));
+		result = prime * result + (int) (idUser ^ (idUser >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -67,8 +83,10 @@ public class UserGroup {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserGroup other = (UserGroup) obj;
-		if (idUserGroup != other.idUserGroup)
+		ProgrammingLanguage other = (ProgrammingLanguage) obj;
+		if (idLanguage != other.idLanguage)
+			return false;
+		if (idUser != other.idUser)
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -78,5 +96,5 @@ public class UserGroup {
 		return true;
 	}
 	
-
+	
 }
