@@ -8,7 +8,7 @@ package by.brsu.portal.project;
  * @author Roman Ulezlo
  * 
  */
-public class Categories_pr {
+public class ProjectCategory {
 	private long id_category;
 	private String name;
 
@@ -16,7 +16,7 @@ public class Categories_pr {
 	 * @param id_category
 	 * @param name
 	 */
-	public Categories_pr(long id_category, String name) {
+	public ProjectCategory(long id_category, String name) {
 		super();
 		this.id_category = id_category;
 		this.name = name;
@@ -79,7 +79,7 @@ public class Categories_pr {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Categories_pr other = (Categories_pr) obj;
+		ProjectCategory other = (ProjectCategory) obj;
 		if (id_category != other.id_category)
 			return false;
 		if (name == null) {
