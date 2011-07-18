@@ -9,32 +9,32 @@ package by.brsu.portal.project;
  * 
  */
 public class ProjectCategory {
-	private long id_category;
+	private long id;
 	private String name;
 
 	/**
-	 * @param id_category
+	 * @param id
 	 * @param name
 	 */
-	public ProjectCategory(long id_category, String name) {
+	public ProjectCategory(long id, String name) {
 		super();
-		this.id_category = id_category;
+		this.id = id;
 		this.name = name;
 	}
 
 	/**
-	 * @return the id_category
+	 * @return the id
 	 */
 	public long getId() {
-		return id_category;
+		return id;
 	}
 
 	/**
-	 * @param id_category
-	 *            the id_category to set
+	 * @param id
+	 *            the id to set
 	 */
-	public void setId(long id_category) {
-		this.id_category = id_category;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class ProjectCategory {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id_category ^ (id_category >>> 32));
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -80,7 +80,7 @@ public class ProjectCategory {
 		if (getClass() != obj.getClass())
 			return false;
 		ProjectCategory other = (ProjectCategory) obj;
-		if (id_category != other.id_category)
+		if (id != other.id)
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -97,7 +97,7 @@ public class ProjectCategory {
 	 */
 	@Override
 	public String toString() {
-		return "Categories_pr [id_category=" + id_category + ", name=" + name
+		return "Categories_pr [id=" + id + ", name=" + name
 				+ "]";
 	}
 
