@@ -10,7 +10,6 @@ package by.brsu.portal.cv;
  */
 public class ProgrammingLanguage {
 
-	private long idUser;
 	private long idLanguage;
 	private String name;
 	/**
@@ -18,24 +17,12 @@ public class ProgrammingLanguage {
 	 * @param idLanguage
 	 * @param name
 	 */
-	public ProgrammingLanguage(long idUser, long idLanguage, String name) {
+	public ProgrammingLanguage(long idLanguage, String name) {
 		super();
-		this.idUser = idUser;
 		this.idLanguage = idLanguage;
 		this.name = name;
 	}
-	/**
-	 * @return the idUser
-	 */
-	public long getIdUser() {
-		return idUser;
-	}
-	/**
-	 * @param idUser the idUser to set
-	 */
-	public void setIdUser(long idUser) {
-		this.idUser = idUser;
-	}
+	
 	/**
 	 * @return the idLanguage
 	 */
@@ -60,21 +47,16 @@ public class ProgrammingLanguage {
 	public void setName(String name) {
 		this.name = name;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (int) (idLanguage ^ (idLanguage >>> 32));
-		result = prime * result + (int) (idUser ^ (idUser >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -86,8 +68,6 @@ public class ProgrammingLanguage {
 		ProgrammingLanguage other = (ProgrammingLanguage) obj;
 		if (idLanguage != other.idLanguage)
 			return false;
-		if (idUser != other.idUser)
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -95,6 +75,13 @@ public class ProgrammingLanguage {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "ProgrammingLanguage [idLanguage=" + idLanguage + ", name="
+				+ name + "]";
+	}
+	
 	
 	
 }
