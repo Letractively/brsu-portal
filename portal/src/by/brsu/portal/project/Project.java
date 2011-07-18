@@ -5,6 +5,9 @@
 package by.brsu.portal.project;
 
 import java.util.Date;
+import java.util.List;
+
+import by.brsu.portal.cv.Technology;
 
 /**
  * @author User
@@ -21,6 +24,22 @@ public class Project {
 	private int version;
 	private char license;
 	private char stage_of_development;
+	private List<Technology> technology;
+
+	/**
+	 * @param technology
+	 *            the technology to set
+	 */
+	public void setTechnology(List<Technology> technology) {
+		this.technology = technology;
+	}
+
+	/**
+	 * @return the technology
+	 */
+	public List<Technology> getTechnology() {
+		return technology;
+	}
 
 	/**
 	 * @return the category
@@ -194,6 +213,8 @@ public class Project {
 		result = prime * result + license;
 		result = prime * result + name;
 		result = prime * result + stage_of_development;
+		result = prime * result
+				+ ((technology == null) ? 0 : technology.hashCode());
 		result = prime * result + version;
 		return result;
 	}
@@ -239,6 +260,11 @@ public class Project {
 			return false;
 		if (stage_of_development != other.stage_of_development)
 			return false;
+		if (technology == null) {
+			if (other.technology != null)
+				return false;
+		} else if (!technology.equals(other.technology))
+			return false;
 		if (version != other.version)
 			return false;
 		return true;
@@ -256,7 +282,7 @@ public class Project {
 				+ ", date_of_creation=" + date_of_creation
 				+ ", date_of_closing=" + date_of_closing + ", category="
 				+ category + ", version=" + version + ", license=" + license
-				+ ", stage_of_development=" + stage_of_development + "]";
+				+ ", stage_of_development=" + stage_of_development
+				+ ", technology=" + technology + "]";
 	}
-
 }
