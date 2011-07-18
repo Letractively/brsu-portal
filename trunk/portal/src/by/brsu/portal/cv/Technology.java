@@ -9,32 +9,32 @@ package by.brsu.portal.cv;
  * 
  */
 public class Technology {
-	private long id_tech;
+	private long id;
 	private String name;
 
 	/**
-	 * @param id_tech
+	 * @param id
 	 * @param name
 	 */
-	public Technology(long id_tech, String name) {
+	public Technology(long id, String name) {
 		super();
-		this.id_tech = id_tech;
+		this.id = id;
 		this.name = name;
 	}
 
 	/**
-	 * @return the id_tech
+	 * @return the id
 	 */
 	public long getId() {
-		return id_tech;
+		return id;
 	}
 
 	/**
-	 * @param id_tech
-	 *            the id_tech to set
+	 * @param id
+	 *            the id to set
 	 */
-	public void setId(long id_tech) {
-		this.id_tech = id_tech;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class Technology {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id_tech ^ (id_tech >>> 32));
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -80,7 +80,7 @@ public class Technology {
 		if (getClass() != obj.getClass())
 			return false;
 		Technology other = (Technology) obj;
-		if (id_tech != other.id_tech)
+		if (id != other.id)
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -97,7 +97,7 @@ public class Technology {
 	 */
 	@Override
 	public String toString() {
-		return "Technologies [id_tech=" + id_tech + ", name=" + name + "]";
+		return "Technology [id=" + id + ", name=" + name + "]";
 	}
-
+	
 }
