@@ -5,8 +5,8 @@
 package by.brsu.portal.user;
 
 import java.sql.Blob;
+import java.util.Date;
 import java.util.List;
-import javax.xml.crypto.Data;
 import by.brsu.portal.cv.Language;
 import by.brsu.portal.cv.ProgrammingLanguage;
 
@@ -21,7 +21,7 @@ public class User {
 	private String name;
 	private String surname;
 	private String email;
-	private Data dateOfBirth;
+	private Date dateOfBirth;
 	private String telephone;
 	private String password;
 	private String about;
@@ -31,10 +31,11 @@ public class User {
 	private int IQ;
 	private long idStat;
 	private Blob picture;
-	private Data dateOfLastVisit;
+	private Date dateOfLastVisit;
 	private int numberOfCautions;
 	private Status status;
-	private List<Language> language;
+	private List<Language> languagez;
+	private List<String> sites;
 
 	/**
 	 * @param progrLanguages
@@ -55,13 +56,13 @@ public class User {
 	 * @param dateOfLastVisit
 	 * @param numberOfCautions
 	 * @param status
-	 * @param language
+	 * @param languagez
 	 */
 	public User(List<ProgrammingLanguage> progrLanguages, long id_user,
-			String name, String surname, String email, Data dateOfBirth,
+			String name, String surname, String email, Date dateOfBirth,
 			String telephone, String password, String about, int sex,
 			String skype, String isq, int iQ, long idStat, Blob picture,
-			Data dateOfLastVisit, int numberOfCautions, Status status,
+			Date dateOfLastVisit, int numberOfCautions, Status status,
 			List<Language> language) {
 		super();
 		this.progrLanguages = progrLanguages;
@@ -76,13 +77,13 @@ public class User {
 		this.sex = sex;
 		this.skype = skype;
 		this.isq = isq;
-		IQ = iQ;
+		this.IQ = iQ;
 		this.idStat = idStat;
 		this.picture = picture;
 		this.dateOfLastVisit = dateOfLastVisit;
 		this.numberOfCautions = numberOfCautions;
 		this.status = status;
-		this.language = language;
+		this.languagez = language;
 	}
 
 	/**
@@ -163,7 +164,7 @@ public class User {
 	/**
 	 * @return the dateOfBirth
 	 */
-	public Data getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
@@ -171,7 +172,7 @@ public class User {
 	 * @param dateOfBirth
 	 *            the dateOfBirth to set
 	 */
-	public void setDateOfBirth(Data dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -313,7 +314,7 @@ public class User {
 	/**
 	 * @return the dateOfLastVisit
 	 */
-	public Data getDateOfLastVisit() {
+	public Date getDateOfLastVisit() {
 		return dateOfLastVisit;
 	}
 
@@ -321,7 +322,7 @@ public class User {
 	 * @param dateOfLastVisit
 	 *            the dateOfLastVisit to set
 	 */
-	public void setDateOfLastVisit(Data dateOfLastVisit) {
+	public void setDateOfLastVisit(Date dateOfLastVisit) {
 		this.dateOfLastVisit = dateOfLastVisit;
 	}
 
@@ -356,25 +357,28 @@ public class User {
 	}
 
 	/**
-	 * @param language
-	 *            the language to set
+	 * @param languagez
+	 *            the languagez to set
 	 */
-	public void setLanguage(List<Language> language) {
-		this.language = language;
+	public void setLanguages(List<Language> language) {
+		this.languagez = language;
 	}
 
 	/**
-	 * @return the language
+	 * @return the languagez
 	 */
-	public List<Language> getLanguage() {
-		return language;
+	public List<Language> getLanguages() {
+		return languagez;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
+	public List<String> getSites() {
+		return sites;
+	}
+
+	public void setSites(List<String> sites) {
+		this.sites = sites;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -390,7 +394,7 @@ public class User {
 		result = prime * result + (int) (id_user ^ (id_user >>> 32));
 		result = prime * result + ((isq == null) ? 0 : isq.hashCode());
 		result = prime * result
-				+ ((language == null) ? 0 : language.hashCode());
+				+ ((languagez == null) ? 0 : languagez.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + numberOfCautions;
 		result = prime * result
@@ -399,6 +403,7 @@ public class User {
 		result = prime * result
 				+ ((progrLanguages == null) ? 0 : progrLanguages.hashCode());
 		result = prime * result + sex;
+		result = prime * result + ((sites == null) ? 0 : sites.hashCode());
 		result = prime * result + ((skype == null) ? 0 : skype.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
@@ -407,11 +412,6 @@ public class User {
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -452,10 +452,10 @@ public class User {
 				return false;
 		} else if (!isq.equals(other.isq))
 			return false;
-		if (language == null) {
-			if (other.language != null)
+		if (languagez == null) {
+			if (other.languagez != null)
 				return false;
-		} else if (!language.equals(other.language))
+		} else if (!languagez.equals(other.languagez))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -481,6 +481,11 @@ public class User {
 			return false;
 		if (sex != other.sex)
 			return false;
+		if (sites == null) {
+			if (other.sites != null)
+				return false;
+		} else if (!sites.equals(other.sites))
+			return false;
 		if (skype == null) {
 			if (other.skype != null)
 				return false;
@@ -504,11 +509,6 @@ public class User {
 		return true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "User [progrLanguages=" + progrLanguages + ", id_user="
@@ -519,6 +519,10 @@ public class User {
 				+ ", isq=" + isq + ", IQ=" + IQ + ", idStat=" + idStat
 				+ ", picture=" + picture + ", dateOfLastVisit="
 				+ dateOfLastVisit + ", numberOfCautions=" + numberOfCautions
-				+ ", status=" + status + ", language=" + language + "]";
+				+ ", status=" + status + ", languagez=" + languagez
+				+ ", sites=" + sites + "]";
 	}
+
+
+
 }
