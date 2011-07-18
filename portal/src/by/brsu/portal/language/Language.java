@@ -1,4 +1,4 @@
-package by.brsu.portal.Language1;
+package by.brsu.portal.language;
 
 /**
  * BrSU Projects Portal
