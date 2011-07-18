@@ -12,7 +12,7 @@ import by.brsu.portal.user.*;
  * @author Aliaksei Ryzhkou
  * @version 20110713
  */
-public class Comment_news {
+public class CommentNews {
 	private long id_comment;
 
 	/**
@@ -22,7 +22,7 @@ public class Comment_news {
 	 * @param date
 	 * @param text
 	 */
-	public Comment_news(long id_comment, User user, News news, String text) {
+	public CommentNews(long id_comment, User user, News news, String text) {
 		// super();
 		this.id_comment = id_comment;
 		this.user = user;
@@ -34,7 +34,7 @@ public class Comment_news {
 	/**
 	 * 
 	 */
-	public Comment_news() {
+	public CommentNews() {
 		// super();
 	}
 

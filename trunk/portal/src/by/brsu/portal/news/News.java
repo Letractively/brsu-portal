@@ -10,11 +10,11 @@ import by.brsu.portal.user.*;
 
 /**
  * @author Aliaksei Ryzhkou
- * @version 20110713
+ * @version 20110714
  */
 public class News {
 
-	private long id_news;
+	private long id;
 	private String title;
 	private String text;
 	private Date date;
@@ -36,29 +36,29 @@ public class News {
 	/**
 	 * @return the id_news
 	 */
-	public long getId_news() {
-		return id_news;
+	public long getId() {
+		return id;
 	}
 
 	/**
 	 * @param id_news
 	 *            the id_news to set
 	 */
-	public void setId_news(long id_news) {
-		this.id_news = id_news;
+	public void setId_news(long id) {
+		this.id = id;
 	}
 
 	/**
-	 * @param id_news
+	 * @param id
 	 * @param title
 	 * @param text
 	 * @param category
 	 * @param author
 	 * @param important
 	 */
-	public News(long id_news, String title, String text, Category category, User author, String important) {
-		//super();
-		this.id_news = id_news;
+	public News(long id, String title, String text, Category category, User author, String important) {
+		// super();
+		this.id = id;
 		this.title = title;
 		this.text = text;
 		this.date = new Date();
@@ -70,9 +70,8 @@ public class News {
 	/**
 	 * 
 	 */
-	public News() 
-	{
-		//super();
+	public News() {
+		// super();
 	}
 
 	/**
