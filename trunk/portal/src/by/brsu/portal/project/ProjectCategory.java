@@ -25,7 +25,7 @@ public class ProjectCategory {
 	/**
 	 * @return the id_category
 	 */
-	public long getId_category() {
+	public long getId() {
 		return id_category;
 	}
 
@@ -33,7 +33,7 @@ public class ProjectCategory {
 	 * @param id_category
 	 *            the id_category to set
 	 */
-	public void setId_category(long id_category) {
+	public void setId(long id_category) {
 		this.id_category = id_category;
 	}
 
