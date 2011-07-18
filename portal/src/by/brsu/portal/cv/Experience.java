@@ -1,8 +1,11 @@
 package by.brsu.portal.cv;
+
+import by.brsu.portal.project.Project;
 /**
  * BrSU Projects Portal
  * (c) 2011, BrSU Java Group
  */
+import by.brsu.portal.user.User;
 
 /**
  * @author Oleg Panasyuk
