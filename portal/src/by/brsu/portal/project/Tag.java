@@ -1,3 +1,5 @@
+package by.brsu.portal.project;
+
 /**
  * BrSU Projects Portal
  * (c) 2011, BrSU Java Group

@@ -7,6 +7,7 @@ package by.brsu.portal.project;
 import java.util.Date;
 import java.util.List;
 
+import by.brsu.portal.cv.ProgrammingLanguage;
 import by.brsu.portal.cv.Technology;
 
 /**
@@ -25,6 +26,7 @@ public class Project {
 	private char license;
 	private char stage_of_development;
 	private List<Technology> technology;
+	private List<ProgrammingLanguage> languages;
 
 	/**
 	 * @param technology
@@ -191,11 +193,8 @@ public class Project {
 		this.stage_of_development = stage_of_development;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -210,6 +209,8 @@ public class Project {
 		result = prime * result + description;
 		result = prime * result + id_owner;
 		result = prime * result + id_project;
+		result = prime * result
+				+ ((languages == null) ? 0 : languages.hashCode());
 		result = prime * result + license;
 		result = prime * result + name;
 		result = prime * result + stage_of_development;
@@ -219,11 +220,6 @@ public class Project {
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -254,6 +250,11 @@ public class Project {
 			return false;
 		if (id_project != other.id_project)
 			return false;
+		if (languages == null) {
+			if (other.languages != null)
+				return false;
+		} else if (!languages.equals(other.languages))
+			return false;
 		if (license != other.license)
 			return false;
 		if (name != other.name)
@@ -270,11 +271,6 @@ public class Project {
 		return true;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Project [id_project=" + id_project + ", id_owner=" + id_owner
@@ -283,6 +279,9 @@ public class Project {
 				+ ", date_of_closing=" + date_of_closing + ", category="
 				+ category + ", version=" + version + ", license=" + license
 				+ ", stage_of_development=" + stage_of_development
-				+ ", technology=" + technology + "]";
+				+ ", technology=" + technology + ", languages=" + languages
+				+ "]";
 	}
+
+	
 }
