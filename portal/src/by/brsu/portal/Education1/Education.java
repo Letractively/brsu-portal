@@ -1,4 +1,6 @@
-package Education;
+package by.brsu.portal.Education1;
+
+import by.brsu.portal.user.User;
 /**
  * BrSU Projects Portal
  * (c) 2011, BrSU Java Group
