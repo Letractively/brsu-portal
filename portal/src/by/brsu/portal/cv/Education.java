@@ -17,12 +17,12 @@ public class Education {
 	private String end_date;
 	private String edu_name;
 	private String place;
-	private Type_edu type_edu;
+	private EduType type_edu;
 	private String additional; 
 	/**
 	 * 
 	 */
-	public Education(long id_edu, User user, String start_date, String end_date, String edu_name, String place, Type_edu type_edu, String additional) {
+	public Education(long id_edu, User user, String start_date, String end_date, String edu_name, String place, EduType type_edu, String additional) {
 		// TODO Auto-generated constructor stub
 		this.id_edu = id_edu;
 		this.user = user; 
@@ -140,12 +140,12 @@ public class Education {
 		this.place = place;
 	}
 
-	public Type_edu getType_edu() {
+	public EduType getType() {
 		return type_edu;
 	}
 
-	public void setType_edu(Type_edu type_edu) {
-		this.type_edu = type_edu;
+	public void setType_edu(EduType type) {
+		this.type_edu = type;
 	}
 
 	public String getAdditional() {
