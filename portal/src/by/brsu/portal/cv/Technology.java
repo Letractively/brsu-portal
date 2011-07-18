@@ -2,39 +2,39 @@
  * BrSU Projects Portal
  * (c) 2011, BrSU Java Group
  */
-package by.brsu.portal.education;
+package by.brsu.portal.cv;
 
 /**
  * @author Roman Ulezlo
  * 
  */
-public class Type_edu {
-	private long id_type_edu;
+public class Technology {
+	private long id_tech;
 	private String name;
 
 	/**
-	 * @param id_type_edu
+	 * @param id_tech
 	 * @param name
 	 */
-	public Type_edu(long id_type_edu, String name) {
+	public Technology(long id_tech, String name) {
 		super();
-		this.id_type_edu = id_type_edu;
+		this.id_tech = id_tech;
 		this.name = name;
 	}
 
 	/**
-	 * @return the id_type_edu
+	 * @return the id_tech
 	 */
-	public long getId_type_edu() {
-		return id_type_edu;
+	public long getId_tech() {
+		return id_tech;
 	}
 
 	/**
-	 * @param id_type_edu
-	 *            the id_type_edu to set
+	 * @param id_tech
+	 *            the id_tech to set
 	 */
-	public void setId_type_edu(long id_type_edu) {
-		this.id_type_edu = id_type_edu;
+	public void setId_tech(long id_tech) {
+		this.id_tech = id_tech;
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class Type_edu {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id_type_edu ^ (id_type_edu >>> 32));
+		result = prime * result + (int) (id_tech ^ (id_tech >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -79,8 +79,8 @@ public class Type_edu {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Type_edu other = (Type_edu) obj;
-		if (id_type_edu != other.id_type_edu)
+		Technology other = (Technology) obj;
+		if (id_tech != other.id_tech)
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -97,7 +97,7 @@ public class Type_edu {
 	 */
 	@Override
 	public String toString() {
-		return "Type_edu [id_type_edu=" + id_type_edu + ", name=" + name + "]";
+		return "Technologies [id_tech=" + id_tech + ", name=" + name + "]";
 	}
 
 }

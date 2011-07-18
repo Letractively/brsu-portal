@@ -8,23 +8,33 @@ package by.brsu.portal.cv;
  * @author Roman Ulezlo
  * 
  */
-public class Technologies {
-	private long id_tech;
+public class Type_edu {
+	private long id_type_edu;
 	private String name;
 
 	/**
-	 * @return the id_tech
+	 * @param id_type_edu
+	 * @param name
 	 */
-	public long getId_tech() {
-		return id_tech;
+	public Type_edu(long id_type_edu, String name) {
+		super();
+		this.id_type_edu = id_type_edu;
+		this.name = name;
 	}
 
 	/**
-	 * @param id_tech
-	 *            the id_tech to set
+	 * @return the id_type_edu
 	 */
-	public void setId_tech(long id_tech) {
-		this.id_tech = id_tech;
+	public long getId_type_edu() {
+		return id_type_edu;
+	}
+
+	/**
+	 * @param id_type_edu
+	 *            the id_type_edu to set
+	 */
+	public void setId_type_edu(long id_type_edu) {
+		this.id_type_edu = id_type_edu;
 	}
 
 	/**
@@ -51,7 +61,7 @@ public class Technologies {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id_tech ^ (id_tech >>> 32));
+		result = prime * result + (int) (id_type_edu ^ (id_type_edu >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -69,8 +79,8 @@ public class Technologies {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Technologies other = (Technologies) obj;
-		if (id_tech != other.id_tech)
+		Type_edu other = (Type_edu) obj;
+		if (id_type_edu != other.id_type_edu)
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -87,7 +97,7 @@ public class Technologies {
 	 */
 	@Override
 	public String toString() {
-		return "Technologies [id_tech=" + id_tech + ", name=" + name + "]";
+		return "Type_edu [id_type_edu=" + id_type_edu + ", name=" + name + "]";
 	}
 
 }
