@@ -2,7 +2,7 @@
  * BrSU Projects Portal
  * (c) 2011, BrSU Java Group
  */
-package by.brsu.portal.Education;
+package by.brsu.portal.Education1;
 
 /**
  * @author Roman Ulezlo
