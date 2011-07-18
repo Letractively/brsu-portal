@@ -1,4 +1,4 @@
-package by.brsu.portal.Education1;
+package by.brsu.portal.education;
 
 import by.brsu.portal.user.User;
 /**
