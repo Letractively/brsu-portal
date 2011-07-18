@@ -8,192 +8,187 @@ import java.util.Date;
 
 /**
  * @author User
- *
+ * 
  */
-public class Project 
-{
+public class Project {
 	private int id_project;
 	private int id_owner;
 	private char name;
 	private char description;
 	private Date date_of_creation;
 	private Date date_of_closing;
-	private int id_category;
+	private ProjectCategory category;
 	private int version;
 	private char license;
 	private char stage_of_development;
-	
+
+	/**
+	 * @return the category
+	 */
+	public ProjectCategory getCategory() {
+		return category;
+	}
+
+	/**
+	 * @param category
+	 *            the category to set
+	 */
+	public void setCategory(ProjectCategory category) {
+		this.category = category;
+	}
+
 	/**
 	 * @return the id project
 	 */
-	public int getId_project() 
-	{
+	public int getId_project() {
 		return id_project;
 	}
-	
+
 	/**
-	 * @param set id project
+	 * @param set
+	 *            id project
 	 */
-	public void setId_project(int id_project) 
-	{
+	public void setId_project(int id_project) {
 		this.id_project = id_project;
 	}
-	
+
 	/**
 	 * @return the id user
 	 */
-	public int getId_owner()
-	{
+	public int getId_owner() {
 		return id_owner;
 	}
-	
+
 	/**
-	 * @param set id user
+	 * @param set
+	 *            id user
 	 */
-	public void setId_owner(int id_owner) 
-	{
+	public void setId_owner(int id_owner) {
 		this.id_owner = id_owner;
 	}
-	
+
 	/**
 	 * @return the name project
 	 */
-	public char getName() 
-	{
+	public char getName() {
 		return name;
 	}
-	
+
 	/**
-	 * @param set name project
+	 * @param set
+	 *            name project
 	 */
-	public void setName(char name) 
-	{
+	public void setName(char name) {
 		this.name = name;
 	}
-	
+
 	/**
 	 * @return the description
 	 */
-	public char getDescription() 
-	{
+	public char getDescription() {
 		return description;
 	}
-	
+
 	/**
-	 * @param set description
+	 * @param set
+	 *            description
 	 */
-	public void setDescription(char description) 
-	{
+	public void setDescription(char description) {
 		this.description = description;
 	}
-	
+
 	/**
 	 * @return the date_of_creation
 	 */
-	public Date getDate_of_creation() 
-	{
+	public Date getDate_of_creation() {
 		return date_of_creation;
 	}
-	
+
 	/**
-	 * @param set date_of_creation project
+	 * @param set
+	 *            date_of_creation project
 	 */
-	public void setDate_of_creation(Date date_of_creation)
-	{
+	public void setDate_of_creation(Date date_of_creation) {
 		this.date_of_creation = date_of_creation;
 	}
-	
+
 	/**
 	 * @return the date_of_closing
 	 */
-	public Date getDate_of_closing() 
-	{
+	public Date getDate_of_closing() {
 		return date_of_closing;
 	}
-	
+
 	/**
-	 * @param set date_of_closing project
+	 * @param set
+	 *            date_of_closing project
 	 */
-	public void setDate_of_closing(Date date_of_closing) 
-	{
+	public void setDate_of_closing(Date date_of_closing) {
 		this.date_of_closing = date_of_closing;
 	}
-	
-	/**
-	 * @return the id_category
-	 */
-	public int getId_category() 
-	{
-		return id_category;
-	}
-	
-	/**
-	 * @param set id_category
-	 */
-	public void setId_category(int id_category) 
-	{
-		this.id_category = id_category;
-	}
-	
+
 	/**
 	 * @return the version of project
 	 */
-	public int getVersion() 
-	{
+	public int getVersion() {
 		return version;
 	}
-	
+
 	/**
-	 * @param set version of project
+	 * @param set
+	 *            version of project
 	 */
-	public void setVersion(int version)
-	{
+	public void setVersion(int version) {
 		this.version = version;
 	}
-	
+
 	/**
 	 * @return the license
 	 */
-	public char getLicense() 
-	{
+	public char getLicense() {
 		return license;
 	}
-	
+
 	/**
-	 * @param set license
+	 * @param set
+	 *            license
 	 */
-	public void setLicense(char license)
-	{
+	public void setLicense(char license) {
 		this.license = license;
 	}
-	
+
 	/**
 	 * @return the stage_of_development
 	 */
-	public char getStage_of_development() 
-	{
+	public char getStage_of_development() {
 		return stage_of_development;
 	}
-	
+
 	/**
-	 * @param set stage_of_development
+	 * @param set
+	 *            stage_of_development
 	 */
-	public void setStage_of_development(char stage_of_development)
-	{
+	public void setStage_of_development(char stage_of_development) {
 		this.stage_of_development = stage_of_development;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((date_of_closing == null) ? 0 : date_of_closing.hashCode());
-		result = prime * result + ((date_of_creation == null) ? 0 : date_of_creation.hashCode());
+		result = prime * result
+				+ ((category == null) ? 0 : category.hashCode());
+		result = prime * result
+				+ ((date_of_closing == null) ? 0 : date_of_closing.hashCode());
+		result = prime
+				* result
+				+ ((date_of_creation == null) ? 0 : date_of_creation.hashCode());
 		result = prime * result + description;
-		result = prime * result + id_category;
 		result = prime * result + id_owner;
 		result = prime * result + id_project;
 		result = prime * result + license;
@@ -203,7 +198,9 @@ public class Project
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -215,6 +212,11 @@ public class Project
 		if (getClass() != obj.getClass())
 			return false;
 		Project other = (Project) obj;
+		if (category == null) {
+			if (other.category != null)
+				return false;
+		} else if (!category.equals(other.category))
+			return false;
 		if (date_of_closing == null) {
 			if (other.date_of_closing != null)
 				return false;
@@ -226,8 +228,6 @@ public class Project
 		} else if (!date_of_creation.equals(other.date_of_creation))
 			return false;
 		if (description != other.description)
-			return false;
-		if (id_category != other.id_category)
 			return false;
 		if (id_owner != other.id_owner)
 			return false;
@@ -244,14 +244,18 @@ public class Project
 		return true;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Project [id_project=" + id_project + ", id_owner=" + id_owner + ", name=" + name + ", description="
-				+ description + ", date_of_creation=" + date_of_creation + ", date_of_closing=" + date_of_closing
-				+ ", id_category=" + id_category + ", version=" + version + ", license=" + license
+		return "Project [id_project=" + id_project + ", id_owner=" + id_owner
+				+ ", name=" + name + ", description=" + description
+				+ ", date_of_creation=" + date_of_creation
+				+ ", date_of_closing=" + date_of_closing + ", category="
+				+ category + ", version=" + version + ", license=" + license
 				+ ", stage_of_development=" + stage_of_development + "]";
 	}
 
