@@ -25,7 +25,7 @@ public class Technology {
 	/**
 	 * @return the id_tech
 	 */
-	public long getId_tech() {
+	public long getId() {
 		return id_tech;
 	}
 
@@ -33,7 +33,7 @@ public class Technology {
 	 * @param id_tech
 	 *            the id_tech to set
 	 */
-	public void setId_tech(long id_tech) {
+	public void setId(long id_tech) {
 		this.id_tech = id_tech;
 	}
 
