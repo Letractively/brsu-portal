@@ -13,6 +13,13 @@ public class Technology {
 	private String name;
 
 	/**
+	 * 
+	 */
+	public Technology() {
+		super();
+	}
+
+	/**
 	 * @param id
 	 * @param name
 	 */
