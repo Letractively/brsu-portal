@@ -14,214 +14,262 @@ import by.brsu.portal.cv.Technology;
  * @author User
  * 
  */
-public class Project {
-	private int id_project;
-	private int id_owner;
+public class Project 
+{
+	private int idProject;
+	private int idOwner;
 	private char name;
 	private char description;
-	private Date date_of_creation;
-	private Date date_of_closing;
+	private Date dateOfCreation;
+	private Date dateOfClosing;
 	private ProjectCategory category;
 	private int version;
 	private char license;
-	private char stage_of_development;
+	private char stageOfDevelopment;
 	private List<Technology> technology;
 	private List<ProgrammingLanguage> languages;
-
-	/**
-	 * @param technology
-	 *            the technology to set
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
 	 */
-	public void setTechnology(List<Technology> technology) {
-		this.technology = technology;
+	@Override
+	public String toString() 
+	{
+		return "Project [idProject=" + idProject + ", idOwner=" + idOwner
+				+ ", name=" + name + ", description=" + description
+				+ ", dateOfCreation=" + dateOfCreation + ", dateOfClosing="
+				+ dateOfClosing + ", category=" + category + ", version="
+				+ version + ", license=" + license + ", stageOfDevelopment="
+				+ stageOfDevelopment + ", technology=" + technology
+				+ ", languages=" + languages + "]";
 	}
-
+	
 	/**
-	 * @return the technology
+	 * @return the idProject
 	 */
-	public List<Technology> getTechnology() {
-		return technology;
+	public int getIdProject() 
+	{
+		return idProject;
 	}
-
+	
 	/**
-	 * @return the category
+	 * @param set idProject
 	 */
-	public ProjectCategory getCategory() {
-		return category;
+	public void setIdProject(int idProject) 
+	{
+		this.idProject = idProject;
 	}
-
+	
 	/**
-	 * @param category
-	 *            the category to set
+	 * @return the idOwner
 	 */
-	public void setCategory(ProjectCategory category) {
-		this.category = category;
+	public int getIdOwner() 
+	{
+		return idOwner;
 	}
-
+	
 	/**
-	 * @return the id project
+	 * @param set idOwner
 	 */
-	public int getId_project() {
-		return id_project;
+	public void setIdOwner(int idOwner) 
+	{
+		this.idOwner = idOwner;
 	}
-
+	
 	/**
-	 * @param set
-	 *            id project
+	 * @return the name
 	 */
-	public void setId_project(int id_project) {
-		this.id_project = id_project;
-	}
-
-	/**
-	 * @return the id user
-	 */
-	public int getId_owner() {
-		return id_owner;
-	}
-
-	/**
-	 * @param set
-	 *            id user
-	 */
-	public void setId_owner(int id_owner) {
-		this.id_owner = id_owner;
-	}
-
-	/**
-	 * @return the name project
-	 */
-	public char getName() {
+	public char getName() 
+	{
 		return name;
 	}
-
+	
 	/**
-	 * @param set
-	 *            name project
+	 * @param set name project
 	 */
-	public void setName(char name) {
+	public void setName(char name) 
+	{
 		this.name = name;
 	}
-
+	
 	/**
 	 * @return the description
 	 */
-	public char getDescription() {
+	public char getDescription() 
+	{
 		return description;
 	}
-
+	
 	/**
-	 * @param set
-	 *            description
+	 * @param set description
 	 */
-	public void setDescription(char description) {
+	public void setDescription(char description) 
+	{
 		this.description = description;
 	}
-
+	
 	/**
-	 * @return the date_of_creation
+	 * @return the dateOfCreation
 	 */
-	public Date getDate_of_creation() {
-		return date_of_creation;
+	public Date getDateOfCreation() 
+	{
+		return dateOfCreation;
 	}
-
+	
 	/**
-	 * @param set
-	 *            date_of_creation project
+	 * @param set dateOfCreation project
 	 */
-	public void setDate_of_creation(Date date_of_creation) {
-		this.date_of_creation = date_of_creation;
+	public void setDateOfCreation(Date dateOfCreation) 
+	{
+		this.dateOfCreation = dateOfCreation;
 	}
-
+	
 	/**
-	 * @return the date_of_closing
+	 * @return the dateOfClosing
 	 */
-	public Date getDate_of_closing() {
-		return date_of_closing;
+	public Date getDateOfClosing() 
+	{
+		return dateOfClosing;
 	}
-
+	
 	/**
-	 * @param set
-	 *            date_of_closing project
+	 * @param set dateOfClosing project
 	 */
-	public void setDate_of_closing(Date date_of_closing) {
-		this.date_of_closing = date_of_closing;
+	public void setDateOfClosing(Date dateOfClosing) 
+	{
+		this.dateOfClosing = dateOfClosing;
 	}
-
+	
 	/**
-	 * @return the version of project
+	 * @return the category
 	 */
-	public int getVersion() {
+	public ProjectCategory getCategory() 
+	{
+		return category;
+	}
+	
+	/**
+	 * @param set category
+	 */
+	public void setCategory(ProjectCategory category) 
+	{
+		this.category = category;
+	}
+	
+	/**
+	 * @return the version
+	 */
+	public int getVersion() 
+	{
 		return version;
 	}
-
+	
 	/**
-	 * @param set
-	 *            version of project
+	 * @param set version
 	 */
-	public void setVersion(int version) {
+	public void setVersion(int version)
+	{
 		this.version = version;
 	}
-
+	
 	/**
 	 * @return the license
 	 */
-	public char getLicense() {
+	public char getLicense()
+	{
 		return license;
 	}
-
+	
 	/**
-	 * @param set
-	 *            license
+	 * @param set license
 	 */
-	public void setLicense(char license) {
+	public void setLicense(char license) 
+	{
 		this.license = license;
 	}
-
-	/**
-	 * @return the stage_of_development
-	 */
-	public char getStage_of_development() {
-		return stage_of_development;
-	}
-
-	/**
-	 * @param set
-	 *            stage_of_development
-	 */
-	public void setStage_of_development(char stage_of_development) {
-		this.stage_of_development = stage_of_development;
-	}
-
 	
-
+	/**
+	 * @return the stageOfDevelopment
+	 */
+	public char getStageOfDevelopment() 
+	{
+		return stageOfDevelopment;
+	}
+	
+	/**
+	 * @param set stageOfDevelopment
+	 */
+	public void setStageOfDevelopment(char stageOfDevelopment) 
+	{
+		this.stageOfDevelopment = stageOfDevelopment;
+	}
+	
+	/**
+	 * @return the technology
+	 */
+	public List<Technology> getTechnology() 
+	{
+		return technology;
+	}
+	
+	/**
+	 * @param set technology
+	 */
+	public void setTechnology(List<Technology> technology) 
+	{
+		this.technology = technology;
+	}
+	
+	/**
+	 * @return the languages
+	 */
+	public List<ProgrammingLanguage> getLanguages() 
+	{
+		return languages;
+	}
+	
+	/**
+	 * @param set languages
+	 */
+	public void setLanguages(List<ProgrammingLanguage> languages) 
+	{
+		this.languages = languages;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
-	public int hashCode() {
+	public int hashCode() 
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
 				+ ((category == null) ? 0 : category.hashCode());
 		result = prime * result
-				+ ((date_of_closing == null) ? 0 : date_of_closing.hashCode());
-		result = prime
-				* result
-				+ ((date_of_creation == null) ? 0 : date_of_creation.hashCode());
+				+ ((dateOfClosing == null) ? 0 : dateOfClosing.hashCode());
+		result = prime * result
+				+ ((dateOfCreation == null) ? 0 : dateOfCreation.hashCode());
 		result = prime * result + description;
-		result = prime * result + id_owner;
-		result = prime * result + id_project;
+		result = prime * result + idOwner;
+		result = prime * result + idProject;
 		result = prime * result
 				+ ((languages == null) ? 0 : languages.hashCode());
 		result = prime * result + license;
 		result = prime * result + name;
-		result = prime * result + stage_of_development;
+		result = prime * result + stageOfDevelopment;
 		result = prime * result
 				+ ((technology == null) ? 0 : technology.hashCode());
 		result = prime * result + version;
 		return result;
 	}
-
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj) 
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -234,21 +282,21 @@ public class Project {
 				return false;
 		} else if (!category.equals(other.category))
 			return false;
-		if (date_of_closing == null) {
-			if (other.date_of_closing != null)
+		if (dateOfClosing == null) {
+			if (other.dateOfClosing != null)
 				return false;
-		} else if (!date_of_closing.equals(other.date_of_closing))
+		} else if (!dateOfClosing.equals(other.dateOfClosing))
 			return false;
-		if (date_of_creation == null) {
-			if (other.date_of_creation != null)
+		if (dateOfCreation == null) {
+			if (other.dateOfCreation != null)
 				return false;
-		} else if (!date_of_creation.equals(other.date_of_creation))
+		} else if (!dateOfCreation.equals(other.dateOfCreation))
 			return false;
 		if (description != other.description)
 			return false;
-		if (id_owner != other.id_owner)
+		if (idOwner != other.idOwner)
 			return false;
-		if (id_project != other.id_project)
+		if (idProject != other.idProject)
 			return false;
 		if (languages == null) {
 			if (other.languages != null)
@@ -259,7 +307,7 @@ public class Project {
 			return false;
 		if (name != other.name)
 			return false;
-		if (stage_of_development != other.stage_of_development)
+		if (stageOfDevelopment != other.stageOfDevelopment)
 			return false;
 		if (technology == null) {
 			if (other.technology != null)
@@ -269,19 +317,7 @@ public class Project {
 		if (version != other.version)
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Project [id_project=" + id_project + ", id_owner=" + id_owner
-				+ ", name=" + name + ", description=" + description
-				+ ", date_of_creation=" + date_of_creation
-				+ ", date_of_closing=" + date_of_closing + ", category="
-				+ category + ", version=" + version + ", license=" + license
-				+ ", stage_of_development=" + stage_of_development
-				+ ", technology=" + technology + ", languages=" + languages
-				+ "]";
-	}
-
+	}	
+	
 	
 }
