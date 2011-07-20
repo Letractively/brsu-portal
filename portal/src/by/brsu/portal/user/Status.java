@@ -13,7 +13,10 @@ public class  Status {
 	private long idStat;
 	private String name;
 	
-		
+	public  Status() {
+		super();	
+	
+	}	
 	/**
 	 * @param idStat
 	 * @param name
