@@ -11,7 +11,7 @@ import by.brsu.portal.cv.ProgrammingLanguage;
 import by.brsu.portal.cv.Technology;
 
 /**
- * @author User
+ * @author Artur Smaliuk
  * 
  */
 public class Project 
