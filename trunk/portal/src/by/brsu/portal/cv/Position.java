@@ -13,6 +13,13 @@ public class Position {
 	private String name;
 
 	/**
+	 * 
+	 */
+	public Position() {
+		super();
+	}
+
+	/**
 	 * @param id
 	 * @param name
 	 */
