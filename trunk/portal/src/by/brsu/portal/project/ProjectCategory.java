@@ -13,6 +13,13 @@ public class ProjectCategory {
 	private String name;
 
 	/**
+	 * 
+	 */
+	public ProjectCategory() {
+		super();
+	}
+
+	/**
 	 * @param id
 	 * @param name
 	 */
