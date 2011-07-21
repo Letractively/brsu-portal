@@ -18,56 +18,6 @@ public class TechnologyDAO {
 	private Connection conn = null;
 
 	/**
-	 * Delete table from database
-	 */
-	public void deleteTable() {
-		try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/main",
-					"root", "root");
-		} catch (SQLException ex) {
-		}
-		String sql = "drop table users";
-		Statement st = null;
-		try {
-			st = conn.createStatement();
-			st.executeUpdate(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (st != null)
-					st.close();
-			} catch (SQLException e) {
-			}
-		}
-	}
-
-	/**
-	 * Add table to database
-	 */
-	public void addTable() {
-		try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/main",
-					"root", "root");
-		} catch (SQLException ex) {
-		}
-		String sql = "create table technologies(id_tech int not null auto_increment primary key, name varchar(100) not null)";
-		Statement st = null;
-		try {
-			st = conn.createStatement();
-			st.executeUpdate(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (st != null)
-					st.close();
-			} catch (SQLException e) {
-			}
-		}
-	}
-
-	/**
 	 * Add technology
 	 * 
 	 * @param name
