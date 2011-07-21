@@ -34,19 +34,8 @@ public class ConnectionManager {
 	 * 
 	 * @return
 	 */
-	public static ConnectionManager getConnectorManager() {
+	public static ConnectionManager getConnectorPool() {
 		return INCTANCE;
-	}
-
-	/**
-	 * 
-	 * @return connetions pool
-	 */
-	public synchronized ConnectionManager getConnectionPool() {
-		ConnectionManager conm;
-		conm = (cm == null ? new ConnectionManager() : cm);
-		cm = conm;
-		return cm;
 	}
 
 	/**
@@ -79,7 +68,7 @@ public class ConnectionManager {
 	 * @param conn
 	 * @throws SQLException
 	 */
-	public synchronized void releaseConnaction(Connection conn)
+	public synchronized void releaseConnection(Connection conn)
 			throws SQLException {
 		connected--;
 		conn.rollback();
