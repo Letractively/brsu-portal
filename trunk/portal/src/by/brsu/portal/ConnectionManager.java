@@ -14,11 +14,10 @@ import java.sql.SQLException;
  */
 
 public class ConnectionManager {
-	private static final ConnectionManager INCTANCE = new ConnectionManager();
+	private static final ConnectionManager INSTANCE = new ConnectionManager();
 	final private int poolsize = 10;
 	private Connection[] connections = new Connection[poolsize];
 	private byte connected = 0;
-	private ConnectionManager cm;
 
 	private ConnectionManager() {
 		for (int i = 0; i < poolsize; i++) {
@@ -35,7 +34,7 @@ public class ConnectionManager {
 	 * @return
 	 */
 	public static ConnectionManager getConnectorPool() {
-		return INCTANCE;
+		return INSTANCE;
 	}
 
 	/**
