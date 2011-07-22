@@ -1,0 +1,28 @@
+—крипт-подсказка дл€ создани€ пользовател€ в базе данных.
+
+
+
+
+
+ќсуществим подключение к серверу MySQL, использу€ аккаунт суперпользовател€ root:
+
+$ mysql -u root -p
+Enter password:
+
+ѕосле успешного подключени€, выполним команду создани€ базы данных:
+
+mysql> create database portal;
+
+«атем создадим пользовател€ brsujgadmin дл€ подключени€ к базе данных и назначим ему пароль У1Ф:
+
+mysql> grant usage on *.* to brsujgadmin@localhost identified by С1Т;
+
+», наконец, назначаем все привилегии (права) на базу portal пользователю brsujgadmin:
+
+mysql> grant all privileges on testbase.* to brsujgadmin@localhost;
+
+—имвол * (звездочка) означает Увсе таблицы в базе данныхФ.
+
+“еперь подключим пользовател€ brsujgadmin к базе данных portal:
+
+$ mysql -u brsujgadmin -p С1Т portal
