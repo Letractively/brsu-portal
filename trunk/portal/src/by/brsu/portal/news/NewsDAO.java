@@ -9,6 +9,7 @@ import java.sql.*;
 
 import by.brsu.portal.ConnectionManager;
 import by.brsu.portal.user.*;
+
 /**
  * @author Aliaksei Ryzhkou
  * @version 20110722
@@ -16,6 +17,9 @@ import by.brsu.portal.user.*;
 public class NewsDAO {
 	private Connection conn;
 
+	/**
+	 * Insert date in database news
+	 */
 	public News createNews(String title, String msg, Category category,
 			User user) throws SQLException {
 
@@ -37,9 +41,9 @@ public class NewsDAO {
 					+ " AND text=" + msg + "' AND USER=" + user.getId());
 			if (rs.next()) {
 				News n = new News();
-				n.setTitle(rs.getString(1));
-				n.setText(rs.getString(2));
-				n.setDate(rs.getDate(3));
+				n.setId(rs.getInt(1));
+				n.setTitle(title);
+				n.setText(msg);;
 				n.setCategory(category);
 				n.setDate(date);
 				n.setAuthor(user);
@@ -82,6 +86,28 @@ public class NewsDAO {
 		}
 	}
 
+	public void delNews(News news) throws SQLException {
+		String query = "DELETE FROM news WHERE id_news=?";
+		String query2 = "DELETE FROM Comments_news WHERE id_news=?";
+		Statement stat = null;
+
+		try {
+			PreparedStatement set = conn.prepareStatement(query);
+			set.setLong(1, news.getId());
+			set.executeUpdate();
+			set = conn.prepareStatement(query2);
+			set.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stat != null)
+					stat.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+
 	/**
 	 * Add table to database from news
 	 */
@@ -101,6 +127,7 @@ public class NewsDAO {
 			}
 		}
 	}
+
 	/**
 	 * Update table to database from news
 	 */
@@ -159,6 +186,16 @@ public class NewsDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
 
+	/**
+	 * Refresh this connection from datebase
+	 */
+	private void ReFreshConnection() {
+		try {
+			this.conn = ConnectionManager.getConnectorPool().getConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

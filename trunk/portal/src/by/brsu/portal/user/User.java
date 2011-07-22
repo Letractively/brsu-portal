@@ -85,7 +85,8 @@ public class User {
 		this.status = status;
 		this.languagez = language;
 	}
-
+	public User()
+	{}
 	/**
 	 * @return the progrLanguages
 	 */
