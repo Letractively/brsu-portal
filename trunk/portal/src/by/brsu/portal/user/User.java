@@ -16,7 +16,7 @@ import by.brsu.portal.cv.Language;
 public class User {
 
 	private List<ProgrammingLanguage> progrLanguages;
-	private long id;
+	private long Id;
 	private String name;
 	private String surname;
 	private String email;
@@ -38,7 +38,7 @@ public class User {
 
 	/**
 	 * @param progrLanguages
-	 * @param id
+	 * @param Id
 	 * @param name
 	 * @param surname
 	 * @param email
@@ -57,7 +57,7 @@ public class User {
 	 * @param status
 	 * @param languagez
 	 */
-	public User(List<ProgrammingLanguage> progrLanguages,long id ,
+	public User(List<ProgrammingLanguage> progrLanguages,long Id ,
 			String name, String surname, String email, Date dateOfBirth,
 			String telephone, String password, String about, int sex,
 			String skype, String isq, int iQ, long idStat, Blob picture,
@@ -65,7 +65,7 @@ public class User {
 			List<Language> language) {
 		super();
 		this.progrLanguages = progrLanguages;
-		this.id = id;
+		this.Id = Id;
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
@@ -102,18 +102,18 @@ public class User {
 	}
 
 	/**
-	 * @return the id
+	 * @return the Id
 	 */
-	public long getid() {
-		return id;
+	public long getId() {
+		return Id;
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param Id
+	 *            the Id to set
 	 */
-	public void setid(long id) {
-		this.id = id;
+	public void setId(long Id) {
+		this.Id = Id;
 	}
 
 	/**
@@ -391,7 +391,7 @@ public class User {
 				+ ((dateOfLastVisit == null) ? 0 : dateOfLastVisit.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + (int) (idStat ^ (idStat >>> 32));
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + (int) (Id ^ (Id >>> 32));
 		result = prime * result + ((isq == null) ? 0 : isq.hashCode());
 		result = prime * result
 				+ ((languagez == null) ? 0 : languagez.hashCode());
@@ -445,7 +445,7 @@ public class User {
 			return false;
 		if (idStat != other.idStat)
 			return false;
-		if (id != other.id)
+		if (Id != other.Id)
 			return false;
 		if (isq == null) {
 			if (other.isq != null)
@@ -511,8 +511,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [progrLanguages=" + progrLanguages + ", id="
-				+ id + ", name=" + name + ", surname=" + surname
+		return "User [progrLanguages=" + progrLanguages + ", Id="
+				+ Id + ", name=" + name + ", surname=" + surname
 				+ ", email=" + email + ", dateOfBirth=" + dateOfBirth
 				+ ", telephone=" + telephone + ", password=" + password
 				+ ", about=" + about + ", sex=" + sex + ", skype=" + skype
