@@ -10,7 +10,7 @@ import by.brsu.portal.user.*;
 
 /**
  * @author Aliaksei Ryzhkou
- * @version 20110714
+ * @version 20110722
  */
 public class News {
 
