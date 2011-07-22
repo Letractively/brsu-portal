@@ -19,7 +19,7 @@ public class News {
 	private String text;
 	private Date date;
 	private Category category; // Stub
-	private User author; // Stub
+	private User author; 
 
 	/*
 	 * (non-Javadoc)
@@ -40,13 +40,6 @@ public class News {
 		return id;
 	}
 
-	/**
-	 * @param id_news
-	 *            the id_news to set
-	 */
-	public void setId_news(long id) {
-		this.id = id;
-	}
 
 	/**
 	 * @param id
@@ -162,6 +155,13 @@ public class News {
 	 */
 	public void setAuthor(User author) {
 		this.author = author;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }
