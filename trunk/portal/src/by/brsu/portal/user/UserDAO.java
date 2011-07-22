@@ -12,7 +12,7 @@ public class UserDAO {
 
 	@SuppressWarnings("null")
 	public User createUser(String name) {
-		Connection conn = null;
+		Connection conn = ConnectionManager.getConnectorPool().getConnection();;
 		String query = "insert into users values (?,?)";
 		ResultSet rs = null;
 		PreparedStatement st = null;
@@ -47,11 +47,11 @@ public class UserDAO {
 	}
 
 	public void deleteUser(long id) {
-		Connection connection = ConnectionManager.getConnectorPool().getConnection();
+		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "delete from position where id='" + id;
-		Statement st = null;
+		PreparedStatement st = null;
 		try {
-			st = connection.createStatement();
+			st = conn.createPreparedStatement();
 			st.executeUpdate(query);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -67,12 +67,12 @@ public class UserDAO {
 	}
 
 	public void creatUserTable() {
-		Connection connection = ConnectionManager.getConnectorPool().getConnection();
+		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "create table users(id int not null auto_increment PRIMARY key, name char(30), NOT NULL, surname VARCHAR( 100 ) NOT NULL ,emai VARCHAR( 100 ) NOT NULL ,dateOfBirth DATE NULL ,telephone VARCHAR( 100 ) NULL ,password VARCHAR( 100 ) NOT NULL ,about TEXT NULL , sex VARCHAR( 100 ) NULL ,skype VARCHAR( 100 ) NULL ,isq VARCHAR( 100 ) NULL ,IQ INT( 2 ) NULL, idStat INT( 10 ) NOT NULL ,picture BLOB NULL ,dateOfLastVisit DATE NULL ,numberOfCautions VARCHAR( 100 ) NULL)"; 
 
 		Statement st = null;
 		try {
-			st = connection.createStatement();
+			st = conn.createStatement();
 			st.executeUpdate(query);
 		} catch (SQLException e) {
 			// TODO wrong syntax
@@ -87,12 +87,12 @@ public class UserDAO {
 	}
 
 	public User findUserById(long id) {
-		Connection connection = ConnectionManager.getConnectorPool().getConnection();
+		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "Select * from users where id=" + id;
 		ResultSet rs = null;
 		Statement st = null;
 		try {
-			st = connection.createStatement();
+			st = conn.createStatement();
 			rs = st.executeQuery(query);
 			if (rs.next()) {
 				User user = new User();
