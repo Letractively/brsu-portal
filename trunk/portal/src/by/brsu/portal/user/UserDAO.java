@@ -1,3 +1,8 @@
+/**
+ * BrSU Projects Portal
+ * (c) 2011, BrSU Java Group
+ */
+
 package by.brsu.portal.user;
 
 import java.sql.Connection;
@@ -8,9 +13,13 @@ import java.sql.Statement;
 
 import by.brsu.portal.ConnectionManager;
 
+
+/**
+ * @author Hraznykh_Pavel
+ * 
+ */
 public class UserDAO {
 
-	@SuppressWarnings("null")
 	public User createUser(String name) {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();;
 		String query = "insert into users values (?,?)";
@@ -48,11 +57,11 @@ public class UserDAO {
 
 	public void deleteUser(long id) {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
-		String query = "delete from position where id='" + id;
+		String query = "delete from position where id='" + id + "'";
 		PreparedStatement st = null;
 		try {
-			st = conn.createPreparedStatement();
-			st.executeUpdate(query);
+			st = conn.prepareStatement(query);
+			st.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,12 +76,12 @@ public class UserDAO {
 	}
 
 	public void creatUserTable() {
-		Connection conn = ConnectionManager.getConnectorPool().getConnection();
+		Connection connection = ConnectionManager.getConnectorPool().getConnection();
 		String query = "create table users(id int not null auto_increment PRIMARY key, name char(30), NOT NULL, surname VARCHAR( 100 ) NOT NULL ,emai VARCHAR( 100 ) NOT NULL ,dateOfBirth DATE NULL ,telephone VARCHAR( 100 ) NULL ,password VARCHAR( 100 ) NOT NULL ,about TEXT NULL , sex VARCHAR( 100 ) NULL ,skype VARCHAR( 100 ) NULL ,isq VARCHAR( 100 ) NULL ,IQ INT( 2 ) NULL, idStat INT( 10 ) NOT NULL ,picture BLOB NULL ,dateOfLastVisit DATE NULL ,numberOfCautions VARCHAR( 100 ) NULL)"; 
 
 		Statement st = null;
 		try {
-			st = conn.createStatement();
+			st = connection.createStatement();
 			st.executeUpdate(query);
 		} catch (SQLException e) {
 			// TODO wrong syntax
@@ -87,12 +96,12 @@ public class UserDAO {
 	}
 
 	public User findUserById(long id) {
-		Connection conn = ConnectionManager.getConnectorPool().getConnection();
+		Connection connection = ConnectionManager.getConnectorPool().getConnection();
 		String query = "Select * from users where id=" + id;
 		ResultSet rs = null;
 		Statement st = null;
 		try {
-			st = conn.createStatement();
+			st = connection.createStatement();
 			rs = st.executeQuery(query);
 			if (rs.next()) {
 				User user = new User();
