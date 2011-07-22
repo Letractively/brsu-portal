@@ -12,7 +12,57 @@ import by.brsu.portal.user.*;
  * @version 20110713
  */
 
-public class Comment_pr {
+public class CommentProject {
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + (int) (id_comment ^ (id_comment >>> 32));
+		result = prime * result + ((project == null) ? 0 : project.hashCode());
+		result = prime * result + ((text == null) ? 0 : text.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CommentProject other = (CommentProject) obj;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
+			return false;
+		if (id_comment != other.id_comment)
+			return false;
+		if (project == null) {
+			if (other.project != null)
+				return false;
+		} else if (!project.equals(other.project))
+			return false;
+		if (text == null) {
+			if (other.text != null)
+				return false;
+		} else if (!text.equals(other.text))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
 	/**
 	 * @param id_comment
 	 * @param user
@@ -20,7 +70,7 @@ public class Comment_pr {
 	 * @param date
 	 * @param text
 	 */
-	public Comment_pr(long id_comment, User user, Project project, String text) {
+	public CommentProject(long id_comment, User user, Project project, String text) {
 		//super();
 		this.id_comment = id_comment;
 		this.user = user;
@@ -31,7 +81,7 @@ public class Comment_pr {
 	/**
 	 * 
 	 */
-	public Comment_pr() {
+	public CommentProject() {
 		//super();
 	}
 	/* (non-Javadoc)
