@@ -1,10 +1,18 @@
+/**
+ * BrSU Projects Portal
+ * (c) 2011, BrSU Java Group
+ */
+
 package by.brsu.portal.news;
 
 import java.sql.*;
 
 import by.brsu.portal.ConnectionManager;
 import by.brsu.portal.user.*;
-
+/**
+ * @author Aliaksei Ryzhkou
+ * @version 20110722
+ */
 public class NewsDAO {
 	private Connection conn;
 
@@ -25,9 +33,8 @@ public class NewsDAO {
 			set.setLong(6, user.getId());
 			set.executeUpdate();
 			stat = conn.createStatement();
-			rs = stat
-					.executeQuery("SELECT id FROM status where title='" + title
-							+ " AND text=" + msg + "' AND USER=" + user.getId());
+			rs = stat.executeQuery("SELECT id FROM news where title='" + title
+					+ " AND text=" + msg + "' AND USER=" + user.getId());
 			if (rs.next()) {
 				News n = new News();
 				n.setTitle(rs.getString(1));
@@ -53,6 +60,7 @@ public class NewsDAO {
 		}
 		return null;
 	}
+
 	/**
 	 * Delete database news
 	 */
@@ -73,6 +81,7 @@ public class NewsDAO {
 			}
 		}
 	}
+
 	/**
 	 * Add table to database from news
 	 */
@@ -92,7 +101,55 @@ public class NewsDAO {
 			}
 		}
 	}
-	
+	/**
+	 * Update table to database from news
+	 */
+	public News updateNews(int id, String title, String msg, Category category,
+			User user) throws SQLException {
+
+		Statement stat = null;
+		ResultSet rs = null;
+		try {
+			Date date = new Date(System.currentTimeMillis());
+			PreparedStatement set = conn
+					.prepareStatement("UPDATE news SET title=?,text=?,date=?,id_category=?,important=?,id_author=? WHERE id_news=? ");
+			set.setString(1, title);
+			set.setString(2, msg);
+			set.setDate(3, date);
+			set.setInt(4, category.getId());
+			set.setString(5, ""); // Stub 22.07.2011
+			set.setLong(6, user.getId());
+			set.setInt(7, id);
+			set.executeUpdate();
+			stat = conn.createStatement();
+			rs = stat.executeQuery("SELECT id FROM news WHERE id_news="
+					+ String.valueOf(id));
+			if (rs.next()) {
+				News n = new News();
+				n.setTitle(rs.getString(1));
+				n.setText(rs.getString(2));
+				n.setDate(rs.getDate(3));
+				n.setCategory(category);
+				n.setDate(date);
+				n.setAuthor(user);
+				return n;
+			}
+
+		} catch (SQLException e) {
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (stat != null)
+					stat.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return null;
+	}
+
 	/**
 	 * @param conn
 	 */
