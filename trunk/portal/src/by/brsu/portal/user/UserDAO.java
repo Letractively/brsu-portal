@@ -1,13 +1,18 @@
 package by.brsu.portal.user;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import by.brsu.portal.ConnectionManager;
 
 public class UserDAO {
 
+	@SuppressWarnings("null")
 	public User createUser(String name) {
-		Connection connection = ConnectionManager.getConnectorPool().getConnection();
+		Connection conn = null;
 		String query = "insert into users values (?,?)";
 		ResultSet rs = null;
 		PreparedStatement st = null;
@@ -20,7 +25,7 @@ public class UserDAO {
 			if (rs.next()) {
 				User user = new User();
 				user.setName(name);
-				user.setId(rs.getLong(1));
+				user.setid(rs.getLong(1));
 				return user;
 			}
 
@@ -41,9 +46,9 @@ public class UserDAO {
 		return null;
 	}
 
-	public void deleteUser(long idUser) {
+	public void deleteUser(long id) {
 		Connection connection = ConnectionManager.getConnectorPool().getConnection();
-		String query = "delete from position where idUser='" + idUser + "'";";
+		String query = "delete from position where id='" + id;
 		Statement st = null;
 		try {
 			st = connection.createStatement();
@@ -63,7 +68,7 @@ public class UserDAO {
 
 	public void creatUserTable() {
 		Connection connection = ConnectionManager.getConnectorPool().getConnection();
-		String query = "create table users(idUser int not null auto_increment PRIMARY key, name char(30), NOT NULL, surname VARCHAR( 100 ) NOT NULL ,emai VARCHAR( 100 ) NOT NULL ,dateOfBirth DATE NULL ,telephone VARCHAR( 100 ) NULL ,password VARCHAR( 100 ) NOT NULL ,about TEXT NULL , sex VARCHAR( 100 ) NULL ,skype VARCHAR( 100 ) NULL ,isq VARCHAR( 100 ) NULL ,IQ INT( 2 ) NULL, idStat INT( 10 ) NOT NULL ,picture BLOB NULL ,dateOfLastVisit DATE NULL ,numberOfCautions VARCHAR( 100 ) NULL)"; 
+		String query = "create table users(id int not null auto_increment PRIMARY key, name char(30), NOT NULL, surname VARCHAR( 100 ) NOT NULL ,emai VARCHAR( 100 ) NOT NULL ,dateOfBirth DATE NULL ,telephone VARCHAR( 100 ) NULL ,password VARCHAR( 100 ) NOT NULL ,about TEXT NULL , sex VARCHAR( 100 ) NULL ,skype VARCHAR( 100 ) NULL ,isq VARCHAR( 100 ) NULL ,IQ INT( 2 ) NULL, idStat INT( 10 ) NOT NULL ,picture BLOB NULL ,dateOfLastVisit DATE NULL ,numberOfCautions VARCHAR( 100 ) NULL)"; 
 
 		Statement st = null;
 		try {
@@ -81,9 +86,9 @@ public class UserDAO {
 
 	}
 
-	public User findUserById(long idUser) {
+	public User findUserById(long id) {
 		Connection connection = ConnectionManager.getConnectorPool().getConnection();
-		String query = "Select * from users where idUser=" + idUser;
+		String query = "Select * from users where id=" + id;
 		ResultSet rs = null;
 		Statement st = null;
 		try {
@@ -91,7 +96,7 @@ public class UserDAO {
 			rs = st.executeQuery(query);
 			if (rs.next()) {
 				User user = new User();
-				user.setIdUser(rs.getLong(1));
+				user.setid(rs.getLong(1));
 				user.setName(rs.getString(2));
 				return user;
 			}
@@ -114,7 +119,7 @@ public class UserDAO {
 	}
 
 	public User findUserByName(String name) {
-		conn = ConnectionManager.getConnectorPool().getConnection();
+		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "Select * from position where name=" + name;
 		ResultSet rs = null;
 		Statement st = null;
@@ -122,10 +127,10 @@ public class UserDAO {
 			st = conn.createStatement();
 			rs = st.executeQuery(query);
 			if (rs.next()) {
-				ProjectCategory pos = new ProjectCategory();
-				pos.setIdUser(rs.getLong(1));
-				pos.setName(rs.getString(2));
-				return pos;
+				User user = new User();
+				user.setid(rs.getLong(1));
+				user.setName(rs.getString(2));
+				return user;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

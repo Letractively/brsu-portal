@@ -7,9 +7,8 @@ package by.brsu.portal.user;
 import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
-import by.brsu.portal.cv.Language;
 import by.brsu.portal.cv.ProgrammingLanguage;
-
+import by.brsu.portal.cv.Language;
 /**
  * @author Hraznykh_Pavel
  * 
@@ -17,7 +16,7 @@ import by.brsu.portal.cv.ProgrammingLanguage;
 public class User {
 
 	private List<ProgrammingLanguage> progrLanguages;
-	private long idUser;
+	private long id;
 	private String name;
 	private String surname;
 	private String email;
@@ -39,7 +38,7 @@ public class User {
 
 	/**
 	 * @param progrLanguages
-	 * @param idUser
+	 * @param id
 	 * @param name
 	 * @param surname
 	 * @param email
@@ -58,7 +57,7 @@ public class User {
 	 * @param status
 	 * @param languagez
 	 */
-	public User(List<ProgrammingLanguage> progrLanguages, longUser,
+	public User(List<ProgrammingLanguage> progrLanguages,long id ,
 			String name, String surname, String email, Date dateOfBirth,
 			String telephone, String password, String about, int sex,
 			String skype, String isq, int iQ, long idStat, Blob picture,
@@ -66,7 +65,7 @@ public class User {
 			List<Language> language) {
 		super();
 		this.progrLanguages = progrLanguages;
-		this.idUser = idUser;
+		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
@@ -103,18 +102,18 @@ public class User {
 	}
 
 	/**
-	 * @return the idUser
+	 * @return the id
 	 */
-	public long getIdUser() {
-		return idUser;
+	public long getid() {
+		return id;
 	}
 
 	/**
-	 * @param idUser
-	 *            the idUser to set
+	 * @param id
+	 *            the id to set
 	 */
-	public void setIdUser(long idUser) {
-		this.idUser = idUser;
+	public void setid(long id) {
+		this.id = id;
 	}
 
 	/**
@@ -392,7 +391,7 @@ public class User {
 				+ ((dateOfLastVisit == null) ? 0 : dateOfLastVisit.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + (int) (idStat ^ (idStat >>> 32));
-		result = prime * result + (int) (idUser ^ (idUser >>> 32));
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((isq == null) ? 0 : isq.hashCode());
 		result = prime * result
 				+ ((languagez == null) ? 0 : languagez.hashCode());
@@ -446,7 +445,7 @@ public class User {
 			return false;
 		if (idStat != other.idStat)
 			return false;
-		if (idUser != other.idUser)
+		if (id != other.id)
 			return false;
 		if (isq == null) {
 			if (other.isq != null)
@@ -512,8 +511,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [progrLanguages=" + progrLanguages + ", idUser="
-				+ idUser + ", name=" + name + ", surname=" + surname
+		return "User [progrLanguages=" + progrLanguages + ", id="
+				+ id + ", name=" + name + ", surname=" + surname
 				+ ", email=" + email + ", dateOfBirth=" + dateOfBirth
 				+ ", telephone=" + telephone + ", password=" + password
 				+ ", about=" + about + ", sex=" + sex + ", skype=" + skype
