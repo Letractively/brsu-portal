@@ -43,7 +43,8 @@ public class NewsDAO {
 				News n = new News();
 				n.setId(rs.getInt(1));
 				n.setTitle(title);
-				n.setText(msg);;
+				n.setText(msg);
+				;
 				n.setCategory(category);
 				n.setDate(date);
 				n.setAuthor(user);
@@ -191,7 +192,7 @@ public class NewsDAO {
 	/**
 	 * Refresh this connection from datebase
 	 */
-	private void ReFreshConnection() {
+	public void ReFreshConnection() {
 		try {
 			this.conn = ConnectionManager.getConnectorPool().getConnection();
 		} catch (Exception e) {
