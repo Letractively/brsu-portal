@@ -17,7 +17,7 @@ import by.brsu.portal.cv.ProgrammingLanguage;
 public class User {
 
 	private List<ProgrammingLanguage> progrLanguages;
-	private long id;
+	private long idUser;
 	private String name;
 	private String surname;
 	private String email;
@@ -39,7 +39,7 @@ public class User {
 
 	/**
 	 * @param progrLanguages
-	 * @param id
+	 * @param idUser
 	 * @param name
 	 * @param surname
 	 * @param email
@@ -58,7 +58,7 @@ public class User {
 	 * @param status
 	 * @param languagez
 	 */
-	public User(List<ProgrammingLanguage> progrLanguages, long id_user,
+	public User(List<ProgrammingLanguage> progrLanguages, longUser,
 			String name, String surname, String email, Date dateOfBirth,
 			String telephone, String password, String about, int sex,
 			String skype, String isq, int iQ, long idStat, Blob picture,
@@ -66,7 +66,7 @@ public class User {
 			List<Language> language) {
 		super();
 		this.progrLanguages = progrLanguages;
-		this.id = id_user;
+		this.idUser = idUser;
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
@@ -103,18 +103,18 @@ public class User {
 	}
 
 	/**
-	 * @return the id
+	 * @return the idUser
 	 */
-	public long getId() {
-		return id;
+	public long getIdUser() {
+		return idUser;
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param idUser
+	 *            the idUser to set
 	 */
-	public void setId(long id_user) {
-		this.id = id_user;
+	public void setIdUser(long idUser) {
+		this.idUser = idUser;
 	}
 
 	/**
@@ -392,7 +392,7 @@ public class User {
 				+ ((dateOfLastVisit == null) ? 0 : dateOfLastVisit.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + (int) (idStat ^ (idStat >>> 32));
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + (int) (idUser ^ (idUser >>> 32));
 		result = prime * result + ((isq == null) ? 0 : isq.hashCode());
 		result = prime * result
 				+ ((languagez == null) ? 0 : languagez.hashCode());
@@ -446,7 +446,7 @@ public class User {
 			return false;
 		if (idStat != other.idStat)
 			return false;
-		if (id != other.id)
+		if (idUser != other.idUser)
 			return false;
 		if (isq == null) {
 			if (other.isq != null)
@@ -512,8 +512,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [progrLanguages=" + progrLanguages + ", id="
-				+ id + ", name=" + name + ", surname=" + surname
+		return "User [progrLanguages=" + progrLanguages + ", idUser="
+				+ idUser + ", name=" + name + ", surname=" + surname
 				+ ", email=" + email + ", dateOfBirth=" + dateOfBirth
 				+ ", telephone=" + telephone + ", password=" + password
 				+ ", about=" + about + ", sex=" + sex + ", skype=" + skype
