@@ -16,18 +16,49 @@ import by.brsu.portal.cv.Technology;
  */
 public class Project 
 {
-	private int idProject;
+	private long idProject;
 	private int idOwner;
-	private char name;
-	private char description;
+	private String name;
+	private String description;
 	private Date dateOfCreation;
 	private Date dateOfClosing;
 	private ProjectCategory category;
 	private int version;
-	private char license;
-	private char stageOfDevelopment;
+	private String license;
+	private String stageOfDevelopment;
 	private List<Technology> technology;
 	private List<ProgrammingLanguage> languages;
+	
+	/**
+	 * 
+	 */
+	public Project() 
+	{
+		super();
+	}
+	
+	/**
+	 * @param id
+	 * @param name
+	 */
+	public Project(long idProject, int idOwner, String name, String description, Date dateOfCreation, Date dateOfClosing, 
+			ProjectCategory category, int version, String license, String stageOfDevelopment, 
+			List<Technology> technology, List<ProgrammingLanguage> languages) 
+	{
+		super();
+		this.idProject = idProject;
+		this.idOwner = idOwner;
+		this.name = name;
+		this.description = description;
+		this.dateOfCreation = dateOfCreation;
+		this.dateOfClosing = dateOfClosing;
+		this.category = category;
+		this.version = version;
+		this.license = license;
+		this.stageOfDevelopment = stageOfDevelopment;
+		this.technology = technology;
+		this.languages = languages;		
+	}
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -47,7 +78,7 @@ public class Project
 	/**
 	 * @return the idProject
 	 */
-	public int getIdProject() 
+	public long getIdProject() 
 	{
 		return idProject;
 	}
@@ -55,7 +86,7 @@ public class Project
 	/**
 	 * @param set idProject
 	 */
-	public void setIdProject(int idProject) 
+	public void setIdProject(long idProject) 
 	{
 		this.idProject = idProject;
 	}
@@ -79,7 +110,7 @@ public class Project
 	/**
 	 * @return the name
 	 */
-	public char getName() 
+	public String getName() 
 	{
 		return name;
 	}
@@ -87,7 +118,7 @@ public class Project
 	/**
 	 * @param set name project
 	 */
-	public void setName(char name) 
+	public void setName(String name) 
 	{
 		this.name = name;
 	}
@@ -95,7 +126,7 @@ public class Project
 	/**
 	 * @return the description
 	 */
-	public char getDescription() 
+	public String getDescription() 
 	{
 		return description;
 	}
@@ -103,7 +134,7 @@ public class Project
 	/**
 	 * @param set description
 	 */
-	public void setDescription(char description) 
+	public void setDescription(String description) 
 	{
 		this.description = description;
 	}
@@ -175,7 +206,7 @@ public class Project
 	/**
 	 * @return the license
 	 */
-	public char getLicense()
+	public String getLicense()
 	{
 		return license;
 	}
@@ -183,7 +214,7 @@ public class Project
 	/**
 	 * @param set license
 	 */
-	public void setLicense(char license) 
+	public void setLicense(String license) 
 	{
 		this.license = license;
 	}
@@ -191,7 +222,7 @@ public class Project
 	/**
 	 * @return the stageOfDevelopment
 	 */
-	public char getStageOfDevelopment() 
+	public String getStageOfDevelopment() 
 	{
 		return stageOfDevelopment;
 	}
@@ -199,7 +230,7 @@ public class Project
 	/**
 	 * @param set stageOfDevelopment
 	 */
-	public void setStageOfDevelopment(char stageOfDevelopment) 
+	public void setStageOfDevelopment(String stageOfDevelopment) 
 	{
 		this.stageOfDevelopment = stageOfDevelopment;
 	}
@@ -235,13 +266,12 @@ public class Project
 	{
 		this.languages = languages;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
-	public int hashCode() 
-	{
+	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
@@ -250,26 +280,29 @@ public class Project
 				+ ((dateOfClosing == null) ? 0 : dateOfClosing.hashCode());
 		result = prime * result
 				+ ((dateOfCreation == null) ? 0 : dateOfCreation.hashCode());
-		result = prime * result + description;
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
 		result = prime * result + idOwner;
-		result = prime * result + idProject;
+		result = prime * result + (int) (idProject ^ (idProject >>> 32));
 		result = prime * result
 				+ ((languages == null) ? 0 : languages.hashCode());
-		result = prime * result + license;
-		result = prime * result + name;
-		result = prime * result + stageOfDevelopment;
+		result = prime * result + ((license == null) ? 0 : license.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime
+				* result
+				+ ((stageOfDevelopment == null) ? 0 : stageOfDevelopment
+						.hashCode());
 		result = prime * result
 				+ ((technology == null) ? 0 : technology.hashCode());
 		result = prime * result + version;
 		return result;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
-	public boolean equals(Object obj) 
-	{
+	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -292,7 +325,10 @@ public class Project
 				return false;
 		} else if (!dateOfCreation.equals(other.dateOfCreation))
 			return false;
-		if (description != other.description)
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
 			return false;
 		if (idOwner != other.idOwner)
 			return false;
@@ -303,11 +339,20 @@ public class Project
 				return false;
 		} else if (!languages.equals(other.languages))
 			return false;
-		if (license != other.license)
+		if (license == null) {
+			if (other.license != null)
+				return false;
+		} else if (!license.equals(other.license))
 			return false;
-		if (name != other.name)
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
 			return false;
-		if (stageOfDevelopment != other.stageOfDevelopment)
+		if (stageOfDevelopment == null) {
+			if (other.stageOfDevelopment != null)
+				return false;
+		} else if (!stageOfDevelopment.equals(other.stageOfDevelopment))
 			return false;
 		if (technology == null) {
 			if (other.technology != null)
@@ -317,7 +362,8 @@ public class Project
 		if (version != other.version)
 			return false;
 		return true;
-	}	
-	
+	}
+
+		
 	
 }
