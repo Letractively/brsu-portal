@@ -25,7 +25,7 @@ public class UserDAO {
 			if (rs.next()) {
 				User user = new User();
 				user.setName(name);
-				user.setid(rs.getLong(1));
+				user.setId(rs.getLong(1));
 				return user;
 			}
 
@@ -96,7 +96,7 @@ public class UserDAO {
 			rs = st.executeQuery(query);
 			if (rs.next()) {
 				User user = new User();
-				user.setid(rs.getLong(1));
+				user.setId(rs.getLong(1));
 				user.setName(rs.getString(2));
 				return user;
 			}
@@ -128,7 +128,7 @@ public class UserDAO {
 			rs = st.executeQuery(query);
 			if (rs.next()) {
 				User user = new User();
-				user.setid(rs.getLong(1));
+				user.setId(rs.getLong(1));
 				user.setName(rs.getString(2));
 				return user;
 			}
