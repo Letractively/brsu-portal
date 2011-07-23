@@ -19,7 +19,7 @@ public class News {
 	private String text;
 	private Date date;
 	private Category category; // Stub
-	private User author; 
+	private User author;
 
 	/*
 	 * (non-Javadoc)
@@ -28,7 +28,10 @@ public class News {
 	 */
 	@Override
 	public String toString() {
-		return "News [title=" + title + "]";
+		if (title != null)
+			return "News [title=" + title + "]";
+		else
+			return "";
 	}
 
 	private String important; // Stub
@@ -37,9 +40,12 @@ public class News {
 	 * @return the id_news
 	 */
 	public long getId() {
-		return id;
+		try {
+			return id;
+		} catch (Exception e) {
+			return -1;
+		}
 	}
-
 
 	/**
 	 * @param id
@@ -49,7 +55,8 @@ public class News {
 	 * @param author
 	 * @param important
 	 */
-	public News(long id, String title, String text, Category category, User author, String important) {
+	public News(long id, String title, String text, Category category,
+			User author, String important) {
 		// super();
 		this.id = id;
 		this.title = title;
@@ -158,7 +165,8 @@ public class News {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(long id) {
 		this.id = id;
