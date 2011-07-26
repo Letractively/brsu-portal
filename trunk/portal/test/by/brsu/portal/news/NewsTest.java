@@ -2,6 +2,9 @@ package by.brsu.portal.news;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
+import by.brsu.portal.user.*;
 import org.junit.*;
 
 /**
@@ -14,12 +17,26 @@ import org.junit.*;
  * @version 20110722
  */
 public class NewsTest {
+	private static News news;
+	Category category = new Category();
+	User author = new User();
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		news = new News();
+		// news.setId(1);
+		// User author = new User();
+		// news.setAuthor(author);
+		// Category category = new Category();
+		// news.setCategory(category);
+		// Date date = new Date();
+		// news.setDate(date);
+		// news.setImportant("");
+		// news.setText("BlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBla");
+		// news.setTitle("MyNews");
 	}
 
 	/**
@@ -48,7 +65,7 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testToString() {
-		fail("Not yet implemented"); // TODO
+		String s = news.toString();
 	}
 
 	/**
@@ -56,11 +73,14 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testGetId() {
-		fail("Not yet implemented"); // TODO
+		long i = news.getId();
+		// fail("Not yet implemented"); // TODO
 	}
 
 	/**
-	 * Test method for {@link by.brsu.portal.news.News#News(long, java.lang.String, java.lang.String, by.brsu.portal.news.Category, by.brsu.portal.user.User, java.lang.String)}.
+	 * Test method for
+	 * {@link by.brsu.portal.news.News#News(long, java.lang.String, java.lang.String, by.brsu.portal.news.Category, by.brsu.portal.user.User, java.lang.String)}
+	 * .
 	 */
 	@Test
 	public final void testNewsLongStringStringCategoryUserString() {
@@ -72,7 +92,12 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testNews() {
-		fail("Not yet implemented"); // TODO
+		try {
+			news = new News();
+			news = new News(1, "title", "text", category, author, "");
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e);
+		}
 	}
 
 	/**
@@ -80,15 +105,24 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testGetTitle() {
-		fail("Not yet implemented"); // TODO
+		try {
+			String s = news.getText();
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e);
+		}
 	}
 
 	/**
-	 * Test method for {@link by.brsu.portal.news.News#setTitle(java.lang.String)}.
+	 * Test method for
+	 * {@link by.brsu.portal.news.News#setTitle(java.lang.String)}.
 	 */
 	@Test
 	public final void testSetTitle() {
-		fail("Not yet implemented"); // TODO
+		try {
+			news.setTitle("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 	/**
@@ -96,15 +130,24 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testGetText() {
-		fail("Not yet implemented"); // TODO
+		try {
+			String s = news.getText();
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 	/**
-	 * Test method for {@link by.brsu.portal.news.News#setText(java.lang.String)}.
+	 * Test method for
+	 * {@link by.brsu.portal.news.News#setText(java.lang.String)}.
 	 */
 	@Test
 	public final void testSetText() {
-		fail("Not yet implemented"); // TODO
+		try {
+			news.setText("text");
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 	/**
@@ -112,7 +155,11 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testGetDate() {
-		fail("Not yet implemented"); // TODO
+		try {
+			Date d = news.getDate();
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 	/**
@@ -120,7 +167,11 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testSetDate() {
-		fail("Not yet implemented"); // TODO
+		try {
+			news.setDate(new Date());
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 	/**
@@ -128,15 +179,25 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testGetCategory() {
-		fail("Not yet implemented"); // TODO
+		try {
+			Category c = news.getCategory();
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 	/**
-	 * Test method for {@link by.brsu.portal.news.News#setCategory(by.brsu.portal.news.Category)}.
+	 * Test method for
+	 * {@link by.brsu.portal.news.News#setCategory(by.brsu.portal.news.Category)}
+	 * .
 	 */
 	@Test
 	public final void testSetCategory() {
-		fail("Not yet implemented"); // TODO
+		try {
+			news.setCategory(new Category());
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 	/**
@@ -144,15 +205,24 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testGetImportant() {
-		fail("Not yet implemented"); // TODO
+		try {
+			String s = news.getImportant();
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 	/**
-	 * Test method for {@link by.brsu.portal.news.News#setImportant(java.lang.String)}.
+	 * Test method for
+	 * {@link by.brsu.portal.news.News#setImportant(java.lang.String)}.
 	 */
 	@Test
 	public final void testSetImportant() {
-		fail("Not yet implemented"); // TODO
+		try {
+			news.setImportant("important");
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 	/**
@@ -160,15 +230,24 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testGetAuthor() {
-		fail("Not yet implemented"); // TODO
+		try {
+			User u = news.getAuthor();
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 	/**
-	 * Test method for {@link by.brsu.portal.news.News#setAuthor(by.brsu.portal.user.User)}.
+	 * Test method for
+	 * {@link by.brsu.portal.news.News#setAuthor(by.brsu.portal.user.User)}.
 	 */
 	@Test
 	public final void testSetAuthor() {
-		fail("Not yet implemented"); // TODO
+		try {
+			news.setAuthor(new User());
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 	/**
@@ -176,7 +255,11 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testSetId() {
-		fail("Not yet implemented"); // TODO
+		try {
+			news.setId(1);
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 	/**
@@ -184,7 +267,11 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testHashCode() {
-		fail("Not yet implemented"); // TODO
+		try {
+			int i = news.hashCode();
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 	/**
@@ -192,15 +279,13 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testEquals() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	/**
-	 * Test method for {@link java.lang.Object#toString()}.
-	 */
-	@Test
-	public final void testToString1() {
-		fail("Not yet implemented"); // TODO
+		try {
+			Boolean b1 = news.equals(news);
+			News news2 = new News(1, "title123", "text12", category, author, "");
+			Boolean b2 = news.equals(news2);
+		} catch (Exception e) {
+			fail("Not yet implemented:" + e); // TODO
+		}
 	}
 
 }
