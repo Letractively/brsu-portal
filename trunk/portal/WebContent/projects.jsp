@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML>
 <HEAD>
 <TITLE>BRSU Portal</TITLE>
@@ -72,7 +75,7 @@
       </table>
       <table width="100%" border="0" cellspacing="0" cellpadding="5" background="images/index_32.jpg">
         <tr> 
-          <td valign="top" class="main"><h1>Welcome to our Projects portal!</h1></td>
+          <td valign="top" class="main"><h1>Projects</h1></td>
         </tr>
       </table>
     </td>
