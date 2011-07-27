@@ -3,6 +3,7 @@ package by.brsu.portal.news;
 import static org.junit.Assert.*;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -45,24 +46,28 @@ public class NewsDAOTest {
 				fail("return null");
 			}
 		} catch (Exception e) {
-			fail(e.toString());
+			fail("Error testCreateNews:" + e.toString());
 		}
 	}
 
 	@Test
-	public final void testDelTable() {		
+	public final void testDelTable() {
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
 	public final void testDelNews() {
 		try {
+			author.setId(1);
+			category.setId(1);
 			news = nDAO.createNews("testNews", "testMessage", category, author);
 			Boolean b = nDAO.delNews(news);
-			if (!b) {fail("Error save");}
+			if (!b) {
+				fail("Error save");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			fail(e.toString());
+			fail("Error testDelNews:" + e.toString());
 		}
 	}
 
@@ -73,27 +78,59 @@ public class NewsDAOTest {
 
 	@Test
 	public final void testUpdateNews() {
-		fail("Not yet implemented"); // TODO
+		category.setId(1);
+		try {
+			author.setId(1);
+			category.setId(1);
+			news = nDAO.createNews("testNews", "testMessage", category, author);
+			news = nDAO.updateNews(news.getId(), news.getTitle(),
+					"testMessageUpdate", category, author);
+			if (news == null) {
+				fail("is null");
+			}
+		} catch (SQLException e) {
+			fail("Error testUpdateNews:" + e.toString());
+			e.printStackTrace();
+		}
+		// TODO
 	}
 
 	@Test
 	public final void testNewsDAO() {
-		fail("Not yet implemented"); // TODO
+		try {
+			NewsDAO nDAOtest = new NewsDAO();
+		} catch (Exception e) {
+			fail("Error testNewsDAO:" + e.toString());
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public final void testReFreshConnection() {
-		fail("Not yet implemented"); // TODO
+		try {
+			nDAO.ReFreshConnection();
+		} catch (Exception e) {
+			fail("Error testReFreshConnection:" + e.toString());
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public final void testReadNews() {
-		fail("Not yet implemented"); // TODO
+		try {
+			List<News> newsList = nDAO.readNews();
+			if (newsList == null) {
+				fail("is null");
+			}
+		} catch (Exception e) {
+			fail("Error testReadNews:" + e.toString());
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public final void testReadNewsByPage() {
-		fail("Not yet implemented"); // TODO
+		//fail("Not yet implemented"); // TODO
 	}
 
 	@Test
