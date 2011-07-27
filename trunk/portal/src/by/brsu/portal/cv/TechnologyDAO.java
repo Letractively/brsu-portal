@@ -88,7 +88,7 @@ public class TechnologyDAO implements ITechnologyDAO {
 	 */
 	public Technology findTechnologyById(long id) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "select id_tech, name from technologies where id=" + id;
+		String sql = "select id_tech, name from technologies where id_tech=" + id;
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
