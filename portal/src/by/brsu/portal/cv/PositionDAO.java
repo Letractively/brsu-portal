@@ -8,18 +8,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import by.brsu.portal.ConnectionManager;
-import by.brsu.portal.project.ProjectCategory;
 
 /**
  * @author Roman Ulezlo
  * 
  */
-public class PositionDAO {
+public class PositionDAO implements IPositionDAO {
 	private Connection conn = null;
 
 	/**
@@ -37,9 +34,9 @@ public class PositionDAO {
 			st = conn.prepareStatement(sql);
 			st.setString(1, name);
 			st.executeUpdate();
-			st = conn.prepareStatement("");
-			rs = st.executeQuery("select id_pos from positions where name='"
-					+ name + "'");
+			st = conn.prepareStatement("select id_pos from positions where name=?");
+			st.setString(1, name);
+			rs = st.executeQuery();
 			if (rs.next()) {
 				Position pos = new Position();
 				pos.setName(name);
@@ -67,10 +64,11 @@ public class PositionDAO {
 	 */
 	public void deletePosition(String name) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "delete from positions where name='" + name + "'";
+		String sql = "delete from positions where name=?";
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(sql);
+			st.setString(1, name);
 			st.executeUpdate();
 		} catch (SQLException e) {
 		} finally {
@@ -90,12 +88,13 @@ public class PositionDAO {
 	 */
 	public Position findPositionById(long id) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "select id_pos, name from positions where id_pos=" + id;
+		String sql = "select id_pos, name from positions where id_pos=?";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement("");
-			rs = st.executeQuery(sql);
+			st = conn.prepareStatement(sql);
+			st.setLong(1, id);
+			rs = st.executeQuery();
 			if (rs.next()) {
 				Position pos = new Position();
 				pos.setId(rs.getLong(1));
@@ -123,12 +122,13 @@ public class PositionDAO {
 	 */
 	public Position findPositionByName(String name) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "select id_pos, name from positions where name=" + name;
+		String sql = "select id_pos, name from positions where name=?";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement("");
-			rs = st.executeQuery(sql);
+			st = conn.prepareStatement(sql);
+			st.setString(1,name);
+			rs = st.executeQuery();
 			if (rs.next()) {
 				Position pos = new Position();
 				pos.setId(rs.getLong(1));

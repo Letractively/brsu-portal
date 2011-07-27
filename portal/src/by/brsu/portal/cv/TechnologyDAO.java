@@ -35,9 +35,9 @@ public class TechnologyDAO implements ITechnologyDAO {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, name);
 			pst.executeUpdate();
-			pst = conn.prepareStatement("");
-			rs = pst.executeQuery("select id_tech from technologies where name='"
-					+ name + "'");
+			pst = conn.prepareStatement("select id_tech from technologies where name=?");
+			pst.setString(1, name);
+			rs = pst.executeQuery();
 			if (rs.next()) {
 				Technology techn = new Technology();
 				techn.setName(name);
@@ -65,10 +65,11 @@ public class TechnologyDAO implements ITechnologyDAO {
 	 */
 	public void deleteTechnology(String name) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "delete from technologies where name='" + name + "'";
+		String sql = "delete from technologies where name=?";
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(sql);
+			st.setString(1, name);
 			st.executeUpdate();
 		} catch (SQLException e) {
 		} finally {
@@ -88,12 +89,13 @@ public class TechnologyDAO implements ITechnologyDAO {
 	 */
 	public Technology findTechnologyById(long id) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "select id_tech, name from technologies where id_tech=" + id;
+		String sql = "select id_tech, name from technologies where id_tech=?";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement("");
-			rs = st.executeQuery(sql);
+			st = conn.prepareStatement(sql);
+			st.setLong(1, id);
+			rs = st.executeQuery();
 			if (rs.next()) {
 				Technology techn = new Technology();
 				techn.setId(rs.getLong(1));
@@ -121,13 +123,13 @@ public class TechnologyDAO implements ITechnologyDAO {
 	 */
 	public Technology findTechnologyByName(String name) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "select id_tech, name from technologies where name='"
-				+ name + "'";
+		String sql = "select id_tech, name from technologies where name=?";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement("");
-			rs = st.executeQuery(sql);
+			st = conn.prepareStatement(sql);
+			st.setString(1, name);
+			rs = st.executeQuery();
 			if (rs.next()) {
 				Technology techn = new Technology();
 				techn.setId(rs.getLong(1));
