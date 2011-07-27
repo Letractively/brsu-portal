@@ -16,23 +16,17 @@ import by.brsu.portal.cv.TechnologyDAO;
 public class TechnologyTest {
 	@Test
 	public void testCreateTechnology() {
-		try {
 			TechnologyDAO td = new TechnologyDAO();
-			Technology t = new Technology();
-			t = td.createTechnology("developer");
-			System.out.println(t);
-		} catch (Exception ex) {
-			Assert.fail();
-		}
+			Technology t1 = td.createTechnology(".NET");
+			//System.out.println("test1 "+t1);
+			Assert.assertTrue(t1!=null);
 	}
 	@Test
 	public void testDeleteTechnology(){
-		try {
 			TechnologyDAO td = new TechnologyDAO();
-			td.createTechnology("developer1");
-			td.deleteTechnology("developer1");			
-		} catch (Exception ex) {
-			Assert.fail();
-		}
+			td.deleteTechnology(".NET");
+			Technology t1 = td.findTechnologyByName(".NET");
+			//System.out.println("test2 "+t1);		
+			Assert.assertTrue(t1==null);
 	}
 }
