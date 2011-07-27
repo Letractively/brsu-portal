@@ -141,35 +141,25 @@ public class NewsDAO {
 	/**
 	 * Update table to database from news
 	 */
-	public News updateNews(int id, String title, String msg, Category category,
-			User user) throws SQLException {
+	public News updateNews(long id, String title, String msg,
+			Category category, User user) throws SQLException {
 
 		Statement stat = null;
 		ResultSet rs = null;
 		try {
 			Date date = new Date(System.currentTimeMillis());
 			PreparedStatement set = conn
-					.prepareStatement("UPDATE news SET title=?,text=?,date=?,id_category=?,important=?,id_author=? WHERE id_news=? ");
+					.prepareStatement("UPDATE news SET title=?,text=?,created_date=?,id_category=?,important=?,id_author=? WHERE id_news=? ");
 			set.setString(1, title);
 			set.setString(2, msg);
 			set.setDate(3, date);
 			set.setInt(4, category.getId());
 			set.setString(5, ""); // Stub 22.07.2011
 			set.setLong(6, user.getId());
-			set.setInt(7, id);
+			set.setLong(7, id);
 			set.executeUpdate();
-			stat = conn.createStatement();
-			rs = stat.executeQuery("SELECT id FROM news WHERE id_news="
-					+ String.valueOf(id));
-			if (rs.next()) {
-				News n = new News();
-				n.setTitle(rs.getString(1));
-				n.setText(rs.getString(2));
-				n.setDate(rs.getDate(3));
-				n.setCategory(category);
-				n.setAuthor(user);
-				return n;
-			}
+			News news = new News(id, title, msg, category, user, "");
+			return news;
 
 		} catch (SQLException e) {
 		} finally {
@@ -217,7 +207,7 @@ public class NewsDAO {
 		List<News> news = new ArrayList<News>();
 		try {
 			stat = conn.createStatement();
-			rs = stat.executeQuery("SELECT id FROM news");
+			rs = stat.executeQuery("SELECT * FROM news");
 			while (rs.next()) {
 				News n = new News();
 				// Stub 27.07.2011 Begin
@@ -227,9 +217,10 @@ public class NewsDAO {
 				user.setId(1);
 				user.setName("root");
 				// Stub 27.07.2011 End
-				n.setTitle(rs.getString(1));
-				n.setText(rs.getString(2));
-				n.setDate(rs.getDate(3));
+				n.setId(rs.getLong(1));
+				n.setTitle(rs.getString(2));
+				n.setText(rs.getString(3));
+				n.setDate(rs.getDate(4));
 				n.setCategory(category);
 				n.setAuthor(user);
 				news.add(n);
