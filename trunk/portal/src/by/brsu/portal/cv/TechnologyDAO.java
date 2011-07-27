@@ -17,7 +17,7 @@ import by.brsu.portal.ConnectionManager;
  * @author Roman Ulezlo
  * 
  */
-public class TechnologyDAO {
+public class TechnologyDAO implements ITechnologyDAO {
 	private Connection conn = null;
 
 	/**
@@ -30,13 +30,13 @@ public class TechnologyDAO {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "insert into technologies values (null,?)";
 		ResultSet rs = null;
-		PreparedStatement st = null;
+		PreparedStatement pst = null;
 		try {
-			st = conn.prepareStatement(sql);
-			st.setString(2, name);
-			st.executeUpdate();
-			st = conn.prepareStatement("");
-			rs = st.executeQuery("select id from technologies where name='"
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, name);
+			pst.executeUpdate();
+			pst = conn.prepareStatement("");
+			rs = pst.executeQuery("select id_tech from technologies where name='"
 					+ name + "'");
 			if (rs.next()) {
 				Technology techn = new Technology();
@@ -49,8 +49,8 @@ public class TechnologyDAO {
 			try {
 				if (rs != null)
 					rs.close();
-				if (st != null)
-					st.close();
+				if (pst != null)
+					pst.close();
 			} catch (SQLException ex) {
 			}
 		}
@@ -88,12 +88,12 @@ public class TechnologyDAO {
 	 */
 	public Technology findTechnologyById(long id) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select id_tech, name from technologies where id=" + id;
+		String sql = "select id_tech, name from technologies where id=" + id;
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(sql);
-			rs = st.executeQuery();
+			st = conn.prepareStatement("");
+			rs = st.executeQuery(sql);
 			if (rs.next()) {
 				Technology techn = new Technology();
 				techn.setId(rs.getLong(1));
@@ -121,13 +121,13 @@ public class TechnologyDAO {
 	 */
 	public Technology findTechnologyByName(String name) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select id_tech, name from technologies where name='"
+		String sql = "select id_tech, name from technologies where name='"
 				+ name + "'";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(sql);
-			rs = st.executeQuery();
+			st = conn.prepareStatement("");
+			rs = st.executeQuery(sql);
 			if (rs.next()) {
 				Technology techn = new Technology();
 				techn.setId(rs.getLong(1));
@@ -158,8 +158,8 @@ public class TechnologyDAO {
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(sql);
-			rs = st.executeQuery();
+			st = conn.prepareStatement("");
+			rs = st.executeQuery(sql);
 			List<Technology> techn = new ArrayList<Technology>();
 			Technology temptechn = new Technology();
 			if (rs.next()) {
