@@ -9,13 +9,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import by.brsu.portal.ConnectionManager;
 import by.brsu.portal.project.ProjectCategory;
 
 /**
  * @author Roman Ulezlo
- *
+ * 
  */
 public class PositionDAO {
 	private Connection conn = null;
@@ -26,27 +28,33 @@ public class PositionDAO {
 	 * @param name
 	 *            String - name of position
 	 */
-	public ProjectCategory createPosition(String name) {
+	public Position createPosition(String name) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "insert into position values (?,?)";
+		String sql = "insert into positions values (null,?)";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(sql);
-			st.setString(2, name);
+			st.setString(1, name);
 			st.executeUpdate();
 			st = conn.prepareStatement("");
-			rs = st.executeQuery("Select id from position where name='"
+			rs = st.executeQuery("select id_pos from positions where name='"
 					+ name + "'");
 			if (rs.next()) {
-				ProjectCategory pos = new ProjectCategory();
+				Position pos = new Position();
 				pos.setName(name);
 				pos.setId(rs.getLong(1));
 				return pos;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} catch (SQLException ex) {
+			}
 		}
 		return null;
 	}
@@ -59,14 +67,18 @@ public class PositionDAO {
 	 */
 	public void deletePosition(String name) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "delete from position where name='" + name + "'";
-		Statement st = null;
+		String sql = "delete from positions where name='" + name + "'";
+		PreparedStatement st = null;
 		try {
-			st = conn.createStatement();
-			st.executeUpdate(sql);
+			st = conn.prepareStatement(sql);
+			st.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
 		} finally {
+			try {
+				if (st != null)
+					st.close();
+			} catch (SQLException ex) {
+			}
 		}
 	}
 
@@ -76,23 +88,29 @@ public class PositionDAO {
 	 * @param id
 	 *            - id of position
 	 */
-	public ProjectCategory findPositionById(long id) {
+	public Position findPositionById(long id) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from position where id=" + id;
+		String sql = "select id_pos, name from positions where id_pos=" + id;
 		ResultSet rs = null;
-		Statement st = null;
+		PreparedStatement st = null;
 		try {
-			st = conn.createStatement();
+			st = conn.prepareStatement("");
 			rs = st.executeQuery(sql);
 			if (rs.next()) {
-				ProjectCategory pos = new ProjectCategory();
+				Position pos = new Position();
 				pos.setId(rs.getLong(1));
 				pos.setName(rs.getString(2));
 				return pos;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} catch (SQLException ex) {
+			}
 		}
 		return null;
 	}
@@ -103,24 +121,63 @@ public class PositionDAO {
 	 * @param name
 	 *            - name of position
 	 */
-	public ProjectCategory findPositionByName(String name)
-	{
+	public Position findPositionByName(String name) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from position where name=" + name;
+		String sql = "select id_pos, name from positions where name=" + name;
 		ResultSet rs = null;
-		Statement st = null;
+		PreparedStatement st = null;
 		try {
-			st = conn.createStatement();
+			st = conn.prepareStatement("");
 			rs = st.executeQuery(sql);
 			if (rs.next()) {
-				ProjectCategory pos = new ProjectCategory();
+				Position pos = new Position();
 				pos.setId(rs.getLong(1));
 				pos.setName(rs.getString(2));
 				return pos;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
 		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} catch (SQLException ex) {
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Find all positions
+	 * 
+	 * @return list of positions
+	 */
+	public List<Position> findAllPosition() {
+		conn = ConnectionManager.getConnectorPool().getConnection();
+		String sql = "select id_pos, name from technologies";
+		ResultSet rs = null;
+		PreparedStatement st = null;
+		try {
+			st = conn.prepareStatement("");
+			rs = st.executeQuery(sql);
+			List<Position> positions = new ArrayList<Position>();
+			Position temppos = new Position();
+			if (rs.next()) {
+				temppos.setId(rs.getLong(1));
+				temppos.setName(rs.getString(2));
+				positions.add(temppos);
+			}
+			return positions;
+		} catch (SQLException e) {
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} catch (SQLException ex) {
+			}
 		}
 		return null;
 	}
