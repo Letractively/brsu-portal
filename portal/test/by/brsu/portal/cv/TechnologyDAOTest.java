@@ -13,7 +13,7 @@ import by.brsu.portal.cv.TechnologyDAO;
  * @author Roman Ulezlo
  * 
  */
-public class TechnologyTest {
+public class TechnologyDAOTest {
 	@Test
 	public void testCreateTechnology() {
 			TechnologyDAO td = new TechnologyDAO();
