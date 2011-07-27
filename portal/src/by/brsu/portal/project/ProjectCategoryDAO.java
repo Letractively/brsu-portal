@@ -34,9 +34,9 @@ public class ProjectCategoryDAO {
 			st = conn.prepareStatement(sql);
 			st.setString(1, name);
 			st.executeUpdate();
-			st = conn.prepareStatement("");
-			rs = st.executeQuery("select id_category from categories_pr where name='"
-					+ name + "'");
+			st = conn.prepareStatement("select id_category from categories_pr where name=?");
+			st.setString(1, name);
+			rs = st.executeQuery();
 			if (rs.next()) {
 				ProjectCategory prc = new ProjectCategory();
 				prc.setName(name);
@@ -64,10 +64,11 @@ public class ProjectCategoryDAO {
 	 */
 	public void deleteProjectCategory(String name) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "delete from categories_pr where name='" + name + "'";
+		String sql = "delete from categories_pr where name=?";
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(sql);
+			st.setString(1, name);
 			st.executeUpdate();
 		} catch (SQLException e) {
 		} finally {
@@ -87,12 +88,13 @@ public class ProjectCategoryDAO {
 	 */
 	public ProjectCategory findProjectCategoryById(long id) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "select id_category, name from categories_pr where id_category=" + id;
+		String sql = "select id_category, name from categories_pr where id_category=?";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement("");
-			rs = st.executeQuery(sql);
+			st = conn.prepareStatement(sql);
+			st.setLong(1, id);
+			rs = st.executeQuery();
 			if (rs.next()) {
 				ProjectCategory prc = new ProjectCategory();
 				prc.setId(rs.getLong(1));
@@ -120,12 +122,13 @@ public class ProjectCategoryDAO {
 	 */
 	public ProjectCategory findProjectCategoryByName(String name) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select id_category, name from categories_pr where name=" + name;
+		String sql = "select id_category, name from categories_pr where name=?";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement("");
-			rs = st.executeQuery(sql);
+			st = conn.prepareStatement(sql);
+			st.setString(1, name);
+			rs = st.executeQuery();
 			if (rs.next()) {
 				ProjectCategory prc = new ProjectCategory();
 				prc.setId(rs.getLong(1));
