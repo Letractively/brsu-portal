@@ -6,6 +6,8 @@
 package by.brsu.portal.news;
 
 import java.sql.*;
+import java.sql.Date;
+import java.util.*;
 
 import by.brsu.portal.ConnectionManager;
 import by.brsu.portal.user.*;
@@ -37,8 +39,9 @@ public class NewsDAO {
 			set.setLong(6, user.getId());
 			set.executeUpdate();
 			stat = conn.createStatement();
-			rs = stat.executeQuery("SELECT id FROM news where title='" + title
-					+ " AND text=" + msg + "' AND USER=" + user.getId());
+			rs = stat.executeQuery("SELECT id_news FROM news where title='"
+					+ title + "' AND text='" + msg + "' AND id_author="
+					+ user.getId());
 			if (rs.next()) {
 				News n = new News();
 				n.setId(rs.getInt(1));
@@ -69,15 +72,17 @@ public class NewsDAO {
 	/**
 	 * Delete database news
 	 */
-	public void delTable() throws SQLException {
+	public Boolean delTable() throws SQLException {
 		String query = "DROP TABLE news";
 		Statement stat = null;
 
 		try {
 			stat = conn.createStatement();
 			stat.executeUpdate(query);
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		} finally {
 			try {
 				if (stat != null)
@@ -87,7 +92,7 @@ public class NewsDAO {
 		}
 	}
 
-	public void delNews(News news) throws SQLException {
+	public Boolean delNews(News news) throws SQLException {
 		String query = "DELETE FROM news WHERE id_news=?";
 		String query2 = "DELETE FROM Comments_news WHERE id_news=?";
 		Statement stat = null;
@@ -96,15 +101,19 @@ public class NewsDAO {
 			PreparedStatement set = conn.prepareStatement(query);
 			set.setLong(1, news.getId());
 			set.executeUpdate();
-			set = conn.prepareStatement(query2);
-			set.executeUpdate();
+			PreparedStatement set2 = conn.prepareStatement(query2);
+			set2.setLong(1, news.getId());
+			set2.executeUpdate();
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		} finally {
 			try {
 				if (stat != null)
 					stat.close();
 			} catch (SQLException e) {
+				return false;
 			}
 		}
 	}
@@ -158,7 +167,6 @@ public class NewsDAO {
 				n.setText(rs.getString(2));
 				n.setDate(rs.getDate(3));
 				n.setCategory(category);
-				n.setDate(date);
 				n.setAuthor(user);
 				return n;
 			}
@@ -198,5 +206,52 @@ public class NewsDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Get List News from datebase
+	 */
+	public List<News> readNews() {
+		Statement stat = null;
+		ResultSet rs = null;
+		List<News> news = new ArrayList<News>();
+		try {
+			stat = conn.createStatement();
+			rs = stat.executeQuery("SELECT id FROM news");
+			while (rs.next()) {
+				News n = new News();
+				// Stub 27.07.2011 Begin
+				Category category = new Category();
+				category.setId(1);
+				User user = new User();
+				user.setId(1);
+				user.setName("root");
+				// Stub 27.07.2011 End
+				n.setTitle(rs.getString(1));
+				n.setText(rs.getString(2));
+				n.setDate(rs.getDate(3));
+				n.setCategory(category);
+				n.setAuthor(user);
+				news.add(n);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return news;
+	}
+
+	/**
+	 * Get List News from datebase for a given page
+	 */
+	public List<News> readNewsByPage(int page, int i) {
+		Statement stat = null;
+		ResultSet rs = null;
+		List<News> news = new ArrayList<News>();
+		return news;
+	}
+
+	public News findNewsById() {
+		News news = new News();
+		return news;
 	}
 }

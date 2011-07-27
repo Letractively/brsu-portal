@@ -84,7 +84,7 @@ public class NewsTest {
 	 */
 	@Test
 	public final void testNewsLongStringStringCategoryUserString() {
-		fail("Not yet implemented"); // TODO
+		//fail("blablabla"); // TODO
 	}
 
 	/**
