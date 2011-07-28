@@ -11,7 +11,7 @@ import java.util.Date;
  * 
  */
 public class UserHistory {
-	private long idUserHistory;
+	private long id;
 	private long idUser;
 	private Date date;
 	private String name;
@@ -28,7 +28,7 @@ public class UserHistory {
 	}
 
 	/**
-	 * @param idUserHistory
+	 * @param id
 	 * @param idUser
 	 * @param date
 	 * @param name
@@ -37,10 +37,10 @@ public class UserHistory {
 	 * @param iq
 	 * @param numberOfCations
 	 */
-	public UserHistory(long idUserHistory, long idUser, Date date, String name,
+	public UserHistory(long id, long idUser, Date date, String name,
 			String surname, long idStatus, int iq, int numberOfCations) {
 		super();
-		this.idUserHistory = idUserHistory;
+		this.id = id;
 		this.idUser = idUser;
 		this.date = date;
 		this.name = name;
@@ -51,18 +51,18 @@ public class UserHistory {
 	}
 
 	/**
-	 * @return the idUserHistory
+	 * @return the id
 	 */
-	public long getIdUserHistory() {
-		return idUserHistory;
+	public long getId() {
+		return id;
 	}
 
 	/**
-	 * @param idUserHistory
-	 *            the idUserHistory to set
+	 * @param id
+	 *            the id to set
 	 */
-	public void setIdUserHistory(long idUserHistory) {
-		this.idUserHistory = idUserHistory;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	/**
@@ -180,10 +180,9 @@ public class UserHistory {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + (int) (idStatus ^ (idStatus >>> 32));
 		result = prime * result + (int) (idUser ^ (idUser >>> 32));
-		result = prime * result
-				+ (int) (idUserHistory ^ (idUserHistory >>> 32));
 		result = prime * result + iq;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + numberOfCations;
@@ -210,11 +209,11 @@ public class UserHistory {
 				return false;
 		} else if (!date.equals(other.date))
 			return false;
+		if (id != other.id)
+			return false;
 		if (idStatus != other.idStatus)
 			return false;
 		if (idUser != other.idUser)
-			return false;
-		if (idUserHistory != other.idUserHistory)
 			return false;
 		if (iq != other.iq)
 			return false;
@@ -240,9 +239,9 @@ public class UserHistory {
 	 */
 	@Override
 	public String toString() {
-		return "UserHistory [idUserHistory=" + idUserHistory + ", idUser="
-				+ idUser + ", date=" + date + ", name=" + name + ", surname="
-				+ surname + ", idStatus=" + idStatus + ", iq=" + iq
+		return "UserHistory [id=" + id + ", idUser=" + idUser + ", date="
+				+ date + ", name=" + name + ", surname=" + surname
+				+ ", idStatus=" + idStatus + ", iq=" + iq
 				+ ", numberOfCations=" + numberOfCations + "]";
 	}
 }
