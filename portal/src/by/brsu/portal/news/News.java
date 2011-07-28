@@ -80,7 +80,18 @@ public class News {
 	public String getTitle() {
 		return title;
 	}
-
+	/**
+	 * @return the string author
+	 */
+	public String getAuthorToString() {
+		return author.getName();
+	}
+	/**
+	 * @return the string date
+	 */
+	public String getDateToString() {
+		return date.toString();
+	}
 	/**
 	 * @param title
 	 *            the title to set
