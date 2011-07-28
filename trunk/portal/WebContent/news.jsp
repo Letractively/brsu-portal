@@ -21,14 +21,14 @@
 	<table width="778" height="30" border="0" cellspacing="0"
 		cellpadding="0" background="images/Untitled-6.png">
 		<tr>
-			<td width="549"><img src="images/Untitled-7.png">
-			</td>
+			<td width="549"><img src="images/Untitled-7.png"></td>
 			<td width="227">
 				<form>
 					<input type="text" id="Login" value="Login" size="10"> <input
 						type="password" id="Password" value="Password" size="10">
 					<input type="button" value="Log In" style="height: 18">
-				</form></td>
+				</form>
+			</td>
 
 		</tr>
 	</table>
@@ -52,8 +52,7 @@
 			<td width="228">
 				<form>
 					<input type="text" value="search"> <input type="button">
-				</form>
-			</td>
+				</form></td>
 			</td>
 		</tr>
 	</table>
@@ -66,7 +65,8 @@
 				<table width="210" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 						<td width="210" height="30"><img src="images/Untitled-8.png"
-							width=210 height="30" alt=""></td>
+							width=210 height="30" alt="">
+						</td>
 					</tr>
 				</table>
 				<table width="210" border="0" cellspacing="0" cellpadding="10">
@@ -84,14 +84,14 @@
 					<tr>
 
 					</tr>
-				</table>
-			</td>
+				</table></td>
 			<td width="356" background="images/index_32.jpg">
 
 				<table width="356" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 						<td width="356"><img src="images/Untitled-9.png" width=356
-							height=30 alt=""></td>
+							height=30 alt="">
+						</td>
 					</tr>
 				</table>
 				<table width="100%" border="0" cellspacing="1" cellpadding="5"
@@ -104,36 +104,43 @@
 						for (int i = 0; i < news.size(); i++) {
 					%>
 					<tr border="1">
-							<%
-								News temp = news.get(i);
-							%>
-							<td>
-							<%=temp.getTitle()%>
-							</td>
-							<td>
-							<%=temp.getText()%>
-							</td>
-							<%
-								}
-							%>
+						<%
+							News temp = news.get(i);
+						%>
+						<table width="100%" height="190" border="1">
+							<tr>
+								<td width="108" height="23"><%=temp.getTitle() %></td>
+								<td width="14">Author: <%=temp.getAuthorToString() %></td>
+								<td width="56">Date: <%=temp.getDateToString() %></td>
+							</tr>
+							<tr>
+								<td height="124" colspan="3"><%=temp.getText() %></td>
+							</tr>
+							<tr>
+								<td height="33" colspan="3">Comments</td>
+							</tr>
+						</table>
+						<%
+							}
+						%>
 					</tr>
 					</td>
-				</table>
-			</td>
+				</table></td>
 			<td width="212" rowspan="2" background="images/index_32(2).gif">
 				<table width="212" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 						<td width="212"><img src="images/Untitled-10.png" width=212
-							height=30 alt=""></td>
+							height=30 alt="">
+						</td>
 					</tr>
 				</table>
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 						<td>
-							<p>&nbsp;</p></td>
+							<p>&nbsp;</p>
+						</td>
 					</tr>
-				</table>
-			</td>
+				</table></td>
 		</tr>
 		<tr valign="top">
 			<td width="356" valign="bottom" background="images/index_32.jpg">&nbsp;</td>
@@ -143,8 +150,7 @@
 		background="images/Untitled-11.png" height="56">
 		<tr>
 			<td align="center" class="main"><font color="#FFFFFF">Copyright
-					© 2003 CompanyName. All Rights Reserved.</font>
-			</td>
+					© 2003 CompanyName. All Rights Reserved.</font></td>
 		</tr>
 	</table>
 
