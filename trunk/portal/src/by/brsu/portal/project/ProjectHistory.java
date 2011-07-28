@@ -4,14 +4,15 @@
  */
 package by.brsu.portal.project;
 
+
 /**
  * @author Roman Ulezlo
  * 
  */
 public class ProjectHistory {
-	private long idPrHistory;
-	private long idProject;
-	private long idUser;
+	private long id;
+	private long project;
+	private long user;
 	private String stage;
 	private String name;
 
@@ -23,65 +24,55 @@ public class ProjectHistory {
 	}
 
 	/**
-	 * @param idPrHistory
-	 * @param idProject
-	 * @param idUser
+	 * @param project
+	 * @param user
 	 * @param stage
 	 * @param name
 	 */
-	public ProjectHistory(long idPrHistory, long idProject, long idUser,
-			String stage, String name) {
+	public ProjectHistory(long project, long user, String stage, String name) {
 		super();
-		this.idPrHistory = idPrHistory;
-		this.idProject = idProject;
-		this.idUser = idUser;
+		this.project = project;
+		this.user = user;
 		this.stage = stage;
 		this.name = name;
 	}
 
+	
 	/**
-	 * @return the idPrHistory
+	 * @param id the id to set
 	 */
-	public long getIdPrHistory() {
-		return idPrHistory;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	/**
-	 * @param idPrHistory
-	 *            the idPrHistory to set
+	 * @return the project
 	 */
-	public void setIdPrHistory(long idPrHistory) {
-		this.idPrHistory = idPrHistory;
+	public long getProject() {
+		return project;
 	}
 
 	/**
-	 * @return the idProject
+	 * @param project
+	 *            the project to set
 	 */
-	public long getIdProject() {
-		return idProject;
+	public void setProject(long project) {
+		this.project = project;
 	}
 
 	/**
-	 * @param idProject
-	 *            the idProject to set
+	 * @return the user
 	 */
-	public void setIdProject(long idProject) {
-		this.idProject = idProject;
+	public long getUser() {
+		return user;
 	}
 
 	/**
-	 * @return the idUser
+	 * @param user
+	 *            the user to set
 	 */
-	public long getIdUser() {
-		return idUser;
-	}
-
-	/**
-	 * @param idUser
-	 *            the idUser to set
-	 */
-	public void setIdUser(long idUser) {
-		this.idUser = idUser;
+	public void setUser(long user) {
+		this.user = user;
 	}
 
 	/**
@@ -114,6 +105,13 @@ public class ProjectHistory {
 		this.name = name;
 	}
 
+	/**
+	 * @return the id
+	 */
+	public long getId() {
+		return id;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -123,11 +121,10 @@ public class ProjectHistory {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (idPrHistory ^ (idPrHistory >>> 32));
-		result = prime * result + (int) (idProject ^ (idProject >>> 32));
-		result = prime * result + (int) (idUser ^ (idUser >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + (int) (project ^ (project >>> 32));
 		result = prime * result + ((stage == null) ? 0 : stage.hashCode());
+		result = prime * result + (int) (user ^ (user >>> 32));
 		return result;
 	}
 
@@ -145,21 +142,19 @@ public class ProjectHistory {
 		if (getClass() != obj.getClass())
 			return false;
 		ProjectHistory other = (ProjectHistory) obj;
-		if (idPrHistory != other.idPrHistory)
-			return false;
-		if (idProject != other.idProject)
-			return false;
-		if (idUser != other.idUser)
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (project != other.project)
+			return false;
 		if (stage == null) {
 			if (other.stage != null)
 				return false;
 		} else if (!stage.equals(other.stage))
+			return false;
+		if (user != other.user)
 			return false;
 		return true;
 	}
@@ -171,8 +166,7 @@ public class ProjectHistory {
 	 */
 	@Override
 	public String toString() {
-		return "ProjectHistory [idPrHistory=" + idPrHistory + ", idProject="
-				+ idProject + ", idUser=" + idUser + ", stage=" + stage
-				+ ", name=" + name + "]";
+		return "ProjectHistory [id=" + id + ", project=" + project + ", user="
+				+ user + ", stage=" + stage + ", name=" + name + "]";
 	}
 }
