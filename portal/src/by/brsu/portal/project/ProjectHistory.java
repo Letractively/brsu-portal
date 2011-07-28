@@ -23,21 +23,24 @@ public class ProjectHistory {
 		super();
 	}
 
+
 	/**
+	 * @param id
 	 * @param project
 	 * @param user
 	 * @param stage
 	 * @param name
 	 */
-	public ProjectHistory(long project, long user, String stage, String name) {
+	public ProjectHistory(long id, long project, long user, String stage,
+			String name) {
 		super();
+		this.id = id;
 		this.project = project;
 		this.user = user;
 		this.stage = stage;
 		this.name = name;
 	}
 
-	
 	/**
 	 * @param id the id to set
 	 */

@@ -16,7 +16,7 @@ import by.brsu.portal.ConnectionManager;
  * @author Roman Ulezlo
  * 
  */
-public class ProjectHistoryDAO {
+public class ProjectHistoryDAO implements IProjectHistoryDAO {
 	private Connection conn = null;
 
 	/**
@@ -44,19 +44,13 @@ public class ProjectHistoryDAO {
 			rs = st.executeQuery();
 			rs.next();
 			id = rs.getLong(1);
-			st = conn
-					.prepareStatement("select id_pr_history,id_project,id_user,stage,name from projecthistory where id_pr_history="
-							+ id);
-			rs = st.executeQuery();
-			if (rs.next()) {
-				ProjectHistory prh = new ProjectHistory();				
-				prh.setId(id);
-				prh.setProject(project);
-				prh.setUser(user);
-				prh.setStage(rs.getString(4));
-				prh.setName(name);
-				return prh;
-			}
+			ProjectHistory prh = new ProjectHistory();
+			prh.setId(id);
+			prh.setProject(project);
+			prh.setUser(user);
+			prh.setStage(stage);
+			prh.setName(name);
+			return prh;
 		} catch (SQLException ex) {
 		} finally {
 			try {
@@ -69,7 +63,7 @@ public class ProjectHistoryDAO {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Delete project history
 	 * 
@@ -93,7 +87,7 @@ public class ProjectHistoryDAO {
 			}
 		}
 	}
-	
+
 	/**
 	 * Find project history by id
 	 * 
@@ -130,7 +124,7 @@ public class ProjectHistoryDAO {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Find project history by id of user
 	 * 
@@ -168,7 +162,7 @@ public class ProjectHistoryDAO {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Find project history by id of project
 	 * 
@@ -206,7 +200,7 @@ public class ProjectHistoryDAO {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Find project history by name
 	 * 
@@ -244,7 +238,7 @@ public class ProjectHistoryDAO {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Find project history by stage
 	 * 
@@ -282,7 +276,7 @@ public class ProjectHistoryDAO {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Find all project history by stage
 	 * 
