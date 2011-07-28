@@ -16,7 +16,7 @@ import by.brsu.portal.ConnectionManager;
  * @author Roman Ulezlo
  * 
  */
-public class ProjectCategoryDAO {
+public class ProjectCategoryDAO implements IProjectCategoryDAO {
 	private Connection conn = null;
 
 	/**
