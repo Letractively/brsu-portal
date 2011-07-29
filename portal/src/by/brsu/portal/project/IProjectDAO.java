@@ -75,4 +75,9 @@ public interface IProjectDAO
 	 */
 	public Project findProjectByStageOfDevelopment(String StageOfDevelopment);
 	
+	/**
+	 * Find all Projects
+	 */
+	public List<Project> findAllProjectss();
+	
 }
