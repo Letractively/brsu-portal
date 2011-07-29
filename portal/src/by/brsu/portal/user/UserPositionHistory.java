@@ -21,7 +21,6 @@ public class UserPositionHistory {
 	 * 
 	 */
 	public UserPositionHistory() {
-		super();
 	}	
 
 	/**
@@ -33,7 +32,6 @@ public class UserPositionHistory {
 	 */
 	public UserPositionHistory(long id, long idUser, Date date,
 			long idPosition, long idProject) {
-		super();
 		this.id = id;
 		this.idUser = idUser;
 		this.date = date;

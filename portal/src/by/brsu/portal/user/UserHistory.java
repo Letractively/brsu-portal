@@ -24,7 +24,6 @@ public class UserHistory {
 	 * 
 	 */
 	public UserHistory() {
-		super();
 	}
 
 	/**
@@ -39,7 +38,6 @@ public class UserHistory {
 	 */
 	public UserHistory(long id, long idUser, Date date, String name,
 			String surname, long idStatus, int iq, int numberOfCations) {
-		super();
 		this.id = id;
 		this.idUser = idUser;
 		this.date = date;

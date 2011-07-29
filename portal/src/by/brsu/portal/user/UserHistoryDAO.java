@@ -12,12 +12,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import by.brsu.portal.ConnectionManager;
+import by.brsu.portal.PortalTechnicalException;
 
 /**
  * @author Roman Ulezlo
  * 
  */
-public class UserHistoryDAO implements IUserHistoryDAO{
+public class UserHistoryDAO implements IUserHistoryDAO {
 	private Connection conn = null;
 
 	/**
@@ -25,10 +26,11 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 	 * 
 	 * @param name
 	 *            String - name of user history
+	 * @throws PortalTechnicalException
 	 */
 	public UserHistory createUserHistory(long idUser, java.sql.Date date,
 			String name, String surname, long idStatus, int iq,
-			int numberOfCations) {
+			int numberOfCations) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "insert into UserHistory values (null,?,?,?,?,?,?,?)";
 		ResultSet rs = null;
@@ -60,6 +62,8 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 			ush.setNumberOfCations(numberOfCations);
 			return ush;
 		} catch (SQLException ex) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -67,9 +71,10 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 
 	/**
@@ -77,8 +82,9 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 	 * 
 	 * @param id
 	 *            - id user history
+	 * @throws PortalTechnicalException
 	 */
-	public void deleteUserHistory(long id) {
+	public void deleteUserHistory(long id) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "delete from UserHistory where id_usr_history=?";
 		PreparedStatement st = null;
@@ -87,22 +93,28 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 			st.setLong(1, id);
 			st.executeUpdate();
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object PreparedStatement!");
 			}
 		}
 	}
 
 	/**
-	 * Find user history by id
+	 * Finds user history by id
 	 * 
 	 * @param id
 	 *            - id user history
+	 * @throws PortalTechnicalException
 	 */
-	public UserHistory findUserHistoryById(long id) {
+	public UserHistory findUserHistoryById(long id)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_history,id_user,date,name,surname,id_status,iq,number_of_cations from UserHistory where id_usr_history=?";
 		ResultSet rs = null;
@@ -124,6 +136,8 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 				return ush;
 			}
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -131,17 +145,21 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Find user history by id of user
+	 * Finds user histories by id of user
 	 * 
 	 * @return list of user history
+	 * @throws PortalTechnicalException
 	 */
-	public List<UserHistory> findUserHistoryByIdUser(long idUser) {
+	public List<UserHistory> findUserHistoryByIdUser(long idUser)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_history,id_user,date,name,surname,id_status,iq,number_of_cations from UserHistory where id_user=?";
 		ResultSet rs = null;
@@ -165,6 +183,8 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 			}
 			return prh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -172,17 +192,20 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
-	
+
 	/**
-	 * Find user history by date
+	 * Finds user histories by date
 	 * 
 	 * @return list of user history
+	 * @throws PortalTechnicalException
 	 */
-	public List<UserHistory> findUserHistoryByDate(Date date) {
+	public List<UserHistory> findUserHistoryByDate(Date date)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_history,id_user,date,name,surname,id_status,iq,number_of_cations from UserHistory where date=?";
 		ResultSet rs = null;
@@ -206,6 +229,8 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 			}
 			return prh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -213,17 +238,20 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
-	
+
 	/**
-	 * Find user history by name
+	 * Finds user histories by name
 	 * 
 	 * @return list of user history
+	 * @throws PortalTechnicalException
 	 */
-	public List<UserHistory> findUserHistoryByName(String name) {
+	public List<UserHistory> findUserHistoryByName(String name)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_history,id_user,date,name,surname,id_status,iq,number_of_cations from UserHistory where name=?";
 		ResultSet rs = null;
@@ -247,6 +275,8 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 			}
 			return prh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -254,17 +284,20 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
-	
+
 	/**
-	 * Find user history by name
+	 * Finds user histories by surname
 	 * 
 	 * @return list of user history
+	 * @throws PortalTechnicalException
 	 */
-	public List<UserHistory> findUserHistoryBySurame(String surname) {
+	public List<UserHistory> findUserHistoryBySurame(String surname)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_history,id_user,date,name,surname,id_status,iq,number_of_cations from UserHistory where surname=?";
 		ResultSet rs = null;
@@ -288,6 +321,8 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 			}
 			return prh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -295,17 +330,20 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
-	
+
 	/**
-	 * Find user history by id of status
+	 * Finds user histories by id of status
 	 * 
 	 * @return list of user history
+	 * @throws PortalTechnicalException
 	 */
-	public List<UserHistory> findUserHistoryByIdStatus(int status) {
+	public List<UserHistory> findUserHistoryByIdStatus(int status)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_history,id_user,date,name,surname,id_status,iq,number_of_cations from UserHistory where id_status=?";
 		ResultSet rs = null;
@@ -329,6 +367,8 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 			}
 			return prh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -336,17 +376,20 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
-	
+
 	/**
-	 * Find user history by IQ
+	 * Finds user histories by IQ
 	 * 
 	 * @return list of user history
+	 * @throws PortalTechnicalException
 	 */
-	public List<UserHistory> findUserHistoryByIq(int iq) {
+	public List<UserHistory> findUserHistoryByIq(int iq)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_history,id_user,date,name,surname,id_status,iq,number_of_cations from UserHistory where iq=?";
 		ResultSet rs = null;
@@ -370,6 +413,8 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 			}
 			return prh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -377,17 +422,20 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
-	
+
 	/**
-	 * Find user history by number of cations
+	 * Finds user histories by number of cations
 	 * 
 	 * @return list of user history
+	 * @throws PortalTechnicalException
 	 */
-	public List<UserHistory> findUserHistoryByNumberOfCations(int numberOfCations) {
+	public List<UserHistory> findUserHistoryByNumberOfCations(
+			int numberOfCations) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_history,id_user,date,name,surname,id_status,iq,number_of_cations from UserHistory where iq=?";
 		ResultSet rs = null;
@@ -411,6 +459,8 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 			}
 			return prh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -418,17 +468,20 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
-	
+
 	/**
-	 * Find all user history
+	 * Finds all user histories
 	 * 
 	 * @return list of user history
+	 * @throws PortalTechnicalException
 	 */
-	public List<UserHistory> findAllUserHistory() {
+	public List<UserHistory> findAllUserHistory()
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_history,id_user,date,name,surname,id_status,iq,number_of_cations from UserHistory ";
 		ResultSet rs = null;
@@ -451,6 +504,8 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 			}
 			return prh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -458,8 +513,9 @@ public class UserHistoryDAO implements IUserHistoryDAO{
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 }

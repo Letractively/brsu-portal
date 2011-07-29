@@ -16,7 +16,6 @@ public class ProjectCategory {
 	 * 
 	 */
 	public ProjectCategory() {
-		super();
 	}
 
 	/**
@@ -24,7 +23,6 @@ public class ProjectCategory {
 	 * @param name
 	 */
 	public ProjectCategory(long id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}

@@ -16,7 +16,6 @@ public class Position {
 	 * 
 	 */
 	public Position() {
-		super();
 	}
 
 	/**
@@ -24,7 +23,6 @@ public class Position {
 	 * @param name
 	 */
 	public Position(long id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}
