@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import by.brsu.portal.ConnectionManager;
+import by.brsu.portal.PortalTechnicalException;
 
 /**
  * @author Roman Ulezlo
@@ -24,8 +25,10 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 	 * 
 	 * @param name
 	 *            String - name of category project
+	 * @throws PortalTechnicalException
 	 */
-	public ProjectCategory createProjectCategory(String name) {
+	public ProjectCategory createProjectCategory(String name)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "insert into categories_pr values (null,?)";
 		ResultSet rs = null;
@@ -34,7 +37,8 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 			st = conn.prepareStatement(sql);
 			st.setString(1, name);
 			st.executeUpdate();
-			st = conn.prepareStatement("select id_category from categories_pr where name=?");
+			st = conn
+					.prepareStatement("select id_category from categories_pr where name=?");
 			st.setString(1, name);
 			rs = st.executeQuery();
 			if (rs.next()) {
@@ -44,6 +48,8 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 				return prc;
 			}
 		} catch (SQLException ex) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -51,6 +57,8 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
 		return null;
@@ -61,8 +69,10 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 	 * 
 	 * @param name
 	 *            - name of category project
+	 * @throws PortalTechnicalException
 	 */
-	public void deleteProjectCategory(String name) {
+	public void deleteProjectCategory(String name)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "delete from categories_pr where name=?";
 		PreparedStatement st = null;
@@ -71,11 +81,15 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 			st.setString(1, name);
 			st.executeUpdate();
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object PreparedStatement!");
 			}
 		}
 	}
@@ -85,8 +99,10 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 	 * 
 	 * @param id
 	 *            - id of category project
+	 * @throws PortalTechnicalException
 	 */
-	public ProjectCategory findProjectCategoryById(long id) {
+	public ProjectCategory findProjectCategoryById(long id)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_category, name from categories_pr where id_category=?";
 		ResultSet rs = null;
@@ -102,6 +118,8 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 				return prc;
 			}
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -109,6 +127,8 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
 		return null;
@@ -119,8 +139,10 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 	 * 
 	 * @param name
 	 *            - name of category project
+	 * @throws PortalTechnicalException
 	 */
-	public ProjectCategory findProjectCategoryByName(String name) {
+	public ProjectCategory findProjectCategoryByName(String name)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_category, name from categories_pr where name=?";
 		ResultSet rs = null;
@@ -136,6 +158,8 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 				return prc;
 			}
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -143,17 +167,21 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Find all categories of project
+	 * Finds all categories of project
 	 * 
 	 * @return list of categories of project
+	 * @throws PortalTechnicalException
 	 */
-	public List<ProjectCategory> findAllProjectCategory() {
+	public List<ProjectCategory> findAllProjectCategory()
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "Select * from categories_pr";
 		ResultSet rs = null;
@@ -170,6 +198,8 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 			}
 			return techn;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -177,8 +207,9 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 }

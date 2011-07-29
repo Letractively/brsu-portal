@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import by.brsu.portal.ConnectionManager;
+import by.brsu.portal.PortalTechnicalException;
 
 /**
  * @author Roman Ulezlo
@@ -24,9 +25,10 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 	 * 
 	 * @param name
 	 *            String - name of project history
+	 * @throws PortalTechnicalException
 	 */
 	public ProjectHistory createProjectHistory(long project, long user,
-			String stage, String name) {
+			String stage, String name) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "insert into ProjectHistory values (null,?,?,?,?)";
 		ResultSet rs = null;
@@ -52,6 +54,8 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 			prh.setName(name);
 			return prh;
 		} catch (SQLException ex) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -59,9 +63,10 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 
 	/**
@@ -69,8 +74,9 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 	 * 
 	 * @param id
 	 *            - id project history
+	 * @throws PortalTechnicalException
 	 */
-	public void deleteProjectHistory(long id) {
+	public void deleteProjectHistory(long id) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "delete from projecthistory where id_pr_history=?";
 		PreparedStatement st = null;
@@ -79,11 +85,15 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 			st.setLong(1, id);
 			st.executeUpdate();
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
 	}
@@ -93,8 +103,10 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 	 * 
 	 * @param id
 	 *            - id project history
+	 * @throws PortalTechnicalException
 	 */
-	public ProjectHistory findProjectHistoryById(long id) {
+	public ProjectHistory findProjectHistoryById(long id)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_pr_history,id_project,id_user,stage,name from projecthistory where id_pr_history=?";
 		ResultSet rs = null;
@@ -113,6 +125,8 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 				return prh;
 			}
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -120,17 +134,21 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
 		return null;
 	}
 
 	/**
-	 * Find project history by id of user
+	 * Finds project history by id of user
 	 * 
 	 * @return list of project history
+	 * @throws PortalTechnicalException
 	 */
-	public List<ProjectHistory> findProjectHistoryByIdUser(long idUser) {
+	public List<ProjectHistory> findProjectHistoryByIdUser(long idUser)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_pr_history,id_project,id_user,stage,name from projecthistory where id_user=?";
 		ResultSet rs = null;
@@ -151,6 +169,8 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 			}
 			return prh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -158,17 +178,20 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 
 	/**
-	 * Find project history by id of project
+	 * Finds project history by id of project
 	 * 
 	 * @return list of project history
+	 * @throws PortalTechnicalException
 	 */
-	public List<ProjectHistory> findProjectHistoryByIdProject(long idProject) {
+	public List<ProjectHistory> findProjectHistoryByIdProject(long idProject)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_pr_history,id_project,id_user,stage,name from projecthistory where id_project=?";
 		ResultSet rs = null;
@@ -189,6 +212,8 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 			}
 			return prh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -196,17 +221,20 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 
 	/**
-	 * Find project history by name
+	 * Finds project history by name
 	 * 
 	 * @return list of project history
+	 * @throws PortalTechnicalException
 	 */
-	public List<ProjectHistory> findProjectHistoryByName(String name) {
+	public List<ProjectHistory> findProjectHistoryByName(String name)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_pr_history,id_project,id_user,stage,name from projecthistory where name=?";
 		ResultSet rs = null;
@@ -227,6 +255,8 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 			}
 			return prh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -234,17 +264,20 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 
 	/**
-	 * Find project history by stage
+	 * Finds project history by stage
 	 * 
 	 * @return list of project history
+	 * @throws PortalTechnicalException
 	 */
-	public List<ProjectHistory> findProjectHistoryByStage(String name) {
+	public List<ProjectHistory> findProjectHistoryByStage(String name)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_pr_history,id_project,id_user,stage,name from projecthistory where stage=?";
 		ResultSet rs = null;
@@ -265,6 +298,8 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 			}
 			return prh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -272,17 +307,20 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 
 	/**
-	 * Find all project history by stage
+	 * Finds all project history by stage
 	 * 
 	 * @return list of project history
+	 * @throws PortalTechnicalException
 	 */
-	public List<ProjectHistory> findAllProjectHistory() {
+	public List<ProjectHistory> findAllProjectHistory()
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_pr_history,id_project,id_user,stage,name from projecthistory";
 		ResultSet rs = null;
@@ -302,6 +340,8 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 			}
 			return prh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -309,8 +349,9 @@ public class ProjectHistoryDAO implements IProjectHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 }
