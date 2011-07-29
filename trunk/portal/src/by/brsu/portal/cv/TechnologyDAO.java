@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.brsu.portal.ConnectionManager;
+import by.brsu.portal.PortalTechnicalException;
 
 /**
  * @author Roman Ulezlo
@@ -25,8 +26,10 @@ public class TechnologyDAO implements ITechnologyDAO {
 	 * 
 	 * @param name
 	 *            String - name of technology
+	 * @throws PortalTechnicalException
 	 */
-	public Technology createTechnology(String name) {
+	public Technology createTechnology(String name)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "insert into technologies values (null,?)";
 		ResultSet rs = null;
@@ -35,7 +38,8 @@ public class TechnologyDAO implements ITechnologyDAO {
 			pst = conn.prepareStatement(sql);
 			pst.setString(1, name);
 			pst.executeUpdate();
-			pst = conn.prepareStatement("select id_tech from technologies where name=?");
+			pst = conn
+					.prepareStatement("select id_tech from technologies where name=?");
 			pst.setString(1, name);
 			rs = pst.executeQuery();
 			if (rs.next()) {
@@ -45,6 +49,8 @@ public class TechnologyDAO implements ITechnologyDAO {
 				return techn;
 			}
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -52,6 +58,8 @@ public class TechnologyDAO implements ITechnologyDAO {
 				if (pst != null)
 					pst.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
 		return null;
@@ -62,8 +70,9 @@ public class TechnologyDAO implements ITechnologyDAO {
 	 * 
 	 * @param name
 	 *            - name of technology
+	 * @throws PortalTechnicalException
 	 */
-	public void deleteTechnology(String name) {
+	public void deleteTechnology(String name) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "delete from technologies where name=?";
 		PreparedStatement st = null;
@@ -72,11 +81,15 @@ public class TechnologyDAO implements ITechnologyDAO {
 			st.setString(1, name);
 			st.executeUpdate();
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object PreparedStatement!");
 			}
 		}
 	}
@@ -86,8 +99,10 @@ public class TechnologyDAO implements ITechnologyDAO {
 	 * 
 	 * @param id
 	 *            - id of technology
+	 * @throws PortalTechnicalException
 	 */
-	public Technology findTechnologyById(long id) {
+	public Technology findTechnologyById(long id)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_tech, name from technologies where id_tech=?";
 		ResultSet rs = null;
@@ -103,6 +118,8 @@ public class TechnologyDAO implements ITechnologyDAO {
 				return techn;
 			}
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -110,6 +127,8 @@ public class TechnologyDAO implements ITechnologyDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
 		return null;
@@ -120,8 +139,10 @@ public class TechnologyDAO implements ITechnologyDAO {
 	 * 
 	 * @param name
 	 *            - name of technology
+	 * @throws PortalTechnicalException
 	 */
-	public Technology findTechnologyByName(String name) {
+	public Technology findTechnologyByName(String name)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_tech, name from technologies where name=?";
 		ResultSet rs = null;
@@ -137,6 +158,8 @@ public class TechnologyDAO implements ITechnologyDAO {
 				return techn;
 			}
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -144,17 +167,21 @@ public class TechnologyDAO implements ITechnologyDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
 		return null;
 	}
 
 	/**
-	 * Find all technologies
+	 * Finds all technologies
 	 * 
 	 * @return list of technologies
+	 * @throws PortalTechnicalException
 	 */
-	public List<Technology> findAllTechologies() {
+	public List<Technology> findAllTechologies()
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "Select * from technologies";
 		ResultSet rs = null;
@@ -171,6 +198,8 @@ public class TechnologyDAO implements ITechnologyDAO {
 			}
 			return techn;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -178,8 +207,9 @@ public class TechnologyDAO implements ITechnologyDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 }

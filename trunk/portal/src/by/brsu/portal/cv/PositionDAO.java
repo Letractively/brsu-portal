@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import by.brsu.portal.ConnectionManager;
+import by.brsu.portal.PortalTechnicalException;
 
 /**
  * @author Roman Ulezlo
@@ -24,8 +25,9 @@ public class PositionDAO implements IPositionDAO {
 	 * 
 	 * @param name
 	 *            String - name of position
+	 * @throws PortalTechnicalException
 	 */
-	public Position createPosition(String name) {
+	public Position createPosition(String name) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "insert into positions values (null,?)";
 		ResultSet rs = null;
@@ -34,7 +36,8 @@ public class PositionDAO implements IPositionDAO {
 			st = conn.prepareStatement(sql);
 			st.setString(1, name);
 			st.executeUpdate();
-			st = conn.prepareStatement("select id_pos from positions where name=?");
+			st = conn
+					.prepareStatement("select id_pos from positions where name=?");
 			st.setString(1, name);
 			rs = st.executeQuery();
 			if (rs.next()) {
@@ -44,6 +47,8 @@ public class PositionDAO implements IPositionDAO {
 				return pos;
 			}
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -51,6 +56,8 @@ public class PositionDAO implements IPositionDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
 		return null;
@@ -61,8 +68,9 @@ public class PositionDAO implements IPositionDAO {
 	 * 
 	 * @param name
 	 *            - name of position
+	 * @throws PortalTechnicalException
 	 */
-	public void deletePosition(String name) {
+	public void deletePosition(String name) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "delete from positions where name=?";
 		PreparedStatement st = null;
@@ -71,11 +79,15 @@ public class PositionDAO implements IPositionDAO {
 			st.setString(1, name);
 			st.executeUpdate();
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object PreparedStatement!");
 			}
 		}
 	}
@@ -85,8 +97,9 @@ public class PositionDAO implements IPositionDAO {
 	 * 
 	 * @param id
 	 *            - id of position
+	 * @throws PortalTechnicalException
 	 */
-	public Position findPositionById(long id) {
+	public Position findPositionById(long id) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_pos, name from positions where id_pos=?";
 		ResultSet rs = null;
@@ -102,6 +115,8 @@ public class PositionDAO implements IPositionDAO {
 				return pos;
 			}
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -109,6 +124,8 @@ public class PositionDAO implements IPositionDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
 		return null;
@@ -119,15 +136,17 @@ public class PositionDAO implements IPositionDAO {
 	 * 
 	 * @param name
 	 *            - name of position
+	 * @throws PortalTechnicalException
 	 */
-	public Position findPositionByName(String name) {
+	public Position findPositionByName(String name)
+			throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_pos, name from positions where name=?";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(sql);
-			st.setString(1,name);
+			st.setString(1, name);
 			rs = st.executeQuery();
 			if (rs.next()) {
 				Position pos = new Position();
@@ -136,6 +155,8 @@ public class PositionDAO implements IPositionDAO {
 				return pos;
 			}
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -143,17 +164,20 @@ public class PositionDAO implements IPositionDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
 		return null;
 	}
 
 	/**
-	 * Find all positions
+	 * Finds all positions
 	 * 
 	 * @return list of positions
+	 * @throws PortalTechnicalException
 	 */
-	public List<Position> findAllPosition() {
+	public List<Position> findAllPosition() throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_pos, name from technologies";
 		ResultSet rs = null;
@@ -170,6 +194,8 @@ public class PositionDAO implements IPositionDAO {
 			}
 			return positions;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+					"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -177,8 +203,9 @@ public class PositionDAO implements IPositionDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 }
