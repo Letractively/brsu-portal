@@ -6,9 +6,11 @@ package by.brsu.portal.project;
 
 import java.util.List;
 
+import by.brsu.portal.PortalTechnicalException;
+
 /**
  * @author Roman Ulezlo
- *
+ * 
  */
 public interface IProjectHistoryDAO {
 	/**
@@ -16,58 +18,72 @@ public interface IProjectHistoryDAO {
 	 * 
 	 * @param name
 	 *            String - name of project history
+	 * @throws PortalTechnicalException
 	 */
 	public ProjectHistory createProjectHistory(long project, long user,
-			String stage, String name);
-	
+			String stage, String name) throws PortalTechnicalException;
+
 	/**
 	 * Delete project history
 	 * 
 	 * @param id
 	 *            - id project history
+	 * @throws PortalTechnicalException
 	 */
-	public void deleteProjectHistory(long id);
-	
+	public void deleteProjectHistory(long id) throws PortalTechnicalException;
+
 	/**
 	 * Find project history by id
 	 * 
 	 * @param id
 	 *            - id project history
+	 * @throws PortalTechnicalException
 	 */
-	public ProjectHistory findProjectHistoryById(long id);
-	
+	public ProjectHistory findProjectHistoryById(long id)
+			throws PortalTechnicalException;
+
 	/**
-	 * Find project history by id of user
+	 * Finds project history by id of user
 	 * 
 	 * @return list of project history
+	 * @throws PortalTechnicalException
 	 */
-	public List<ProjectHistory> findProjectHistoryByIdUser(long idUser);
-	
+	public List<ProjectHistory> findProjectHistoryByIdUser(long idUser)
+			throws PortalTechnicalException;
+
 	/**
-	 * Find project history by id of project
+	 * Finds project history by id of project
 	 * 
 	 * @return list of project history
+	 * @throws PortalTechnicalException
 	 */
-	public List<ProjectHistory> findProjectHistoryByIdProject(long idProject);
-	
+	public List<ProjectHistory> findProjectHistoryByIdProject(long idProject)
+			throws PortalTechnicalException;
+
 	/**
-	 * Find project history by name
+	 * Finds project history by name
 	 * 
 	 * @return list of project history
+	 * @throws PortalTechnicalException
 	 */
-	public List<ProjectHistory> findProjectHistoryByName(String name);
-	
+	public List<ProjectHistory> findProjectHistoryByName(String name)
+			throws PortalTechnicalException;
+
 	/**
-	 * Find project history by stage
+	 * Finds project history by stage
 	 * 
 	 * @return list of project history
+	 * @throws PortalTechnicalException
 	 */
-	public List<ProjectHistory> findProjectHistoryByStage(String name);
-	
+	public List<ProjectHistory> findProjectHistoryByStage(String name)
+			throws PortalTechnicalException;
+
 	/**
-	 * Find all project history by stage
+	 * Finds all project history by stage
 	 * 
 	 * @return list of project history
+	 * @throws PortalTechnicalException
 	 */
-	public List<ProjectHistory> findAllProjectHistory();
+	public List<ProjectHistory> findAllProjectHistory()
+			throws PortalTechnicalException;
 }
