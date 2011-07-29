@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -42,8 +43,7 @@ public class ProjectDAO
 			st.setString(2, name);
 			st.executeUpdate();
 			st = conn.prepareStatement("");
-			rs = st.executeQuery("Select id from Projects where name='"
-					+ name + "'");
+			rs = st.executeQuery("Select id from Projects where name=?");
 			if (rs.next()) 
 			{
 				Project proj = new Project();				
@@ -63,10 +63,19 @@ public class ProjectDAO
 			}
 		} catch (SQLException e) 
 		{
-			e.printStackTrace();
 		} 
 		finally 
 		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} 
+			catch (SQLException ex) 
+			{
+			}
 		}
 		return null;
 	}
@@ -77,7 +86,7 @@ public class ProjectDAO
 	public void deleteProject(String name) 
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "delete from Projects where name='" + name + "'";
+		String sql = "delete from Projects where name=?";
 		Statement st = null;
 		try 
 		{
@@ -86,10 +95,17 @@ public class ProjectDAO
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
 		}
 		finally 
 		{
+			try 
+			{
+				if (st != null)
+					st.close();
+			} 
+			catch (SQLException ex) 
+			{
+			}
 		}
 	}
 
@@ -100,7 +116,7 @@ public class ProjectDAO
 	public Project findProjectById(long idProject) 
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from Projects where id=" + idProject;
+		String sql = "Select * from Projects where id=?";
 		ResultSet rs = null;
 		Statement st = null;
 		try {
@@ -126,10 +142,19 @@ public class ProjectDAO
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
 		} 
 		finally
 		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} 
+			catch (SQLException ex) 
+			{
+			}
 		}
 		return null;
 	}
@@ -140,7 +165,7 @@ public class ProjectDAO
 	public Project findProjectByidOwner(int idOwner)
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from Projects where id_owner=" + idOwner;
+		String sql = "Select * from Projects where id_owner=?";
 		ResultSet rs = null;
 		Statement st = null;
 		try {
@@ -166,10 +191,19 @@ public class ProjectDAO
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
 		}
 		finally 
 		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} 
+			catch (SQLException ex) 
+			{
+			}
 		}
 		return null;
 	}
@@ -180,7 +214,7 @@ public class ProjectDAO
 	public Project findProjectByName(String name)
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from Projects where name=" + name;
+		String sql = "Select * from Projects where name=?";
 		ResultSet rs = null;
 		Statement st = null;
 		try {
@@ -206,10 +240,19 @@ public class ProjectDAO
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
 		}
 		finally 
 		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} 
+			catch (SQLException ex) 
+			{
+			}
 		}
 		return null;
 	}
@@ -220,7 +263,7 @@ public class ProjectDAO
 	public Project findProjectByDescription(String Description)
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from Projects where description=" + Description;
+		String sql = "Select * from Projects where description=?";
 		ResultSet rs = null;
 		Statement st = null;
 		try {
@@ -246,10 +289,19 @@ public class ProjectDAO
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
 		}
 		finally 
 		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} 
+			catch (SQLException ex) 
+			{
+			}
 		}
 		return null;
 	}
@@ -260,7 +312,7 @@ public class ProjectDAO
 	public Project findProjectByDateOfCreation(Date DateOfCreation)
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from Projects where date_of_creation=" + DateOfCreation;
+		String sql = "Select * from Projects where date_of_creation=?";
 		ResultSet rs = null;
 		Statement st = null;
 		try {
@@ -286,10 +338,19 @@ public class ProjectDAO
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
 		}
 		finally 
 		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} 
+			catch (SQLException ex) 
+			{
+			}
 		}
 		return null;
 	}
@@ -300,7 +361,7 @@ public class ProjectDAO
 	public Project findProjectByDateOfClosing(Date DateOfClosing)
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from Projects where date_of_closing=" + DateOfClosing;
+		String sql = "Select * from Projects where date_of_closing=?";
 		ResultSet rs = null;
 		Statement st = null;
 		try {
@@ -326,10 +387,19 @@ public class ProjectDAO
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
 		}
 		finally 
 		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} 
+			catch (SQLException ex) 
+			{
+			}
 		}
 		return null;
 	}
@@ -340,7 +410,7 @@ public class ProjectDAO
 	public Project findProjectByVersion(int Version)
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from Projects where version=" + Version;
+		String sql = "Select * from Projects where version=?";
 		ResultSet rs = null;
 		Statement st = null;
 		try {
@@ -366,10 +436,19 @@ public class ProjectDAO
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
 		}
 		finally 
 		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} 
+			catch (SQLException ex) 
+			{
+			}
 		}
 		return null;
 	}
@@ -380,7 +459,7 @@ public class ProjectDAO
 	public Project findProjectByLicense(String License)
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from Projects where license=" + License;
+		String sql = "Select * from Projects where license=?";
 		ResultSet rs = null;
 		Statement st = null;
 		try {
@@ -406,10 +485,19 @@ public class ProjectDAO
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
 		}
 		finally 
 		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} 
+			catch (SQLException ex) 
+			{
+			}
 		}
 		return null;
 	}
@@ -420,7 +508,7 @@ public class ProjectDAO
 	public Project findProjectByStageOfDevelopment(String StageOfDevelopment)
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from Projects where stage_of_development=" + StageOfDevelopment;
+		String sql = "Select * from Projects where stage_of_development=?";
 		ResultSet rs = null;
 		Statement st = null;
 		try {
@@ -446,10 +534,71 @@ public class ProjectDAO
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
 		}
 		finally 
 		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} 
+			catch (SQLException ex) 
+			{
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Find all Projects
+	 */
+	public List<Project> findAllProjectss() 
+	{
+		conn = ConnectionManager.getConnectorPool().getConnection();
+		String sql = "Select * from Projects";
+		ResultSet rs = null;
+		PreparedStatement st = null;
+		try 
+		{
+			st = conn.prepareStatement("");
+			rs = st.executeQuery(sql);
+			List<Project> proj = new ArrayList<Project>();
+			Project tempproj = new Project();
+			if (rs.next()) 
+			{
+				tempproj.setIdProject(rs.getLong(1));
+				tempproj.setIdOwner(rs.getInt(2));
+				tempproj.setName(rs.getString(3));				
+				tempproj.setDescription(rs.getString(4));
+				tempproj.setDateOfCreation(rs.getDate(5));
+				tempproj.setDateOfClosing(rs.getDate(6));
+				//tempproj.setCategory(category);
+				tempproj.setVersion(rs.getInt(8));
+				tempproj.setLicense(rs.getString(9));
+				tempproj.setStageOfDevelopment(rs.getString(10));
+				//tempproj.setTechnology(technology);
+				//tempproj.setLanguages(languages);
+				proj.add(tempproj);
+			}
+			return proj;
+		} 
+		catch (SQLException e) 
+		{
+		}
+		finally 
+		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} 
+			catch (SQLException ex) 
+			{
+			}
 		}
 		return null;
 	}
