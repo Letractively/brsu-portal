@@ -20,7 +20,6 @@ public class ProjectHistory {
 	 * 
 	 */
 	public ProjectHistory() {
-		super();
 	}
 
 
@@ -33,7 +32,6 @@ public class ProjectHistory {
 	 */
 	public ProjectHistory(long id, long project, long user, String stage,
 			String name) {
-		super();
 		this.id = id;
 		this.project = project;
 		this.user = user;

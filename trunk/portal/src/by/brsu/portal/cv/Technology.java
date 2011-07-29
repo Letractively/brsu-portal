@@ -16,7 +16,6 @@ public class Technology {
 	 * 
 	 */
 	public Technology() {
-		super();
 	}
 
 	/**
@@ -24,7 +23,6 @@ public class Technology {
 	 * @param name
 	 */
 	public Technology(long id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}

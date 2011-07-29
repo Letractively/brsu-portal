@@ -43,7 +43,7 @@ public interface IProjectHistoryDAO {
 			throws PortalTechnicalException;
 
 	/**
-	 * Finds project history by id of user
+	 * Finds project histories by id of user
 	 * 
 	 * @return list of project history
 	 * @throws PortalTechnicalException
@@ -52,7 +52,7 @@ public interface IProjectHistoryDAO {
 			throws PortalTechnicalException;
 
 	/**
-	 * Finds project history by id of project
+	 * Finds project histories by id of project
 	 * 
 	 * @return list of project history
 	 * @throws PortalTechnicalException
@@ -61,7 +61,7 @@ public interface IProjectHistoryDAO {
 			throws PortalTechnicalException;
 
 	/**
-	 * Finds project history by name
+	 * Finds project histories by name
 	 * 
 	 * @return list of project history
 	 * @throws PortalTechnicalException
@@ -70,7 +70,7 @@ public interface IProjectHistoryDAO {
 			throws PortalTechnicalException;
 
 	/**
-	 * Finds project history by stage
+	 * Finds project histories by stage
 	 * 
 	 * @return list of project history
 	 * @throws PortalTechnicalException
@@ -79,7 +79,7 @@ public interface IProjectHistoryDAO {
 			throws PortalTechnicalException;
 
 	/**
-	 * Finds all project history by stage
+	 * Finds all project histories by stage
 	 * 
 	 * @return list of project history
 	 * @throws PortalTechnicalException

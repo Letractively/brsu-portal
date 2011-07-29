@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import by.brsu.portal.ConnectionManager;
+import by.brsu.portal.PortalTechnicalException;
 
 /**
  * @author Roman Ulezlo
@@ -25,9 +26,10 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 	 * 
 	 * @param name
 	 *            String - name of user position history
+	 * @throws PortalTechnicalException 
 	 */
 	public UserPositionHistory createUserPositionHistory(long idUser,
-			Date date, long idPosition, long idProject) {
+			Date date, long idPosition, long idProject) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "insert into UserPositionHistory values (null,?,?,?,?)";
 		ResultSet rs = null;
@@ -53,6 +55,8 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 			usprh.setIdProject(idProject);
 			return usprh;
 		} catch (SQLException ex) {
+			throw new PortalTechnicalException(
+			"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -60,9 +64,10 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+				"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 
 	/**
@@ -70,8 +75,9 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 	 * 
 	 * @param id
 	 *            - id project history
+	 * @throws PortalTechnicalException 
 	 */
-	public void deleteUserPositionHistory(long id) {
+	public void deleteUserPositionHistory(long id) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "delete from UserPositionHistory where id_usr_position_hist=?";
 		PreparedStatement st = null;
@@ -80,11 +86,15 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 			st.setLong(1, id);
 			st.executeUpdate();
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+			"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+				"Error closing object PreparedStatement!");
 			}
 		}
 	}
@@ -94,8 +104,9 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 	 * 
 	 * @param id
 	 *            - id user position history
+	 * @throws PortalTechnicalException 
 	 */
-	public UserPositionHistory findUserPositionHistoryById(long id) {
+	public UserPositionHistory findUserPositionHistoryById(long id) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_position_hist,id_user,date,id_pos,id_project from UserPositionHistory where id_usr_position_hist=?";
 		ResultSet rs = null;
@@ -114,6 +125,8 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 				return usprh;
 			}
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+			"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -121,17 +134,20 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+				"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
 		return null;
 	}
 
 	/**
-	 * Find user position history by id of user
+	 * Finds user position histories by id of user
 	 * 
 	 * @return list of user position history
+	 * @throws PortalTechnicalException 
 	 */
-	public List<UserPositionHistory> findUserPositionHistoryByIdUser(long idUser) {
+	public List<UserPositionHistory> findUserPositionHistoryByIdUser(long idUser) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_position_hist,id_user,date,id_pos,id_project from UserPositionHistory where id_usr_position_hist=?";
 		ResultSet rs = null;
@@ -152,6 +168,8 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 			}
 			return usprh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+			"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -159,17 +177,19 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+				"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 
 	/**
-	 * Find user position history by date
+	 * Finds user position histories by date
 	 * 
 	 * @return list of user position history
+	 * @throws PortalTechnicalException 
 	 */
-	public List<UserPositionHistory> findUserPositionHistoryByDate(Date date) {
+	public List<UserPositionHistory> findUserPositionHistoryByDate(Date date) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_position_hist,id_user,date,id_pos,id_project from UserPositionHistory where date=?";
 		ResultSet rs = null;
@@ -190,6 +210,8 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 			}
 			return usprh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+			"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -197,18 +219,20 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+				"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 
 	/**
-	 * Find user position history by id of position
+	 * Finds user position histories by id of position
 	 * 
 	 * @return list of user position history
+	 * @throws PortalTechnicalException 
 	 */
 	public List<UserPositionHistory> findUserPositionHistoryByIdPosition(
-			long idPosition) {
+			long idPosition) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_position_hist,id_user,date,id_pos,id_project from UserPositionHistory where id_pos=?";
 		ResultSet rs = null;
@@ -229,6 +253,8 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 			}
 			return usprh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+			"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -236,18 +262,20 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+				"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 
 	/**
-	 * Find user position history by id of project
+	 * Finds user position histories by id of project
 	 * 
 	 * @return list of user position history
+	 * @throws PortalTechnicalException 
 	 */
 	public List<UserPositionHistory> findUserPositionHistoryByIdProject(
-			long idProject) {
+			long idProject) throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_position_hist,id_user,date,id_pos,id_project from UserPositionHistory where id_project=?";
 		ResultSet rs = null;
@@ -268,6 +296,8 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 			}
 			return usprh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+			"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -275,17 +305,19 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+				"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 
 	/**
-	 * Find all users position history
+	 * Finds all users position histories
 	 * 
 	 * @return list of user position history
+	 * @throws PortalTechnicalException 
 	 */
-	public List<UserPositionHistory> findAllUserPositionHistory() {
+	public List<UserPositionHistory> findAllUserPositionHistory() throws PortalTechnicalException {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "select id_usr_position_hist,id_user,date,id_pos,id_project from UserPositionHistory";
 		ResultSet rs = null;
@@ -305,6 +337,8 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 			}
 			return usprh;
 		} catch (SQLException e) {
+			throw new PortalTechnicalException(
+			"Error of performance of inquiry!");
 		} finally {
 			try {
 				if (rs != null)
@@ -312,8 +346,9 @@ public class UserPositionHystoryDAO implements IUserPositionHistoryDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
+				throw new PortalTechnicalException(
+				"Error closing object ResultSet or PreparedStatement!");
 			}
 		}
-		return null;
 	}
 }
