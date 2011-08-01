@@ -22,15 +22,15 @@ public class UserDAO {
 
 	public User createUser(String name) {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();;
-		String query = "insert into users values (?,?)";
+		String query = "insert into users values (null,?)";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(query);
 			st.setString(1, name);
 			st.executeUpdate();
-			st = conn.prepareStatement("");
-			rs = st.executeQuery("Select idUser from position where name='" + name + "'");
+			st = conn.prepareStatement(""select id from positions where name=?"");
+			rs = st.executeQuery();
 			if (rs.next()) {
 				User user = new User();
 				user.setName(name);
