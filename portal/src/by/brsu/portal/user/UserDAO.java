@@ -29,7 +29,7 @@ public class UserDAO {
 			st = conn.prepareStatement(query);
 			st.setString(1, name);
 			st.executeUpdate();
-			st = conn.prepareStatement(""select id from positions where name=?"");
+			st = conn.prepareStatement("select id from user where name=?");
 			rs = st.executeQuery();
 			if (rs.next()) {
 				User user = new User();
@@ -57,7 +57,7 @@ public class UserDAO {
 
 	public void deleteUser(long id) {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
-		String query = "delete from position where id='" + id + "'";
+		String query = "delete from user where id=?";
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(query);
@@ -97,7 +97,7 @@ public class UserDAO {
 
 	public User findUserById(long id) {
 		Connection connection = ConnectionManager.getConnectorPool().getConnection();
-		String query = "Select * from users where id=" + id;
+		String query = "Select * from users where id=?";
 		ResultSet rs = null;
 		Statement st = null;
 		try {
@@ -129,7 +129,7 @@ public class UserDAO {
 
 	public User findUserByName(String name) {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
-		String query = "Select * from position where name=" + name;
+		String query = "Select * from user where name=?";
 		ResultSet rs = null;
 		Statement st = null;
 		try {
