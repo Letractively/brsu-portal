@@ -86,6 +86,10 @@ public class User {
 		this.sites = sites;
 		this.role = role;
 	}
+	public User() {
+		// TODO Auto-generated constructor stub
+	super();
+	}
 	/**
 	 * @return the progrLanguages
 	 */
@@ -337,137 +341,6 @@ public class User {
 	 */
 	public void setRole(Role role) {
 		this.role = role;
-	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + IQ;
-		result = prime * result + (int) (Id ^ (Id >>> 32));
-		result = prime * result + ((about == null) ? 0 : about.hashCode());
-		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
-		result = prime * result + ((dateOfLastVisit == null) ? 0 : dateOfLastVisit.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + (int) (idStat ^ (idStat >>> 32));
-		result = prime * result + ((isq == null) ? 0 : isq.hashCode());
-		result = prime * result + ((languagez == null) ? 0 : languagez.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + numberOfCautions;
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((picture == null) ? 0 : picture.hashCode());
-		result = prime * result + ((progrLanguages == null) ? 0 : progrLanguages.hashCode());
-		result = prime * result + ((role == null) ? 0 : role.hashCode());
-		result = prime * result + sex;
-		result = prime * result + ((sites == null) ? 0 : sites.hashCode());
-		result = prime * result + ((skype == null) ? 0 : skype.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
-		result = prime * result + ((telephone == null) ? 0 : telephone.hashCode());
-		return result;
-	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (IQ != other.IQ)
-			return false;
-		if (Id != other.Id)
-			return false;
-		if (about == null) {
-			if (other.about != null)
-				return false;
-		} else if (!about.equals(other.about))
-			return false;
-		if (dateOfBirth == null) {
-			if (other.dateOfBirth != null)
-				return false;
-		} else if (!dateOfBirth.equals(other.dateOfBirth))
-			return false;
-		if (dateOfLastVisit == null) {
-			if (other.dateOfLastVisit != null)
-				return false;
-		} else if (!dateOfLastVisit.equals(other.dateOfLastVisit))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (idStat != other.idStat)
-			return false;
-		if (isq == null) {
-			if (other.isq != null)
-				return false;
-		} else if (!isq.equals(other.isq))
-			return false;
-		if (languagez == null) {
-			if (other.languagez != null)
-				return false;
-		} else if (!languagez.equals(other.languagez))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (numberOfCautions != other.numberOfCautions)
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
-		if (picture == null) {
-			if (other.picture != null)
-				return false;
-		} else if (!picture.equals(other.picture))
-			return false;
-		if (progrLanguages == null) {
-			if (other.progrLanguages != null)
-				return false;
-		} else if (!progrLanguages.equals(other.progrLanguages))
-			return false;
-		if (role != other.role)
-			return false;
-		if (sex != other.sex)
-			return false;
-		if (sites == null) {
-			if (other.sites != null)
-				return false;
-		} else if (!sites.equals(other.sites))
-			return false;
-		if (skype == null) {
-			if (other.skype != null)
-				return false;
-		} else if (!skype.equals(other.skype))
-			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
-			return false;
-		if (surname == null) {
-			if (other.surname != null)
-				return false;
-		} else if (!surname.equals(other.surname))
-			return false;
-		if (telephone == null) {
-			if (other.telephone != null)
-				return false;
-		} else if (!telephone.equals(other.telephone))
-			return false;
-		return true;
 	}
 
 
