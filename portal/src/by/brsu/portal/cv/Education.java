@@ -1,4 +1,5 @@
-package Education;
+package by.brsu.portal.cv;
+import by.brsu.portal.uset.*;
 /**
  * BrSU Projects Portal
  * (c) 2011, BrSU Java Group
@@ -15,12 +16,12 @@ public class Education {
 	private String endDate;
 	private String eduName;
 	private String place;
-	private TypeEdu typeEdu;
+	private EduType typeEdu;
 	private String additional; 
 	/**
 	 * 
 	 */
-	public Education(long id, User user, String startDate, String endDate, String eduName, String place, Type_edu typeEdu, String additional) {
+	public Education(long id, User user, String startDate, String endDate, String eduName, String place, EduType typeEdu, String additional) {
 		// TODO Auto-generated constructor stub
 		this.id = id;
 		this.user = user; 
@@ -138,11 +139,11 @@ public class Education {
 		this.place = place;
 	}
 
-	public TypeEdu getTypeEdu() {
+	public EduType getTypeEdu() {
 		return typeEdu;
 	}
 
-	public void setTypeEdu(TypeEdu typeEdu) {
+	public void setTypeEdu(EduType typeEdu) {
 		this.typeEdu = typeEdu;
 	}
 
