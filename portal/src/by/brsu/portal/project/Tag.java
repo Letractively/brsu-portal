@@ -2,6 +2,7 @@
  * BrSU Projects Portal
  * (c) 2011, BrSU Java Group
  */
+package by.brsu.portal.project;
 
 /**
  * @author Oleg Panasyuk
