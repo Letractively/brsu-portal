@@ -4,13 +4,11 @@
  */
 package by.brsu.portal;
 
-import java.sql.SQLException;
-
 /**
  * @author Roman Ulezlo
  * 
  */
-public class PortalTechnicalException extends SQLException {
+public class PortalTechnicalException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	/**
