@@ -11,7 +11,7 @@ package by.brsu.portal.servlets;
 public interface Action {
 	public String perform();
 
-	public String NameReq();
+	public String nameReq();
 
-	public Object Send();
+	public Object send();
 }

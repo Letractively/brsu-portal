@@ -18,8 +18,13 @@ public class Servlet extends HttpServlet {
 	 *      response)
 	 */
 	protected String getActionName(HttpServletRequest request) {
-		String path = request.getServletPath();
-		return path.substring(1, path.lastIndexOf("."));
+		String method = request.getRequestURI().substring(
+				request.getContextPath().length());
+		if (method != null && !"".equals(method) && !"/".equals(method))
+			return method.substring(method.lastIndexOf("/") + 1,
+					method.length());
+
+		return null;
 	}
 
 	protected void doGet(HttpServletRequest request,
@@ -27,7 +32,7 @@ public class Servlet extends HttpServlet {
 
 		System.out.println("Servlet is called");
 		Action action = factory.create(getActionName(request));
-		request.setAttribute(action.NameReq(),action.Send());
+		request.setAttribute(action.nameReq(), action.send());
 		String url = action.perform();
 		if (url != null)
 			getServletContext().getRequestDispatcher(url).forward(request,
