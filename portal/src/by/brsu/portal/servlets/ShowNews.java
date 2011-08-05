@@ -13,7 +13,7 @@ import by.brsu.portal.news.NewsDAO;
  * @author Roman Ulezlo
  * 
  */
-public class showNews implements Action {
+public class ShowNews implements Action {
 	NewsDAO nDAO = new NewsDAO();
 	List<News> news = nDAO.readNews();
 
@@ -29,3 +29,4 @@ public class showNews implements Action {
 		return "/" + "news1.jsp";
 	}
 }
+
