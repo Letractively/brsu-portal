@@ -37,8 +37,8 @@ public class Factory {
 
 	protected Map<String, Class<?>> defaultMap() {
 		Map<String, Class<?>> map = new HashMap<String, Class<?>>();
-		map.put("index", BootstrapAction.class);
-		map.put("showNews",showNews.class);
+		map.put("index1.html", BootstrapAction.class);
+		map.put("ShowNews",ShowNews.class);
 		return map;
 	}
 }
