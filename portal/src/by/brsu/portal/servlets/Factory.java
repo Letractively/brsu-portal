@@ -39,6 +39,7 @@ public class Factory {
 		Map<String, Class<?>> map = new HashMap<String, Class<?>>();
 		map.put("index1.html", BootstrapAction.class);
 		map.put("ShowNews",ShowNews.class);
+		map.put("ShowProjects",ShowProjects.class);
 		return map;
 	}
 }
