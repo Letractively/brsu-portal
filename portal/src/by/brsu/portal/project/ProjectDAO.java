@@ -554,7 +554,7 @@ public class ProjectDAO
 	/**
 	 * Find all Projects
 	 */
-	public List<Project> findAllProjectss() 
+	public List<Project> findAllProjects() 
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "Select * from Projects";
@@ -565,9 +565,9 @@ public class ProjectDAO
 			st = conn.prepareStatement("");
 			rs = st.executeQuery(sql);
 			List<Project> proj = new ArrayList<Project>();
-			Project tempproj = new Project();
-			if (rs.next()) 
+			while (rs.next()) 
 			{
+				Project tempproj = new Project();
 				tempproj.setIdProject(rs.getLong(1));
 				tempproj.setIdOwner(rs.getInt(2));
 				tempproj.setName(rs.getString(3));				
