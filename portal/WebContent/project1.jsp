@@ -10,7 +10,6 @@
 <body>
 	<h2>Projects</h2>
 	<div>
-
 		<table border="1" align="left">
 			<c:forEach var="project" items="${projects}">
 				<tr>
@@ -29,7 +28,7 @@
 				</tr>
 			</c:forEach>
 		</table>
-
+		<a href=/portal/addProject.jsp>Add new project</a>
 	</div>
 </body>
 </html>
