@@ -16,26 +16,30 @@ import by.brsu.portal.ConnectionManager;
 
 /**
  * @author Hraznykh_Pavel
- * 
+ * @version 20110824
  */
 public class UserDAO {
-
-	public User createUser(String name) {
+	/**
+	 * @param user
+	 * @return user(+id)
+	 * @author Aliaksei Ryzhkou
+	 */
+	public User createUser(User user) {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();;
 		String query = "insert into users values (null,?)";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(query);
-			st.setString(1, name);
+			st.setString(1, user.getName());
 			st.executeUpdate();
 			st = conn.prepareStatement("select id from user where name=?");
 			rs = st.executeQuery();
 			if (rs.next()) {
-				User user = new User();
-				user.setName(name);
+				User tmp = new User();
+				user.setName(user.getName());
 				user.setId(rs.getLong(1));
-				return user;
+				return tmp;
 			}
 
 		} catch (SQLException e) {
@@ -55,7 +59,7 @@ public class UserDAO {
 		return null;
 	}
 
-	public void deleteUser(long id) {
+	public void deleteUser(User user) {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "delete from user where id=?";
 		PreparedStatement st = null;
