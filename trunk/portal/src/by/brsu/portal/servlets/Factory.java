@@ -40,6 +40,7 @@ public class Factory {
 		map.put("index1.html", BootstrapAction.class);
 		map.put("ShowNews",ShowNews.class);
 		map.put("ShowProjects",ShowProjects.class);
+		map.put("AddProject", AddProject.class);
 		return map;
 	}
 }
