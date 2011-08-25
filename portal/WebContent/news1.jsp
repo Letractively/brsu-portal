@@ -8,11 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>News</h2>
-<div>
-	<c:forEach var="new" items="${news}">
-			<li><c:out value="${new.text}"/></li>
-	</c:forEach>
-</div>
+	<div>
+		<div><%@include file='header.jsp'%></div>
+		<div><%@include file='mainMenu.jsp'%></div>
+		<div>
+			<c:forEach var="new" items="${news}">
+				<li><c:out value="${new.text}" /></li>
+			</c:forEach>
+		</div>
+		<div><%@include file='secondaryMenu.jsp'%></div>
+		<div><%@include file='footer.jsp'%></div>
+	</div>
 </body>
 </html>

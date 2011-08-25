@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>The project is added successfully!!!</h1>
-	<a href=/portal/index.jsp>Main</a>
+	<h2>BRSU Portal</h2>
 </body>
 </html>
