@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>The project is added successfully!!!</h1>
-	<a href=/portal/index.jsp>Main</a>
+	<p>
+		<a href="#">Main</a> | <a href="#">User</a> | <a href="Servlet/ShowProjects">Project</a>
+		| <a href="Servlet/ShowNews">News</a> | <a href="#">CV</a>
+	</p>
 </body>
 </html>

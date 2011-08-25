@@ -8,27 +8,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>Projects</h2>
 	<div>
-		<table border="1" align="left">
-			<c:forEach var="project" items="${projects}">
-				<tr>
-					<td><c:out value="${project.idProject}" /></td>
-					<td><c:out value="${project.idOwner}" /></td>
-					<td><c:out value="${project.name}" /></td>
-					<td><c:out value="${project.description}" /></td>
-					<td><c:out value="${project.dateOfCreation}" /></td>
-					<td><c:out value="${project.dateOfClosing}" /></td>
-					<td><c:out value="${project.category}" /></td>
-					<td><c:out value="${project.version}" /></td>
-					<td><c:out value="${project.license}" /></td>
-					<td><c:out value="${project.stageOfDevelopment}" /></td>
-					<td><c:out value="${project.technology}" /></td>
-					<td><c:out value="${project.languages}" /></td>
-				</tr>
-			</c:forEach>
-		</table>
+		<div><%@include file='header.jsp'%></div>
+		<div ><%@include file='mainMenu.jsp'%></div>
+		<div >
+			<table border="1">
+				<c:forEach var="project" items="${projects}">
+					<tr>
+						<td><c:out value="${project.idProject}" /></td>
+						<td><c:out value="${project.idOwner}" /></td>
+						<td><c:out value="${project.name}" /></td>
+						<td><c:out value="${project.description}" /></td>
+						<td><c:out value="${project.dateOfCreation}" /></td>
+						<td><c:out value="${project.dateOfClosing}" /></td>
+						<td><c:out value="${project.category}" /></td>
+						<td><c:out value="${project.version}" /></td>
+						<td><c:out value="${project.license}" /></td>
+						<td><c:out value="${project.stageOfDevelopment}" /></td>
+						<td><c:out value="${project.technology}" /></td>
+						<td><c:out value="${project.languages}" /></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
 		<a href=/portal/addProject.jsp>Add new project</a>
+		<div><%@include file='secondaryMenu.jsp'%></div>
+		<div><%@include file='footer.jsp'%></div>
 	</div>
 </body>
 </html>

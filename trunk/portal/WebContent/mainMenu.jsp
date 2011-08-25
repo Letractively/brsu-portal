@@ -7,7 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>The project is added successfully!!!</h1>
-	<a href=/portal/index.jsp>Main</a>
+	<ul>
+		<li><a href="#">Main</a></li>
+		<li><a href="#">User</a></li>
+		<li><a href="Servlet/ShowProjects">Projects</a></li>
+		<li><a href="Servlet/ShowNews">News</a></li>
+		<li><a href="#">Job</a></li>
+	</ul>
 </body>
 </html>
