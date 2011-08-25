@@ -8,7 +8,7 @@
 </head>
 <body>
 	<ul>
-		<li><a href="#">Main</a></li>
+		<li><a href="/portal/index.jsp">Main</a></li>
 		<li><a href="#">User</a></li>
 		<li><a href="Servlet/ShowProjects">Projects</a></li>
 		<li><a href="Servlet/ShowNews">News</a></li>
