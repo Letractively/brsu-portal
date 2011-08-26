@@ -10,7 +10,7 @@
 	<div>
 		<div><jsp:include page="header.jsp"></jsp:include></div>
 		<div><jsp:include page="mainMenu.jsp"></jsp:include></div>
-		<div><jsp:include page="<%= request.getParameter("content") %>"></jsp:include></div>
+		<div><jsp:include page='<%= request.getParameter("content") %>'></jsp:include></div>
 		<div><jsp:include page="secondaryMenu.jsp"></jsp:include></div>
 		<div><jsp:include page="footer.jsp"></jsp:include></div>
 	</div>
