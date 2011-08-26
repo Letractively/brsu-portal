@@ -8,7 +8,7 @@
 </head>
 <body>
 	<jsp:include page="/template.jsp">
-		<jsp:param name="param1" value="content.jsp" />
+		<jsp:param name="content" value="content.jsp" />
 	</jsp:include>
 </body>
 </html>
