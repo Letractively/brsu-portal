@@ -9,7 +9,7 @@
 </head>
 <body>
 	<jsp:include page="/template.jsp">
-		<jsp:param name="param1" value="project.jsp" />
+		<jsp:param name="content" value="project.jsp" />
 	</jsp:include>
 </body>
 </html>
