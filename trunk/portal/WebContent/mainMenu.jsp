@@ -4,15 +4,45 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title></title>
+<style type="text/css">
+#nav {
+	width: 760px;
+	height: 36px;
+	color: #f00;
+	font-size: 100%;
+	font-weight: bold;
+	line-height: 1.8em;
+	text-align: center;
+}
+
+#nav ul {
+	list-style-type: none;
+}
+
+#nav li {
+	display: inline;
+	margin: 0 8px;
+}
+
+#nav li a {
+	color: #0c0;
+}
+
+#nav li a:hover {
+	color: #f00;
+}
+</style>
 </head>
 <body>
-	<ul>
-		<li><a href="/portal/index.jsp">Main</a></li>
-		<li><a href="#">User</a></li>
-		<li><a href="Servlet/ShowProjects">Projects</a></li>
-		<li><a href="Servlet/ShowNews">News</a></li>
-		<li><a href="#">Job</a></li>
-	</ul>
+	<div id="nav">
+		<ul>
+			<li><a href="/portal/index.jsp">Main</a></li>			
+			<li><a href="Servlet/ShowProjects">Projects</a></li>
+			<li><a href="Servlet/ShowNews">News</a></li>
+			<li><a href="#">Member/People</a></li>
+			<li><a href="#">CV/Job</a></li>
+		</ul>
+	</div>
 </body>
 </html>
