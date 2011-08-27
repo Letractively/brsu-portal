@@ -5,13 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title></title>
+<style type="text/css">
+#text {
+	width: 545px;
+	font-size: 1.2em;
+	margin: 10px auto;
+	text-align: justify;
+}
+</style>
 </head>
 <body>
-	<div>
+	<div id="text">
 		<c:forEach var="new" items="${news}">
-			<li><c:out value="${new.text}" />
-			</li>
+			<li><c:out value="${new.text}" /></li>
 		</c:forEach>
 	</div>
 </body>

@@ -8,8 +8,6 @@
 </head>
 <body>
 	<div>
-		<div><%@include file='header.jsp'%></div>
-		<div><%@include file='mainMenu.jsp'%></div>
 		<form action="Servlet/AddProject" method="post">
 			<label for="name">Project name:</label><input type="text" name="name" /><br>
 			<label for="owner">Owner name:</label><input type="text" name="owner" /><br>
@@ -25,8 +23,6 @@
 				type="text" name="languages" /><br> <input type="submit"
 				value="Add" />
 		</form>
-		<div><%@include file='secondaryMenu.jsp'%></div>
-		<div><%@include file='footer.jsp'%></div>
 	</div>
 </body>
 </html>

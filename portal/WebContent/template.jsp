@@ -4,15 +4,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title></title>
+<style type="text/css">
+#container {
+	width: 760px;
+	border: 1px solid #999;
+	margin: 0 auto;
+}
+</style>
 </head>
-<body>
-	<div>
-		<div><jsp:include page="header.jsp"></jsp:include></div>
-		<div><jsp:include page="mainMenu.jsp"></jsp:include></div>
-		<div><jsp:include page='<%= request.getParameter("content") %>'></jsp:include></div>
-		<div><jsp:include page="secondaryMenu.jsp"></jsp:include></div>
-		<div><jsp:include page="footer.jsp"></jsp:include></div>
+<body BGCOLOR=#FFFFFF>
+	<div id="container">
+		<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="mainMenu.jsp"></jsp:include>
+		<jsp:include page='<%= request.getParameter("content") %>'></jsp:include>
+		<!--<jsp:include page="secondaryMenu.jsp"></jsp:include>-->
+		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>
