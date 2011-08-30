@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Welcome to BRSU Portal</title>
 </head>
-<body>
+<body background="/portal/images/bgb.jpg">
 	<jsp:include page="/template.jsp">
 		<jsp:param name="content" value="content.jsp" />
 	</jsp:include>
