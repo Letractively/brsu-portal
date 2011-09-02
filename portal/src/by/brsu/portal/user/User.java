@@ -26,7 +26,7 @@ public class User {
 	private String about;
 	private int sex;
 	private String skype;
-	private String isq;
+	private String icq; // change isq on icq
 	private int IQ;
 	private long idStat;
 	private Blob picture;
@@ -60,7 +60,7 @@ public class User {
 	 * @param role
 	 */
 	public User(List<ProgrammingLanguage> progrLanguages, long id, String name, String surname, String email,
-			Date dateOfBirth, String telephone, String password, String about, int sex, String skype, String isq,
+			Date dateOfBirth, String telephone, String password, String about, int sex, String skype, String icq,
 			int iQ, long idStat, Blob picture, Date dateOfLastVisit, int numberOfCautions, Status status,
 			List<Language> languagez, List<String> sites, Role role) {
 		super();
@@ -75,7 +75,7 @@ public class User {
 		this.about = about;
 		this.sex = sex;
 		this.skype = skype;
-		this.isq = isq;
+		this.icq = icq;
 		IQ = iQ;
 		this.idStat = idStat;
 		this.picture = picture;
@@ -223,16 +223,16 @@ public class User {
 		this.skype = skype;
 	}
 	/**
-	 * @return the isq
+	 * @return the icq
 	 */
-	public String getIsq() {
-		return isq;
+	public String getIcq() {
+		return icq;
 	}
 	/**
-	 * @param isq the isq to set
+	 * @param icq the icq to set
 	 */
-	public void setIsq(String isq) {
-		this.isq = isq;
+	public void setIcq(String icq) {
+		this.icq = icq;
 	}
 	/**
 	 * @return the iQ
