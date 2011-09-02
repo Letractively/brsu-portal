@@ -6,6 +6,7 @@
 package by.brsu.portal.user;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ import by.brsu.portal.ConnectionManager;
 
 /**
  * @author Hraznykh_Pavel
- * @version 20110824
+ * @version 20110827
  */
 public class UserDAO {
 	/**
@@ -26,23 +27,32 @@ public class UserDAO {
 	 */
 	public User createUser(User user) {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();;
-		String query = "insert into users values (null,?)";
+		String query = "insert into users values (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(query);
 			st.setString(1, user.getName());
+			st.setString(2, user.getSurname());
+			st.setString(3, user.getEmail());
+			st.setDate(4, (Date) user.getDateOfBirth());
+			st.setString(5, user.getTelephone());
+			st.setString(6, user.getPassword());
+			st.setInt(7, user.getSex());
+			st.setString(8, user.getSkype());
+			st.setString(9, user.getIcq());
+			st.setInt(10, user.getIQ());	
+			st.setLong(11, user.getStatus().getIdStat());
+			st.setBlob(12, user.getPicture());
+			Date tmpDt = new Date(1);
+			st.setDate(13, tmpDt);
+			st.setInt(14, user.getNumberOfCautions());
+			st.setInt(15, 1);
 			st.executeUpdate();
-			st = conn.prepareStatement("select id from user where name=?");
-			rs = st.executeQuery();
-			if (rs.next()) {
-				User tmp = new User();
-				user.setName(user.getName());
-				user.setId(rs.getLong(1));
-				return tmp;
-			}
+			return user;
 
 		} catch (SQLException e) {
+			e.printStackTrace();
 			// TODO log error
 		} finally {
 			try {
