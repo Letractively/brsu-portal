@@ -1,10 +1,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div id="text">
+<div id="tabl">
 	<table border="1">
+		<tr bordercolor="12">
+			<td >Name of project</td>
+			<td>Description</td>
+			<td>Date of creation</td>
+			<td>Date of closing</td>
+			<td>Category</td>
+			<td>Version</td>
+			<td>License</td>
+			<td>Stage of development</td>
+			<td>Technology</td>
+			<td>Languages</td>
+		</tr>
 		<c:forEach var="project" items="${projects}">
 			<tr>
-				<td><c:out value="${project.idProject}" /></td>
-				<td><c:out value="${project.idOwner}" /></td>
 				<td><c:out value="${project.name}" /></td>
 				<td><c:out value="${project.description}" /></td>
 				<td><c:out value="${project.dateOfCreation}" /></td>
