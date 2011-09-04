@@ -41,6 +41,7 @@ public class Factory {
 		map.put("ShowNews",ShowNews.class);
 		map.put("ShowProjects",ShowProjects.class);
 		map.put("AddProject", AddProject.class);
+		map.put("AddUser", AddUser.class);
 		return map;
 	}
 }
