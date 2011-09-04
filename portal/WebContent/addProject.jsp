@@ -11,17 +11,14 @@
 		<form action="Servlet/AddProject" method="post">
 			<label for="name">Project name:</label><input type="text" name="name" /><br>
 			<label for="owner">Owner name:</label><input type="text" name="owner" /><br>
-			<label for="description">Description:</label><input type="text"
-				name="description" /><br> <label for="category">Category:</label><input
-				type="text" name="category" /><br> <label for="version">Version:</label><input
-				type="text" name="version" /><br> <label for="license">License:</label><input
-				type="text" name="license" /><br> <label
-				for="stageOfDevelopment">Stage of development:</label><input
-				type="text" name="stageOfDevelopment" /><br> <label
-				for="technology">Technology:</label><input type="text"
-				name="technology" /><br> <label for="languages">Languages:</label><input
-				type="text" name="languages" /><br> <input type="submit"
-				value="Add" />
+			<label for="description">Description:</label><input type="text"	name="description" /><br> 
+			<label for="category">Category:</label><input type="text" name="category" /><br> 
+			<label for="version">Version:</label><input	type="text" name="version" /><br> 
+			<label for="license">License:</label><input	type="text" name="license" /><br> 
+			<label for="stageOfDevelopment">Stage of development:</label><input	type="text" name="stageOfDevelopment" /><br> 
+			<label for="technology">Technology:</label><input type="text" name="technology" /><br> 
+			<label for="languages">Languages:</label><input	type="text" name="languages" /><br> 
+			<input type="submit" value="Add" />
 		</form>
 	</div>
 </body>
