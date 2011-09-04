@@ -1,6 +1,5 @@
 @CHARSET "UTF-8";
 /*- Portal.BrSU.BY, 2011 | mail@Portal.BrSU.BY */
-
 #container {
 	width: 760px;
 	border: 1px solid #999;
@@ -11,7 +10,7 @@
 	color: Black;
 	background: #665;
 	width: 760px;
-	height: 76px;
+	height: 106px;
 }
 
 #header h3 {
@@ -24,6 +23,14 @@
 
 #headerRight {
 	float: right;
+}
+
+#headerRight a {
+	color: #0c0;
+}
+
+#headerRight a:hover {
+	color: #f00;
 }
 
 #headerRight form {
