@@ -15,31 +15,27 @@ public class Factory {
 	protected Map<String, Class<?>> map = defaultMap();
 
 	public Factory() {
-		super();
 	}
 
 	public Action create(String actionName) {
 		Class<?> klass = (Class<?>) map.get(actionName);
 		if (klass == null)
 			throw new RuntimeException(getClass()
-					+ " was unable to find an action named '"
-					+ actionName + "'.");
-		;
-
+					+ " was unable to find an action named '" + actionName
+					+ "'.");
 		Action actionInstance = null;
 		try {
 			actionInstance = (Action) klass.newInstance();
 		} catch (Exception e) {
 		}
-
 		return actionInstance;
 	}
 
 	protected Map<String, Class<?>> defaultMap() {
 		Map<String, Class<?>> map = new HashMap<String, Class<?>>();
-		map.put("index1.html", BootstrapAction.class);
-		map.put("ShowNews",ShowNews.class);
-		map.put("ShowProjects",ShowProjects.class);
+		map.put("index.jsp", ShowMainPage.class);
+		map.put("ShowNews", ShowNews.class);
+		map.put("ShowProjects", ShowProjects.class);
 		map.put("AddProject", AddProject.class);
 		map.put("AddUser", AddUser.class);
 		return map;

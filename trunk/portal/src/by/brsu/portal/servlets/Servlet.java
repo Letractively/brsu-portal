@@ -1,10 +1,21 @@
+/**
+ * BrSU Projects Portal
+ * (c) 2011, BrSU Java Group
+ */
 package by.brsu.portal.servlets;
 
 import java.io.IOException;
+import java.util.Map.Entry;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+/**
+ * @author Roman Ulezlo
+ * 
+ */
 
 /**
  * Servlet implementation class Servlet
@@ -18,21 +29,22 @@ public class Servlet extends HttpServlet {
 	 *      response)
 	 */
 	protected String getActionName(HttpServletRequest request) {
-		String method = request.getRequestURI().substring(
+		String actionName = request.getRequestURI().substring(
 				request.getContextPath().length());
-		if (method != null && !"".equals(method) && !"/".equals(method))
-			return method.substring(method.lastIndexOf("/") + 1,
-					method.length());
-
+		if (actionName != null && !"".equals(actionName)
+				&& !"/".equals(actionName))
+			return actionName.substring(actionName.lastIndexOf("/") + 1,
+					actionName.length());
 		return null;
 	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
-		System.out.println("Servlet is called");
 		Action action = factory.create(getActionName(request));
-		request.setAttribute(action.nameReq(), action.send());
+		//request.setAttribute(action.nameReq(), action.send());
+		for (Entry<String, Object> entry: action.getParametersMap().entrySet()){
+			request.setAttribute(entry.getKey(),entry.getValue());
+			}
 		String url = action.perform();
 		if (url != null)
 			getServletContext().getRequestDispatcher(url).forward(request,
@@ -47,5 +59,4 @@ public class Servlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

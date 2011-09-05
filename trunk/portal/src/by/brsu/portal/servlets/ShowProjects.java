@@ -4,7 +4,9 @@
  */
 package by.brsu.portal.servlets;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import by.brsu.portal.project.Project;
 import by.brsu.portal.project.ProjectDAO;
 
@@ -13,17 +15,17 @@ import by.brsu.portal.project.ProjectDAO;
  *
  */
 public class ShowProjects implements Action{
-	ProjectDAO pDAO = new ProjectDAO();
-	List<Project> projects = pDAO.findAllProjects();
-
-	public String nameReq() {
-		return "projects";
+	private ProjectDAO pDAO = new ProjectDAO();
+	private List<Project> projects = pDAO.findAllProjects();
+	private Map<String, Object> mp = new HashMap<String, Object>();
+	
+	@Override
+	public Map<String, Object> getParametersMap() {
+		mp.put("projects",projects);
+		return mp;
 	}
 
-	public Object send() {
-		return projects;
-	}
-
+	@Override
 	public String perform() {
 		return "/project1.jsp";
 	}
