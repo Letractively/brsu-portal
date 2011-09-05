@@ -1,6 +1,11 @@
 package by.brsu.portal.servlets;
 
-public class AddUser implements Action{
+import java.util.HashMap;
+import java.util.Map;
+
+public class AddUser implements Action {
+	private Map<String, Object> mp = new HashMap<String, Object>();
+
 	@Override
 	public String perform() {
 		// TODO Auto-generated method stub
@@ -8,15 +13,8 @@ public class AddUser implements Action{
 	}
 
 	@Override
-	public String nameReq() {
-		// TODO Auto-generated method stub
-		return "";
+	public Map<String, Object> getParametersMap() {
+		mp.put("", "");
+		return mp;
 	}
-
-	@Override
-	public Object send() {
-		// TODO Auto-generated method stub
-		return "";
-	}
-
 }

@@ -4,6 +4,8 @@
  */
 package by.brsu.portal.servlets;
 
+import java.util.Map;
+
 /**
  * @author Roman Ulezlo
  * 
@@ -11,7 +13,5 @@ package by.brsu.portal.servlets;
 public interface Action {
 	public String perform();
 
-	public String nameReq();
-
-	public Object send();
+	public Map<String, Object> getParametersMap();
 }

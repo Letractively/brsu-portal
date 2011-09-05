@@ -8,7 +8,7 @@ package by.brsu.portal.servlets;
  * @author Roman Ulezlo
  * 
  */
-abstract public class BootstrapAction implements Action {
+abstract public class ShowMainPage implements Action {
 	public String NameReq() {
 		return "index";
 	}
@@ -18,6 +18,6 @@ abstract public class BootstrapAction implements Action {
 	}
 
 	public String perform() {
-		return "index1.html";
+		return "index.jsp";
 	}
 }
