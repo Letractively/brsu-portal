@@ -41,11 +41,10 @@ public class Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		Action action = factory.create(getActionName(request));
-		//request.setAttribute(action.nameReq(), action.send());
-		for (Entry<String, Object> entry: action.getParametersMap().entrySet()){
+		for (Entry<String, Object> entry: action.getParametersMap(request, response).entrySet()){
 			request.setAttribute(entry.getKey(),entry.getValue());
 			}
-		String url = action.perform();
+		String url = action.perform(request,response);
 		if (url != null)
 			getServletContext().getRequestDispatcher(url).forward(request,
 					response);

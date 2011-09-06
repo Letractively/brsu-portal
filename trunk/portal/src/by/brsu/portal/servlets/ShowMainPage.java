@@ -4,20 +4,29 @@
  */
 package by.brsu.portal.servlets;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @author Roman Ulezlo
  * 
  */
-abstract public class ShowMainPage implements Action {
-	public String NameReq() {
-		return "index";
+public class ShowMainPage implements Action {
+	private Map<String, Object> mp = new HashMap<String, Object>();
+
+	@Override
+	public String perform(HttpServletRequest request,
+			HttpServletResponse response) {
+		return "/index.jsp";
 	}
 
-	public Object Send() {
-		return null;
-	}
-
-	public String perform() {
-		return "index.jsp";
+	@Override
+	public Map<String, Object> getParametersMap(HttpServletRequest request,
+			HttpServletResponse response) {
+		mp.put("", "");
+		return mp;
 	}
 }
