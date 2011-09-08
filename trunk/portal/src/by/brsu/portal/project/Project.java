@@ -182,6 +182,10 @@ public class Project
 	/**
 	 * @param set category
 	 */
+	public void setCategoryForOne(String categoryParametr) 
+	{
+		this.category.setName(categoryParametr);
+	}
 	public void setCategory(ProjectCategory category) 
 	{
 		this.category = category;
@@ -246,6 +250,12 @@ public class Project
 	/**
 	 * @param set technology
 	 */
+	public void setTechnologyForOne(String technology) 
+	{
+		Technology tech = new Technology();
+		tech.setName(technology);
+		this.technology.add(tech);
+	}
 	public void setTechnology(List<Technology> technology) 
 	{
 		this.technology = technology;
@@ -262,6 +272,12 @@ public class Project
 	/**
 	 * @param set languages
 	 */
+	public void setLanguagesForOne(String languages) 
+	{
+		ProgrammingLanguage proglang = new ProgrammingLanguage();
+		proglang.setName(languages);
+		this.languages.add(proglang);
+	}
 	public void setLanguages(List<ProgrammingLanguage> languages) 
 	{
 		this.languages = languages;
