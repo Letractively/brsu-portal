@@ -4,40 +4,31 @@
  */
 package by.brsu.portal.servlets;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author Roman Ulezlo
  * 
  */
 public class Factory {
-	protected Map<String, Class<?>> map = defaultMap();
-
 	public Factory() {
 	}
 
-	public Action create(String actionName) {
-		Class<?> klass = (Class<?>) map.get(actionName);
-		if (klass == null)
-			throw new RuntimeException(getClass()
-					+ " was unable to find an action named '" + actionName
-					+ "'.");
+	public Action create(String actionName,HttpServletRequest request) {
 		Action actionInstance = null;
 		try {
-			actionInstance = (Action) klass.newInstance();
+			ActionHandler handler = new ActionHandler(actionName);
+			if (handler.getClassName() != "")
+				try {
+					actionInstance = (Action) Class.forName(
+							handler.getClassName()).newInstance();
+				} catch (ClassNotFoundException ex) {
+					actionInstance = (Action) ShowMainPage.class.newInstance();
+				}
+			else
+				actionInstance = (Action) ShowMainPage.class.newInstance();
 		} catch (Exception e) {
 		}
 		return actionInstance;
-	}
-
-	protected Map<String, Class<?>> defaultMap() {
-		Map<String, Class<?>> map = new HashMap<String, Class<?>>();
-		map.put("index.jsp", ShowMainPage.class);
-		map.put("ShowNews", ShowNews.class);
-		map.put("ShowProjects", ShowProjects.class);
-		map.put("AddProject", AddProject.class);
-		map.put("AddUser", AddUser.class);
-		return map;
 	}
 }
