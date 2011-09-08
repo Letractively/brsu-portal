@@ -19,18 +19,17 @@ public class AddProject implements Action {
 	Project project = new Project();
 
 	@Override
-	public String perform(HttpServletRequest request,
-			HttpServletResponse response) {
-
+	public String perform(HttpServletRequest request,HttpServletResponse response) 
+	{
 		project.setName(request.getParameter("name"));
 		project.setDescription(request.getParameter("description"));
-		// project.setCategory((ProjectCategory)request.getParameter("category"));
+		project.setCategoryForOne(request.getParameter("category"));
 		project.setLicense(request.getParameter("license"));
-		project.setStageOfDevelopment(request
-				.getParameter("stageOfDevelopment"));
-		// project.setTechnology(request.getParameter("technology"));
-		// project.setLanguages(request.getParameter("languages"));
-		return "/addProjectOK.jsp";
+		project.setStageOfDevelopment(request.getParameter("stageOfDevelopment"));
+		project.setTechnologyForOne(request.getParameter("technology"));
+		project.setLanguagesForOne(request.getParameter("languages"));
+		//return "/addProjectOK.jsp";
+		return "/addProjectTemplate.jsp";
 	}
 
 	// protected Project createProject(HttpServletRequest request) {
