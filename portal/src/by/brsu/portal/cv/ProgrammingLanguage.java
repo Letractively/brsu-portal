@@ -17,6 +17,10 @@ public class ProgrammingLanguage {
 	 * @param idLanguage
 	 * @param name
 	 */
+	public ProgrammingLanguage() {
+		super();
+	}
+	
 	public ProgrammingLanguage(long idLanguage, String name) {
 		super();
 		this.idLanguage = idLanguage;
