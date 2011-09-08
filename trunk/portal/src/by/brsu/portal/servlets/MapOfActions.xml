@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+	<action name="ShowNews">by.brsu.portal.servlets.ShowNews</action>
+	<action name="ShowProjects">by.brsu.portal.servlets.ShowProjects</action>
+	<action name="AddProject">by.brsu.portal.servlets.AddProject</action>
+	<action name="AddUser">by.brsu.portal.servlets.AddUser</action>
+</actions>

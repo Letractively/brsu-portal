@@ -6,7 +6,6 @@ package by.brsu.portal.servlets;
 
 import java.io.IOException;
 import java.util.Map.Entry;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +39,7 @@ public class Servlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		Action action = factory.create(getActionName(request));
+		Action action = factory.create(getActionName(request),request);
 		for (Entry<String, Object> entry: action.getParametersMap(request, response).entrySet()){
 			request.setAttribute(entry.getKey(),entry.getValue());
 			}
