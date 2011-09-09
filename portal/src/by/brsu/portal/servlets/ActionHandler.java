@@ -27,8 +27,9 @@ public class ActionHandler extends DefaultHandler {
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		try {
 			SAXParser saxParser = factory.newSAXParser();
-			saxParser.parse(new InputSource(getClass().getResource("MapOfActions.xml").getPath()), this);
+			saxParser.parse(new InputSource(getClass().getResourceAsStream("MapOfActions.xml")), this);
 		} catch (Throwable t) {
+			
 		}
 	}
 
