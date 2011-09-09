@@ -131,12 +131,12 @@ public class ProjectDAO
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
 				proj.setDateOfClosing(rs.getDate(6));
-				proj.setCategoryForOne(rs.getString(7));
+				//proj.setCategoryForOne(rs.getString(7));
 				proj.setVersion(rs.getInt(8));
 				proj.setLicense(rs.getString(9));
 				proj.setStageOfDevelopment(rs.getString(10));
-				proj.setTechnologyForOne(rs.getString(11));
-				proj.setLanguagesForOne(rs.getString(12));
+				//proj.setTechnologyForOne(rs.getString(11));
+				//proj.setLanguagesForOne(rs.getString(12));
 				return proj;
 			}
 		} 
@@ -180,12 +180,12 @@ public class ProjectDAO
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
 				proj.setDateOfClosing(rs.getDate(6));
-				proj.setCategoryForOne(rs.getString(7));
+				//proj.setCategoryForOne(rs.getString(7));
 				proj.setVersion(rs.getInt(8));
 				proj.setLicense(rs.getString(9));
 				proj.setStageOfDevelopment(rs.getString(10));
-				proj.setTechnologyForOne(rs.getString(11));
-				proj.setLanguagesForOne(rs.getString(12));
+				//proj.setTechnologyForOne(rs.getString(11));
+				//proj.setLanguagesForOne(rs.getString(12));
 				return proj;
 			}
 		} 
@@ -229,12 +229,12 @@ public class ProjectDAO
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
 				proj.setDateOfClosing(rs.getDate(6));
-				proj.setCategoryForOne(rs.getString(7));
+				//proj.setCategoryForOne(rs.getString(7));
 				proj.setVersion(rs.getInt(8));
 				proj.setLicense(rs.getString(9));
 				proj.setStageOfDevelopment(rs.getString(10));
-				proj.setTechnologyForOne(rs.getString(11));
-				proj.setLanguagesForOne(rs.getString(12));
+				//proj.setTechnologyForOne(rs.getString(11));
+				//proj.setLanguagesForOne(rs.getString(12));
 				return proj;
 			}
 		} 
@@ -278,12 +278,12 @@ public class ProjectDAO
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
 				proj.setDateOfClosing(rs.getDate(6));
-				proj.setCategoryForOne(rs.getString(7));
+				//proj.setCategoryForOne(rs.getString(7));
 				proj.setVersion(rs.getInt(8));
 				proj.setLicense(rs.getString(9));
 				proj.setStageOfDevelopment(rs.getString(10));
-				proj.setTechnologyForOne(rs.getString(11));
-				proj.setLanguagesForOne(rs.getString(12));
+				//proj.setTechnologyForOne(rs.getString(11));
+				//proj.setLanguagesForOne(rs.getString(12));
 				return proj;
 			}
 		} 
@@ -327,12 +327,12 @@ public class ProjectDAO
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
 				proj.setDateOfClosing(rs.getDate(6));
-				proj.setCategoryForOne(rs.getString(7));
+				//proj.setCategoryForOne(rs.getString(7));
 				proj.setVersion(rs.getInt(8));
 				proj.setLicense(rs.getString(9));
 				proj.setStageOfDevelopment(rs.getString(10));
-				proj.setTechnologyForOne(rs.getString(11));
-				proj.setLanguagesForOne(rs.getString(12));
+				//proj.setTechnologyForOne(rs.getString(11));
+				//proj.setLanguagesForOne(rs.getString(12));
 				return proj;
 			}
 		} 
@@ -376,12 +376,12 @@ public class ProjectDAO
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
 				proj.setDateOfClosing(rs.getDate(6));
-				proj.setCategoryForOne(rs.getString(7));
+				//proj.setCategoryForOne(rs.getString(7));
 				proj.setVersion(rs.getInt(8));
 				proj.setLicense(rs.getString(9));
 				proj.setStageOfDevelopment(rs.getString(10));
-				proj.setTechnologyForOne(rs.getString(11));
-				proj.setLanguagesForOne(rs.getString(12));
+				//proj.setTechnologyForOne(rs.getString(11));
+				//proj.setLanguagesForOne(rs.getString(12));
 				return proj;
 			}
 		} 
@@ -425,12 +425,12 @@ public class ProjectDAO
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
 				proj.setDateOfClosing(rs.getDate(6));
-				proj.setCategoryForOne(rs.getString(7));
+				//proj.setCategoryForOne(rs.getString(7));
 				proj.setVersion(rs.getInt(8));
 				proj.setLicense(rs.getString(9));
 				proj.setStageOfDevelopment(rs.getString(10));
-				proj.setTechnologyForOne(rs.getString(11));
-				proj.setLanguagesForOne(rs.getString(12));
+				//proj.setTechnologyForOne(rs.getString(11));
+				//proj.setLanguagesForOne(rs.getString(12));
 				return proj;
 			}
 		} 
@@ -474,12 +474,12 @@ public class ProjectDAO
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
 				proj.setDateOfClosing(rs.getDate(6));
-				proj.setCategoryForOne(rs.getString(7));
+				//proj.setCategoryForOne(rs.getString(7));
 				proj.setVersion(rs.getInt(8));
 				proj.setLicense(rs.getString(9));
 				proj.setStageOfDevelopment(rs.getString(10));
-				proj.setTechnologyForOne(rs.getString(11));
-				proj.setLanguagesForOne(rs.getString(12));
+				//proj.setTechnologyForOne(rs.getString(11));
+				//proj.setLanguagesForOne(rs.getString(12));
 				return proj;
 			}
 		} 
@@ -523,12 +523,12 @@ public class ProjectDAO
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
 				proj.setDateOfClosing(rs.getDate(6));
-				proj.setCategoryForOne(rs.getString(7));
+				//proj.setCategoryForOne(rs.getString(7));
 				proj.setVersion(rs.getInt(8));
 				proj.setLicense(rs.getString(9));
 				proj.setStageOfDevelopment(rs.getString(10));
-				proj.setTechnologyForOne(rs.getString(11));
-				proj.setLanguagesForOne(rs.getString(12));
+				//proj.setTechnologyForOne(rs.getString(11));
+				//proj.setLanguagesForOne(rs.getString(12));
 				return proj;
 			}
 		} 
@@ -574,12 +574,12 @@ public class ProjectDAO
 				tempproj.setDescription(rs.getString(4));
 				tempproj.setDateOfCreation(rs.getDate(5));
 				tempproj.setDateOfClosing(rs.getDate(6));
-				tempproj.setCategoryForOne(rs.getString(7));
+				//tempproj.setCategoryForOne(rs.getString(7));
 				tempproj.setVersion(rs.getInt(8));
 				tempproj.setLicense(rs.getString(9));
 				tempproj.setStageOfDevelopment(rs.getString(10));
-				tempproj.setTechnologyForOne(rs.getString(11));
-				tempproj.setLanguagesForOne(rs.getString(12));
+				//tempproj.setTechnologyForOne(rs.getString(11));
+				//tempproj.setLanguagesForOne(rs.getString(12));
 				proj.add(tempproj);
 			}
 			return proj;

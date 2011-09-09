@@ -23,11 +23,11 @@ public class AddProject implements Action {
 	{
 		project.setName(request.getParameter("name"));
 		project.setDescription(request.getParameter("description"));
-		project.setCategoryForOne(request.getParameter("category"));
+		//project.setCategoryForOne(request.getParameter("category"));
 		project.setLicense(request.getParameter("license"));
 		project.setStageOfDevelopment(request.getParameter("stageOfDevelopment"));
-		project.setTechnologyForOne(request.getParameter("technology"));
-		project.setLanguagesForOne(request.getParameter("languages"));
+		//project.setTechnologyForOne(request.getParameter("technology"));
+		//project.setLanguagesForOne(request.getParameter("languages"));
 		//return "/addProjectOK.jsp";
 		return "/addProjectTemplate.jsp";
 	}
@@ -72,7 +72,7 @@ public class AddProject implements Action {
 	@Override
 	public Map<String, Object> getParametersMap(HttpServletRequest request,
 			HttpServletResponse response) {
-		mp.put("tt", project);
+		mp.put("project", project);
 		return mp;
 	}
 
