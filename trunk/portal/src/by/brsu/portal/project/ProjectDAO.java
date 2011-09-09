@@ -79,6 +79,55 @@ public class ProjectDAO
 		}
 		return null;
 	}
+	
+	public Project createProject(Project project) 
+	{
+		conn = ConnectionManager.getConnectorPool().getConnection();
+		String sql = "insert into Projects values (?,?,?,?,?,?,?,?,?,?,?,?)";
+		ResultSet rs = null;
+		PreparedStatement st = null;
+		try 
+		{
+			st = conn.prepareStatement(sql);
+			st.setString(2, project.getName());
+			st.executeUpdate();
+			st = conn.prepareStatement("");
+			rs = st.executeQuery("Select id from Projects where name=?");
+			if (rs.next()) 
+			{
+				Project proj = new Project();				
+				proj.setIdProject(rs.getLong(1));
+				proj.setIdOwner(project.getIdOwner());
+				proj.setName(project.getName());				
+				proj.setDescription(project.getDescription());
+				proj.setDateOfCreation(project.getDateOfCreation());
+				proj.setDateOfClosing(project.getDateOfClosing());
+				proj.setCategory(project.getCategory());
+				proj.setVersion(project.getVersion());
+				proj.setLicense(project.getLicense());
+				proj.setStageOfDevelopment(project.getStageOfDevelopment());
+				proj.setTechnology(project.getTechnology());
+				proj.setLanguages(project.getLanguages());
+				return proj;
+			}
+		} catch (SQLException e) 
+		{
+		} 
+		finally 
+		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} 
+			catch (SQLException ex) 
+			{
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * Delete Project
