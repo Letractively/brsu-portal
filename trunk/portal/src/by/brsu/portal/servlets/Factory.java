@@ -20,9 +20,8 @@ public class Factory {
 			ActionHandler handler = new ActionHandler(actionName);
 			if (handler.getClassName() != "")
 				try {
-					actionInstance = (Action) Class.forName(
-							handler.getClassName()).newInstance();
-				} catch (ClassNotFoundException ex) {
+					actionInstance = (Action) Class.forName(handler.getClassName()).newInstance();
+				} catch (Exception ex) {
 					actionInstance = (Action) ShowMainPage.class.newInstance();
 				}
 			else
