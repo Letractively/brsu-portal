@@ -50,10 +50,25 @@ public class UserDAOTest {
 			user.setPassword("123");
 			user.setPicture(null);
 			User user2 = usr.createUser(user);
-			if (user2==null) fail("Error testCreateUser: null user");
+			if (user2 == null)
+				fail("Error testCreateUser: null user");
 		} catch (Exception e) {
 			fail("Error testCreateUser:" + e.toString());
 			System.out.println("Error testCreateUser:" + e.toString());
+		}
+	}
+
+	@Test
+	public final void testfindUserByEmail() {
+		User user = new User();
+		user.setEmail("email");
+		UserDAO userDAO = new UserDAO();
+		try {
+			 if(userDAO.findUserByEmail(user.getEmail())){ System.out.println("true");}
+			 else {System.out.println("false");};
+
+		} catch (Exception e) {
+			fail("Error testfindUserByEmail:" + e.toString());
 		}
 	}
 
