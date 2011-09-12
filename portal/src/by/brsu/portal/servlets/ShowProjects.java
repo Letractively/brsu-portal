@@ -7,10 +7,8 @@ package by.brsu.portal.servlets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import by.brsu.portal.project.Project;
 import by.brsu.portal.project.ProjectDAO;
 
@@ -28,11 +26,5 @@ public class ShowProjects implements Action {
 			HttpServletResponse response) {
 		mp.put("projects", projects);
 		return mp;
-	}
-
-	@Override
-	public String perform(HttpServletRequest request,
-			HttpServletResponse response) {
-		return "/project1.jsp";
 	}
 }

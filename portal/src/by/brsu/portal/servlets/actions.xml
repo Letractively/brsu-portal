@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-incstance">
+	<action name="ShowNews">
+		<class>by.brsu.portal.servlets.ShowNews</class>
+		<forward-url>news1.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
+	<action name="ShowProjects">
+		<class>by.brsu.portal.servlets.ShowProjects</class>
+		<forward-url>project1.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
+	<action name="AddProject">
+		<class>by.brsu.portal.servlets.AddProject</class>
+		<forward-url>addProjectTemplate.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
+	<action name="AddUser">
+		<class>by.brsu.portal.servlets.AddUser</class>
+		<forward-url>addUserOK.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
+	<action name="ShowMainPage">
+		<class>by.brsu.portal.servlets.ShowMainPage</class>
+		<forward-url>index.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
+</actions>
