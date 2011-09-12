@@ -5,7 +5,6 @@
 package by.brsu.portal.servlets;
 
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,9 +13,6 @@ import javax.servlet.http.HttpServletResponse;
  * 
  */
 public interface Action {
-	public String perform(HttpServletRequest request,
-			HttpServletResponse response);
-
 	public Map<String, Object> getParametersMap(HttpServletRequest request,
 			HttpServletResponse response);
 }

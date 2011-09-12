@@ -4,14 +4,16 @@
  */
 package by.brsu.portal.servlets;
 
-
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
 import by.brsu.portal.PortalTechnicalException;
 
 /**
@@ -22,24 +24,33 @@ public class ActionHandler extends DefaultHandler {
 	private String actionName;
 	private String className;
 	private String currentAction;
+	private String currentElement;
+	private String forwardURL;
+	private String errorURL;
 
 	public ActionHandler(String actionName) {
 		className = "";
+		forwardURL = "";
 		currentAction = "";
+		currentElement = "";
+		errorURL = "";
 		this.actionName = actionName;
 		SAXParserFactory factory = SAXParserFactory.newInstance();
-		try {			
+		try {
+			String schemaLang = "http://www.w3.org/2001/XMLSchema";
+			SchemaFactory schemaFactory = SchemaFactory.newInstance(schemaLang);
+			Schema schema = schemaFactory.newSchema(new StreamSource(getClass()
+					.getResourceAsStream("schema.xsd")));
+			Validator validator = schema.newValidator();
+			validator.validate(new StreamSource(getClass().getResourceAsStream(
+					"actions.xml")));
 			SAXParser saxParser = factory.newSAXParser();
-			saxParser
-					.setProperty(
-							"http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation",
-							getClass().getResourceAsStream(
-									"SchemaForActionsMap.xsd"));
 			saxParser.parse(
 					new InputSource(getClass().getResourceAsStream(
-							"MapOfActions.xml")), this);
+							"actions.xml")), this);
 		} catch (Throwable t) {
 			new PortalTechnicalException("xml invalid");
+			System.out.print("xml invalid");
 		}
 	}
 
@@ -51,22 +62,46 @@ public class ActionHandler extends DefaultHandler {
 				currentAction = actionName;
 			}
 		}
+		if (currentAction.equals(actionName)) {
+			currentElement = qualifiedName;
+		}
 	}
 
 	@Override
 	public void endElement(String namespaceURI, String simpleName,
 			String qualifiedName) throws SAXException {
+		if ((qualifiedName.equals("action")) && (currentAction != ""))
+			currentAction = "";
 	}
 
 	@Override
 	public void characters(char buf[], int offset, int len) throws SAXException {
-		if (currentAction.equals(actionName)) {
+		if ((currentElement.equals("class"))
+				&& (currentAction.equals(actionName))) {
 			className = new String(buf, offset, len);
-			currentAction = "";
+			currentElement = "";
+		}
+		if ((currentElement.equals("forward-url"))
+				&& (currentAction.equals(actionName))) {
+			forwardURL = new String(buf, offset, len);
+			currentElement = "";
+		}
+		if ((currentElement.equals("error-url"))
+				&& (currentAction.equals(actionName))) {
+			errorURL = new String(buf, offset, len);
+			currentElement = "";
 		}
 	}
 
-	String getClassName() {
+	public String getClassName() {
 		return className;
+	}
+
+	public String getForwardURL() {
+		return forwardURL;
+	}
+
+	public String getErrorURL() {
+		return errorURL;
 	}
 }

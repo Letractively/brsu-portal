@@ -43,7 +43,7 @@ public class Servlet extends HttpServlet {
 		for (Entry<String, Object> entry: action.getParametersMap(request, response).entrySet()){
 			request.setAttribute(entry.getKey(),entry.getValue());
 			}
-		String url = action.perform(request,response);
+		String url = factory.getForwardURL();
 		if (url != null)
 			getServletContext().getRequestDispatcher(url).forward(request,
 					response);
