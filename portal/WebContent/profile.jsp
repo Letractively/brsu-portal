@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>BRSU Portal         Profile</title>
+<title>BRSU Portal Profile</title>
 </head>
 <body background="/portal/images/bgb.jpg">
 	<jsp:include page="/template.jsp">
