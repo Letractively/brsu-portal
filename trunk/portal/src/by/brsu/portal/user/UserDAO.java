@@ -159,26 +159,7 @@ public class UserDAO {
 		return null;
 	}
 
-<<<<<<< .mine
-	@SuppressWarnings("null")
-	public boolean findUserByEmail(String email) {
-		@SuppressWarnings("unused")
-		Connection conn = ConnectionManager.getConnectorPool().getConnection();
-		String query = "Select * from users where email=?";
-		ResultSet rs = null;
-		PreparedStatement st = null;
-		try {
-			st.setString(1, email);
-			rs = st.executeQuery(query);
-			if (rs.next()) {
-				return true;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-		}
-		return false;
-	}
+
 
 	public List<User> FindAllUser() {
 		  Connection conn = ConnectionManager.getConnectorPool().getConnection();
@@ -232,7 +213,9 @@ public class UserDAO {
 	}
 
 
+	@SuppressWarnings("null")
 	public boolean findUserByEmail(String email) {
+		@SuppressWarnings("unused")
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "Select * from user where email=?";
 		ResultSet rs = null;
