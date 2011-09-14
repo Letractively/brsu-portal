@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import by.brsu.portal.ConnectionManager;
 
@@ -20,13 +22,8 @@ import by.brsu.portal.ConnectionManager;
  * @version 20110827
  */
 public class UserDAO {
-	/**
-	 * @param user
-	 * @return user(+id)
-	 * @author Aliaksei Ryzhkou
-	 */
 	public User createUser(User user) {
-		Connection conn = ConnectionManager.getConnectorPool().getConnection();;
+		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "insert into users values (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		ResultSet rs = null;
 		PreparedStatement st = null;
@@ -161,6 +158,79 @@ public class UserDAO {
 		}
 		return null;
 	}
+
+<<<<<<< .mine
+	@SuppressWarnings("null")
+	public boolean findUserByEmail(String email) {
+		@SuppressWarnings("unused")
+		Connection conn = ConnectionManager.getConnectorPool().getConnection();
+		String query = "Select * from users where email=?";
+		ResultSet rs = null;
+		PreparedStatement st = null;
+		try {
+			st.setString(1, email);
+			rs = st.executeQuery(query);
+			if (rs.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+		}
+		return false;
+	}
+
+	public List<User> FindAllUser() {
+		  Connection conn = ConnectionManager.getConnectorPool().getConnection();
+		  ResultSet rs = null;
+		  PreparedStatement st = null;
+		  List<User> us = new ArrayList<User>();
+	  try{
+		  		st = conn.prepareStatement("");  
+		  	
+		  		rs = st.executeQuery("Select * from users");
+			  
+			  
+		   while (rs.next()) 
+		   {
+		    User users = new User();
+		    users.setId(rs.getLong(1));
+		    users.setSurname(rs.getString(2));
+		    users.setName(rs.getString(3));   
+		    users.setEmail(rs.getString(4));
+		    users.setDateOfBirth(rs.getDate(5));	    
+		    users.setTelephone(rs.getString(6)); 
+		    users.setSex(rs.getInt(8));
+		    users.setSkype(rs.getString(9));
+		    users.setDateOfLastVisit(rs.getDate(14));
+		    us.add(users);   
+		   } 	  
+		  return us;
+		  }
+		 
+		catch (SQLException e) 
+		  {
+			System.out.println(e);
+		  }
+		  finally 
+		  {
+		   try 
+		   {
+		    if (rs != null)
+		     rs.close();
+		    if (st != null)
+		     st.close();
+		   } 
+		   catch (SQLException ex) 
+		   {
+			   System.out.println(ex);
+		   }
+		  }
+		  return null;
+
+
+	}
+
 
 	public boolean findUserByEmail(String email) {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();

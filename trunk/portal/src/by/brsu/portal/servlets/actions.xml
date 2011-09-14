@@ -25,4 +25,9 @@
 		<forward-url>index.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
+	<action name="ShowUserProf">
+		<class>by.brsu.portal.servlets.ShowUserProf</class>
+		<forward-url>profile.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
 </actions>

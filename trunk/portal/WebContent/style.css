@@ -73,11 +73,15 @@ a {
 	font-size: 1.2em;
 	margin: 10px auto;
 }
-
-#tabl {
-	font-size: 1.1em;
-	margin: 10px auto;
+ {
+	
 }
+.tabl {
+	font-size: 0.9em;
+	margin: 5px auto;
+}
+
+	
 
 #footer {
 	background: #665;
