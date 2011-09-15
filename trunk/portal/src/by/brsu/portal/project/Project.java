@@ -17,7 +17,7 @@ import by.brsu.portal.cv.Technology;
 public class Project 
 {
 	private long idProject;
-	private int idOwner;
+	private int User;
 	private String name;
 	private String description;
 	private Date dateOfCreation;
@@ -41,13 +41,13 @@ public class Project
 	 * @param id
 	 * @param name
 	 */
-	public Project(long idProject, int idOwner, String name, String description, Date dateOfCreation, Date dateOfClosing, 
+	public Project(long idProject, int User, String name, String description, Date dateOfCreation, Date dateOfClosing, 
 			ProjectCategory category, int version, String license, String stageOfDevelopment, 
 			List<Technology> technology, List<ProgrammingLanguage> languages) 
 	{
 		super();
 		this.idProject = idProject;
-		this.idOwner = idOwner;
+		this.User = User;
 		this.name = name;
 		this.description = description;
 		this.dateOfCreation = dateOfCreation;
@@ -59,230 +59,191 @@ public class Project
 		this.technology = technology;
 		this.languages = languages;		
 	}
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() 
-	{
-		return "Project [idProject=" + idProject + ", idOwner=" + idOwner
-				+ ", name=" + name + ", description=" + description
-				+ ", dateOfCreation=" + dateOfCreation + ", dateOfClosing="
-				+ dateOfClosing + ", category=" + category + ", version="
-				+ version + ", license=" + license + ", stageOfDevelopment="
-				+ stageOfDevelopment + ", technology=" + technology
-				+ ", languages=" + languages + "]";
-	}
+
 	
 	/**
 	 * @return the idProject
 	 */
-	public long getIdProject() 
-	{
+	public long getIdProject() {
 		return idProject;
 	}
-	
+
 	/**
-	 * @param set idProject
+	 * @param idProject the idProject to set
 	 */
-	public void setIdProject(long idProject) 
-	{
+	public void setIdProject(long idProject) {
 		this.idProject = idProject;
 	}
-	
+
 	/**
-	 * @return the idOwner
+	 * @return the user
 	 */
-	public int getIdOwner() 
-	{
-		return idOwner;
+	public int getUser() {
+		return User;
 	}
-	
+
 	/**
-	 * @param set idOwner
+	 * @param user the user to set
 	 */
-	public void setIdOwner(int idOwner) 
-	{
-		this.idOwner = idOwner;
+	public void setUser(int user) {
+		User = user;
 	}
-	
+
 	/**
 	 * @return the name
 	 */
-	public String getName() 
-	{
+	public String getName() {
 		return name;
 	}
-	
+
 	/**
-	 * @param set name project
+	 * @param name the name to set
 	 */
-	public void setName(String name) 
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	/**
 	 * @return the description
 	 */
-	public String getDescription() 
-	{
+	public String getDescription() {
 		return description;
 	}
-	
+
 	/**
-	 * @param set description
+	 * @param description the description to set
 	 */
-	public void setDescription(String description) 
-	{
+	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	/**
 	 * @return the dateOfCreation
 	 */
-	public Date getDateOfCreation() 
-	{
+	public Date getDateOfCreation() {
 		return dateOfCreation;
 	}
-	
+
 	/**
-	 * @param set dateOfCreation project
+	 * @param dateOfCreation the dateOfCreation to set
 	 */
-	public void setDateOfCreation(Date dateOfCreation) 
-	{
+	public void setDateOfCreation(Date dateOfCreation) {
 		this.dateOfCreation = dateOfCreation;
 	}
-	
+
 	/**
 	 * @return the dateOfClosing
 	 */
-	public Date getDateOfClosing() 
-	{
+	public Date getDateOfClosing() {
 		return dateOfClosing;
 	}
-	
+
 	/**
-	 * @param set dateOfClosing project
+	 * @param dateOfClosing the dateOfClosing to set
 	 */
-	public void setDateOfClosing(Date dateOfClosing) 
-	{
+	public void setDateOfClosing(Date dateOfClosing) {
 		this.dateOfClosing = dateOfClosing;
 	}
-	
+
 	/**
 	 * @return the category
 	 */
-	public ProjectCategory getCategory() 
-	{
+	public ProjectCategory getCategory() {
 		return category;
 	}
-	
+
 	/**
-	 * @param set category
+	 * @param category the category to set
 	 */
-	public void setCategoryForOne(String categoryParametr) 
-	{
-		this.category.setName(categoryParametr);
-	}
-	public void setCategory(ProjectCategory category) 
-	{
+	public void setCategory(ProjectCategory category) {
 		this.category = category;
 	}
-	
+
 	/**
 	 * @return the version
 	 */
-	public int getVersion() 
-	{
+	public int getVersion() {
 		return version;
 	}
-	
+
 	/**
-	 * @param set version
+	 * @param version the version to set
 	 */
-	public void setVersion(int version)
-	{
+	public void setVersion(int version) {
 		this.version = version;
 	}
-	
+
 	/**
 	 * @return the license
 	 */
-	public String getLicense()
-	{
+	public String getLicense() {
 		return license;
 	}
-	
+
 	/**
-	 * @param set license
+	 * @param license the license to set
 	 */
-	public void setLicense(String license) 
-	{
+	public void setLicense(String license) {
 		this.license = license;
 	}
-	
+
 	/**
 	 * @return the stageOfDevelopment
 	 */
-	public String getStageOfDevelopment() 
-	{
+	public String getStageOfDevelopment() {
 		return stageOfDevelopment;
 	}
-	
+
 	/**
-	 * @param set stageOfDevelopment
+	 * @param stageOfDevelopment the stageOfDevelopment to set
 	 */
-	public void setStageOfDevelopment(String stageOfDevelopment) 
-	{
+	public void setStageOfDevelopment(String stageOfDevelopment) {
 		this.stageOfDevelopment = stageOfDevelopment;
 	}
-	
+
 	/**
 	 * @return the technology
 	 */
-	public List<Technology> getTechnology() 
-	{
+	public List<Technology> getTechnology() {
 		return technology;
 	}
-	
+
 	/**
-	 * @param set technology
+	 * @param technology the technology to set
 	 */
-	public void setTechnologyForOne(String technology) 
-	{
-		Technology tech = new Technology();
-		tech.setName(technology);
-		this.technology.add(tech);
-	}
-	public void setTechnology(List<Technology> technology) 
-	{
+	public void setTechnology(List<Technology> technology) {
 		this.technology = technology;
 	}
-	
+
 	/**
 	 * @return the languages
 	 */
-	public List<ProgrammingLanguage> getLanguages() 
-	{
+	public List<ProgrammingLanguage> getLanguages() {
 		return languages;
 	}
-	
+
 	/**
-	 * @param set languages
+	 * @param languages the languages to set
 	 */
-	public void setLanguagesForOne(String languages) 
-	{
-		ProgrammingLanguage proglang = new ProgrammingLanguage();
-		proglang.setName(languages);
-		this.languages.add(proglang);
-	}
-	public void setLanguages(List<ProgrammingLanguage> languages) 
-	{
+	public void setLanguages(List<ProgrammingLanguage> languages) {
 		this.languages = languages;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Project [idProject=" + idProject + ", User=" + User + ", name="
+				+ name + ", description=" + description + ", dateOfCreation="
+				+ dateOfCreation + ", dateOfClosing=" + dateOfClosing
+				+ ", category=" + category + ", version=" + version
+				+ ", license=" + license + ", stageOfDevelopment="
+				+ stageOfDevelopment + ", technology=" + technology
+				+ ", languages=" + languages + "]";
+	}
+
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -290,6 +251,7 @@ public class Project
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + User;
 		result = prime * result
 				+ ((category == null) ? 0 : category.hashCode());
 		result = prime * result
@@ -298,7 +260,6 @@ public class Project
 				+ ((dateOfCreation == null) ? 0 : dateOfCreation.hashCode());
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
-		result = prime * result + idOwner;
 		result = prime * result + (int) (idProject ^ (idProject >>> 32));
 		result = prime * result
 				+ ((languages == null) ? 0 : languages.hashCode());
@@ -326,6 +287,8 @@ public class Project
 		if (getClass() != obj.getClass())
 			return false;
 		Project other = (Project) obj;
+		if (User != other.User)
+			return false;
 		if (category == null) {
 			if (other.category != null)
 				return false;
@@ -345,8 +308,6 @@ public class Project
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
-			return false;
-		if (idOwner != other.idOwner)
 			return false;
 		if (idProject != other.idProject)
 			return false;
@@ -379,6 +340,27 @@ public class Project
 			return false;
 		return true;
 	}
+
+	/**
+	 * @param set technology
+	 */
+	public void setTechnologyForOne(String technology) 
+	{
+		Technology tech = new Technology();
+		tech.setName(technology);
+		this.technology.add(tech);
+	}
+	
+	/**
+	 * @param set languages
+	 */
+	public void setLanguagesForOne(String languages) 
+	{
+		ProgrammingLanguage proglang = new ProgrammingLanguage();
+		proglang.setName(languages);
+		this.languages.add(proglang);
+	}
+
 
 		
 	
