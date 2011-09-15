@@ -29,7 +29,7 @@ public class ProjectDAO
 	 * Add project
 	 * 
 	 */
-	public Project createProject(int idOwner, String name, String description, Date dateOfCreation, Date dateOfClosing, 
+	public Project createProject(int User, String name, String description, Date dateOfCreation, Date dateOfClosing, 
 			ProjectCategory category, int version, String license, 
 			String stageOfDevelopment, List<Technology> technology, List<ProgrammingLanguage> languages) 
 	{
@@ -48,7 +48,7 @@ public class ProjectDAO
 			{
 				Project proj = new Project();				
 				proj.setIdProject(rs.getLong(1));
-				proj.setIdOwner(idOwner);
+				proj.setUser(User);
 				proj.setName(name);				
 				proj.setDescription(description);
 				proj.setDateOfCreation(dateOfCreation);
@@ -80,6 +80,7 @@ public class ProjectDAO
 		return null;
 	}
 	
+
 	public Project createProject(Project project) 
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
@@ -89,7 +90,34 @@ public class ProjectDAO
 		try 
 		{
 			st = conn.prepareStatement(sql);
+			st.setLong(1, project.getIdProject());
 			st.setString(2, project.getName());
+			st.setLong(3, project.getUser());
+			st.setString(4, project.getDescription());
+			st.setDate(5, (java.sql.Date) project.getDateOfCreation());
+			st.setDate(6, (java.sql.Date) project.getDateOfClosing());
+			ProjectCategory pc = project.getCategory();
+			st.setString(7, pc.getName());
+			st.setLong(8, project.getVersion());
+			st.setString(9, project.getLicense());
+			st.setString(10, project.getStageOfDevelopment());
+			List<Technology> th = project.getTechnology();
+			String thnew = null;
+			for (int i=1; i <= th.size(); i++)
+			{
+				thnew += th.get(i);
+			}			
+			st.setString(11, thnew);
+			List<ProgrammingLanguage> pl = project.getLanguages();
+			thnew = null;
+			for (int i=1; i <= pl.size(); i++)
+			{
+				thnew += pl.get(i);
+			}
+			st.setString(12, thnew);
+			st.executeUpdate();
+			return project;
+			/*st.setString(2, project.getName());
 			st.executeUpdate();
 			st = conn.prepareStatement("");
 			rs = st.executeQuery("Select id from Projects where name=?");
@@ -98,7 +126,7 @@ public class ProjectDAO
 				Project proj = new Project();				
 				proj.setIdProject(rs.getLong(1));
 				proj.setIdOwner(project.getIdOwner());
-				proj.setName(project.getName());				
+				proj.setName(project.getIdOwner());				
 				proj.setDescription(project.getDescription());
 				proj.setDateOfCreation(project.getDateOfCreation());
 				proj.setDateOfClosing(project.getDateOfClosing());
@@ -109,7 +137,7 @@ public class ProjectDAO
 				proj.setTechnology(project.getTechnology());
 				proj.setLanguages(project.getLanguages());
 				return proj;
-			}
+			}*/
 		} catch (SQLException e) 
 		{
 		} 
@@ -175,7 +203,7 @@ public class ProjectDAO
 			{
 				Project proj = new Project();
 				proj.setIdProject(rs.getLong(1));
-				proj.setIdOwner(rs.getInt(2));
+				proj.setUser(rs.getInt(2));
 				proj.setName(rs.getString(3));				
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
@@ -224,7 +252,7 @@ public class ProjectDAO
 			{
 				Project proj = new Project();
 				proj.setIdProject(rs.getLong(1));
-				proj.setIdOwner(rs.getInt(2));
+				proj.setUser(rs.getInt(2));
 				proj.setName(rs.getString(3));				
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
@@ -273,7 +301,7 @@ public class ProjectDAO
 			{
 				Project proj = new Project();
 				proj.setIdProject(rs.getLong(1));
-				proj.setIdOwner(rs.getInt(2));
+				proj.setUser(rs.getInt(2));
 				proj.setName(rs.getString(3));				
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
@@ -322,7 +350,7 @@ public class ProjectDAO
 			{
 				Project proj = new Project();
 				proj.setIdProject(rs.getLong(1));
-				proj.setIdOwner(rs.getInt(2));
+				proj.setUser(rs.getInt(2));
 				proj.setName(rs.getString(3));				
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
@@ -371,7 +399,7 @@ public class ProjectDAO
 			{
 				Project proj = new Project();
 				proj.setIdProject(rs.getLong(1));
-				proj.setIdOwner(rs.getInt(2));
+				proj.setUser(rs.getInt(2));
 				proj.setName(rs.getString(3));				
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
@@ -420,7 +448,7 @@ public class ProjectDAO
 			{
 				Project proj = new Project();
 				proj.setIdProject(rs.getLong(1));
-				proj.setIdOwner(rs.getInt(2));
+				proj.setUser(rs.getInt(2));
 				proj.setName(rs.getString(3));				
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
@@ -469,7 +497,7 @@ public class ProjectDAO
 			{
 				Project proj = new Project();
 				proj.setIdProject(rs.getLong(1));
-				proj.setIdOwner(rs.getInt(2));
+				proj.setUser(rs.getInt(2));
 				proj.setName(rs.getString(3));				
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
@@ -518,7 +546,7 @@ public class ProjectDAO
 			{
 				Project proj = new Project();
 				proj.setIdProject(rs.getLong(1));
-				proj.setIdOwner(rs.getInt(2));
+				proj.setUser(rs.getInt(2));
 				proj.setName(rs.getString(3));				
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
@@ -567,7 +595,7 @@ public class ProjectDAO
 			{
 				Project proj = new Project();
 				proj.setIdProject(rs.getLong(1));
-				proj.setIdOwner(rs.getInt(2));
+				proj.setUser(rs.getInt(2));
 				proj.setName(rs.getString(3));				
 				proj.setDescription(rs.getString(4));
 				proj.setDateOfCreation(rs.getDate(5));
@@ -618,7 +646,7 @@ public class ProjectDAO
 			{
 				Project tempproj = new Project();
 				tempproj.setIdProject(rs.getLong(1));
-				tempproj.setIdOwner(rs.getInt(2));
+				tempproj.setUser(rs.getInt(2));
 				tempproj.setName(rs.getString(3));				
 				tempproj.setDescription(rs.getString(4));
 				tempproj.setDateOfCreation(rs.getDate(5));
