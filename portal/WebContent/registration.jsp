@@ -10,10 +10,10 @@
 	<div>
 		<form action="Servlet/AddUser" method="post">
 			<label for="name">Name:</label><input type="text" name="name" /><br>
-			<label for="surname">Surname:</label><input type="text" name="surname" /><br>
-			<label for="email">E-mail(login):</label><input type="text"	name="email" /><br>
-			<label for="password">Password:</label><input type="text"	name="password" /><br>
-			<input type="submit"
+			<label for="surname">Surname:</label><input type="text"
+				name="surname" /><br> <label for="email">E-mail(login):</label><input
+				type="text" name="email" /><br> <label for="password">Password:</label><input
+				type="password" name="password" /><br> <input type="submit"
 				value="Add" />
 		</form>
 	</div>

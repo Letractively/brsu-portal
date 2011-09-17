@@ -24,7 +24,7 @@ import by.brsu.portal.ConnectionManager;
 public class UserDAO {
 	public User createUser(User user) {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
-		String query = "insert into users values (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String query = "insert into users values (null,?,?,?,?,?,?,?,?,?,null,?,?,?,?,?)";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
@@ -38,13 +38,13 @@ public class UserDAO {
 			st.setInt(7, user.getSex());
 			st.setString(8, user.getSkype());
 			st.setString(9, user.getIcq());
-			st.setInt(10, user.getIQ());	
-			st.setLong(11, user.getStatus().getIdStat());
-			st.setBlob(12, user.getPicture());
-			Date tmpDt = new Date(1);
-			st.setDate(13, tmpDt);
-			st.setInt(14, user.getNumberOfCautions());
-			st.setInt(15, 1);
+			st.setLong(10, user.getStatus().getIdStat());
+			st.setBlob(11, user.getPicture());
+
+			Date date = new Date(System.currentTimeMillis()); //date.setTime(System.currentTimeMillis());
+			st.setDate(12, date);
+			st.setInt(13, user.getNumberOfCautions());
+			st.setInt(14, 1);
 			st.executeUpdate();
 			return user;
 
