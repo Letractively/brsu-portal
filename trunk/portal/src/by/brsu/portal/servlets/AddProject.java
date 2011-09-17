@@ -22,7 +22,7 @@ import by.brsu.portal.project.ProjectDAO;
  * 
  */
 public class AddProject implements Action {
-	private Map<String, Object> mp = new HashMap<String, Object>();
+	private Map<String, Object> map = new HashMap<String, Object>();
 	Project project = new Project();
 
 	@Override
@@ -51,7 +51,7 @@ public class AddProject implements Action {
 		ppp.createProject(project);
 
 		// return "/addProjectOK.jsp";
-		mp.put("project", project);
-		return mp;
+		map.put("project", project);
+		return map;
 	}
 }
