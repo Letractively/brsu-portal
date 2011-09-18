@@ -84,24 +84,24 @@ public class ProjectDAO
 	public Project createProject(Project project) 
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "insert into Projects values (?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO Projects VALUES (null,?,?,?,?,null,null,?,?,?)";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try 
 		{
 			st = conn.prepareStatement(sql);
-			st.setLong(1, project.getIdProject());
-			st.setString(2, project.getName());
-			st.setLong(3, project.getUser());
-			st.setString(4, project.getDescription());
-			st.setDate(5, (java.sql.Date) project.getDateOfCreation());
-			st.setDate(6, (java.sql.Date) project.getDateOfClosing());
+			st.setLong(1, project.getUser());
+			st.setString(2, project.getName());			
+			st.setString(3, project.getDescription());
+			st.setDate(4, (java.sql.Date) project.getDateOfCreation());
+			st.setDate(5, (java.sql.Date) project.getDateOfClosing());			
 			ProjectCategory pc = project.getCategory();
-			st.setString(7, pc.getName());
-			st.setLong(8, project.getVersion());
-			st.setString(9, project.getLicense());
-			st.setString(10, project.getStageOfDevelopment());
-			List<Technology> th = project.getTechnology();
+			st.setString(6, pc.getName());			
+			st.setLong(7, project.getVersion());			
+			st.setString(8, project.getLicense());			
+			st.setString(9, project.getStageOfDevelopment());
+			
+			/*List<Technology> th = project.getTechnology();
 			String thnew = null;
 			for (int i=1; i <= th.size(); i++)
 			{
@@ -114,7 +114,7 @@ public class ProjectDAO
 			{
 				thnew += pl.get(i);
 			}
-			st.setString(12, thnew);
+			st.setString(12, thnew);*/
 			st.executeUpdate();
 			return project;
 			/*st.setString(2, project.getName());
