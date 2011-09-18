@@ -26,7 +26,7 @@ public class AddProject implements Action {
 	Project project = new Project();
 
 	@Override
-	public Map<String, Object> getParametersMap(HttpServletRequest request,
+	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response) {
 		ProjectCategory pc = new ProjectCategory();
 		project.setName(request.getParameter("name"));
@@ -50,7 +50,11 @@ public class AddProject implements Action {
 		ProjectDAO ppp = new ProjectDAO();
 		ppp.createProject(project);
 
-		// return "/addProjectOK.jsp";
+		return true;
+	}
+
+	@Override
+	public Map<String, Object> getParametersMap() {
 		map.put("project", project);
 		return map;
 	}
