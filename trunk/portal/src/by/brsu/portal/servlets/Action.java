@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  * 
  */
 public interface Action {
-	public Map<String, Object> getParametersMap(HttpServletRequest request,
+	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response);
+
+	public Map<String, Object> getParametersMap();
 }

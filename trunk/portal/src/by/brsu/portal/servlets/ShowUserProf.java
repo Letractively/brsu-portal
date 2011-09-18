@@ -21,11 +21,14 @@ public class ShowUserProf implements Action {
 	private List<User> listuser  = DAO.FindAllUser();
 	private Map<String, Object> ma_p = new HashMap<String, Object>();
 
-	
+	@Override
+	public boolean perform(HttpServletRequest request,
+			HttpServletResponse response){
+		return true;
+	}
 
 	@Override
-	public Map<String, Object> getParametersMap(HttpServletRequest request,
-			HttpServletResponse response) {
+	public Map<String, Object> getParametersMap() {
 		ma_p.put("users", listuser);
 		return ma_p;
 	}

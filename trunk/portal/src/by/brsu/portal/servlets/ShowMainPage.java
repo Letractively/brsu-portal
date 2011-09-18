@@ -17,8 +17,13 @@ public class ShowMainPage implements Action {
 	private Map<String, Object> mp = new HashMap<String, Object>();
 
 	@Override
-	public Map<String, Object> getParametersMap(HttpServletRequest request,
-			HttpServletResponse response) {
+	public boolean perform(HttpServletRequest request,
+			HttpServletResponse response){
+		return true;
+	}
+	
+	@Override
+	public Map<String, Object> getParametersMap() {
 		mp.put("", "");
 		return mp;
 	}
