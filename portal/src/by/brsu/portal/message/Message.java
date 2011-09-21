@@ -1,5 +1,6 @@
 package by.brsu.portal.message;
 
+import java.sql.Date;
 import java.util.*;
 
 import by.brsu.portal.user.User;
@@ -9,10 +10,10 @@ public class Message {
 	private String title;
 	private String text;
 	private Date date;
-	private boolean read;
-	private boolean sent;
-	private User author;
-	
+	private User user;
+	private int previous;
+	private int readed;
+	private int priority;
 	
 	/**
 	 * 
@@ -29,16 +30,17 @@ public class Message {
 	 * @param sent
 	 * @param author
 	 */
-	public Message(long id, String title, String text, Date date, boolean read,
-			boolean sent, User author) {
+	public Message(long id, String title, String text,
+			Date date, User user, int previous, int readed, int priority) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.text = text;
 		this.date = date;
-		this.read = read;
-		this.sent = sent;
-		this.author = author;
+		this.user = user;
+		this.previous = previous;
+		this.readed = readed;
+		this.priority = priority;
 	}
 	/**
 	 * @return the id
@@ -88,41 +90,54 @@ public class Message {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
 	/**
-	 * @return the read
+	 * @return the user
 	 */
-	public boolean isRead() {
-		return read;
+	public User getUser() {
+		return user;
 	}
 	/**
-	 * @param read the read to set
+	 * @param user the user to set
 	 */
-	public void setRead(boolean read) {
-		this.read = read;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	/**
-	 * @return the sent
+	 * @return the previous
 	 */
-	public boolean isSent() {
-		return sent;
+	public int getPrevious() {
+		return previous;
 	}
 	/**
-	 * @param sent the sent to set
+	 * @param previous the previous to set
 	 */
-	public void setSent(boolean sent) {
-		this.sent = sent;
+	public void setPrevious(int previous) {
+		this.previous = previous;
 	}
 	/**
-	 * @return the author
+	 * @return the readed
 	 */
-	public User getAuthor() {
-		return author;
+	public int getReaded() {
+		return readed;
 	}
 	/**
-	 * @param author the author to set
+	 * @param readed the readed to set
 	 */
-	public void setAuthor(User author) {
-		this.author = author;
+	public void setReaded(int readed) {
+		this.readed = readed;
+	}
+	/**
+	 * @return the priority
+	 */
+	public int getPriority() {
+		return priority;
+	}
+	/**
+	 * @param priority the priority to set
+	 */
+	public void setPriority(int priority) {
+		this.priority = priority;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -131,25 +146,20 @@ public class Message {
 	public String toString() {
 		return "Message [title=" + title + "]";
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + (read ? 1231 : 1237);
-		result = prime * result + (sent ? 1231 : 1237);
+		result = prime * result + previous;
+		result = prime * result + priority;
+		result = prime * result + readed;
 		result = prime * result + ((text == null) ? 0 : text.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -159,11 +169,6 @@ public class Message {
 		if (getClass() != obj.getClass())
 			return false;
 		Message other = (Message) obj;
-		if (author == null) {
-			if (other.author != null)
-				return false;
-		} else if (!author.equals(other.author))
-			return false;
 		if (date == null) {
 			if (other.date != null)
 				return false;
@@ -171,9 +176,11 @@ public class Message {
 			return false;
 		if (id != other.id)
 			return false;
-		if (read != other.read)
+		if (previous != other.previous)
 			return false;
-		if (sent != other.sent)
+		if (priority != other.priority)
+			return false;
+		if (readed != other.readed)
 			return false;
 		if (text == null) {
 			if (other.text != null)
@@ -185,7 +192,11 @@ public class Message {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
 		return true;
-	}
-	
+	}	
 }
