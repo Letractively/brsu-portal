@@ -28,8 +28,7 @@ public class ShowUserProf implements Action {
 	}
 
 	@Override
-	public Map<String, Object> getParametersMap(HttpServletRequest request,
-			HttpServletResponse response) {
+	public Map<String, Object> getParametersMap() {
 		ma_p.put("users", listuser);
 		return ma_p;
 	}

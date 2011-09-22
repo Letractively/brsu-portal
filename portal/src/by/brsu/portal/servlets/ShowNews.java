@@ -28,8 +28,7 @@ public class ShowNews implements Action {
 	}
 	
 	@Override
-	public Map<String, Object> getParametersMap(HttpServletRequest request,
-			HttpServletResponse response) {
+	public Map<String, Object> getParametersMap() {
 		mp.put("news", news);
 		return mp;
 	}

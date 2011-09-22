@@ -39,11 +39,9 @@ public class Servlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
 		Action action = factory.create(getActionName(request), request);
-		
 		if (action.perform(request, response)) {
-			for (Entry<String, Object> entry : action.getParametersMap(request, response)
+			for (Entry<String, Object> entry : action.getParametersMap()
 					.entrySet()) {
 				request.setAttribute(entry.getKey(), entry.getValue());
 			}

@@ -107,17 +107,27 @@ public class UserDAO {
 	}
 
 	public User findUserById(long id) {
+		
 		Connection connection = ConnectionManager.getConnectorPool().getConnection();
-		String query = "Select * from users where id=?";
+		String query = "Select * from users where id_user=?";
+		
 		ResultSet rs = null;
-		Statement st = null;
+		PreparedStatement st = null;
 		try {
-			st = connection.createStatement();
-			rs = st.executeQuery(query);
+			st = connection.prepareStatement(query);
+			st.setLong(1, id);
+			rs = st.executeQuery();
 			if (rs.next()) {
 				User user = new User();
-				user.setId(rs.getLong(1));
-				user.setName(rs.getString(2));
+				 user.setId(rs.getLong(1));
+				    user.setSurname(rs.getString(2));
+				    user.setName(rs.getString(3));   
+				    user.setEmail(rs.getString(4));
+				    user.setDateOfBirth(rs.getDate(5));	    
+				    user.setTelephone(rs.getString(6)); 
+				    user.setSex(rs.getInt(8));
+				    user.setSkype(rs.getString(9));
+				    user.setDateOfLastVisit(rs.getDate(14));
 				return user;
 			}
 
