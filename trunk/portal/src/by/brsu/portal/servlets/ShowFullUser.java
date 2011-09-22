@@ -22,17 +22,17 @@ public class ShowFullUser implements Action {
 	private Map<String, Object> ma_p = new HashMap<String, Object>();
 
 	@Override
-	public Map<String, Object> getParametersMap(HttpServletRequest request,
-			HttpServletResponse response) {
-		id = Integer.parseInt(request.getParameter("id"));
-		listuser_id = DAO.findUserById(id);
-		ma_p.put("users_id", listuser_id);
+	public Map<String, Object> getParametersMap() {
+		
 		return ma_p;
 	}
 
 	@Override
 	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response) {
+		id = Integer.parseInt(request.getParameter("id"));
+		listuser_id = DAO.findUserById(id);
+		ma_p.put("users_id", listuser_id);
 		return true;
 	}
 

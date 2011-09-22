@@ -31,8 +31,7 @@ public class AddUser implements Action {
 	}
 	
 	@Override
-	public Map<String, Object> getParametersMap(HttpServletRequest request,
-			HttpServletResponse response) {
+	public Map<String, Object> getParametersMap() {
 		return map;
 	}
 }

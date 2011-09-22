@@ -56,8 +56,7 @@ public class AddProject implements Action {
 	}
 
 	@Override
-	public Map<String, Object> getParametersMap(HttpServletRequest request,
-			HttpServletResponse response) {
+	public Map<String, Object> getParametersMap() {
 		map.put("project", project);
 		return map;
 	}
