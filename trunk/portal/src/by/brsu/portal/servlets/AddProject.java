@@ -4,17 +4,10 @@
  */
 package by.brsu.portal.servlets;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
 import by.brsu.portal.project.Project;
 import by.brsu.portal.project.ProjectCategory;
 import by.brsu.portal.project.ProjectDAO;
@@ -63,7 +56,8 @@ public class AddProject implements Action {
 	}
 
 	@Override
-	public Map<String, Object> getParametersMap() {
+	public Map<String, Object> getParametersMap(HttpServletRequest request,
+			HttpServletResponse response) {
 		map.put("project", project);
 		return map;
 	}

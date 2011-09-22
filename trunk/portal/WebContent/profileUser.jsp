@@ -5,39 +5,35 @@
 	<table class="tabl">
 		<tr>
 		<td>ID</td>
-		<td> Surname 
-		<td> Name </td>
-		<%--		<td> Options </td>		--%>
+		<td> Surname&Name </td>
 		<td> Date of birth</td>
 		<td> Sex </td>
-		<td> Email</td>
-		<td> Skype</td>
-		<td> Telephone</td>
-		<td> DateOfLastVisit</td>
-		
-		
+		<td> DateOfLastVisit</td>				
 		</tr>
-	
-		
-		
 		<c:forEach var="user" items="${users}">
 			<tr>		
-				<td><c:out value="${user.id}" /></td> 
-				<td><c:out value="${user.surname}" /></td>
-			 	<td><c:out value="${user.name}" /></td>	
-		<%--	 	<td> <a href="/portal/onlyProfileUser.jsp">Full</a> </td> 	--%>
-				<td><c:out value="${user.dateOfBirth}" /></td>					
-				<td><c:out value="${user.sex}"/></td>			 
-				<td><c:out value="${user.email}" /></td>				
-				<td><c:out value="${user.skype}"></c:out>
-				<td><c:out value="${user.telephone}"></c:out>
-				<td><c:out value="${user.dateOfLastVisit}"></c:out>
-			
+			 	<td>
+				<c:out value="${user.id}" /></td> 
+				
+				
+				<c:url var="stUrl" value="ShowFullUser">
+				<c:param name="id" value="${user.id}"></c:param>
+				</c:url>
+				<td>
+				<a href="${stUrl}">	 
+					<c:out value="${user.surname}" />
+			 		<c:out value="${user.name}" /></a>
+			 	</td>
+				<td><c:out value="${user.dateOfBirth}" />
+				</td>					
+				<td>
+				<c:if test="${user.sex>0}"> <c:out value="men"/> </c:if>
+				<c:if test="${user.sex<1}"> <c:out value="women"/> </c:if>
+				</td>
+				
+				<td><c:out value="${user.dateOfLastVisit}"></c:out>	</td>	
 			</tr>
 		</c:forEach>
 </table>
-</form>
-<form action="/portal/edit.jsp">
-<button type="submit">Edit Profile</button>
 </form>
 </div>
