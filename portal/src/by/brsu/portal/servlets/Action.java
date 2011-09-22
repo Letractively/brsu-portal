@@ -16,5 +16,7 @@ public interface Action {
 	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response);
 
-	public Map<String, Object> getParametersMap();
+public Map<String, Object> getParametersMap(HttpServletRequest request, HttpServletResponse response);
+
+	
 }

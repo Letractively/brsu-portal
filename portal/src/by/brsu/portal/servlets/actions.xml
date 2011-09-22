@@ -30,4 +30,10 @@
 		<forward-url>profile.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
+<action name="ShowFullUser">
+		<class>by.brsu.portal.servlets.ShowFullUser</class>
+		<forward-url>onlyProfile.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
+
 </actions>
