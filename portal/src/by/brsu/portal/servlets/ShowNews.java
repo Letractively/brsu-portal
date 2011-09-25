@@ -19,7 +19,7 @@ import by.brsu.portal.news.NewsDAO;
 public class ShowNews implements Action {
 	private NewsDAO nDAO = new NewsDAO();
 	private List<News> news = nDAO.readNews();
-	private Map<String, Object> mp = new HashMap<String, Object>();
+	private Map<String, Object> map = new HashMap<String, Object>();
 
 	@Override
 	public boolean perform(HttpServletRequest request,
@@ -29,7 +29,7 @@ public class ShowNews implements Action {
 	
 	@Override
 	public Map<String, Object> getParametersMap() {
-		mp.put("news", news);
-		return mp;
+		map.put("news", news);
+		return map;
 	}
 }

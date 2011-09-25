@@ -130,7 +130,7 @@ public class NewsDAOTest {
 
 	@Test
 	public final void testReadNewsByPage() {
-		//fail("Not yet implemented"); // TODO
+		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
