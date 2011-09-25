@@ -20,6 +20,10 @@ public class AddUser implements Action {
 		user.setSurname(request.getParameter("surname"));
 		user.setEmail(request.getParameter("email"));
 		user.setPassword(request.getParameter("password"));
+		int sex;
+		Boolean sex0 = Boolean.valueOf(request.getParameter("sex0"));
+		if (sex0) sex=0; else sex=1;
+		user.setSex(sex);
 		Status status = new Status();
 		status.setIdStat(1);
 		user.setStatus(status);
