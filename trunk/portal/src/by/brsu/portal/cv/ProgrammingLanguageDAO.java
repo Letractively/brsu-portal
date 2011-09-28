@@ -21,25 +21,24 @@ import by.brsu.portal.PortalTechnicalException;
 public class ProgrammingLanguageDAO implements IProgrammingLanguageDAO{
 	private Connection conn = null;
 	public List<ProgrammingLanguage> findAllLanguages()
-			throws PortalTechnicalException {
+			/*throws PortalTechnicalException*/ {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "Select * from language";
 		ResultSet rs = null;
 		PreparedStatement st = null;
+		List<ProgrammingLanguage> proglang = new ArrayList<ProgrammingLanguage>();
+		ProgrammingLanguage tempproglang = new ProgrammingLanguage();
 		try {
 			st = conn.prepareStatement("");
 			rs = st.executeQuery(sql);
-			List<ProgrammingLanguage> proglang = new ArrayList<ProgrammingLanguage>();
-			ProgrammingLanguage tempproglang = new ProgrammingLanguage();
 			if (rs.next()) {
 				tempproglang.setIdLanguage(rs.getLong(1));
 				tempproglang.setName(rs.getString(2));
 				proglang.add(tempproglang);
 			}
-			return proglang;
 		} catch (SQLException e) {
-			throw new PortalTechnicalException(
-					"Error of performance of inquiry!");
+			/*throw new PortalTechnicalException(
+					"Error of performance of inquiry!");*/
 		} finally {
 			try {
 				if (rs != null)
@@ -47,9 +46,10 @@ public class ProgrammingLanguageDAO implements IProgrammingLanguageDAO{
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
-				throw new PortalTechnicalException(
-						"Error closing object ResultSet or PreparedStatement!");
+				/*throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");*/
 			}
 		}
+		return proglang;
 	}
 }
