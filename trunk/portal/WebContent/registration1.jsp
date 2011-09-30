@@ -14,9 +14,9 @@
 				name="surname" /><br> <label for="email">E-mail(login):</label>
 			<input type="text" name="email" /><br> <label for="password">Password:</label>
 			<input type="password" name="password" /><br>
-			Sex: <input type="radio" name="sex0" value="r0" />0</label>  <label>
-				<input type="radio" name="sex1" value="r1" />1</label>
-
+			Sex: <input type="radio" name="sex" value="0" />0  
+				<input type="radio" name="sex" value="1" />1</label><br>
+				<input type="submit" value="Add Project" />
 		</form>
 	</div>
 </body>
