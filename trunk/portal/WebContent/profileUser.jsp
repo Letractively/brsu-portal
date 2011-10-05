@@ -14,8 +14,7 @@
 			<tr>		
 			 	<td>
 				<c:out value="${user.id}" /></td> 
-				
-				
+					
 				<c:url var="stUrl" value="ShowFullUser">
 				<c:param name="id" value="${user.id}"></c:param>
 				</c:url>
@@ -32,6 +31,7 @@
 				</td>
 				
 				<td><c:out value="${user.dateOfLastVisit}"></c:out>	</td>	
+				<td><a href="Servlet/DelUser?id=<c:out value="${user.id}"></c:out>">X</a></td>
 			</tr>
 		</c:forEach>
 </table>

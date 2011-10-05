@@ -30,6 +30,13 @@
 		<forward-url>profile.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
+	
+	<action name="EditUser">
+		<class>by.brsu.portal.servlets.EditUser</class>
+		<forward-url>edit.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
+	
 <action name="ShowFullUser">
 		<class>by.brsu.portal.servlets.ShowFullUser</class>
 		<forward-url>onlyProfile.jsp</forward-url>
@@ -40,5 +47,14 @@
 		<forward-url>addProjectTemplate.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
-
+<action name="SaveEditUser">
+		<class>by.brsu.portal.servlets.SaveEditUser</class>
+		<forward-url>SaveEdit.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
+	<action name="DelUser">
+		<class>by.brsu.portal.servlets.DelUser</class>
+		<forward-url>SaveEdit.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
 </actions>

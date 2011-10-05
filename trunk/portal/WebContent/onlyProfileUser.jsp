@@ -27,12 +27,11 @@
 				<td><c:out value="${users_id.dateOfLastVisit}"></c:out>
 			
 			</tr>
-		
+
 </table>
 </form>
-<form action="/portal/edit.jsp">
-<button type="submit">Edit Profile</button>
- 
-
-</form>
+<br>
+<center>
+<a href="/portal/Servlet/EditUser?id=<c:out value="${users_id.id}"></c:out>">Edit Profile</a>
+</center>
 </div>
