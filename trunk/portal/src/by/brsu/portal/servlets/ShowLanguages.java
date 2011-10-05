@@ -21,19 +21,18 @@ import by.brsu.portal.cv.ProgrammingLanguage;
 public class ShowLanguages implements Action
 {
 	private ProgrammingLanguageDAO pDAO = new ProgrammingLanguageDAO();
-	private List<ProgrammingLanguage> listprlanguage  = pDAO.findAllLanguages();
 	private Map<String, Object> ma_pl = new HashMap<String, Object>();
 
 	@Override
 	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return false;
+		List<ProgrammingLanguage> listprlanguage  = pDAO.findAllLanguages();
+		ma_pl.put("languages", listprlanguage);
+		return true;
 	}
 
 	@Override
 	public Map<String, Object> getParametersMap() {
-		ma_pl.put("languages", listprlanguage);
 		return ma_pl;
 	}
 
