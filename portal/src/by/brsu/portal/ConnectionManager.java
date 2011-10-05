@@ -67,10 +67,13 @@ public class ConnectionManager {
 	 * @param conn
 	 * @throws SQLException
 	 */
-	public synchronized void releaseConnection(Connection conn)
-			throws SQLException {
+	public synchronized void releaseConnection(Connection conn){
 		connected--;
-		conn.rollback();
+		try {
+			conn.rollback();
+		} catch (SQLException e) {
+			// TODO Log it
+		}
 		for (int i = 0; i < poolsize; i++) {
 			if (connections[i] == null) {
 				connections[i] = conn;
