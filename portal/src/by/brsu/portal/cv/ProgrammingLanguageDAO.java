@@ -45,6 +45,7 @@ public class ProgrammingLanguageDAO implements IProgrammingLanguageDAO{
 					rs.close();
 				if (st != null)
 					st.close();
+				ConnectionManager.getConnectorPool().releaseConnection(conn);
 			} catch (SQLException ex) {
 				/*throw new PortalTechnicalException(
 						"Error closing object ResultSet or PreparedStatement!");*/
