@@ -13,9 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import by.brsu.portal.ConnectionManager;
-
 
 /**
  * @author Hraznykh_Pavel
@@ -40,7 +38,6 @@ public class UserDAO {
 			st.setString(9, user.getIcq());
 			st.setLong(10, user.getStatus().getIdStat());
 			st.setBlob(11, user.getPicture());
-
 			Date date = new Date(System.currentTimeMillis()); //date.setTime(System.currentTimeMillis());
 			st.setDate(12, date);
 			st.setInt(13, user.getNumberOfCautions());
@@ -53,25 +50,27 @@ public class UserDAO {
 			// TODO log error
 		} finally {
 			try {
+				
 				if (rs != null)
 					rs.close();
 				if (st != null)
 					st.close();
+				ConnectionManager.getConnectorPool().releaseConnection(conn);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
 		return null;
 	}
 
-	public void deleteUser(User user) {
+	public User deleteUser(long id) {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
-		String query = "delete from user where id=?";
+		String query = "delete from users where id_user=?";
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(query);
+			st.setLong(1, id);
 			st.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -80,19 +79,21 @@ public class UserDAO {
 			try {
 				if (st != null)
 					st.close();
+				ConnectionManager.getConnectorPool().releaseConnection(conn);
 			} catch (SQLException e) {
 			}
 		}
+		return null;
 
 	}
 
 	public void creatUserTable() {
-		Connection connection = ConnectionManager.getConnectorPool().getConnection();
+		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "create table users(id int not null auto_increment PRIMARY key, name char(30), NOT NULL, surname VARCHAR( 100 ) NOT NULL ,emai VARCHAR( 100 ) NOT NULL ,dateOfBirth DATE NULL ,telephone VARCHAR( 100 ) NULL ,password VARCHAR( 100 ) NOT NULL ,about TEXT NULL , sex VARCHAR( 100 ) NULL ,skype VARCHAR( 100 ) NULL ,isq VARCHAR( 100 ) NULL ,IQ INT( 2 ) NULL, idStat INT( 10 ) NOT NULL ,picture BLOB NULL ,dateOfLastVisit DATE NULL ,numberOfCautions VARCHAR( 100 ) NULL)"; 
 
 		Statement st = null;
 		try {
-			st = connection.createStatement();
+			st = conn.createStatement();
 			st.executeUpdate(query);
 		} catch (SQLException e) {
 			// TODO wrong syntax
@@ -100,6 +101,7 @@ public class UserDAO {
 			try {
 				if (st != null)
 					st.close();
+				ConnectionManager.getConnectorPool().releaseConnection(conn);
 			} catch (SQLException e) {
 			}
 		}
@@ -108,13 +110,13 @@ public class UserDAO {
 
 	public User findUserById(long id) {
 		
-		Connection connection = ConnectionManager.getConnectorPool().getConnection();
+		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "Select * from users where id_user=?";
 		
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
-			st = connection.prepareStatement(query);
+			st = conn.prepareStatement(query);
 			st.setLong(1, id);
 			rs = st.executeQuery();
 			if (rs.next()) {
@@ -140,6 +142,7 @@ public class UserDAO {
 					rs.close();
 				if (st != null)
 					st.close();
+				ConnectionManager.getConnectorPool().releaseConnection(conn);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 			}
@@ -165,6 +168,7 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 		return null;
 	}
@@ -178,10 +182,9 @@ public class UserDAO {
 		  List<User> us = new ArrayList<User>();
 	  try{
 		  		st = conn.prepareStatement("");  
-		  	
+		  		
 		  		rs = st.executeQuery("Select * from users");
-			  
-			  
+			  		  
 		   while (rs.next()) 
 		   {
 		    User users = new User();
@@ -197,8 +200,7 @@ public class UserDAO {
 		    us.add(users);   
 		   } 	  
 		  return us;
-		  }
-		 
+		  }		 
 		catch (SQLException e) 
 		  {
 			System.out.println(e);
@@ -211,6 +213,7 @@ public class UserDAO {
 		     rs.close();
 		    if (st != null)
 		     st.close();
+		    ConnectionManager.getConnectorPool().releaseConnection(conn);
 		   } 
 		   catch (SQLException ex) 
 		   {
@@ -219,13 +222,11 @@ public class UserDAO {
 		  }
 		  return null;
 
-
 	}
 
 
 	@SuppressWarnings("null")
 	public boolean findUserByEmail(String email) {
-		@SuppressWarnings("unused")
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "Select * from user where email=?";
 		ResultSet rs = null;
@@ -239,8 +240,57 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 		return false;
 	}
 
-}
+		public User updateUser(User user) {
+			Connection conn = ConnectionManager.getConnectorPool().getConnection();
+			String query = "update users set * where id_user?";
+			ResultSet rs = null;
+			PreparedStatement st = null;
+			try {
+				st = conn.prepareStatement(query);
+				st.setString(1, user.getName());
+				st.setString(2, user.getSurname());
+				st.setString(3, user.getEmail());
+				st.setDate(4, (Date) user.getDateOfBirth());
+				st.setString(5, user.getTelephone());
+				st.setString(6, user.getPassword());
+				st.setInt(7, user.getSex());
+				st.setString(8, user.getSkype());
+				st.setString(9, user.getIcq());
+				st.setLong(10, user.getStatus().getIdStat());
+				st.setBlob(11, user.getPicture());
+				Date date = new Date(System.currentTimeMillis()); //date.setTime(System.currentTimeMillis());
+				st.setDate(12, date);
+				st.setInt(13, user.getNumberOfCautions());
+				st.setInt(14, 1);
+				st.executeUpdate();
+				return user;
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+				// TODO log error
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (st != null)
+						st.close();
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+			return null;
+		}
+
+	
+	
+	}
+
+
