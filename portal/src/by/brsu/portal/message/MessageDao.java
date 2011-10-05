@@ -3,10 +3,8 @@ package by.brsu.portal.message;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import by.brsu.portal.ConnectionManager;
 import by.brsu.portal.news.Category;
-import by.brsu.portal.news.News;
 import by.brsu.portal.user.*;
 /**
  * @author Trutsik
@@ -58,6 +56,7 @@ public class MessageDao {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 		return null;
 	}
@@ -81,6 +80,7 @@ public class MessageDao {
 					stat.close();
 			} catch (SQLException e) {
 			}
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 	}
 	
@@ -102,6 +102,7 @@ public class MessageDao {
 			} catch (SQLException e) {
 				return false;
 			}
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 	}
 	
@@ -122,6 +123,7 @@ public class MessageDao {
 					stat.close();
 			} catch (SQLException e) {
 			}
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 	}
 	
@@ -157,6 +159,7 @@ public class MessageDao {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 		return null;
 	}
@@ -210,19 +213,22 @@ public class MessageDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		ConnectionManager.getConnectorPool().releaseConnection(conn);
 		return msg;
 	}
 	/**
 	 * Get List News from datebase for a given page
 	 */
 	public List<Message> readMessageByPage(int page, int i) {
-		Statement stat = null;
-		ResultSet rs = null;
+		//Statement stat = null;
+		//ResultSet rs = null;
 		List<Message> msg = new ArrayList<Message>();
+		ConnectionManager.getConnectorPool().releaseConnection(conn);
 		return msg;
 	}
 	public Message findMessageById() {
 		Message msg = new Message();
+		ConnectionManager.getConnectorPool().releaseConnection(conn);
 		return msg;
 	}
 }
