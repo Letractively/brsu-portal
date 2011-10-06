@@ -181,7 +181,7 @@ public class TechnologyDAO implements ITechnologyDAO {
 	 * @throws PortalTechnicalException
 	 */
 	public List<Technology> findAllTechologies()
-			throws PortalTechnicalException {
+			/*throws PortalTechnicalException*/ {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "Select * from technologies";
 		ResultSet rs = null;
@@ -198,8 +198,8 @@ public class TechnologyDAO implements ITechnologyDAO {
 			}
 			return techn;
 		} catch (SQLException e) {
-			throw new PortalTechnicalException(
-					"Error of performance of inquiry!");
+			/*throw new PortalTechnicalException(
+					"Error of performance of inquiry!");*/
 		} finally {
 			try {
 				if (rs != null)
@@ -207,9 +207,10 @@ public class TechnologyDAO implements ITechnologyDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
-				throw new PortalTechnicalException(
-						"Error closing object ResultSet or PreparedStatement!");
+				/*throw new PortalTechnicalException(
+						"Error closing object ResultSet or PreparedStatement!");*/
 			}
 		}
+		return null;
 	}
 }
