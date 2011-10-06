@@ -59,5 +59,5 @@ public interface ITechnologyDAO {
 	 * @throws PortalTechnicalException
 	 */
 	public List<Technology> findAllTechologies()
-			throws PortalTechnicalException;
+			/*throws PortalTechnicalException*/;
 }

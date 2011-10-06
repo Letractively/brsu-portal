@@ -22,10 +22,9 @@
 			<tr><td width=170><label for="stageOfDevelopment">Stage of development:</label></td> <td width=120><input	type="text" name="stageOfDevelopment" /></td></tr>
 			<tr><td width=170><label for="technology">Technology:</label></td> <td width=120>
 			<select name="technology">
-			   <option VALUE="Other1">Other</option>
-			   <option VALUE="Other2">Other</option>
-			   <option VALUE="Other3">Other</option>
-			   <option VALUE="Other4">Other</option>
+			<c:forEach var="technology" items="${technology}">
+			   <option VALUE="${technology.id}"><c:out value="${technology.name}" /></option>
+			   </c:forEach>
 			   </select>
 			   </td></tr>
 			<tr><td width=170><label for="languages">Languages:</label></td> <td width=120>

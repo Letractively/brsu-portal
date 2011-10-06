@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import by.brsu.portal.cv.ProgrammingLanguageDAO;
 import by.brsu.portal.cv.ProgrammingLanguage;
+import by.brsu.portal.cv.TechnologyDAO;
 
 /**
  * @author Artur Smaliuk
@@ -20,14 +21,17 @@ import by.brsu.portal.cv.ProgrammingLanguage;
  */
 public class ShowLanguages implements Action
 {
-	private ProgrammingLanguageDAO pDAO = new ProgrammingLanguageDAO();
+	private ProgrammingLanguageDAO plDAO = new ProgrammingLanguageDAO();
+	private TechnologyDAO tDAO = new TechnologyDAO();
 	private Map<String, Object> ma_pl = new HashMap<String, Object>();
 
 	@Override
 	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response) {
-		List<ProgrammingLanguage> listprlanguage  = pDAO.findAllLanguages();
-		ma_pl.put("languages", listprlanguage);
+		//List<ProgrammingLanguage> listprlanguage  = plDAO.findAllLanguages();
+		//ma_pl.put("languages", listprlanguage);
+		ma_pl.put("languages", plDAO.findAllLanguages());
+		ma_pl.put("technology", tDAO.findAllTechologies());
 		return true;
 	}
 
