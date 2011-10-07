@@ -23,14 +23,14 @@
 			<tr><td width=170><label for="technology">Technology:</label></td> <td width=120>
 			<select name="technology">
 			<c:forEach var="technology" items="${technology}">
-			   <option VALUE="${technology.id}"><c:out value="${technology.name}" /></option>
+			   <input type="checkbox" value="${technology.id}"><c:out value="${technology.name}" />
 			   </c:forEach>
 			   </select>
 			   </td></tr>
 			<tr><td width=170><label for="languages">Languages:</label></td> <td width=120>
 			<select name="languages">
 			<c:forEach var="language" items="${languages}">
-			   <option VALUE="${language.idLanguage}"><c:out value="${language.name}" /></option>
+			   <input type="checkbox" value="${language.idLanguage}"><c:out value="${language.name}" />
 			   </c:forEach>
 			   </select>
 			   </td></tr> 
