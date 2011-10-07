@@ -189,9 +189,9 @@ public class TechnologyDAO implements ITechnologyDAO {
 		try {
 			st = conn.prepareStatement("");
 			rs = st.executeQuery(sql);
-			List<Technology> techn = new ArrayList<Technology>();
-			Technology temptechn = new Technology();
-			if (rs.next()) {
+			List<Technology> techn = new ArrayList<Technology>();			
+			while (rs.next()) {
+				Technology temptechn = new Technology();
 				temptechn.setId(rs.getLong(1));
 				temptechn.setName(rs.getString(2));
 				techn.add(temptechn);
