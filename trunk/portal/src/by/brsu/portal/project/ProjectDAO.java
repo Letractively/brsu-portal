@@ -85,22 +85,22 @@ public class ProjectDAO
 	public Project createProject(Project project) 
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "INSERT INTO Projects VALUES (null,?,?,?,null,null,?,?,?,?)";
+		String sql = "INSERT INTO Projects VALUES (null,null,?,?,null,null,?,?,?,?)";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try 
 		{
 			st = conn.prepareStatement(sql);
-			st.setLong(1, project.getUser());
-			st.setString(2, project.getName());			
-			st.setString(3, project.getDescription());
+			//st.setLong(1, project.getUser());
+			st.setString(1, project.getName());			
+			st.setString(2, project.getDescription());
 			//st.setDate(4, (java.sql.Date) project.getDateOfCreation());
 			//st.setDate(5, (java.sql.Date) project.getDateOfClosing());			
 			ProjectCategory pc = project.getCategory();
-			st.setString(4, pc.getName());			
-			st.setLong(5, project.getVersion());			
-			st.setString(6, project.getLicense());			
-			st.setString(7, project.getStageOfDevelopment());
+			st.setString(3, pc.getName());			
+			st.setLong(4, project.getVersion());			
+			st.setString(5, project.getLicense());			
+			st.setString(6, project.getStageOfDevelopment());
 			
 			/*List<Technology> th = project.getTechnology();
 			String thnew = null;
