@@ -24,7 +24,7 @@ public class AddProject implements Action {
 	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response) {
 		project.setName(request.getParameter("name"));
-		//project.setUser(Integer.parseInt(request.getParameter("owner")));
+		project.setUser(Integer.parseInt(request.getParameter("owner")));
 		project.setDescription(request.getParameter("description"));
 		/*DateFormat dateFormat = DateFormat.getDateInstance();
 		Date date = null;
