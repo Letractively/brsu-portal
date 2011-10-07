@@ -2,7 +2,7 @@
 <div id="tabl">
 	<table border="1">
 		<tr bordercolor="12">
-			<td >Name of project</td>
+			<td>Name of project</td>
 			<td>Description</td>
 			<td>Date of creation</td>
 			<td>Date of closing</td>
@@ -18,13 +18,34 @@
 				<td><c:out value="${project.name}" /></td>
 				<td><c:out value="${project.description}" /></td>
 				<td><c:out value="${project.dateOfCreation}" /></td>
-				<td><c:out value="${project.dateOfClosing}" /></td>
-				<td><c:out value="${project.category}" /></td>
-				<td><c:out value="${project.version}" /></td>
-				<td><c:out value="${project.license}" /></td>
-				<td><c:out value="${project.stageOfDevelopment}" /></td>
-				<td><c:out value="${project.technology}" /></td>
-				<td><c:out value="${project.languages}" /></td>
+				<td><c:choose>
+						<c:when test="${not empty project.dateOfClosing}">${project.dateOfClosing}</c:when>
+						<c:otherwise>&nbsp;</c:otherwise>
+					</c:choose></td>
+				<td><c:choose>
+						<c:when test="${not empty project.category}">${project.category}</c:when>
+						<c:otherwise>&nbsp;</c:otherwise>
+					</c:choose></td>
+				<td><c:choose>
+						<c:when test="${not empty project.version}">${project.version}</c:when>
+						<c:otherwise>&nbsp;</c:otherwise>
+					</c:choose></td>
+				<td><c:choose>
+						<c:when test="${not empty project.license}">${project.license}</c:when>
+						<c:otherwise>&nbsp;</c:otherwise>
+					</c:choose></td>
+				<td><c:choose>
+						<c:when test="${not empty project.stageOfDevelopment}">${project.stageOfDevelopment}</c:when>
+						<c:otherwise>&nbsp;</c:otherwise>
+					</c:choose></td>
+				<td><c:choose>
+						<c:when test="${not empty project.technology}">${project.technology}</c:when>
+						<c:otherwise>&nbsp;</c:otherwise>
+					</c:choose></td>
+				<td><c:choose>
+						<c:when test="${not empty project.languages}">${project.languages}</c:when>
+						<c:otherwise>&nbsp;</c:otherwise>
+					</c:choose></td>
 			</tr>
 		</c:forEach>
 	</table>
