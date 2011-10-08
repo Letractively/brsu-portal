@@ -12,30 +12,28 @@
 		<form action="Servlet/AddProject" method="post">
 			<table>
 			<tr><td width=170><label for="name">Project name:</label></td> <td width=120><input type="text" name="name" width=100 /></td></tr>
-			<tr><td width=170><label for="owner">Owner name:</label></td> <td width=120><input type="text" name="owner" /></td></tr>
-			<tr><td width=170><label for="description">Description:</label></td> <td width=120><input type="text"	name="description" /></td></tr>
-			<tr><td width=170><label for="datecr">Date Of Creation:</label></td> <td width=120><input type="text"	name="datecr" /></td></tr>
-			<tr><td width=170><label for="datecl">Date Of Closing:</label></td> <td width=120><input type="text"	name="datecl" /></td></tr>
+			<tr><td width=170><label for="owner">Owner name:</label></td> <td width=120><input type="text" name="owner" /></td></tr>			
+			<!-- <tr><td width=170><label for="datecr">Date Of Creation:</label></td> <td width=120><input type="text"	name="datecr" /></td></tr>
+			<tr><td width=170><label for="datecl">Date Of Closing:</label></td> <td width=120><input type="text"	name="datecl" /></td></tr>-->
 			<tr><td width=170><label for="category">Category:</label></td> <td width=120><input type="text" name="category" /></td></tr>
 			<tr><td width=170><label for="version">Version:</label></td> <td width=120><input	type="text" name="version" /></td></tr>
 			<tr><td width=170><label for="license">License:</label></td> <td width=120><input	type="text" name="license" /></td></tr>
 			<tr><td width=170><label for="stageOfDevelopment">Stage of development:</label></td> <td width=120><input	type="text" name="stageOfDevelopment" /></td></tr>
-			<tr><td width=170><label for="technology">Technology:</label></td> <td width=120>
-			<select name="technology">
+			<tr><td width=170><label for="technology">Technology:</label></td> <td width=470>
+			<!-- <select name="technology">-->
 			<c:forEach var="technology" items="${technology}">
 			   <input type="checkbox" value="${technology.id}"><c:out value="${technology.name}" />
 			   </c:forEach>
-			   </select>
+			   <!--</select>-->
 			   </td></tr>
-			<tr><td width=170><label for="languages">Languages:</label></td> <td width=120>
-			<select name="languages">
+			<tr><td width=170><label for="languages">Languages:</label></td> <td width=470>
+			<!-- <select name="languages"> -->
 			<c:forEach var="language" items="${languages}">
 			   <input type="checkbox" value="${language.idLanguage}"><c:out value="${language.name}" />
 			   </c:forEach>
-			   </select>
+			   <!--</select>-->
 			   </td></tr> 
-			<!-- <tr><td width=170><label for="technology">Technology:</label></td> <td width=120><input type="text" name="technology" /></td></tr>
-			<tr><td width=170><label for="languages">Languages:</label></td> <td width=120><input	type="text" name="languages" /></td></tr>  -->
+			<tr><td width=170><label for="description">Description:</label></td> <td width=120><input type="text"	name="description" /></td></tr>
 			</table> 
 			<input type="submit" value="Add Project" />
 		</form>

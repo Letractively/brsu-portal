@@ -26,12 +26,12 @@ public class ProgrammingLanguageDAO implements IProgrammingLanguageDAO{
 		String sql = "Select * from language";
 		ResultSet rs = null;
 		PreparedStatement st = null;
-		List<ProgrammingLanguage> proglang = new ArrayList<ProgrammingLanguage>();
-		ProgrammingLanguage tempproglang = new ProgrammingLanguage();
+		List<ProgrammingLanguage> proglang = new ArrayList<ProgrammingLanguage>();		
 		try {
 			st = conn.prepareStatement("");
 			rs = st.executeQuery(sql);
-			if (rs.next()) {
+			while (rs.next()) {
+				ProgrammingLanguage tempproglang = new ProgrammingLanguage();
 				tempproglang.setIdLanguage(rs.getLong(1));
 				tempproglang.setName(rs.getString(2));
 				proglang.add(tempproglang);
