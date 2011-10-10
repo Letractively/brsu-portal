@@ -82,7 +82,7 @@ public class ProjectDAO
 	}
 	
 
-	public Project createProject(Project project) 
+	public Project createProject(Project project, String[] tech, String[] prlang)  
 	{
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "INSERT INTO Projects VALUES (null,?,?,?,?,null,?,?,?,?)";
@@ -158,6 +158,51 @@ public class ProjectDAO
 			{
 			}
 		}
+		
+		/*sql = "Select * from Projects where name=project.getName()";
+		rs = null;
+		Statement sts = null;
+		Long idi = null;
+		try
+		{
+			sts = conn.createStatement();
+			rs = st.executeQuery(sql);
+			idi = rs.getLong(1);
+		}
+		catch (SQLException e)
+		{			
+		}
+		
+		sql = "INSERT INTO l_languages_pr VALUES (?,?)";
+		rs = null;
+		st = null;
+		try 
+		{
+			st = conn.prepareStatement(sql);
+			int i=1;
+			st.setLong(i++, idi);
+			st.setInt(i++, Integer.parseInt(prlang[1]));
+			st.executeUpdate();
+			return project;
+		} catch (SQLException e) 
+		{
+			e.printStackTrace();
+		} 
+		finally 
+		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+				ConnectionManager.getConnectorPool().releaseConnection(conn);
+			} 
+			catch (SQLException ex) 
+			{
+			}
+		}*/
+
 		return null;
 	}
 
