@@ -4,6 +4,7 @@
  */
 package by.brsu.portal.servlets;
 
+import java.io.Console;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -39,9 +40,13 @@ public class AddProject implements Action {
 			date = dateFormat.parse(request.getParameter("datecl"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
 		project.setDateOfClosing(date);*/
+		String[] tech = new String[10];
+		tech = request.getParameterValues("technology");
+		String[] prlang = new String[10];
+		prlang = request.getParameterValues("technology");
 		ProjectCategory pc = new ProjectCategory();
 		pc.setName(request.getParameter("category"));
 		project.setCategory(pc);
@@ -50,7 +55,7 @@ public class AddProject implements Action {
 		project.setStageOfDevelopment(request.getParameter("stageOfDevelopment"));
 
 		ProjectDAO ppp = new ProjectDAO();
-		ppp.createProject(project);
+		ppp.createProject(project, tech, prlang);
 
 		return true;
 	}
