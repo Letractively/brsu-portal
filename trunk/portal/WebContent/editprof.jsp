@@ -8,7 +8,7 @@
 <title>Welcome to BRSU Portal</title>
 </head>
 <body>
-<form action="Servlet/SaveEditUser" method="post">
+<form action="Servlet/SaveEditUser?id=<c:out value="${edit.id}"></c:out>" method="post">
 		<table>						
 
 			<tr><td><label for="surname">Surname:</label></td> <td><input value="<c:out value="${edit.name}"></c:out>" type="text" name="surname"></td></tr>		

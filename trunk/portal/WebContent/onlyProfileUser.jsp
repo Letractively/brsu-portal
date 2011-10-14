@@ -17,8 +17,8 @@
 		
 			<tr>		
 				<td><c:out value="${users_id.id}" /></td>
- 				<td><c:out value="${users_id.surname}" /></td>
  				<td><c:out value="${users_id.name}" /></td>
+ 				<td><c:out value="${users_id.surname}" /></td>
  				<td><c:out value="${users_id.dateOfBirth}" /></td>
  				<td><c:out value="${users_id.sex}" /></td>								 
 				<td><c:out value="${users_id.email}" /></td>				

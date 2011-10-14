@@ -39,7 +39,7 @@ public class UserDAO {
 			st.setLong(10, user.getStatus().getIdStat());
 			st.setBlob(11, user.getPicture());
 			Date date = new Date(System.currentTimeMillis()); //date.setTime(System.currentTimeMillis());
-			st.setDate(12, date);
+			st.setDate(12, (Date) date);
 			st.setInt(13, user.getNumberOfCautions());
 			st.setInt(14, 1);
 			st.executeUpdate();
@@ -121,7 +121,7 @@ public class UserDAO {
 			rs = st.executeQuery();
 			if (rs.next()) {
 				User user = new User();
-				 user.setId(rs.getLong(1));
+					user.setId(rs.getLong(1));
 				    user.setSurname(rs.getString(2));
 				    user.setName(rs.getString(3));   
 				    user.setEmail(rs.getString(4));
@@ -245,31 +245,25 @@ public class UserDAO {
 		return false;
 	}
 
-		public User updateUser(User user) {
+		public User updateUser(long id) {
 			Connection conn = ConnectionManager.getConnectorPool().getConnection();
-			String query = "update users set * where id_user?";
+			String query = "update users set surname=? where id_user=?";
 			ResultSet rs = null;
 			PreparedStatement st = null;
+			
 			try {
 				st = conn.prepareStatement(query);
-				st.setString(1, user.getName());
-				st.setString(2, user.getSurname());
-				st.setString(3, user.getEmail());
-				st.setDate(4, (Date) user.getDateOfBirth());
-				st.setString(5, user.getTelephone());
-				st.setString(6, user.getPassword());
-				st.setInt(7, user.getSex());
-				st.setString(8, user.getSkype());
-				st.setString(9, user.getIcq());
-				st.setLong(10, user.getStatus().getIdStat());
-				st.setBlob(11, user.getPicture());
-				Date date = new Date(System.currentTimeMillis()); //date.setTime(System.currentTimeMillis());
-				st.setDate(12, date);
-				st.setInt(13, user.getNumberOfCautions());
-				st.setInt(14, 1);
+			
+					st.setString(1, "gfghjhjljhlk");
+				st.setLong(2, id);
 				st.executeUpdate();
-				return user;
-
+			
+				//if (rs.next()) {
+					//User user = new User();
+					//user.setId(rs.getLong(1));
+					//user.setSurname(rs.getString(2));
+					return null;
+				//}
 			} catch (SQLException e) {
 				e.printStackTrace();
 				// TODO log error
