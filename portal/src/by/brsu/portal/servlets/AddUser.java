@@ -29,7 +29,7 @@ public class AddUser implements Action {
 			e.printStackTrace();
 		}
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());         
-		
+        
         user.setName(request.getParameter("name"));
 		user.setSurname(request.getParameter("surname"));
 		user.setEmail(request.getParameter("email"));

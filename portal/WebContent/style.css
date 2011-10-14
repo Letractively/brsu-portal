@@ -107,3 +107,14 @@ a {
 .clearfloat {
 	clear: both;
 }
+
+.help{
+	 color:gray;
+	 font-style:italic;
+	 width: 130px;
+}
+.help1{
+	color: black;
+	font-style: normal;
+	width: 130px;
+}
