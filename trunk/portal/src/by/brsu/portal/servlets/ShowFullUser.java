@@ -7,6 +7,7 @@
  */
 package by.brsu.portal.servlets;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +30,7 @@ public class ShowFullUser implements Action {
 
 	@Override
 	public boolean perform(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response) throws IOException{
 		id = Integer.parseInt(request.getParameter("id"));
 		listuser_id = DAO.findUserById(id);
 		ma_p.put("users_id", listuser_id);

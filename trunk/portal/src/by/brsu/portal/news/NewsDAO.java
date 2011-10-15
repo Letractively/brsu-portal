@@ -5,10 +5,14 @@
 
 package by.brsu.portal.news;
 
+import java.io.IOException;
 import java.sql.*;
 import java.sql.Date;
 import java.util.*;
-
+import org.apache.log4j.FileAppender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.SimpleLayout;
 import by.brsu.portal.ConnectionManager;
 import by.brsu.portal.user.*;
 
@@ -18,15 +22,20 @@ import by.brsu.portal.user.*;
  */
 public class NewsDAO {
 	private Connection conn;
-
+	private static final Logger log = Logger.getLogger(NewsDAO.class);
 	/**
 	 * Insert date in database news
+	 * @throws IOException 
 	 */
 	public News createNews(String title, String msg, Category category,
-			User user) throws SQLException {
+			User user) throws SQLException, IOException {
 
 		Statement stat = null;
 		ResultSet rs = null;
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		try {
 			Date date = new Date(System.currentTimeMillis());
 			PreparedStatement set = conn
@@ -62,7 +71,7 @@ public class NewsDAO {
 				if (stat != null)
 					stat.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.error(e);
 			}
 
 		}
@@ -71,17 +80,21 @@ public class NewsDAO {
 
 	/**
 	 * Delete database news
+	 * @throws IOException 
 	 */
-	public Boolean delTable() throws SQLException {
+	public Boolean delTable() throws SQLException, IOException {
 		String query = "DROP TABLE news";
 		Statement stat = null;
-
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		try {
 			stat = conn.createStatement();
 			stat.executeUpdate(query);
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error(e);
 			return false;
 		} finally {
 			try {
@@ -92,10 +105,14 @@ public class NewsDAO {
 		}
 	}
 
-	public Boolean delNews(News news) throws SQLException {
+	public Boolean delNews(News news) throws SQLException, IOException {
 		String query = "DELETE FROM news WHERE id_news=?";
 		String query2 = "DELETE FROM Comments_news WHERE id_news=?";
 		Statement stat = null;
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 
 		try {
 			PreparedStatement set = conn.prepareStatement(query);
@@ -106,7 +123,7 @@ public class NewsDAO {
 			set2.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error(e);
 			return false;
 		} finally {
 			try {
@@ -120,15 +137,20 @@ public class NewsDAO {
 
 	/**
 	 * Add table to database from news
+	 * @throws IOException 
 	 */
-	public void addTable() throws SQLException {
+	public void addTable() throws SQLException, IOException {
 		String query = "create table news (id_news int not null auto_increment primary key,title varchar(100) not null,text text not null,created_date date,id_category int not null,important varchar(30) not null default '',id_author int not null,foreign key (id_category) references categories_pr(id_category),foreign key (id_author) references users(id_user));";
 		Statement stat = null;
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU-Log.txt", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		try {
 			stat = conn.createStatement();
 			stat.executeUpdate(query);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error(e);
 		} finally {
 			try {
 				if (stat != null)
@@ -140,12 +162,16 @@ public class NewsDAO {
 
 	/**
 	 * Update table to database from news
+	 * @throws IOException 
 	 */
 	public News updateNews(long id, String title, String msg,
-			Category category, User user) throws SQLException {
-
+			Category category, User user) throws SQLException, IOException {
 		Statement stat = null;
 		ResultSet rs = null;
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		try {
 			Date date = new Date(System.currentTimeMillis());
 			PreparedStatement set = conn
@@ -169,7 +195,7 @@ public class NewsDAO {
 				if (stat != null)
 					stat.close();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.error(e);
 			}
 
 		}
@@ -178,32 +204,42 @@ public class NewsDAO {
 
 	/**
 	 * @param conn
+	 * @throws IOException 
 	 */
-	public NewsDAO() {
+	public NewsDAO(){
 		try {
 			this.conn = ConnectionManager.getConnectorPool().getConnection();
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 
 	/**
 	 * Refresh this connection from datebase
+	 * @throws IOException 
 	 */
-	public void ReFreshConnection() {
+	public void ReFreshConnection() throws IOException {
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		try {
 			this.conn = ConnectionManager.getConnectorPool().getConnection();
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 	}
 
 	/**
 	 * Get List News from datebase
+	 * @throws IOException 
 	 */
-	public List<News> readNews() {
+	public List<News> readNews() throws IOException {
 		Statement stat = null;
 		ResultSet rs = null;
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		List<News> news = new ArrayList<News>();
 		try {
 			stat = conn.createStatement();
@@ -226,7 +262,7 @@ public class NewsDAO {
 				news.add(n);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 		return news;
 	}
@@ -235,8 +271,8 @@ public class NewsDAO {
 	 * Get List News from datebase for a given page
 	 */
 	public List<News> readNewsByPage(int page, int i) {
-		Statement stat = null;
-		ResultSet rs = null;
+		//Statement stat = null;
+		//ResultSet rs = null;
 		List<News> news = new ArrayList<News>();
 		return news;
 	}

@@ -5,6 +5,7 @@
 package by.brsu.portal.servlets;
 
 import java.io.Console;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,7 @@ public class AddProject implements Action {
 	
 	@Override
 	public boolean perform(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response) throws IOException{
 		project.setName(request.getParameter("name"));
 		project.setUser(Integer.parseInt(request.getParameter("owner")));
 		project.setDescription(request.getParameter("description"));
