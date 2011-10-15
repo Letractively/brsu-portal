@@ -4,6 +4,7 @@
  */
 package by.brsu.portal.servlets;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,17 +19,19 @@ import by.brsu.portal.news.NewsDAO;
  */
 public class ShowNews implements Action {
 	private NewsDAO nDAO = new NewsDAO();
-	private List<News> news = nDAO.readNews();
+	private List<News> news;
 	private Map<String, Object> map = new HashMap<String, Object>();
 
 	@Override
 	public boolean perform(HttpServletRequest request,
-			HttpServletResponse response){
+			HttpServletResponse response) throws IOException{
+		news = nDAO.readNews();
 		return true;
 	}
 	
 	@Override
 	public Map<String, Object> getParametersMap() {
+		
 		map.put("news", news);
 		return map;
 	}

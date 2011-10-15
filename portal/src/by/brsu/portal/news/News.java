@@ -5,7 +5,6 @@
 package by.brsu.portal.news;
 
 import java.util.*;
-
 import by.brsu.portal.user.*;
 
 /**
@@ -70,7 +69,7 @@ public class News {
 	/**
 	 * 
 	 */
-	public News() {
+	public News(){
 		// super();
 	}
 

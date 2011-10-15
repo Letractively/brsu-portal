@@ -1,5 +1,6 @@
 package by.brsu.portal.servlets;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,11 +14,9 @@ import by.brsu.portal.user.UserDAO;
 
 public class AddUser implements Action {
 	private Map<String, Object> map = new HashMap<String, Object>();
-
 	@Override
 	public boolean perform(HttpServletRequest request,
-			HttpServletResponse response){
-
+			HttpServletResponse response) throws IOException{
 		User user = new User();
 		Date date = new Date();
 		 String strDate = request.getParameter("dateofbirth");
@@ -25,8 +24,6 @@ public class AddUser implements Action {
          try {
 		 date = format.parse(strDate);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());         
         

@@ -4,8 +4,12 @@
  */
 package by.brsu.portal.servlets;
 
+import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
-import by.brsu.portal.PortalTechnicalException;
+import org.apache.log4j.FileAppender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.SimpleLayout;
 
 /**
  * @author Roman Ulezlo
@@ -13,9 +17,14 @@ import by.brsu.portal.PortalTechnicalException;
  */
 public class Factory {
 	private String forwardURL;
-
-	public Action create(String actionName, HttpServletRequest request) {
+	private static final Logger log = Logger.getLogger(Factory.class);
+	public Action create(String actionName, HttpServletRequest request)
+			throws IOException {
 		Action actionInstance = null;
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		try {
 			ActionHandler handler = new ActionHandler(actionName);
 			if (handler.getClassName() != "")
@@ -32,7 +41,7 @@ public class Factory {
 				forwardURL = handler.getErrorURL();
 			}
 		} catch (Exception e) {
-			new PortalTechnicalException("Class 'ShowMainPage' not found");
+			log.error(e);
 		}
 		return actionInstance;
 	}

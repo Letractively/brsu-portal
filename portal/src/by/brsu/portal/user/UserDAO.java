@@ -5,6 +5,7 @@
 
 package by.brsu.portal.user;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -13,18 +14,30 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.log4j.FileAppender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.SimpleLayout;
+
 import by.brsu.portal.ConnectionManager;
+
 
 /**
  * @author Hraznykh_Pavel
  * @version 20110827
  */
 public class UserDAO {
-	public User createUser(User user) {
+	private static final Logger log = Logger.getLogger(UserDAO.class);
+	public User createUser(User user) throws IOException {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "insert into users values (null,?,?,?,?,?,?,?,?,?,null,?,?,?,?,?)";
 		ResultSet rs = null;
 		PreparedStatement st = null;
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		try {
 			st = conn.prepareStatement(query);
 			st.setString(1, user.getName());
@@ -46,7 +59,7 @@ public class UserDAO {
 			return user;
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error(e);
 			// TODO log error
 		} finally {
 			try {
@@ -58,23 +71,27 @@ public class UserDAO {
 				ConnectionManager.getConnectorPool().releaseConnection(conn);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return null;
 	}
 
-	public User deleteUser(long id) {
+	public User deleteUser(long id) throws IOException {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "delete from users where id_user=?";
 		PreparedStatement st = null;
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		try {
 			st = conn.prepareStatement(query);
 			st.setLong(1, id);
 			st.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 		} finally {
 			try {
 				if (st != null)
@@ -108,11 +125,14 @@ public class UserDAO {
 
 	}
 
-	public User findUserById(long id) {
+	public User findUserById(long id) throws IOException {
 		
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "Select * from users where id_user=?";
-		
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
@@ -135,7 +155,7 @@ public class UserDAO {
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 		} finally {
 			try {
 				if (rs != null)
@@ -151,11 +171,15 @@ public class UserDAO {
 		return null;
 	}
 
-	public User findUserByName(String name) {
+	public User findUserByName(String name) throws IOException {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "Select * from user where name=?";
 		ResultSet rs = null;
 		Statement st = null;
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		try {
 			st = conn.createStatement();
 			rs = st.executeQuery(query);
@@ -166,7 +190,7 @@ public class UserDAO {
 				return user;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error(e);
 		} finally {
 			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
@@ -226,11 +250,15 @@ public class UserDAO {
 
 
 	@SuppressWarnings("null")
-	public boolean findUserByEmail(String email) {
+	public boolean findUserByEmail(String email) throws IOException {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "Select * from user where email=?";
 		ResultSet rs = null;
 		PreparedStatement st = null;
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		try {
 			st.setString(1, email);
 			rs = st.executeQuery(query);
@@ -238,19 +266,22 @@ public class UserDAO {
 				return true;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error(e);
 		} finally {
 			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 		return false;
 	}
 
-		public User updateUser(long id) {
+		public User updateUser(long id) throws IOException {
 			Connection conn = ConnectionManager.getConnectorPool().getConnection();
 			String query = "update users set surname=? where id_user=?";
 			ResultSet rs = null;
 			PreparedStatement st = null;
-			
+			SimpleLayout layout = new SimpleLayout();
+			FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+			log.addAppender(appender);
+			log.setLevel((Level) Level.DEBUG);
 			try {
 				st = conn.prepareStatement(query);
 			
@@ -265,7 +296,7 @@ public class UserDAO {
 					return null;
 				//}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				log.error(e);
 				// TODO log error
 			} finally {
 				try {
@@ -276,7 +307,7 @@ public class UserDAO {
 
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					log.error(e);
 				}
 
 			}

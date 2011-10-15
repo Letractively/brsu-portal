@@ -1,5 +1,6 @@
 package by.brsu.portal.servlets;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class DelUser implements Action {
 	
 	@Override
 	public boolean perform(HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response) throws IOException{
 		// TODO Auto-generated method stub
 		id = Integer.parseInt(request.getParameter("id"));
 		user = DAO.deleteUser(id);

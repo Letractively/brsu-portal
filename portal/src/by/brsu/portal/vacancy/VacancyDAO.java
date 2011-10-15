@@ -1,15 +1,17 @@
 package by.brsu.portal.vacancy;
 
+import java.io.IOException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import org.apache.log4j.FileAppender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.SimpleLayout;
 import by.brsu.portal.ConnectionManager;
 import by.brsu.portal.cv.Education;
 import by.brsu.portal.cv.ProgrammingLanguage;
-
 /**
  * @author Sasha Koldushko
  * 
@@ -17,7 +19,7 @@ import by.brsu.portal.cv.ProgrammingLanguage;
 
 public class VacancyDAO {
 	private Connection connection ;
-
+	private static final Logger log = Logger.getLogger(VacancyDAO.class);
 	/**
 	 * insert into table vacancy values
 	 * 
@@ -34,12 +36,16 @@ public class VacancyDAO {
 	 * @param realizationTerm
 	 * @param salary
 	 * @return
+	 * @throws IOException 
 	 */
 	public Vacancy createVacancy(String post, long quantityOfPlaces,
 			ProgrammingLanguage programmingLanguage, long experience, long age,
 			Education education, String employment, String workPlace,
-			String sex, String region, long realizationTerm, long salary) {
-
+			String sex, String region, long realizationTerm, long salary) throws IOException {
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		connection = ConnectionManager.getConnectorPool().getConnection();
 		String st = "insert into vacancy values (null,'" + post + "',"
 				+ quantityOfPlaces + ",'" + programmingLanguage + "',"
@@ -76,7 +82,7 @@ public class VacancyDAO {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 		} finally {
 			try {
 				if (statement != null)
@@ -85,7 +91,7 @@ public class VacancyDAO {
 					result.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 			}
 			ConnectionManager.getConnectorPool().releaseConnection(connection);
 
@@ -99,14 +105,18 @@ public class VacancyDAO {
 	 * 
 	 * @param salary
 	 * @return
+	 * @throws IOException 
 	 */
-	public Vacancy findVacancyBySalary(long salary) {
+	public Vacancy findVacancyBySalary(long salary) throws IOException {
 
 		connection = ConnectionManager.getConnectorPool().getConnection();
 		String st = "select * from vacancy where salary = " + salary;
 		ResultSet result = null;
 		Statement statement = null;
-
+		SimpleLayout layout = new SimpleLayout();
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 		try {
 			statement = connection.createStatement();
 			result = statement.executeQuery(st);
@@ -117,7 +127,7 @@ public class VacancyDAO {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 		} finally {
 
 			try {
@@ -127,7 +137,7 @@ public class VacancyDAO {
 					result.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 			}
 			ConnectionManager.getConnectorPool().releaseConnection(connection);
 		}
