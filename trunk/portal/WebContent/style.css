@@ -96,3 +96,8 @@
 	font-style: normal;
 	width: 130px;
 }
+.redfont{
+	color: red;
+	text-align: center;
+	font-style: inherit;
+}
