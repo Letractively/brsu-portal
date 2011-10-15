@@ -1,15 +1,12 @@
 @CHARSET "UTF-8";
 /*- Portal.BrSU.BY, 2011 | mail@Portal.BrSU.BY */
 #container {
-	width: 760px;
 	border: 1px solid #999;
 	margin: 0 auto;
 }
 
 #header {
-	color: Black;
-	background: #665;
-	width: 760px;
+	background: #B0C4DE;
 	height: 106px;
 }
 
@@ -26,7 +23,7 @@
 }
 
 #headerRight a {
-	color: #0c0;
+	color: black;
 }
 
 #headerRight a:hover {
@@ -38,54 +35,35 @@
 }
 
 #nav {
-	width: 760px;
 	height: 36px;
-	color: #f00;
-	font-size: 1.2em;;
 	font-weight: bold;
 	line-height: 1.8em;
-	text-align: center;
+	
 }
-
 #nav ul {
-	list-style-type: none;
+        list-style-type: none;
+        margin: 0;
 }
-
 #nav li {
 	display: inline;
 	margin: 0 8px;
 }
 
 #nav li a {
-	color: #0c0;
+	color: black;
 }
 
 #nav li a:hover {
 	color: #f00;
 }
 
-a {
-	text-decoration: none;
-}
-
-#text {
-	width: 545px;
-	font-size: 1.2em;
-	margin: 10px auto;
-}
- {
-	
-}
 .tabl {
-	font-size: 0.9em;
 	margin: 5px auto;
 }
 
-	
-
 #footer {
-	background: #665;
-	color: #fff;
+	background: #B0C4DE;
+	color: black;
 	font-size: 70%;
 	padding: 5px;
 	clear: both;
