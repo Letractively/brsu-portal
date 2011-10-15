@@ -2,6 +2,7 @@ package by.brsu.portal.news;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -56,7 +57,7 @@ public class NewsDAOTest {
 	}
 
 	@Test
-	public final void testDelNews() {
+	public final void testDelNews() throws IOException {
 		try {
 			author.setId(1);
 			category.setId(1);
@@ -77,7 +78,7 @@ public class NewsDAOTest {
 	}
 
 	@Test
-	public final void testUpdateNews() {
+	public final void testUpdateNews() throws IOException {
 		category.setId(1);
 		try {
 			author.setId(1);
