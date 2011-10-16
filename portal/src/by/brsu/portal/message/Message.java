@@ -10,7 +10,8 @@ public class Message {
 	private String title;
 	private String text;
 	private Date date;
-	private User user;
+	private long idFromUser;
+	private long idToUser;
 	private int previous;
 	private int readed;
 	private int priority;
@@ -30,14 +31,13 @@ public class Message {
 	 * @param sent
 	 * @param author
 	 */
-	public Message(long id, String title, String text,
-			Date date, User user, int previous, int readed, int priority) {
+	public Message(String title, String text,
+			Date date, long idFromUser, int previous, int readed, int priority) {
 		super();
-		this.id = id;
 		this.title = title;
 		this.text = text;
 		this.date = date;
-		this.user = user;
+		this.idFromUser = idFromUser;
 		this.previous = previous;
 		this.readed = readed;
 		this.priority = priority;
@@ -94,14 +94,14 @@ public class Message {
 	/**
 	 * @return the user
 	 */
-	public User getUser() {
-		return user;
+	public long getIdFromUser() {
+		return idFromUser;
 	}
 	/**
 	 * @param user the user to set
 	 */
-	public void setUser(User user) {
-		this.user = user;
+	public void setIdFromUser(long idFromUser) {
+		this.idFromUser = idFromUser;
 	}
 	/**
 	 * @return the previous
@@ -139,27 +139,38 @@ public class Message {
 	public void setPriority(int priority) {
 		this.priority = priority;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * @param idToUser the idToUser to set
 	 */
-	@Override
-	public String toString() {
-		return "Message [title=" + title + "]";
+	public void setIdToUser(long idToUser) {
+		this.idToUser = idToUser;
 	}
+	/**
+	 * @return the idToUser
+	 */
+	public long getIdToUser() {
+		return idToUser;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + (int) (idFromUser ^ (idFromUser >>> 32));
 		result = prime * result + previous;
 		result = prime * result + priority;
 		result = prime * result + readed;
 		result = prime * result + ((text == null) ? 0 : text.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -175,6 +186,8 @@ public class Message {
 		} else if (!date.equals(other.date))
 			return false;
 		if (id != other.id)
+			return false;
+		if (idFromUser != other.idFromUser)
 			return false;
 		if (previous != other.previous)
 			return false;
@@ -192,11 +205,16 @@ public class Message {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
-			return false;
 		return true;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Message [date=" + date + ", id=" + id + ", idFromUser="
+				+ idFromUser + ", previous=" + previous + ", priority="
+				+ priority + ", readed=" + readed + ", text=" + text
+				+ ", title=" + title + "]";
 	}	
 }
