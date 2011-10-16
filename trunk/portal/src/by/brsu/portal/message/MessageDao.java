@@ -10,19 +10,24 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.SimpleLayout;
 import by.brsu.portal.ConnectionManager;
 import by.brsu.portal.news.Category;
+import by.brsu.portal.project.Project;
 import by.brsu.portal.user.*;
 /**
- * @author Trutsik
+ * @author Trutsik Eduard
  */
 
 public class MessageDao {
-	Connection conn;
+	private Connection conn;
 	private static final Logger log = Logger.getLogger(MessageDao.class);
 	/**
 	 * Insert date in database news
 	 * @throws IOException 
 	 */
+<<<<<<< .mine
+	public Message creatMessages(String title, String text, long idFromUser, int previous, int readed, int priority) throws SQLException {
+=======
 	public Message creatMessages(String title, String text, User user, int previous, int readed, int priority) throws SQLException, IOException {
+>>>>>>> .r329
 		Statement stat = null;
 		ResultSet rs = null;
 		SimpleLayout layout = new SimpleLayout();
@@ -36,26 +41,28 @@ public class MessageDao {
 		set.setString(1, title);
 		set.setString(2, text);
 		set.setDate(3, date);
-		set.setLong(4, user.getId());
+		set.setLong(4, idFromUser);
 		set.setLong(5, previous);
 		set.setLong(6, readed);
 		set.setLong(7, priority);
 		set.executeUpdate();
 		stat = conn.createStatement();
-		rs = stat.executeQuery("SELECT id_message FROM message where title='"
-				+ title + "' AND text='" + text + "' AND id_user_from="+user.getId());
-		if (rs.next()) {
-			Message msg = new Message();
-			msg.setId(rs.getInt(1));
-			msg.setTitle(title);
-			msg.setText(text);
-			msg.setDate(date);
-			msg.setUser(user);
-			msg.setPrevious(previous);
-			msg.setReaded(readed);
-			msg.setPriority(priority);
-			return msg;
-		}
+		Message msg = new Message(title, text, date, idFromUser, previous, readed, priority);
+		return msg;
+//		rs = stat.executeQuery("SELECT id_message FROM message where title='"
+//				+ title + "' AND text='" + text + "' AND id_user_from="+idFromUser);
+//		if (rs.next()) {
+//			Message msg = new Message();
+//			msg.setId(rs.getInt(1));
+//			msg.setTitle(title);
+//			msg.setText(text);
+//			msg.setDate(date);
+//			msg.setIdFromUser(idFromUser);
+//			msg.setPrevious(previous);
+//			msg.setReaded(readed);
+//			msg.setPriority(priority);
+//			return msg;
+//		}
 		} catch (SQLException e) {
 		} finally {
 			try {
@@ -71,6 +78,8 @@ public class MessageDao {
 		return null;
 	}
 	
+<<<<<<< .mine
+=======
 	/**
 	 * Delete database message
 	 * @throws IOException 
@@ -99,6 +108,7 @@ public class MessageDao {
 		}
 	}
 	
+>>>>>>> .r329
 	public Boolean delMessage(Message msg) throws SQLException, IOException {
 		String query = "DELETE FROM message WHERE id_message=?";
 		Statement stat = null;
@@ -123,9 +133,10 @@ public class MessageDao {
 			}
 			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
-	}
-	
+	}	
 	/**
+<<<<<<< .mine
+=======
 	 * Add table to database from message
 	 * @throws IOException 
 	 */
@@ -192,6 +203,7 @@ public class MessageDao {
 		return null;
 	}
 	/**
+>>>>>>> .r329
 	 * @param conn
 	 * @throws IOException 
 	 */
@@ -221,57 +233,88 @@ public class MessageDao {
 			log.error(e);
 		}
 	}
+<<<<<<< .mine
+	
+	public long findIdByLogin(String email) {
+		Connection conn = ConnectionManager.getConnectorPool().getConnection();
+		String query = "Select id_user from users where email='"+email+"'";
+=======
 	/**
 	 * Get List News from datebase
 	 * @throws IOException 
 	 */
 	public List<Message> readMessage() throws IOException {
 		Statement stat = null;
+>>>>>>> .r329
 		ResultSet rs = null;
+<<<<<<< .mine
+		PreparedStatement st = null;
+		
+=======
 		SimpleLayout layout = new SimpleLayout();
 		FileAppender appender = new FileAppender(layout, "BrSU-Log.txt", false);
 		log.addAppender(appender);
 		log.setLevel((Level) Level.DEBUG);
 		List<Message> msg = new ArrayList<Message>();
+>>>>>>> .r329
 		try {
-			stat = conn.createStatement();
-			rs = stat.executeQuery("SELECT * FROM message");
-			while (rs.next()) {
-				Message m = new Message();
-				Category category = new Category();
-				category.setId(1);
-				User user = new User();
-				user.setId(1);
-				user.setName("root");
-				m.setId(rs.getLong(1));
-				m.setTitle(rs.getString(2));
-				m.setText(rs.getString(3));
-				m.setDate(rs.getDate(4));
-				m.setUser(user);
-//				m.setPrevious(previous);
-//				m.setReaded(readed);
-//				m.setPriority(priority);
-				msg.add(m);
-			}
-		} catch (Exception e) {
+			long id=Long.valueOf(query).longValue();
+			return id;
+//			st.setString(1, email);
+//			rs = st.executeQuery(query);
+//			if (rs.next()) {
+//				return true;
+//			}
+		} catch (NumberFormatException e) {
 			log.error(e);
+		} finally {
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
-		ConnectionManager.getConnectorPool().releaseConnection(conn);
-		return msg;
+		return 0;
+		
 	}
-	/**
-	 * Get List News from datebase for a given page
-	 */
-	public List<Message> readMessageByPage(int page, int i) {
-		//Statement stat = null;
-		//ResultSet rs = null;
-		List<Message> msg = new ArrayList<Message>();
-		ConnectionManager.getConnectorPool().releaseConnection(conn);
-		return msg;
-	}
-	public Message findMessageById() {
-		Message msg = new Message();
-		ConnectionManager.getConnectorPool().releaseConnection(conn);
-		return msg;
+	public List<Message> findAllMessage() {
+		conn = ConnectionManager.getConnectorPool().getConnection();
+		String sql = "Select * from Message";
+		ResultSet rs = null;
+		PreparedStatement st = null;
+		try 
+		{
+			st = conn.prepareStatement("");
+			rs = st.executeQuery(sql);
+			List<Message> msg = new ArrayList<Message>();
+			while (rs.next()) 
+			{
+				Message tempmsg = new Message();
+				tempmsg.setId(rs.getLong(1));
+				tempmsg.setTitle(rs.getString(2));
+				tempmsg.setText(rs.getString(3));				
+				tempmsg.setDate(rs.getDate(4));
+				tempmsg.setIdFromUser(rs.getLong(5));
+				tempmsg.setPrevious(rs.getInt(6));
+				tempmsg.setReaded(rs.getInt(7));
+				tempmsg.setPriority(rs.getInt(8));
+				msg.add(tempmsg);
+			}
+			return msg;
+		} 
+		catch (SQLException e) 
+		{
+		}
+		finally 
+		{
+			try 
+			{
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+				ConnectionManager.getConnectorPool().releaseConnection(conn);
+			} 
+			catch (SQLException ex) 
+			{
+			}
+		}
+		return null;
 	}
 }
