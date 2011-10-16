@@ -62,4 +62,9 @@
 		<forward-url>MenuMessage1.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
+	<action name="SendMessage">
+		<class>by.brsu.portal.servlets.SendMessage</class>
+		<forward-url>MenuMessage1.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
 </actions>
