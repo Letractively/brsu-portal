@@ -212,7 +212,7 @@ public class Message {
 	 */
 	@Override
 	public String toString() {
-		return "Message [date=" + date + ", id=" + id + ", idFromUser="
+		return "Message [date=" + date + ", idToUser=" + idToUser + ", idFromUser="
 				+ idFromUser + ", previous=" + previous + ", priority="
 				+ priority + ", readed=" + readed + ", text=" + text
 				+ ", title=" + title + "]";

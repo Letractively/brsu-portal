@@ -14,9 +14,41 @@ import by.brsu.portal.user.*;
 public class MessageDao {
 	private Connection conn;
 	
-	/**
-	 * Insert date in database news
-	 */
+	public Message creatMessages(Message msg){
+		Statement stat = null;
+		ResultSet rs = null;
+		Date date = new Date(System.currentTimeMillis());
+		System.out.println("send "+msg.toString());
+		try {		
+		PreparedStatement set = conn.prepareStatement("INSERT INTO `message` (`title`, `text`, `data_m`, `id_user_to`, `id_user_from`, `id_previous_message`, `is_readed`, `priority`) VALUES(?,?,?,?,?,?,?,?)");
+		set.setString(1, msg.getTitle());
+		set.setString(2, msg.getText());
+		set.setDate(3, date);
+		set.setLong(4, msg.getIdToUser());
+		set.setLong(5, msg.getIdToUser());
+		set.setLong(6, msg.getPrevious());
+		set.setLong(7, msg.getReaded());
+		set.setLong(8, msg.getPriority());
+		System.out.println(set.toString());
+		System.out.println("create "+msg.toString());
+		set.executeUpdate();
+		stat = conn.createStatement();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (stat != null)
+					stat.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
+		}
+		return msg;
+	}
 	public Message creatMessages(String title, String text, long idFromUser, int previous, int readed, int priority) throws SQLException {
 		Statement stat = null;
 		ResultSet rs = null;
@@ -94,21 +126,30 @@ public class MessageDao {
 	
 	public long findIdByLogin(String email) {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
-		String query = "Select id_user from users where email='"+email+"'";
+		String sql = "Select id_user from users where email='"+email+"'";	
 		ResultSet rs = null;
-		PreparedStatement st = null;
-		
+		PreparedStatement st = null;		
 		try {
-			long id=Long.valueOf(query).longValue();
-			return id;
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} finally {
+			st = conn.prepareStatement("");
+			rs = st.executeQuery(sql);
+			if(rs.next()) {
+				long id=rs.getLong(1);
+				return id;
+			}			
+		} catch (SQLException e) {
+			} finally {
+				try {
+					if (st != null)
+						st.close();
+					if (rs!=null)
+						rs.close();
+				} catch (SQLException e) {
+			}
 			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
-		return 0;
-		
+		return 0;		
 	}
+	
 	public List<Message> findAllMessage() {
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "Select * from Message";
