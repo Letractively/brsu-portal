@@ -56,7 +56,7 @@ function disablkey(){
 adduserForm.but.disabled = (adduserForm.dateofbirth.value == CONSTS['dateofbirth'] || adduserForm.dateofbirth.value ==''||
 		adduserForm.name.value == CONSTS['name']||adduserForm.name.value == '' || 
 		adduserForm.surname.value == CONSTS['surname']||adduserForm.surname.value == '' ||
-		adduserForm.email.value ==CONSTS['email'] || adduserForm.surname.value == '' ||
+		adduserForm.email.value ==CONSTS['email'] || adduserForm.email.value == '' ||
 		adduserForm.password.value !=adduserForm.password2.value||adduserForm.password.value ==''||adduserForm.password2.value == '' ||adduserForm.password.value == CONSTS['password']) ? true : false;	
 }
 
