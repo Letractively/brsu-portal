@@ -9,7 +9,6 @@
 <body background="/portal/images/bgb.jpg">
 	<jsp:include page="/template.jsp">
 		<jsp:param name="content" value="registration1.jsp" />
-		<jsp:param name="secondaryMenu" value="secondaryMenu.jsp"/>
 	</jsp:include>
 </body>
 </html>
