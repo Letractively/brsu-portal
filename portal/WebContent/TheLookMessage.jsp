@@ -5,27 +5,31 @@
 <html>
 <head>
 <style type="text/css">
-input{padding:3em 2em;
-}
+#mainForm {font-size:10pt;}
+#mainForm .label{float:left;color:blue;width:150px;}
+#mainForm .labelb{color:blue}
+#mainForm .legend{color:blue;font-weight:bold;font-size:1.25em;}
+
+
  </style>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>The Look Message</title>
 </head>
 
 <body bgcolor="#B5EDFB">
+<form method="get" id="mainForm">
 <fieldset title="The Look of Message">
-<legend title="The Look of Message">The Look of Message</legend>
-	  
-	  To: 
-	  <input type="text"  readonly="readonly"  name="Reg_to"/><br /><br />
- Who :   
- <input type="text" readonly="readonly" name="Reg_who"/><br /><br />
- Subject: 
- <input type="text"  readonly="readonly" name="Reg_subject"/><br /><br />
-       <textarea cols="30" rows="10" name="Reg_mes" readonly="readonly" wrap="off">Theme 1</textarea><br /><br />
-<input type="button" name="Reg_answer" value="Answer"/>
-<input type="button" name="Reg_send" value="Send on"/> 
-<input type="reset" name="Reg_reset" value="Reset"/>       
+<legend class="legend" title="The Look of Message">The Look of Message</legend>
+<label class="label" for="txt1">To:</label><input type="text" readonly="readonly" value="" size="25" maxlength="20" id="txt1"/><br>
+<label class="label" for="txt2">Who:</label><input type="text" value="" size="25" readonly="readonly" maxlength="20" id="txt2"/><br>
+<label class="label" for="txt3">Subject:</label><input type="text" value="" size="25" maxlength="20" readonly="readonly" id="txt3"/><br><br>
+
+   <!--<label class="label" for="txt4"></label>-->
+    <textarea cols="47" rows="10" name="Reg_mes" readonly="readonly" wrap="off" id="txt4">Theme 1</textarea><br /><br />
+<input type="button" name="Reg_answer" value="Answer" class="labelb"/>
+<input type="button" name="Reg_send" value="Send on" class="labelb"/> 
+<input type="reset" name="Reg_reset" value="Reset" class="labelb"/>       
 </fieldset>
+</form>
 </body>
 </html>
