@@ -1,17 +1,31 @@
 @CHARSET "UTF-8";
 /*- Portal.BrSU.BY, 2011 | mail@Portal.BrSU.BY */
+
+body {
+	background-color: #FFFFCC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 24px;
+	color: #333333;
+}
+
 #container {
 	border: 1px solid #999;
 	margin: 0 auto;
 }
 
 #header {
-	background: #B0C4DE;
 	height: 106px;
+	/*font-family: Georgia, "Times New Roman", Times, serif;*/
+	font-size: 24px;
+	background-image:url(images/pinks.png);
+    color: #FFFF66;
+
 }
 
 #header h3 {
 	margin: 10px;
+	color:#000000
 }
 
 #headerLeft {
@@ -23,46 +37,72 @@
 }
 
 #headerRight a {
-	color: black;
+	color:#FFCCFF;
+	text-decoration:none;
+	font-size:20px
+	
 }
 
 #headerRight a:hover {
-	color: #f00;
+	color: #FFFFFF;
+	text-decoration:none;
 }
 
 #headerRight form {
 	margin: 10px;
 }
+/*.title {
+	/*font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 18px;
+	line-height: 30px;
+  background-color: #990000; color: #FFFF66;
+} 
+*/
 
 #nav {
 	height: 36px;
 	font-weight: bold;
 	line-height: 1.8em;
+	/*font-family: Georgia, "Times New Roman", Times, serif;*/
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #DABAED
 	
 }
 #nav ul {
-        list-style-type: none;
+        list-style-type: disc;
         margin: 0;
+		
 }
 #nav li {
 	display: inline;
 	margin: 0 8px;
+	/*font-family: Arial, Helvetica, sans-serif;*/
+	font-size: 14px;
+	font-weight: bold
+
 }
 
 #nav li a {
-	color: black;
+	color: #000000;
+	text-decoration:none
+
 }
+#nav li a:visited{color:#330099}
+
+ 
+  
 
 #nav li a:hover {
-	color: #f00;
+	color: #FFFFFF
 }
 
-.tabl {
+#tabl {
 	margin: 5px auto;
 }
 
 #footer {
-	background: #B0C4DE;
+	background: #DABAED;
 	color: black;
 	font-size: 70%;
 	padding: 5px;
@@ -70,7 +110,14 @@
 }
 
 #footer a {
-	color: #ff0;
+	
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 22px;
+	color: #333333;
+	background-color: #FFFF99;
+
 }
 
 #footer a:hover {
@@ -106,6 +153,39 @@
 	font-style: inherit;
 }
 
+#sidebar {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	line-height: 18px;
+	padding: 3px;
+	background-color: #FFFF99;
+}
+
+#sidebarHeader {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 14px;
+	line-height: 18px;
+	color: #FFFF99;
+	background-color: #999933;
+ font-weight: bold;
+}
+
+#sidebarFooter {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	line-height: 18px;
+	background-color: #FFFF99;
+ color: #990000;
+}
+
+.footer {
+  font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 22px;
+	color: #333333;
+	background-color: #FFFF99;
+}
 
 
 

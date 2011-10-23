@@ -3,6 +3,7 @@
 	<div id="headerLeft">
 		<h3>BRSU Portal</h3>
 	</div>
+	
 	<div id="headerRight" >
 		<form>
 			<input type="text" id="Login" value="Login" size="10"> <input
