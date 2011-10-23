@@ -195,3 +195,109 @@ body {
 #tttop {display:block; height:5px; margin-left:5px; background:url(images/tt_top.gif) top right no-repeat; overflow:hidden}
 #ttcont {display:block; padding:2px 12px 3px 7px; margin-left:5px; background:#666; color:#FFF}
 #ttbot {display:block; height:5px; margin-left:5px; background:url(images/tt_bottom.gif) top right no-repeat; overflow:hidden}
+
+/************ #headlines style ******************/
+#headlines {
+margin:0px;
+padding:10px 0px 20px 10px;
+font-size:80%
+}
+ 
+#headlines p{
+font-size:15px;
+padding:5px 0px 5px 0px
+} 
+
+#headlines a{
+text-decoration:none;
+}
+
+/*************** .feature styles **************/
+.feature {
+padding:0px 0px 10px 10px;
+text-size:80%;
+}
+
+.feature h3{
+padding:30px 0px 5px 0px;
+text-align:center;
+}
+
+.feature img{
+float:left;
+padding:10px 10px 0px 0px;
+}
+
+/************** #advert styles **************/
+
+#advert{
+	padding: 30px 0px 10px;
+}
+
+#advert img{
+	display: block;
+}
+
+/* Layout Divs                                 */
+/***********************************************/
+
+
+#navBar{
+  float: right;
+	width: 20%;
+	margin: 0px;
+	padding: 0px;
+	background-color: #eeeeee;
+	border-left: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+}
+
+#headlines{
+  float:left;
+	width: 20%;
+	border-right: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	padding-right: 10px;
+}
+
+#content{
+  float: left;
+  width: 55%;
+}
+
+/************** .story styles *****************/
+
+.story{
+	clear: both;
+	padding: 10px 0px 0px 10px;
+	/*font-size: 80%;*/
+}
+
+.story p{
+	padding: 0px 0px 10px 0px;
+	font-size:10px;
+}
+
+/*********** #sectionLinks styles ***********/
+
+#sectionLinks{
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	border-bottom: 1px solid #cccccc;
+	font-size: 90%;
+}
+
+#sectionLinks h3{
+	padding: 10px 0px 2px 10px;
+}
+
+#sectionLinks a {
+	display: block;
+	border-top: 1px solid #cccccc;
+	padding: 2px 0px 2px 10px;
+}
+
+#sectionLinks a:hover{
+	background-color: #dddddd;
+}
