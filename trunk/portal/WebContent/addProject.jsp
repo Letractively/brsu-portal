@@ -70,7 +70,7 @@ var tooltip=function(){
 				tt.style.filter = 'alpha(opacity=' + alpha + ')';
 			}else{
 				clearInterval(tt.timer);
-				if(d == -1){tt.style.display = 'none'}
+				if(d == -1){tt.style.display = 'none';}
 			}
 		},
 		hide:function(){
@@ -78,7 +78,7 @@ var tooltip=function(){
 			tt.timer = setInterval(function(){tooltip.fade(-1)},timer);
 		}
 	};
-}();
+};
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add new project</title>
@@ -88,7 +88,16 @@ var tooltip=function(){
 		<form action="Servlet/AddProject" method="post">
 			<table >			
 			<tr><td width=170><label for="name" onmouseover='tooltip.show("Write Project name");' onmouseout='tooltip.hide();'>Project name:</label></td> <td width=120><input type="text" name="name" width=100 onmouseover='tooltip.show("Write Project name");' onmouseout='tooltip.hide();'/></td></tr>
-			<tr><td width=170><label for="owner" onmouseover='tooltip.show("Write Users id");' onmouseout='tooltip.hide();'>Owner name:</label></td> <td width=120><input type="text" name="owner" onmouseover='tooltip.show("Write Users id");' onmouseout='tooltip.hide();'/></td></tr>			
+			<tr><td width=170><label for="owner" onmouseover='tooltip.show("Select current Users");' onmouseout='tooltip.hide();'>Owner name:</label></td> <td width=120>
+			
+			<select name="owner">
+				<c:forEach var="owner" items="${owner}">
+					<option value="${ovner.id}" onmouseover='tooltip.show("Select current Users");' onmouseout='tooltip.hide();'><c:out value="${owner.name}" /></option>
+				</c:forEach>
+			</select>
+			</td></tr>
+			
+			<!--<input type="text" name="owner" onmouseover='tooltip.show("Write Users id");' onmouseout='tooltip.hide();'/></td></tr>-->			
 			<!-- <tr><td width=170><label for="datecr">Date Of Creation:</label></td> <td width=120><input type="text"	name="datecr" /></td></tr>
 			<tr><td width=170><label for="datecl" onmouseover='tooltip.show("Write Date Of Closing Project");' onmouseout='tooltip.hide();'>Date Of Closing:</label></td> <td width=120><input type="text"	name="datecl" onmouseover='tooltip.show("Write Date Of Closing Project");' onmouseout='tooltip.hide();'/></td></tr>-->
 			<tr><td width=170><label for="category" onmouseover='tooltip.show("Write Project category");' onmouseout='tooltip.hide();'>Category:</label></td> <td width=120><input type="text" name="category" onmouseover='tooltip.show("Write Project category");' onmouseout='tooltip.hide();'/></td></tr>
