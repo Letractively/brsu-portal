@@ -88,13 +88,16 @@ body {
 	text-decoration:none
 
 }
-#nav li a:visited{color:#330099}
 
+#nav  a:active  {
+color:#330099;
+background-color:#330099;
+}
  
   
 
 #nav li a:hover {
-	color: #FFFFFF
+	color: #6633FF;
 }
 
 #tabl {
