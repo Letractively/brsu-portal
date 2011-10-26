@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>News</title>
 </head>
-<body background="/portal/images/bgb.jpg">
+<body background="/portal/images/1.gif">
 	<jsp:include page="/template.jsp">
 		<jsp:param name="content" value="ok.jsp" />
 		<jsp:param name="secondaryMenu" value="secondaryMenu.jsp"/>

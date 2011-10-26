@@ -4,11 +4,11 @@
 <form>
 	<table class="tabl">
 		<tr>
-		<td>ID</td>
-		<td> Surname&Name </td>
-		<td> Date of birth</td>
-		<td> Sex </td>
-		<td> DateOfLastVisit</td>				
+		<td class="lc">ID</td>
+		<td class="lc"> Surname&Name </td>
+		<td class="lc"> Date of birth</td>
+		<td class="lc"> Sex </td>
+		<td class="lc"> DateOfLastVisit</td>				
 		</tr>
 		<c:forEach var="user" items="${users}">
 			<tr>		
