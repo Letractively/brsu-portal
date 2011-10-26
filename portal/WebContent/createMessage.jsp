@@ -14,7 +14,7 @@
 		<form action="Servlet/creatMessage" method="post" id="message">
 			<label class="label" for="user">User:</label><input type="text" name="user" /><br>
 			<label class="label" for="title">Title:</label><input type="text"	name="title" /><br> <br>
-			<label class="label" for="text">Text:</label><textarea cols="47" rows="10"  wrap="off" />Theme1</textarea><br> 
+			<label class="label" for="text">Text:</label><textarea cols="47" rows="10"  wrap="off"  >Theme1</textarea><br> 
 			<br> <input type="submit" value="Send" /><br>
 		</form>
 	</div>
