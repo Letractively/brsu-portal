@@ -7,8 +7,9 @@
 <title>Welcome to BRSU Portal</title>
 </head>
 <body background="/portal/images/1.gif">
-	<jsp:include page="/template.jsp">
-		<jsp:param name="content" value="content.jsp" />
-	</jsp:include>
+<jsp:include page="/template.jsp">
+	<jsp:param name="content" value="content.jsp" />
+	<jsp:param name="currentPage" value="Main" />
+</jsp:include>
 </body>
 </html>

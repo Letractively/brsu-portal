@@ -4,10 +4,10 @@
  */
 package by.brsu.portal.servlets;
 
-import java.sql.SQLException;
+//import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
+//import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;

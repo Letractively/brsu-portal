@@ -4,9 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import by.brsu.portal.ConnectionManager;
-import by.brsu.portal.news.Category;
-import by.brsu.portal.project.Project;
-import by.brsu.portal.user.*;
+//import by.brsu.portal.news.Category;
+//import by.brsu.portal.project.Project;
+//import by.brsu.portal.user.*;
 /**
  * @author Trutsik Eduard
  */

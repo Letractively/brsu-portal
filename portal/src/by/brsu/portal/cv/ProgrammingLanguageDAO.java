@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.brsu.portal.ConnectionManager;
-import by.brsu.portal.PortalTechnicalException;
+//import by.brsu.portal.PortalTechnicalException;
 
 /**
  * @author Artur Smaliuk
