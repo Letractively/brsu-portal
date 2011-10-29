@@ -5,14 +5,14 @@
 package by.brsu.portal.servlets;
 
 import java.util.HashMap;
-import java.util.List;
+//import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import by.brsu.portal.cv.ProgrammingLanguageDAO;
-import by.brsu.portal.cv.ProgrammingLanguage;
+//import by.brsu.portal.cv.ProgrammingLanguage;
 import by.brsu.portal.cv.TechnologyDAO;
 import by.brsu.portal.user.UserDAO;
 

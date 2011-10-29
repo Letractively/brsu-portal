@@ -34,5 +34,4 @@ public class DelUser implements Action {
 		// TODO Auto-generated method stub
 		return map;
 	}
-
 }

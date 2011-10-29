@@ -67,4 +67,9 @@
 		<forward-url>MenuMessage1.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
+	<action name="Login">
+		<class>by.brsu.portal.servlets.Login</class>
+		<forward-url>Servlet/ShowUserProf</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
 </actions>

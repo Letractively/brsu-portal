@@ -22,9 +22,9 @@
  				<td><c:out value="${users_id.dateOfBirth}" /></td>
  				<td><c:out value="${users_id.sex}" /></td>								 
 				<td><c:out value="${users_id.email}" /></td>				
-				<td><c:out value="${users_id.skype}"></c:out>
-				<td><c:out value="${users_id.telephone}"></c:out>
-				<td><c:out value="${users_id.dateOfLastVisit}"></c:out>
+				<td><c:out value="${users_id.skype}"></c:out></td>
+				<td><c:out value="${users_id.telephone}"></c:out></td>
+				<td><c:out value="${users_id.dateOfLastVisit}"></c:out></td>
 			
 			</tr>
 

@@ -1,9 +1,9 @@
 package by.brsu.portal.message;
 
 import java.sql.Date;
-import java.util.*;
+//import java.util.*;
 
-import by.brsu.portal.user.User;
+//import by.brsu.portal.user.User;
 
 public class Message {
 	private long id;

@@ -9,6 +9,7 @@
 <body background="/portal/images/bgb.jpg">
 	<jsp:include page="/template.jsp">
 		<jsp:param name="content" value="profileUser.jsp" />
+		<jsp:param name="currentPage" value="Users"/>
 	</jsp:include>
 </body>
 </html>

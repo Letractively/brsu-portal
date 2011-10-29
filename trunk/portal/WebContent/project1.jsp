@@ -6,10 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>All Projects</title>
 </head>
-<body background="/portal/images/bgb.jpg">
+<body>
 	<jsp:include page="/template.jsp">
 		<jsp:param name="content" value="project.jsp" />
 		<jsp:param name="secondaryMenu" value="secondaryMenuForProjects.jsp"/>
+		<jsp:param name="currentPage" value="Projects"/>
 	</jsp:include>
 </body>
 </html>
