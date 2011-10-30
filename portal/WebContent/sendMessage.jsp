@@ -7,25 +7,26 @@
 <title>Create Message</title>
 </head>
 <body>
-	<div>
+	<div id="message">
 		<form action="Servlet/SendMessage" method="post">
 			<label for="user">To:</label>
 				<input type="text" name="user" />
 			<br>
 			<label for="subject">Subject:</label>
 				<input type="text"	name="subject" />
-			<br> 
+			<br>
 			<label for="text">Text: </label>
 				<textarea name="text" rows="10" cols="80"></textarea>
 			<br>
 			<label for="priority">Priority:</label>
 				<select name="priority">
-					<option selected="selected" value="0">Normal</option>
-					<option value="1">Important</option>
+					<option selected="selected" value="1">Customary</option>
+					<option value="2">Important</option>
+					<option value="3">Very Important</option>
+					<option value="4">Arhi Important</option>
 				</select>
 			<br>
 			<input type="submit" value="Send" />
-			<br>
 		</form>
 	</div>
 </body>

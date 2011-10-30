@@ -1,10 +1,12 @@
-<div id="tabl">
-	<table border="1">
-		<tr bordercolor="12">
-			<td>Priority</td>
-			<td>Login </td>
-			<td>Subject</td>
-			<td>Date</td>
-		</tr>
+<div id="table">
+	<table align="center">
+		<thead>
+			<tr>
+				<th width="120">Priority</th>
+				<td width="180">Login </td>
+				<td width="270">Subject</td>
+				<td width="130">Date</td>
+			</tr>
+		</thead>
 	</table>
 </div>

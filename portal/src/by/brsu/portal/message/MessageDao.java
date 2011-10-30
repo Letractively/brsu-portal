@@ -14,6 +14,17 @@ import by.brsu.portal.user.*;
 public class MessageDao {
 	private Connection conn;
 	
+	/**
+	 * @param conn
+	 */
+	public MessageDao() {
+		try {
+			this.conn = ConnectionManager.getConnectorPool().getConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public Message creatMessages(Message msg){
 		Statement stat = null;
 		ResultSet rs = null;
@@ -25,15 +36,11 @@ public class MessageDao {
 		set.setString(2, msg.getText());
 		set.setDate(3, date);
 		set.setLong(4, msg.getIdToUser());
-		set.setLong(5, msg.getIdToUser());
-		//set.setLong(6, msg.getPrevious());
+		set.setLong(5, msg.getIdFromUser());
 		set.setLong(6, msg.getReaded());
 		set.setLong(7, msg.getPriority());
-		System.out.println(set.toString());
-		System.out.println("create "+msg.toString());
 		set.executeUpdate();
-		stat = conn.createStatement();
-		
+		stat = conn.createStatement();		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -48,41 +55,9 @@ public class MessageDao {
 			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 		return msg;
-	}
-	public Message creatMessages(String title, String text, long idFromUser, int previous, int readed, int priority) throws SQLException {
-		Statement stat = null;
-		ResultSet rs = null;
-		try {
-		Date date = new Date(System.currentTimeMillis());
-		PreparedStatement set = conn
-		.prepareStatement("INSERT INTO message VALUES(null,?,?,?,?,?,?,?)");
-		set.setString(1, title);
-		set.setString(2, text);
-		set.setDate(3, date);
-		set.setLong(4, idFromUser);
-		set.setLong(5, previous);
-		set.setLong(6, readed);
-		set.setLong(7, priority);
-		set.executeUpdate();
-		stat = conn.createStatement();
-		Message msg = new Message(title, text, date, idFromUser, previous, readed, priority);
-		return msg;
-		} catch (SQLException e) {
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (stat != null)
-					stat.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			ConnectionManager.getConnectorPool().releaseConnection(conn);
-		}
-		return null;
-	}
+	}	
 	
-	public Boolean delMessage(Message msg) throws SQLException {
+	public Boolean delMessage(Message msg) {
 		String query = "DELETE FROM message WHERE id_message=?";
 		Statement stat = null;
 		try {
@@ -103,16 +78,7 @@ public class MessageDao {
 			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 	}	
-	/**
-	 * @param conn
-	 */
-	public MessageDao() {
-		try {
-			this.conn = ConnectionManager.getConnectorPool().getConnection();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 	/**
 	 * Refresh this connection from datebase
 	 */
