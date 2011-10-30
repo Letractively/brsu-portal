@@ -4,9 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import by.brsu.portal.ConnectionManager;
-//import by.brsu.portal.news.Category;
-//import by.brsu.portal.project.Project;
-//import by.brsu.portal.user.*;
+import by.brsu.portal.news.Category;
+import by.brsu.portal.project.Project;
+import by.brsu.portal.user.*;
 /**
  * @author Trutsik Eduard
  */
@@ -20,15 +20,15 @@ public class MessageDao {
 		Date date = new Date(System.currentTimeMillis());
 		System.out.println("send "+msg.toString());
 		try {		
-		PreparedStatement set = conn.prepareStatement("INSERT INTO `message` (`title`, `text`, `data_m`, `id_user_to`, `id_user_from`, `id_previous_message`, `is_readed`, `priority`) VALUES(?,?,?,?,?,?,?,?)");
+		PreparedStatement set = conn.prepareStatement("INSERT INTO message VALUES(null,?,?,?,?,?,null,?,?)");
 		set.setString(1, msg.getTitle());
 		set.setString(2, msg.getText());
 		set.setDate(3, date);
 		set.setLong(4, msg.getIdToUser());
 		set.setLong(5, msg.getIdToUser());
-		set.setLong(6, msg.getPrevious());
-		set.setLong(7, msg.getReaded());
-		set.setLong(8, msg.getPriority());
+		//set.setLong(6, msg.getPrevious());
+		set.setLong(6, msg.getReaded());
+		set.setLong(7, msg.getPriority());
 		System.out.println(set.toString());
 		System.out.println("create "+msg.toString());
 		set.executeUpdate();
@@ -168,9 +168,10 @@ public class MessageDao {
 				tempmsg.setText(rs.getString(3));				
 				tempmsg.setDate(rs.getDate(4));
 				tempmsg.setIdFromUser(rs.getLong(5));
-				tempmsg.setPrevious(rs.getInt(6));
-				tempmsg.setReaded(rs.getInt(7));
-				tempmsg.setPriority(rs.getInt(8));
+				tempmsg.setIdToUser(rs.getLong(6));
+				tempmsg.setPrevious(rs.getInt(7));
+				tempmsg.setReaded(rs.getInt(8));
+				tempmsg.setPriority(rs.getInt(9));
 				msg.add(tempmsg);
 			}
 			return msg;
