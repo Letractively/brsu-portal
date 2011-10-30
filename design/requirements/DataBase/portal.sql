@@ -12,6 +12,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 # Dumping database structure for portal
+drop database if exists portal ;
 CREATE DATABASE IF NOT EXISTS `portal` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `portal`;
 
@@ -413,6 +414,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `text` varchar(3000) NOT NULL,
   `data_m` date NOT NULL,
   `id_user_from` int(11) NOT NULL,
+   `id_user_to` int(11) NOT NULL,
   `id_previous_message` int(11) DEFAULT NULL,
   `is_readed` int(11) NOT NULL,
   `priority` int(11) NOT NULL,
@@ -420,15 +422,17 @@ CREATE TABLE IF NOT EXISTS `message` (
   KEY `id_user_from` (`id_user_from`),
   KEY `priority` (`priority`),
   CONSTRAINT `message_ibfk_1` FOREIGN KEY (`id_user_from`) REFERENCES `users` (`id_user`),
-  CONSTRAINT `message_ibfk_2` FOREIGN KEY (`priority`) REFERENCES `priority` (`id_priority`)
+  CONSTRAINT `message_ibfk_3` FOREIGN KEY (`id_user_to`) REFERENCES `users` (`id_user`),
+  CONSTRAINT `message_ibfk_2` FOREIGN KEY (`priority`) REFERENCES `priority` (`id_priority`),
+  CONSTRAINT `message_ibfk_4` FOREIGN KEY (`id_previous_message`) REFERENCES `message` (`id_message`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.message: ~3 rows (approximately)
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` (`id_message`, `title`, `text`, `data_m`, `id_user_from`, `id_previous_message`, `is_readed`, `priority`) VALUES
-	(1, 'Hello!', 'We are greating you on our web-site)', '2011-05-28', 1, NULL, 0, 1),
-	(2, 'Hello!', 'Let\'s go to bar. I found a new client. He want to meet us and discusse work.', '2011-05-28', 2, NULL, 0, 2),
-	(3, 'Hello!', 'I saw your work on project. I think that is good. I want to see the same on my web-site.', '2011-05-28', 3, NULL, 1, 1);
+INSERT INTO `message` (`id_message`, `title`, `text`, `data_m`, `id_user_from`, `id_user_to`, `id_previous_message`, `is_readed`, `priority`) VALUES
+	(1, 'Hello!', 'We are greating you on our web-site)', '2011-05-28', 1,2, NULL, 0, 1),
+	(2, 'Hello!', 'Let\'s go to bar. I found a new client. He want to meet us and discusse work.', '2011-05-28', 2,3, NULL, 0, 2),
+	(3, 'Hello!', 'I saw your work on project. I think that is good. I want to see the same on my web-site.', '2011-05-28', 3,3, NULL, 1, 1);
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 
 

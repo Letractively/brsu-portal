@@ -4,10 +4,10 @@
  */
 package by.brsu.portal.servlets;
 
-//import java.sql.SQLException;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
-//import java.util.List;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,9 +38,10 @@ public class SendMessage implements Action{
 		msg.setIdFromUser(idToUser); // idFromUser!!!		
 		msg.setTitle(request.getParameter("subject"));
 		msg.setText(request.getParameter("text"));
-		if(Integer.valueOf(request.getParameter("priority"))==0) priority=0;
-		else priority=1;
-		msg.setPriority(priority);
+//		if(Integer.valueOf(request.getParameter("priority"))==0) priority=0;
+//		else priority=1;
+		
+		msg.setPriority(1);
 		msg.setReaded(0);		
 		msg.setPrevious(0);
 		mDao.creatMessages(msg);
