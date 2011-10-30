@@ -38,10 +38,8 @@ public class SendMessage implements Action{
 		msg.setIdFromUser(idToUser); // idFromUser!!!		
 		msg.setTitle(request.getParameter("subject"));
 		msg.setText(request.getParameter("text"));
-//		if(Integer.valueOf(request.getParameter("priority"))==0) priority=0;
-//		else priority=1;
-		
-		msg.setPriority(1);
+		priority=Integer.valueOf(request.getParameter("priority")).intValue();		
+		msg.setPriority(priority);
 		msg.setReaded(0);		
 		msg.setPrevious(0);
 		mDao.creatMessages(msg);

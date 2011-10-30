@@ -9,7 +9,7 @@
 <body>
 	<jsp:include page="/template.jsp">
 		<jsp:param name="content" value="sendMessage.jsp"/>
-		<jsp:param name="secondaryMenu" value="secondaryMenuMessage.jsp"/>
+		
 		<jsp:param name="currentPage" value="Message"/>
 	</jsp:include>
 </body>

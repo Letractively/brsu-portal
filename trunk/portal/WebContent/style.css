@@ -119,7 +119,10 @@ background-color:#330099;
     text-align: center; /* ������������ �� ������ */
 }
 
-
+#message LABEL{	
+	float:left;
+	width: 50px;
+}
 
 /**********************  ******************************/
 /*#tabl {
