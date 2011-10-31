@@ -92,7 +92,7 @@ var tooltip=function(){
 			
 			<select name="owner">
 				<c:forEach var="owner" items="${owner}">
-					<option value="${ovner.id}" onmouseover='tooltip.show("Select current Users");' onmouseout='tooltip.hide();'><c:out value="${owner.name}" /></option>
+					<option value="${owner.id}" onmouseover='tooltip.show("Select current Users");' onmouseout='tooltip.hide();'><c:out value="${owner.name}" /></option>
 				</c:forEach>
 			</select>
 			</td></tr>
