@@ -1,1 +1,0 @@
-html code in the name and the description fields is not allowed (except some tags??)

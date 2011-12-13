@@ -1,0 +1,1 @@
+<div id="footer">BrSU Java Group. 2011.</div>
