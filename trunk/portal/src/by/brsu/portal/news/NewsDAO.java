@@ -23,9 +23,11 @@ import by.brsu.portal.user.*;
 public class NewsDAO {
 	private Connection conn;
 	private static final Logger log = Logger.getLogger(NewsDAO.class);
+
 	/**
 	 * Insert date in database news
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	public News createNews(String title, String msg, Category category,
 			User user) throws SQLException, IOException {
@@ -80,7 +82,8 @@ public class NewsDAO {
 
 	/**
 	 * Delete database news
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	public Boolean delTable() throws SQLException, IOException {
 		String query = "DROP TABLE news";
@@ -137,7 +140,8 @@ public class NewsDAO {
 
 	/**
 	 * Add table to database from news
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	public void addTable() throws SQLException, IOException {
 		String query = "create table news (id_news int not null auto_increment primary key,title varchar(100) not null,text text not null,created_date date,id_category int not null,important varchar(30) not null default '',id_author int not null,foreign key (id_category) references categories_pr(id_category),foreign key (id_author) references users(id_user));";
@@ -162,7 +166,8 @@ public class NewsDAO {
 
 	/**
 	 * Update table to database from news
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	public News updateNews(long id, String title, String msg,
 			Category category, User user) throws SQLException, IOException {
@@ -204,9 +209,9 @@ public class NewsDAO {
 
 	/**
 	 * @param conn
-	 * @throws IOException 
+	 * @throws IOException
 	 */
-	public NewsDAO(){
+	public NewsDAO() {
 		try {
 			this.conn = ConnectionManager.getConnectorPool().getConnection();
 		} catch (Exception e) {
@@ -215,7 +220,8 @@ public class NewsDAO {
 
 	/**
 	 * Refresh this connection from datebase
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	public void ReFreshConnection() throws IOException {
 		SimpleLayout layout = new SimpleLayout();
@@ -231,7 +237,8 @@ public class NewsDAO {
 
 	/**
 	 * Get List News from datebase
-	 * @throws IOException 
+	 * 
+	 * @throws IOException
 	 */
 	public List<News> readNews() throws IOException {
 		Statement stat = null;
@@ -263,6 +270,15 @@ public class NewsDAO {
 			}
 		} catch (Exception e) {
 			log.error(e);
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (stat != null)
+					stat.close();
+				ConnectionManager.getConnectorPool().releaseConnection(conn);
+			} catch (SQLException ex) {
+			}
 		}
 		return news;
 	}
@@ -271,8 +287,8 @@ public class NewsDAO {
 	 * Get List News from datebase for a given page
 	 */
 	public List<News> readNewsByPage(int page, int i) {
-		//Statement stat = null;
-		//ResultSet rs = null;
+		// Statement stat = null;
+		// ResultSet rs = null;
 		List<News> news = new ArrayList<News>();
 		return news;
 	}
