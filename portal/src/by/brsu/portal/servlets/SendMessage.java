@@ -4,10 +4,8 @@
  */
 package by.brsu.portal.servlets;
 
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,13 +27,15 @@ public class SendMessage implements Action{
 	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response){
 		int priority;
-		long idToUser=mDao.findIdByLogin(request.getParameter("user"));
-		if(idToUser==0) return false;		
+		long idUserTo=mDao.findIdUserByEmail(request.getParameter("user"));
+		if(idUserTo==0) {
+			return false;		
+		}
 		Date date = new Date(System.currentTimeMillis());
 		java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 		msg.setDate(sqlDate);
-		msg.setIdToUser(idToUser);
-		msg.setIdFromUser(idToUser); // idFromUser!!!		
+		msg.setIdUserTo(idUserTo);
+		msg.setIdUserFrom(2); // idUserFrom!!!		
 		msg.setTitle(request.getParameter("subject"));
 		msg.setText(request.getParameter("text"));
 		priority=Integer.valueOf(request.getParameter("priority")).intValue();		

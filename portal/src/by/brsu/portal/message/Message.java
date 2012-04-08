@@ -10,8 +10,8 @@ public class Message {
 	private String title;
 	private String text;
 	private Date date;
-	private long idFromUser;
-	private long idToUser;
+	private long idUserTo;
+	private long idUserFrom;	
 	private int previous;
 	private int readed;
 	private int priority;
@@ -32,12 +32,13 @@ public class Message {
 	 * @param author
 	 */
 	public Message(String title, String text,
-			Date date, long idFromUser, int previous, int readed, int priority) {
+			Date date,long idUserTo, long idUserFrom, int previous, int readed, int priority) {
 		super();
 		this.title = title;
 		this.text = text;
 		this.date = date;
-		this.idFromUser = idFromUser;
+		this.idUserTo = idUserTo;
+		this.idUserFrom = idUserFrom;
 		this.previous = previous;
 		this.readed = readed;
 		this.priority = priority;
@@ -94,14 +95,14 @@ public class Message {
 	/**
 	 * @return the user
 	 */
-	public long getIdFromUser() {
-		return idFromUser;
+	public long getIdUserFrom() {
+		return idUserFrom;
 	}
 	/**
 	 * @param user the user to set
 	 */
-	public void setIdFromUser(long idFromUser) {
-		this.idFromUser = idFromUser;
+	public void setIdUserFrom(long idUserFrom) {
+		this.idUserFrom = idUserFrom;
 	}
 	/**
 	 * @return the previous
@@ -142,14 +143,14 @@ public class Message {
 	/**
 	 * @param idToUser the idToUser to set
 	 */
-	public void setIdToUser(long idToUser) {
-		this.idToUser = idToUser;
+	public void setIdUserTo(long idUserTo) {
+		this.idUserTo = idUserTo;
 	}
 	/**
 	 * @return the idToUser
 	 */
-	public long getIdToUser() {
-		return idToUser;
+	public long getIdUserTo() {
+		return idUserTo;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -160,7 +161,8 @@ public class Message {
 		int result = 1;
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + (int) (idFromUser ^ (idFromUser >>> 32));
+		result = prime * result + (int) (idUserTo ^ (idUserTo >>> 32));
+		result = prime * result + (int) (idUserFrom ^ (idUserFrom >>> 32));		
 		result = prime * result + previous;
 		result = prime * result + priority;
 		result = prime * result + readed;
@@ -187,8 +189,10 @@ public class Message {
 			return false;
 		if (id != other.id)
 			return false;
-		if (idFromUser != other.idFromUser)
+		if (idUserTo != other.idUserTo)
 			return false;
+		if (idUserFrom != other.idUserFrom)
+			return false;		
 		if (previous != other.previous)
 			return false;
 		if (priority != other.priority)
@@ -212,8 +216,8 @@ public class Message {
 	 */
 	@Override
 	public String toString() {
-		return "Message [date=" + date + ", idToUser=" + idToUser + ", idFromUser="
-				+ idFromUser + ", previous=" + previous + ", priority="
+		return "Message [date=" + date + ", idToUser=" + idUserTo + ", idUserFrom="
+				+ idUserFrom + ", previous=" + previous + ", priority="
 				+ priority + ", readed=" + readed + ", text=" + text
 				+ ", title=" + title + "]";
 	}	

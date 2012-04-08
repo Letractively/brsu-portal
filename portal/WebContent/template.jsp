@@ -5,8 +5,11 @@
 	<jsp:include page="mainMenu.jsp"></jsp:include>
 	<% request.setAttribute("secondaryMenu", request.getParameter("secondaryMenu")); %>
 	<c:if test="${not empty secondaryMenu}">
-	<jsp:include page='<%= request.getParameter("secondaryMenu") %>'></jsp:include>
+		<jsp:include page='<%= request.getParameter("secondaryMenu") %>'></jsp:include>
 	</c:if>	
-	<jsp:include page='<%= request.getParameter("content") %>'></jsp:include>	
+	<% request.setAttribute("content", request.getParameter("content")); %>
+	<c:if test="${not empty content}">
+		<jsp:include page='<%= request.getParameter("content") %>'></jsp:include>	
+	</c:if>
 	<jsp:include page="footer.jsp"></jsp:include>
 </div>

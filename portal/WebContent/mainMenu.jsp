@@ -37,11 +37,11 @@
 		</c:otherwise>
 	</c:choose>
 	<c:choose>
-		<c:when test='${currentPage=="Message"}'>
-			<li><a href="/portal/Servlet/ShowMessage" style="color: Red">Message</a></li>
+		<c:when test='${currentPage=="IncomingMessages"}'>
+			<li><a href="/portal/Servlet/IncomingMessages" style="color: Red">Messages</a></li>
 		</c:when>
 		<c:otherwise>
-			<li><a href="/portal/Servlet/ShowMessage">Message</a></li>
+			<li><a href="/portal/Servlet/IncomingMessages">Messages</a></li>
 		</c:otherwise>
 	</c:choose>
 	<c:choose>

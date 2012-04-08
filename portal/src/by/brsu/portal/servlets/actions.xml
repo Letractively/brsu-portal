@@ -57,14 +57,24 @@
 		<forward-url>Del.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
-	<action name="ShowMessage">
-		<class>by.brsu.portal.servlets.ShowMessage</class>
-		<forward-url>MenuMessage1.jsp</forward-url>
+	<action name="IncomingMessages">
+		<class>by.brsu.portal.servlets.IncomingMessages</class>
+		<forward-url>templateMenuMessage.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
+	<action name="SentMessages">
+		<class>by.brsu.portal.servlets.SentMessages</class>
+		<forward-url>templateSentMessages.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="SendMessage">
 		<class>by.brsu.portal.servlets.SendMessage</class>
-		<forward-url>MenuMessage1.jsp</forward-url>
+		<forward-url>ok.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
+	<action name="DelMessage">
+		<class>by.brsu.portal.servlets.DelMessage</class>
+		<forward-url>ok.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="Login">
