@@ -412,24 +412,24 @@ CREATE TABLE IF NOT EXISTS `message` (
   `id_message` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) DEFAULT NULL,
   `text` varchar(3000) NOT NULL,
-  `data_m` date NOT NULL,
+  `data_m` date NOT NULL,  
+  `id_user_to` int(11) NOT NULL,
   `id_user_from` int(11) NOT NULL,
-   `id_user_to` int(11) NOT NULL,
   `id_previous_message` int(11) DEFAULT NULL,
   `is_readed` int(11) NOT NULL,
   `priority` int(11) NOT NULL,
   PRIMARY KEY (`id_message`),
   KEY `id_user_from` (`id_user_from`),
   KEY `priority` (`priority`),
-  CONSTRAINT `message_ibfk_1` FOREIGN KEY (`id_user_from`) REFERENCES `users` (`id_user`),
-  CONSTRAINT `message_ibfk_3` FOREIGN KEY (`id_user_to`) REFERENCES `users` (`id_user`),
-  CONSTRAINT `message_ibfk_2` FOREIGN KEY (`priority`) REFERENCES `priority` (`id_priority`),
-  CONSTRAINT `message_ibfk_4` FOREIGN KEY (`id_previous_message`) REFERENCES `message` (`id_message`)
+  CONSTRAINT `message_ibfk_1` FOREIGN KEY (`priority`) REFERENCES `priority` (`id_priority`),
+  CONSTRAINT `message_ibfk_2` FOREIGN KEY (`id_user_to`) REFERENCES `users` (`id_user`),
+  CONSTRAINT `message_ibfk_3` FOREIGN KEY (`id_user_from`) REFERENCES `users` (`id_user`),
+    CONSTRAINT `message_ibfk_4` FOREIGN KEY (`id_previous_message`) REFERENCES `message` (`id_message`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.message: ~3 rows (approximately)
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` (`id_message`, `title`, `text`, `data_m`, `id_user_from`, `id_user_to`, `id_previous_message`, `is_readed`, `priority`) VALUES
+INSERT INTO `message` (`id_message`, `title`, `text`, `data_m`, `id_user_to`, `id_user_from`, `id_previous_message`, `is_readed`, `priority`) VALUES
 	(1, 'Hello!', 'We are greating you on our web-site)', '2011-05-28', 1,2, NULL, 0, 1),
 	(2, 'Hello!', 'Let\'s go to bar. I found a new client. He want to meet us and discusse work.', '2011-05-28', 2,3, NULL, 0, 2),
 	(3, 'Hello!', 'I saw your work on project. I think that is good. I want to see the same on my web-site.', '2011-05-28', 3,3, NULL, 1, 1);
@@ -721,7 +721,9 @@ INSERT INTO `users` (`id_user`, `name`, `surname`, `email`, `date_of_birth`, `te
 	(1, 'Oleg', 'Panasyuk', 'oleg.panasyuk@inbox.ru', '1989-08-09', '+375336426294', 'password', 1, 'oleg.panasyuk89', '409122811', 100, 1, '', '2011-05-21', 5, 3),
 	(2, 'IVAN', 'RUSSIAN', 'oleg.panasyuk@inbox.ru', '1989-08-09', '+375336426294', 'password', 1, 'oleg.panasyuk89', '409122811', 100, 1, '', '2011-05-21', 5, 2),
 	(3, 'Robyn', 'Scherbatzky', 'RobSche@inbox.ru', '1980-02-09', '+375336426294', 'password', 0, 'rob', '432122811', 100, 1, '', '2011-05-21', 5, 1),
-	(4, 'Ted', 'Mozeby', 'TMOZ@inbox.ru', '1987-12-03', '+375336426294', 'password', 1, 'oleg.panasyuk89', '409122811', 100, 1, '', '2011-05-21', 5, 1);
+	(4, 'Ted', 'Mozeby', 'TMOZ@inbox.ru', '1987-12-03', '+375336426294', 'password', 1, 'oleg.panasyuk89', '409122811', 100, 1, '', '2011-05-21', 5, 1),
+	(5, 'Edik', 'Trutsik', 'ediktrutsik@gmail.com', '1990-11-02', '+375292086000', 'password', 1, 'the_texas_ranger', '123456789', 100, 1, '', '2011-05-21', 5, 3);
+	
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

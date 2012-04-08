@@ -2,12 +2,25 @@
 /*- Portal.BrSU.BY, 2011 | mail@Portal.BrSU.BY */
 
 body {
-	background-image:url(images/1.gif);
+	background-image: url(images/1.gif);
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	line-height: 24px;
 	/*color: #333333;*/
 }
+
+/*****************************************************************************/
+TABLE {
+    width: 350px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: white;
+   }
+   TD, TH {
+    text-align: center;
+    border-bottom: 1px solid silver;
+   }
+/******************************************************************************/
 
 #container {
 	border: 1px solid #999;
@@ -99,32 +112,13 @@ background-color:#330099;
 #nav li a:hover {
 	color: #6633FF;
 }
-/****************** for example *********************/
-/tabl { 
-    margin: 5px auto;
-    border-bottom: 2px solid maroon;   
-		 }
-		 
-   thead{
-   background: #2e8b57 url(images/071_4.gif) repeat-x; /* ��������� ����, (#2e8b57) �� ������ ������, ���� ������������ ����� ���������*/                                                                                                               /*�������� � ��������*/
-   }
-   td, th { 
-    text-align: center; /* ������������ �� ������ */
-    padding: 5px; /* ���� ������ ����������� ����� */
-	
-   }
-   
-   .lc { 
-    font-weight: bold; /* ������ ���������� ������ */
-    text-align: center; /* ������������ �� ������ */
-}
 
-#message LABEL{	
+#message LABEL {	
 	float:left;
 	width: 50px;
 }
 
-/**********************  ******************************/
+
 /*#tabl {
 	margin: 5px auto;
 	/*border-collapse: collapse; /* ������� ������� ������� ����� �������� */
