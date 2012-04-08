@@ -38,7 +38,7 @@ public class testMessageDao {
 	}
 	
 	@Test 
-	public void testFindIdByLogin() {
+	public void testFindIdByEmail() {
 		long expected=msgDao.findIdUserByEmail(emailFrom);
 		long actual=5;
 		Assert.assertEquals(expected, actual);
@@ -46,13 +46,19 @@ public class testMessageDao {
 	
 	@Test
 	public void testFindAllMessageUsetTo() {
-		List<Message> list = msgDao.findAllMessageUserTo(5);
+		List<Message> list = msgDao.findAllMessageUserTo(2);
+		Assert.assertNotNull(list);
+	}
+	
+	@Test
+	public void testFindAllMessageUsetFrom() {
+		List<Message> list = msgDao.findAllMessageUserFrom(2);
 		Assert.assertNotNull(list);
 	}
 	
 	@Test
 	public void DelMessage() {
-		Assert.assertTrue(msgDao.delMessage(100));
+		Assert.assertTrue(msgDao.delMessage(16));
 	}
 
 }

@@ -23,31 +23,26 @@ public class MessageDao {
 	}
 	
 	public boolean creatMessages(Message msg){
-		Statement stat = null;
-		ResultSet rs = null;
+		PreparedStatement stat = null;
 		Date date = new Date(System.currentTimeMillis());
-		//System.out.println("send "+msg.toString());
 		try {		
-		PreparedStatement set = conn.prepareStatement("INSERT INTO message VALUES(null,?,?,?,?,?,null,?,?)");
-		set.setString(1, msg.getTitle());
-		set.setString(2, msg.getText());
-		set.setDate(3, date);
-		set.setLong(4, msg.getIdUserTo());
-		set.setLong(5, msg.getIdUserFrom());
-		set.setLong(6, msg.getReaded());
-		set.setLong(7, msg.getPriority());
-		set.executeUpdate();
-		stat = conn.createStatement();	
+		stat = conn.prepareStatement("INSERT INTO message VALUES(null,?,?,?,?,?,null,?,?)");
+		stat.setString(1, msg.getTitle());
+		stat.setString(2, msg.getText());
+		stat.setDate(3, date);
+		stat.setLong(4, msg.getIdUserTo());
+		stat.setLong(5, msg.getIdUserFrom());
+		stat.setLong(6, msg.getReaded());
+		stat.setLong(7, msg.getPriority());
+		stat.executeUpdate();
 		return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (rs != null)
-					rs.close();
-				if (stat != null)
+				if (stat != null) {
 					stat.close();
-				ConnectionManager.getConnectorPool().releaseConnection(conn);
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -58,77 +53,73 @@ public class MessageDao {
 	
 	public boolean delMessage(long idMessage) {
 		String query = "DELETE FROM message WHERE id_message=?";
-		Statement stat = null;
+		PreparedStatement stat=null;
 		if(idMessage==0){
 			return false;
 		}
 		try {
-			PreparedStatement set = conn.prepareStatement(query);
-			set.setLong(1, idMessage);
-			set.executeUpdate();
+			stat = conn.prepareStatement(query);
+			stat.setLong(1, idMessage);
+			stat.executeUpdate();
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
 		} finally {
 			try {
-				if (stat != null)
+				if (stat != null) {
 					stat.close();
-				ConnectionManager.getConnectorPool().releaseConnection(conn);
+				}
 			} catch (SQLException e) {
-				return false;
-			}
+				e.printStackTrace();
+			}		
 			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
+		return false;
 	}	
 	
-	/**
-	 * Refresh this connection from datebase
-	 */
-	public void ReFreshConnection() {
-		try {
-			this.conn = ConnectionManager.getConnectorPool().getConnection();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public long findIdUserByEmail(String email) {
-		Connection conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select id_user from users where email='"+email+"'";	
+		PreparedStatement stat=null;
 		ResultSet rs = null;
-		PreparedStatement st = null;		
+		String query = "Select id_user from users where email=?";		
+		if(email=="") {
+			return 0;
+		}
 		try {
-			st = conn.prepareStatement("");
-			rs = st.executeQuery(sql);
+			stat = conn.prepareStatement(query);
+			stat.setString(1, email);
+			rs = stat.executeQuery();
 			if(rs.next()) {
 				long id=rs.getLong(1);
 				return id;
 			}			
 		} catch (SQLException e) {
-			} finally {
-				try {
-					if (st != null)
-						st.close();
-					if (rs!=null)
-						rs.close();
-				} catch (SQLException e) {
-			}
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stat != null) {
+					stat.close();
+				}
+				if(rs!=null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}			
 			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 		return 0;		
 	}
 	
 	public List<Message> findAllMessageUserTo(long idUserTo) {
-		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from Message where Message.id_user_to="+idUserTo;
 		ResultSet rs = null;
-		PreparedStatement st = null;
+		PreparedStatement stat=null;
+		String query = "Select * from Message where Message.id_user_to=?";
+		List<Message> msg = new ArrayList<Message>();		
 		try 
 		{
-			st = conn.prepareStatement("");
-			rs = st.executeQuery(sql);
-			List<Message> msg = new ArrayList<Message>();
+			stat = conn.prepareStatement(query);
+			stat.setLong(1, idUserTo);
+			rs = stat.executeQuery();			
 			while (rs.next()) 
 			{
 				Message tempmsg = new Message();
@@ -147,34 +138,35 @@ public class MessageDao {
 		} 
 		catch (SQLException e) 
 		{
+			e.printStackTrace();
 		}
 		finally 
 		{
-			try 
-			{
-				if (rs != null)
+			try {
+				if (stat != null) {
+					stat.close();
+				}
+				if(rs!=null) {
 					rs.close();
-				if (st != null)
-					st.close();
-				ConnectionManager.getConnectorPool().releaseConnection(conn);
-			} 
-			catch (SQLException ex) 
-			{
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 		return null;
 	}
 	
 	public List<Message> findAllMessageUserFrom(long idUserFrom) {
-		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from Message where Message.id_user_from="+idUserFrom;
-		ResultSet rs = null;
-		PreparedStatement st = null;
+		PreparedStatement stat = null;
+		ResultSet rs = null;		
+		String query = "Select * from Message where Message.id_user_from=?";	
+		List<Message> msg = new ArrayList<Message>();
 		try 
 		{
-			st = conn.prepareStatement("");
-			rs = st.executeQuery(sql);
-			List<Message> msg = new ArrayList<Message>();
+			stat = conn.prepareStatement(query);
+			stat.setLong(1, idUserFrom);
+			rs = stat.executeQuery();			
 			while (rs.next()) 
 			{
 				Message tempmsg = new Message();
@@ -193,20 +185,21 @@ public class MessageDao {
 		} 
 		catch (SQLException e) 
 		{
+			e.printStackTrace();
 		}
 		finally 
 		{
-			try 
-			{
-				if (rs != null)
+			try {
+				if (stat != null) {
+					stat.close();
+				}
+				if(rs!=null) {
 					rs.close();
-				if (st != null)
-					st.close();
-				ConnectionManager.getConnectorPool().releaseConnection(conn);
-			} 
-			catch (SQLException ex) 
-			{
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 		return null;
 	}
