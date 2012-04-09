@@ -7,11 +7,11 @@
 <title>Send Message</title>
 </head>
 <body>
+<form action="/portal/Servlet/SendMessage" method="post">
 <div id="message">
-<form action="Servlet/SendMessage" method="post">
-<label for="user">To:</label><input type="text" name="user" /><br>
-<label for="subject">Subject:</label><input type="text"	name="subject" /><br>
-<label for="text">Text: </label><textarea name="text" rows="10" cols="80"></textarea><br>
+<label for="user">To:</label><input type="text" name="user" />
+<label for="subject">Subject:</label><input type="text"	name="subject" />
+<label for="text">Text: </label><textarea name="text"></textarea>
 	<label for="priority">Priority:</label>
 		<select name="priority">
 			<option selected="selected" value="1">Customary</option>
@@ -19,9 +19,8 @@
 			<option value="3">Very Important</option>
 			<option value="4">Arhi Important</option>
 		</select>
-<br>
 <input type="submit" value="Send" name="send"/><input type="button" value="Save" name="save" /><input type="reset" value="Clear">
-</form>
 </div>
+</form>
 </body>
 </html>

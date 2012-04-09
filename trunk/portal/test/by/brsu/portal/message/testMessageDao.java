@@ -27,13 +27,13 @@ public class testMessageDao {
 			Date date = new Date(System.currentTimeMillis());
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
 			msg.setDate(sqlDate);
-			msg.setIdUserTo(5);
-			msg.setIdUserFrom(2);
+			msg.setIdUserTo(2);
+			msg.setIdUserFrom(3);
 			msg.setPrevious(0);
 			msg.setPriority(4);
 			msg.setReaded(0);
-			msg.setText("5TestText2");
-			msg.setTitle("5TestTitle2");
+			msg.setText("2TestText3");
+			msg.setTitle("2TestTitle3");
 			Assert.assertTrue(msgDao.creatMessages(msg));
 	}
 	
@@ -54,6 +54,12 @@ public class testMessageDao {
 	public void testFindAllMessageUsetFrom() {
 		List<Message> list = msgDao.findAllMessageUserFrom(2);
 		Assert.assertNotNull(list);
+	}
+	
+	@Test
+	public void testFindMessageById() {
+		Message msg = msgDao.findMessageById(2);
+		Assert.assertNotNull(msg);
 	}
 	
 	@Test

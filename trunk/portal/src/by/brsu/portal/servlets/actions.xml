@@ -69,12 +69,22 @@
 	</action>
 	<action name="SendMessage">
 		<class>by.brsu.portal.servlets.SendMessage</class>
-		<forward-url>ok.jsp</forward-url>
+		<forward-url>templateMenuMessage.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="DelMessage">
 		<class>by.brsu.portal.servlets.DelMessage</class>
-		<forward-url>ok.jsp</forward-url>
+		<forward-url>index.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
+	<action name="OpenIncomingMessage">
+		<class>by.brsu.portal.servlets.OpenMessage</class>
+		<forward-url>templateOpenIncomingMessage.jsp</forward-url>
+		<error-url>index.jsp</error-url>
+	</action>
+	<action name="OpenSentMessage">
+		<class>by.brsu.portal.servlets.OpenMessage</class>
+		<forward-url>templateOpenSentMessage.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="Login">
