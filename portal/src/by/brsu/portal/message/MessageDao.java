@@ -110,6 +110,51 @@ public class MessageDao {
 		return 0;		
 	}
 	
+	public Message findMessageById(long idMessage) {
+		ResultSet rs = null;
+		PreparedStatement stat=null;
+		String query = "Select * from Message where Message.id_message=?";
+		try 
+		{
+			stat = conn.prepareStatement(query);
+			stat.setLong(1, idMessage);
+			rs = stat.executeQuery();			
+			if (rs.next()) 
+			{
+				Message msg = new Message();
+				msg.setId(rs.getLong(1));
+				msg.setTitle(rs.getString(2));
+				msg.setText(rs.getString(3));				
+				msg.setDate(rs.getDate(4));				
+				msg.setIdUserTo(rs.getLong(5));
+				msg.setIdUserFrom(rs.getLong(6));
+				msg.setPrevious(rs.getInt(7));
+				msg.setReaded(rs.getInt(8));
+				msg.setPriority(rs.getInt(9));
+				return msg;
+			} 
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			try {
+				if (stat != null) {
+					stat.close();
+				}
+				if(rs!=null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
+		}
+		return null;
+	}
+	
 	public List<Message> findAllMessageUserTo(long idUserTo) {
 		ResultSet rs = null;
 		PreparedStatement stat=null;

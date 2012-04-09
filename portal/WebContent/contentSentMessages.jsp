@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="table">
-<form action="Servlet/DelMessage" method="post">
-
+<form action="/portal/Servlet/DelMessage" method="get">
 <div id="buttomSearch">
 <input type="text" name="someText" value="Input Text">
 <input type="checkbox" name="withResults">
@@ -20,11 +19,11 @@
 	</thead>
 	<tbody>
 	<c:forEach var="message" items="${messages}">
-		<tr><td><input name="messageId" type="checkbox" name="idMessage" value="${message.id}"></td>
-			<td><a href="#"><c:out value="${message.priority}"/></a></td>
-			<td><a href="#"><c:out value="${message.idUserTo}"/></a></td>
-			<td><a href="#"><c:out value="${message.title}"/></a></td>
-			<td><a href="#"><c:out value="${message.date}"/></a></td>
+		<tr><td><input type="checkbox" name="idMessage" value="${message.id}"></td>
+			<td><a href="/portal/Servlet/OpenSentMessage?idMessage=${message.id}"><c:out value="${message.priority}"/></a></td>
+			<td><a href="/portal/Servlet/OpenSentMessage?idMessage=${message.id}"><c:out value="${message.idUserTo}"/></a></td>
+			<td><a href="/portal/Servlet/OpenSentMessage?idMessage=${message.id}"><c:out value="${message.title}"/></a></td>
+			<td><a href="/portal/Servlet/OpenSentMessage?idMessage=${message.id}"><c:out value="${message.date}"/></a></td>
 		</tr>
 	</c:forEach> 
 	</tbody>
@@ -32,6 +31,5 @@
 <div id="button">
 <input type="submit" value="Delete Checked"><input type="reset" value="Clear"> 
 </div>
-
 </form>
 </div>
