@@ -25,17 +25,17 @@ public class DelMessage implements Action {
 	@Override
 	public Map<String, Object> getParametersMap() {
 		map.put("message", msg);
-		return null;
+		return map;
 	}
 
 	@Override
 	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response) {
 		try {
-		//msg.setId(Long.valueOf(request.getParameter("idMessage")).longValue());
-		System.out.println(request.getParameter("idMessage"));
-		//mDao.delMessage(msg.getId());
-		//map.put("message", msg);
+		msg.setId(Long.valueOf(request.getParameter("idMessage")).longValue());
+		//System.out.println(request.getParameter("idMessage"));
+		mDao.delMessage(msg.getId());
+		map.put("message", msg);
 		return true;
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
