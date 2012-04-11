@@ -27,7 +27,10 @@ public class IncomingMessages implements Action {
 	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response){
 		messages = messageDao.findAllMessageUserTo(2); //idUserTo
-		return true;
+		if(messages!=null) {
+			return true;
+		}
+		return false;
 	}
 	
 	@Override

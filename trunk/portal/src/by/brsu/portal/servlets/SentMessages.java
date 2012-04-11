@@ -26,7 +26,10 @@ public class SentMessages implements Action {
 	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response){
 		messages = messageDao.findAllMessageUserFrom(2); //idUserFrom
-		return true;
+		if(messages!=null) {
+			return true;
+		}
+		return false;
 	}
 	
 	@Override

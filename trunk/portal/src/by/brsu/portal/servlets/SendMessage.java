@@ -41,9 +41,8 @@ public class SendMessage implements Action{
 		priority=Integer.valueOf(request.getParameter("priority")).intValue();		
 		msg.setPriority(priority);
 		msg.setReaded(0);		
-		msg.setPrevious(0);
+		msg.setPrevious(0); // I don't no
 		mDao.creatMessages(msg);
-		map.put("message", msg);
 		return true;
 	}
 	
