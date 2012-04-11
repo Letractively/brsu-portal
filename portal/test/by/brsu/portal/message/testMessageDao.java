@@ -20,7 +20,6 @@ public class testMessageDao {
 	private MessageDao msgDao = new MessageDao();
 	private Message msg = new Message();
 	private String emailFrom="ediktrutsik@gmail.com";
-	private String emailTo="oleg.panasyuk@inbox.ru";
 	
 	@Test
 	public void testCreateMessage() {		
@@ -64,7 +63,7 @@ public class testMessageDao {
 	
 	@Test
 	public void DelMessage() {
-		Assert.assertTrue(msgDao.delMessage(16));
+		Assert.assertTrue(msgDao.delMessage(6,2));
 	}
 
 }

@@ -23,16 +23,23 @@ body {
 #message TEXTAREA {
 	width: 600px;
 	height: 200px;
+	display: block;
 }
 #message INPUT {
 	display: block;
 }
 #message LABEL {
+	display: block;
 	float: left;
 	width: 50px;	
 }
-#button INPUT {
-	display: inline;	
+#message SELECT {
+	float: left;
+	display: block;
+}
+#button {
+	float: left;
+	display: block;
 }
 
 

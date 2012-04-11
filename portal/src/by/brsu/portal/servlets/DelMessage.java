@@ -23,24 +23,22 @@ public class DelMessage implements Action {
 	private Map<String, Object> map = new HashMap<String, Object>();
 	
 	@Override
-	public Map<String, Object> getParametersMap() {
-		map.put("message", msg);
-		return map;
-	}
-
-	@Override
 	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response) {
 		try {
-		msg.setId(Long.valueOf(request.getParameter("idMessage")).longValue());
-		//System.out.println(request.getParameter("idMessage"));
-		mDao.delMessage(msg.getId());
+		mDao.delMessage(Long.valueOf(request.getParameter("idMessage")).longValue(),Long.valueOf(request.getParameter("idUserTo")));
 		map.put("message", msg);
 		return true;
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}		
 		return false;
+	}
+	
+	@Override
+	public Map<String, Object> getParametersMap() {
+		map.put("message", msg);
+		return map;
 	}
 
 }

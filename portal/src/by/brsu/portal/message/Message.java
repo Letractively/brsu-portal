@@ -22,6 +22,18 @@ public class Message {
 	public Message() {
 		super();
 	}
+
+	public Message(Message msg) {
+		this.id=msg.id;
+		this.title=msg.title;
+		this.text=msg.text;
+		this.date=msg.date;
+		this.idUserTo=msg.idUserTo;
+		this.idUserFrom=msg.idUserFrom;
+		this.previous=msg.previous;
+		this.readed=msg.readed;
+		this.priority=msg.priority;
+	}
 	/**
 	 * @param id
 	 * @param title
@@ -31,9 +43,10 @@ public class Message {
 	 * @param sent
 	 * @param author
 	 */
-	public Message(String title, String text,
+	public Message(long idMessage,String title, String text,
 			Date date,long idUserTo, long idUserFrom, int previous, int readed, int priority) {
 		super();
+		this.id=idMessage;
 		this.title = title;
 		this.text = text;
 		this.date = date;
@@ -216,7 +229,7 @@ public class Message {
 	 */
 	@Override
 	public String toString() {
-		return "Message [date=" + date + ", idToUser=" + idUserTo + ", idUserFrom="
+		return "Message [idMessage="+id+", date=" + date + ", idToUser=" + idUserTo + ", idUserFrom="
 				+ idUserFrom + ", previous=" + previous + ", priority="
 				+ priority + ", readed=" + readed + ", text=" + text
 				+ ", title=" + title + "]";

@@ -4,8 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import by.brsu.portal.ConnectionManager;
+
 /**
  * @author Trutsik Eduard
+ * 
  */
 
 public class MessageDao {
@@ -22,26 +24,47 @@ public class MessageDao {
 		}
 	}
 	
-	public boolean creatMessages(Message msg){
+	public boolean creatMessages(Message msg) {
 		PreparedStatement stat = null;
+		Statement st = null;
+		ResultSet rs = null;
+		long res = 0;
 		Date date = new Date(System.currentTimeMillis());
-		try {		
-		stat = conn.prepareStatement("INSERT INTO message VALUES(null,?,?,?,?,?,null,?,?)");
-		stat.setString(1, msg.getTitle());
-		stat.setString(2, msg.getText());
-		stat.setDate(3, date);
-		stat.setLong(4, msg.getIdUserTo());
-		stat.setLong(5, msg.getIdUserFrom());
-		stat.setLong(6, msg.getReaded());
-		stat.setLong(7, msg.getPriority());
-		stat.executeUpdate();
-		return true;
+		try {
+			stat = conn.prepareStatement("INSERT INTO message VALUES(null,?,?,?,?,null,?,?)");
+			stat.setString(1, msg.getTitle());
+			stat.setString(2, msg.getText());
+			stat.setDate(3, date);
+			stat.setLong(4, msg.getIdUserFrom());
+			stat.setLong(5, msg.getReaded());
+			stat.setLong(6, msg.getPriority());
+			if (stat.executeUpdate() != 0) {
+				st = conn.createStatement();
+				rs = st.executeQuery("SELECT LAST_INSERT_ID()");
+				if (rs.next()) {
+					res = rs.getLong(1);
+					if (res != 0) {
+						stat = conn.prepareStatement("INSERT INTO l_user_to VALUES(?,?)");
+						stat.setLong(1, res);
+						stat.setLong(2, msg.getIdUserTo());
+						if (stat.executeUpdate() != 0) {
+							return true;
+						}
+					}
+				}
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				if (stat != null) {
 					stat.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+				if (st != null) {
+					st.close();
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -51,17 +74,24 @@ public class MessageDao {
 		return false;
 	}	
 	
-	public boolean delMessage(long idMessage) {
-		String query = "DELETE FROM message WHERE id_message=?";
-		PreparedStatement stat=null;
-		if(idMessage==0){
-			return false;
-		}
+	public boolean delMessage(long idMessage,long idUser) {
+		String query = "DELETE FROM l_user_to WHERE id_message=? and id_user=?";
+		String query2 = "DELETE FROM message WHERE id_message=?";
+		PreparedStatement stat=null;		
+		PreparedStatement stat2=null;		
 		try {
-			stat = conn.prepareStatement(query);
-			stat.setLong(1, idMessage);
-			stat.executeUpdate();
-			return true;
+			if (idMessage != 0 && idUser != 0) {
+				stat = conn.prepareStatement(query);
+				stat.setLong(1, idMessage);
+				stat.setLong(2, idUser);
+				stat2 = conn.prepareStatement(query2);
+				stat2.setLong(1, idMessage);
+				if (stat.executeUpdate() != 0) {
+					if(stat2.executeUpdate() != 0) {
+						return true;
+					}					
+				}
+			}			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -69,9 +99,12 @@ public class MessageDao {
 				if (stat != null) {
 					stat.close();
 				}
+				if (stat2 != null) {
+					stat2.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}		
+			}
 			ConnectionManager.getConnectorPool().releaseConnection(conn);
 		}
 		return false;
@@ -89,8 +122,7 @@ public class MessageDao {
 			stat.setString(1, email);
 			rs = stat.executeQuery();
 			if(rs.next()) {
-				long id=rs.getLong(1);
-				return id;
+				return rs.getLong(1);
 			}			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -113,26 +145,53 @@ public class MessageDao {
 	public Message findMessageById(long idMessage) {
 		ResultSet rs = null;
 		PreparedStatement stat=null;
-		String query = "Select * from Message where Message.id_message=?";
+		try 
+		{
+			stat = conn.prepareStatement("Select l_user_to.id_user, message.* from Message,l_user_to where Message.id_message=? and l_user_to.id_message=Message.id_message");
+			stat.setLong(1, idMessage);
+			rs = stat.executeQuery();
+			if (rs.next()) 
+			{
+				return new Message(idMessage,rs.getString(3),rs.getString(4),rs.getDate(5),rs.getLong(1),rs.getLong(6),rs.getInt(7),rs.getInt(8),rs.getInt(9));
+			} 
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			try {
+				if (stat != null) 
+				{
+					stat.close();
+				}
+				if(rs!=null) 
+				{
+					rs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
+		}
+		return null;
+	}
+	
+	public List<Long> findAllPriority() {
+		ResultSet rs = null;
+		PreparedStatement stat=null;
+		String query = "SELECT * FROM priority";
+		List<Long> priority = new ArrayList<Long>();
 		try 
 		{
 			stat = conn.prepareStatement(query);
-			stat.setLong(1, idMessage);
-			rs = stat.executeQuery();			
-			if (rs.next()) 
+			rs = stat.executeQuery();
+			while (rs.next()) 
 			{
-				Message msg = new Message();
-				msg.setId(rs.getLong(1));
-				msg.setTitle(rs.getString(2));
-				msg.setText(rs.getString(3));				
-				msg.setDate(rs.getDate(4));				
-				msg.setIdUserTo(rs.getLong(5));
-				msg.setIdUserFrom(rs.getLong(6));
-				msg.setPrevious(rs.getInt(7));
-				msg.setReaded(rs.getInt(8));
-				msg.setPriority(rs.getInt(9));
-				return msg;
-			} 
+				priority.add(rs.getLong(1));				
+			}
+			return priority;
 		} 
 		catch (SQLException e) 
 		{
@@ -158,8 +217,9 @@ public class MessageDao {
 	public List<Message> findAllMessageUserTo(long idUserTo) {
 		ResultSet rs = null;
 		PreparedStatement stat=null;
-		String query = "Select * from Message where Message.id_user_to=?";
-		List<Message> msg = new ArrayList<Message>();		
+		String query = "Select id_message from l_user_to where l_user_to.id_user=?";
+		List<Message> msg = new ArrayList<Message>();
+		Message tempMessage=new Message();
 		try 
 		{
 			stat = conn.prepareStatement(query);
@@ -167,17 +227,9 @@ public class MessageDao {
 			rs = stat.executeQuery();			
 			while (rs.next()) 
 			{
-				Message tempmsg = new Message();
-				tempmsg.setId(rs.getLong(1));
-				tempmsg.setTitle(rs.getString(2));
-				tempmsg.setText(rs.getString(3));				
-				tempmsg.setDate(rs.getDate(4));				
-				tempmsg.setIdUserTo(rs.getLong(5));
-				tempmsg.setIdUserFrom(rs.getLong(6));
-				tempmsg.setPrevious(rs.getInt(7));
-				tempmsg.setReaded(rs.getInt(8));
-				tempmsg.setPriority(rs.getInt(9));
-				msg.add(tempmsg);
+				tempMessage= this.findMessageById(rs.getLong(1));
+				tempMessage.setIdUserTo(idUserTo);
+				msg.add(tempMessage);				
 			}
 			return msg;
 		} 
@@ -205,7 +257,7 @@ public class MessageDao {
 	public List<Message> findAllMessageUserFrom(long idUserFrom) {
 		PreparedStatement stat = null;
 		ResultSet rs = null;		
-		String query = "Select * from Message where Message.id_user_from=?";	
+		String query = "Select l_user_to.id_user,Message.* from Message,l_user_to where Message.id_user_from=? and l_user_to.id_message=Message.id_message";	
 		List<Message> msg = new ArrayList<Message>();
 		try 
 		{
@@ -213,18 +265,8 @@ public class MessageDao {
 			stat.setLong(1, idUserFrom);
 			rs = stat.executeQuery();			
 			while (rs.next()) 
-			{
-				Message tempmsg = new Message();
-				tempmsg.setId(rs.getLong(1));
-				tempmsg.setTitle(rs.getString(2));
-				tempmsg.setText(rs.getString(3));				
-				tempmsg.setDate(rs.getDate(4));				
-				tempmsg.setIdUserTo(rs.getLong(5));
-				tempmsg.setIdUserFrom(rs.getLong(6));
-				tempmsg.setPrevious(rs.getInt(7));
-				tempmsg.setReaded(rs.getInt(8));
-				tempmsg.setPriority(rs.getInt(9));
-				msg.add(tempmsg);
+			{				
+				msg.add(new Message(rs.getLong(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getLong(1),rs.getLong(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
 			}
 			return msg;
 		} 

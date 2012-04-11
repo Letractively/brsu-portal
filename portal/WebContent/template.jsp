@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" type="text/css" href="/portal/style.css">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="container">
 	<jsp:include page="header.jsp"></jsp:include>
 	<jsp:include page="mainMenu.jsp"></jsp:include>
