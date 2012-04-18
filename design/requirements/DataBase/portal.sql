@@ -1,9 +1,9 @@
 # --------------------------------------------------------
 # Host:                         127.0.0.1
-# Server version:               5.5.14
+# Server version:               5.5.9
 # Server OS:                    Win32
 # HeidiSQL version:             6.0.0.3603
-# Date/time:                    2011-07-28 15:54:04
+# Date/time:                    2012-04-18 19:56:03
 # --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -12,12 +12,13 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 # Dumping database structure for portal
-drop database if exists portal ;
+DROP DATABASE IF EXISTS `portal`;
 CREATE DATABASE IF NOT EXISTS `portal` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `portal`;
 
 
 # Dumping structure for table portal.categories_pr
+DROP TABLE IF EXISTS `categories_pr`;
 CREATE TABLE IF NOT EXISTS `categories_pr` (
   `id_category` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -25,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `categories_pr` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.categories_pr: ~5 rows (approximately)
+DELETE FROM `categories_pr`;
 /*!40000 ALTER TABLE `categories_pr` DISABLE KEYS */;
 INSERT INTO `categories_pr` (`id_category`, `name`) VALUES
 	(1, 'Medicine'),
@@ -36,6 +38,7 @@ INSERT INTO `categories_pr` (`id_category`, `name`) VALUES
 
 
 # Dumping structure for table portal.comments_news
+DROP TABLE IF EXISTS `comments_news`;
 CREATE TABLE IF NOT EXISTS `comments_news` (
   `id_comment` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
@@ -50,6 +53,7 @@ CREATE TABLE IF NOT EXISTS `comments_news` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.comments_news: ~3 rows (approximately)
+DELETE FROM `comments_news`;
 /*!40000 ALTER TABLE `comments_news` DISABLE KEYS */;
 INSERT INTO `comments_news` (`id_comment`, `id_user`, `id_news`, `date_of_creation`, `text`) VALUES
 	(1, 1, 2, '2011-05-25', 'Session soon'),
@@ -59,6 +63,7 @@ INSERT INTO `comments_news` (`id_comment`, `id_user`, `id_news`, `date_of_creati
 
 
 # Dumping structure for table portal.comments_pr
+DROP TABLE IF EXISTS `comments_pr`;
 CREATE TABLE IF NOT EXISTS `comments_pr` (
   `id_comment_pr` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
@@ -73,6 +78,7 @@ CREATE TABLE IF NOT EXISTS `comments_pr` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.comments_pr: ~3 rows (approximately)
+DELETE FROM `comments_pr`;
 /*!40000 ALTER TABLE `comments_pr` DISABLE KEYS */;
 INSERT INTO `comments_pr` (`id_comment_pr`, `id_user`, `id_project`, `date_of_creation`, `text`) VALUES
 	(1, 2, 1, '2011-05-25', 'I commented this project'),
@@ -82,6 +88,7 @@ INSERT INTO `comments_pr` (`id_comment_pr`, `id_user`, `id_project`, `date_of_cr
 
 
 # Dumping structure for table portal.cv
+DROP TABLE IF EXISTS `cv`;
 CREATE TABLE IF NOT EXISTS `cv` (
   `id_user` int(11) NOT NULL,
   `hobbies` varchar(300) DEFAULT NULL,
@@ -90,6 +97,7 @@ CREATE TABLE IF NOT EXISTS `cv` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.cv: ~3 rows (approximately)
+DELETE FROM `cv`;
 /*!40000 ALTER TABLE `cv` DISABLE KEYS */;
 INSERT INTO `cv` (`id_user`, `hobbies`) VALUES
 	(1, 'C#, Java, Girls, Games, Swimming'),
@@ -99,6 +107,7 @@ INSERT INTO `cv` (`id_user`, `hobbies`) VALUES
 
 
 # Dumping structure for table portal.cv_links
+DROP TABLE IF EXISTS `cv_links`;
 CREATE TABLE IF NOT EXISTS `cv_links` (
   `id_link` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
@@ -109,6 +118,7 @@ CREATE TABLE IF NOT EXISTS `cv_links` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.cv_links: ~3 rows (approximately)
+DELETE FROM `cv_links`;
 /*!40000 ALTER TABLE `cv_links` DISABLE KEYS */;
 INSERT INTO `cv_links` (`id_link`, `id_user`, `link`) VALUES
 	(1, 1, 'brsu.portal.by'),
@@ -118,6 +128,7 @@ INSERT INTO `cv_links` (`id_link`, `id_user`, `link`) VALUES
 
 
 # Dumping structure for table portal.education
+DROP TABLE IF EXISTS `education`;
 CREATE TABLE IF NOT EXISTS `education` (
   `id_edu` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
@@ -135,6 +146,7 @@ CREATE TABLE IF NOT EXISTS `education` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.education: ~2 rows (approximately)
+DELETE FROM `education`;
 /*!40000 ALTER TABLE `education` DISABLE KEYS */;
 INSERT INTO `education` (`id_edu`, `id_user`, `start_date`, `end_date`, `edu_name`, `place`, `id_type_edu`, `additional`) VALUES
 	(1, 1, '2007-09-01', NULL, 'BRGU', 'Brest', 3, 'good student'),
@@ -143,6 +155,7 @@ INSERT INTO `education` (`id_edu`, `id_user`, `start_date`, `end_date`, `edu_nam
 
 
 # Dumping structure for table portal.experience
+DROP TABLE IF EXISTS `experience`;
 CREATE TABLE IF NOT EXISTS `experience` (
   `id_exp` int(11) NOT NULL AUTO_INCREMENT,
   `start_date` date DEFAULT NULL,
@@ -162,6 +175,7 @@ CREATE TABLE IF NOT EXISTS `experience` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.experience: ~5 rows (approximately)
+DELETE FROM `experience`;
 /*!40000 ALTER TABLE `experience` DISABLE KEYS */;
 INSERT INTO `experience` (`id_exp`, `start_date`, `end_date`, `company_name`, `position`, `additional`, `id_project`, `id_user`) VALUES
 	(1, '2011-05-01', NULL, 'brsu', 1, 'good worker', NULL, 1),
@@ -173,6 +187,7 @@ INSERT INTO `experience` (`id_exp`, `start_date`, `end_date`, `company_name`, `p
 
 
 # Dumping structure for table portal.jobs
+DROP TABLE IF EXISTS `jobs`;
 CREATE TABLE IF NOT EXISTS `jobs` (
   `id_job` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
@@ -187,11 +202,13 @@ CREATE TABLE IF NOT EXISTS `jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.jobs: ~0 rows (approximately)
+DELETE FROM `jobs`;
 /*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
 
 
 # Dumping structure for table portal.language
+DROP TABLE IF EXISTS `language`;
 CREATE TABLE IF NOT EXISTS `language` (
   `id_language` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -199,6 +216,7 @@ CREATE TABLE IF NOT EXISTS `language` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.language: ~4 rows (approximately)
+DELETE FROM `language`;
 /*!40000 ALTER TABLE `language` DISABLE KEYS */;
 INSERT INTO `language` (`id_language`, `name`) VALUES
 	(1, 'C_Sharp'),
@@ -209,6 +227,7 @@ INSERT INTO `language` (`id_language`, `name`) VALUES
 
 
 # Dumping structure for table portal.l_languages_pr
+DROP TABLE IF EXISTS `l_languages_pr`;
 CREATE TABLE IF NOT EXISTS `l_languages_pr` (
   `id_project` int(11) NOT NULL,
   `id_language` int(11) NOT NULL,
@@ -219,6 +238,7 @@ CREATE TABLE IF NOT EXISTS `l_languages_pr` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.l_languages_pr: ~1 rows (approximately)
+DELETE FROM `l_languages_pr`;
 /*!40000 ALTER TABLE `l_languages_pr` DISABLE KEYS */;
 INSERT INTO `l_languages_pr` (`id_project`, `id_language`) VALUES
 	(1, 2);
@@ -226,6 +246,7 @@ INSERT INTO `l_languages_pr` (`id_project`, `id_language`) VALUES
 
 
 # Dumping structure for table portal.l_languages_us
+DROP TABLE IF EXISTS `l_languages_us`;
 CREATE TABLE IF NOT EXISTS `l_languages_us` (
   `id_user` int(11) NOT NULL,
   `id_language` int(11) NOT NULL,
@@ -236,6 +257,7 @@ CREATE TABLE IF NOT EXISTS `l_languages_us` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.l_languages_us: ~5 rows (approximately)
+DELETE FROM `l_languages_us`;
 /*!40000 ALTER TABLE `l_languages_us` DISABLE KEYS */;
 INSERT INTO `l_languages_us` (`id_user`, `id_language`) VALUES
 	(1, 2),
@@ -247,6 +269,7 @@ INSERT INTO `l_languages_us` (`id_user`, `id_language`) VALUES
 
 
 # Dumping structure for table portal.l_lang_jobs
+DROP TABLE IF EXISTS `l_lang_jobs`;
 CREATE TABLE IF NOT EXISTS `l_lang_jobs` (
   `id_language` int(11) NOT NULL,
   `id_job` int(11) NOT NULL,
@@ -257,11 +280,13 @@ CREATE TABLE IF NOT EXISTS `l_lang_jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.l_lang_jobs: ~0 rows (approximately)
+DELETE FROM `l_lang_jobs`;
 /*!40000 ALTER TABLE `l_lang_jobs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `l_lang_jobs` ENABLE KEYS */;
 
 
 # Dumping structure for table portal.l_pos
+DROP TABLE IF EXISTS `l_pos`;
 CREATE TABLE IF NOT EXISTS `l_pos` (
   `id_project` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
@@ -275,6 +300,7 @@ CREATE TABLE IF NOT EXISTS `l_pos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.l_pos: ~3 rows (approximately)
+DELETE FROM `l_pos`;
 /*!40000 ALTER TABLE `l_pos` DISABLE KEYS */;
 INSERT INTO `l_pos` (`id_project`, `id_user`, `id_pos`) VALUES
 	(1, 1, 1),
@@ -284,6 +310,7 @@ INSERT INTO `l_pos` (`id_project`, `id_user`, `id_pos`) VALUES
 
 
 # Dumping structure for table portal.l_sites
+DROP TABLE IF EXISTS `l_sites`;
 CREATE TABLE IF NOT EXISTS `l_sites` (
   `id_site` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
@@ -294,6 +321,7 @@ CREATE TABLE IF NOT EXISTS `l_sites` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.l_sites: ~3 rows (approximately)
+DELETE FROM `l_sites`;
 /*!40000 ALTER TABLE `l_sites` DISABLE KEYS */;
 INSERT INTO `l_sites` (`id_site`, `id_user`, `site`) VALUES
 	(1, 2, 'vkontakte.ru/id123456789'),
@@ -303,6 +331,7 @@ INSERT INTO `l_sites` (`id_site`, `id_user`, `site`) VALUES
 
 
 # Dumping structure for table portal.l_technologies_pr
+DROP TABLE IF EXISTS `l_technologies_pr`;
 CREATE TABLE IF NOT EXISTS `l_technologies_pr` (
   `id_project` int(11) NOT NULL,
   `id_tech` int(11) NOT NULL,
@@ -313,6 +342,7 @@ CREATE TABLE IF NOT EXISTS `l_technologies_pr` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.l_technologies_pr: ~2 rows (approximately)
+DELETE FROM `l_technologies_pr`;
 /*!40000 ALTER TABLE `l_technologies_pr` DISABLE KEYS */;
 INSERT INTO `l_technologies_pr` (`id_project`, `id_tech`) VALUES
 	(1, 2),
@@ -321,6 +351,7 @@ INSERT INTO `l_technologies_pr` (`id_project`, `id_tech`) VALUES
 
 
 # Dumping structure for table portal.l_technologies_us
+DROP TABLE IF EXISTS `l_technologies_us`;
 CREATE TABLE IF NOT EXISTS `l_technologies_us` (
   `id_user` int(11) NOT NULL,
   `id_tech` int(11) NOT NULL,
@@ -331,6 +362,7 @@ CREATE TABLE IF NOT EXISTS `l_technologies_us` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.l_technologies_us: ~5 rows (approximately)
+DELETE FROM `l_technologies_us`;
 /*!40000 ALTER TABLE `l_technologies_us` DISABLE KEYS */;
 INSERT INTO `l_technologies_us` (`id_user`, `id_tech`) VALUES
 	(1, 2),
@@ -342,6 +374,7 @@ INSERT INTO `l_technologies_us` (`id_user`, `id_tech`) VALUES
 
 
 # Dumping structure for table portal.l_tech_jobs
+DROP TABLE IF EXISTS `l_tech_jobs`;
 CREATE TABLE IF NOT EXISTS `l_tech_jobs` (
   `id_tech` int(11) NOT NULL,
   `id_job` int(11) NOT NULL,
@@ -352,11 +385,13 @@ CREATE TABLE IF NOT EXISTS `l_tech_jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.l_tech_jobs: ~0 rows (approximately)
+DELETE FROM `l_tech_jobs`;
 /*!40000 ALTER TABLE `l_tech_jobs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `l_tech_jobs` ENABLE KEYS */;
 
 
 # Dumping structure for table portal.l_user_bcc
+DROP TABLE IF EXISTS `l_user_bcc`;
 CREATE TABLE IF NOT EXISTS `l_user_bcc` (
   `id_message` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
@@ -367,11 +402,13 @@ CREATE TABLE IF NOT EXISTS `l_user_bcc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.l_user_bcc: ~0 rows (approximately)
+DELETE FROM `l_user_bcc`;
 /*!40000 ALTER TABLE `l_user_bcc` DISABLE KEYS */;
 /*!40000 ALTER TABLE `l_user_bcc` ENABLE KEYS */;
 
 
 # Dumping structure for table portal.l_user_to
+DROP TABLE IF EXISTS `l_user_to`;
 CREATE TABLE IF NOT EXISTS `l_user_to` (
   `id_message` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
@@ -382,6 +419,7 @@ CREATE TABLE IF NOT EXISTS `l_user_to` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.l_user_to: ~5 rows (approximately)
+DELETE FROM `l_user_to`;
 /*!40000 ALTER TABLE `l_user_to` DISABLE KEYS */;
 INSERT INTO `l_user_to` (`id_message`, `id_user`) VALUES
 	(1, 2),
@@ -393,6 +431,7 @@ INSERT INTO `l_user_to` (`id_message`, `id_user`) VALUES
 
 
 # Dumping structure for table portal.l_user_сс
+DROP TABLE IF EXISTS `l_user_сс`;
 CREATE TABLE IF NOT EXISTS `l_user_сс` (
   `id_message` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
@@ -403,16 +442,18 @@ CREATE TABLE IF NOT EXISTS `l_user_сс` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.l_user_сс: ~0 rows (approximately)
+DELETE FROM `l_user_сс`;
 /*!40000 ALTER TABLE `l_user_сс` DISABLE KEYS */;
 /*!40000 ALTER TABLE `l_user_сс` ENABLE KEYS */;
 
 
 # Dumping structure for table portal.message
+DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
   `id_message` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) DEFAULT NULL,
   `text` varchar(3000) NOT NULL,
-  `data_m` date NOT NULL,  
+  `data_m` date NOT NULL,
   `id_user_from` int(11) NOT NULL,
   `id_previous_message` int(11) DEFAULT NULL,
   `is_readed` int(11) NOT NULL,
@@ -420,12 +461,14 @@ CREATE TABLE IF NOT EXISTS `message` (
   PRIMARY KEY (`id_message`),
   KEY `id_user_from` (`id_user_from`),
   KEY `priority` (`priority`),
+  KEY `message_ibfk_3` (`id_previous_message`),
   CONSTRAINT `message_ibfk_1` FOREIGN KEY (`priority`) REFERENCES `priority` (`id_priority`),
   CONSTRAINT `message_ibfk_2` FOREIGN KEY (`id_user_from`) REFERENCES `users` (`id_user`),
   CONSTRAINT `message_ibfk_3` FOREIGN KEY (`id_previous_message`) REFERENCES `message` (`id_message`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.message: ~3 rows (approximately)
+DELETE FROM `message`;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
 INSERT INTO `message` (`id_message`, `title`, `text`, `data_m`, `id_user_from`, `id_previous_message`, `is_readed`, `priority`) VALUES
 	(1, 'Hello!', 'We are greating you on our web-site)', '2011-05-28', 2, NULL, 0, 1),
@@ -435,6 +478,7 @@ INSERT INTO `message` (`id_message`, `title`, `text`, `data_m`, `id_user_from`, 
 
 
 # Dumping structure for table portal.news
+DROP TABLE IF EXISTS `news`;
 CREATE TABLE IF NOT EXISTS `news` (
   `id_news` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
@@ -452,6 +496,7 @@ CREATE TABLE IF NOT EXISTS `news` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.news: ~6 rows (approximately)
+DELETE FROM `news`;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
 INSERT INTO `news` (`id_news`, `title`, `text`, `created_date`, `id_category`, `important`, `id_author`) VALUES
 	(1, 'Obyavleny laureaty\n shestoi "Premii Runeta"', 'V Moskve\n v GKZ "Pushkinskii"\r\n vecherom\n 25 noyabrya byla vruchena \r\n "Premiya\n Runeta-2009". Ee laureatami stali\r\n organizacii\n i internet-saity v shesti\n\r\n nominaciyah.', '2009-09-25', 2, '', 1),
@@ -464,6 +509,7 @@ INSERT INTO `news` (`id_news`, `title`, `text`, `created_date`, `id_category`, `
 
 
 # Dumping structure for table portal.positions
+DROP TABLE IF EXISTS `positions`;
 CREATE TABLE IF NOT EXISTS `positions` (
   `id_pos` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -471,6 +517,7 @@ CREATE TABLE IF NOT EXISTS `positions` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.positions: ~8 rows (approximately)
+DELETE FROM `positions`;
 /*!40000 ALTER TABLE `positions` DISABLE KEYS */;
 INSERT INTO `positions` (`id_pos`, `name`) VALUES
 	(1, 'Developer'),
@@ -485,6 +532,7 @@ INSERT INTO `positions` (`id_pos`, `name`) VALUES
 
 
 # Dumping structure for table portal.priority
+DROP TABLE IF EXISTS `priority`;
 CREATE TABLE IF NOT EXISTS `priority` (
   `id_priority` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -492,6 +540,7 @@ CREATE TABLE IF NOT EXISTS `priority` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.priority: ~4 rows (approximately)
+DELETE FROM `priority`;
 /*!40000 ALTER TABLE `priority` DISABLE KEYS */;
 INSERT INTO `priority` (`id_priority`, `name`) VALUES
 	(1, 'Customary'),
@@ -502,6 +551,7 @@ INSERT INTO `priority` (`id_priority`, `name`) VALUES
 
 
 # Dumping structure for table portal.projecthistory
+DROP TABLE IF EXISTS `projecthistory`;
 CREATE TABLE IF NOT EXISTS `projecthistory` (
   `id_pr_history` int(11) NOT NULL AUTO_INCREMENT,
   `id_project` int(11) NOT NULL,
@@ -516,6 +566,7 @@ CREATE TABLE IF NOT EXISTS `projecthistory` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.projecthistory: ~1 rows (approximately)
+DELETE FROM `projecthistory`;
 /*!40000 ALTER TABLE `projecthistory` DISABLE KEYS */;
 INSERT INTO `projecthistory` (`id_pr_history`, `id_project`, `id_user`, `stage`, `name`) VALUES
 	(1, 1, 1, 'Finished', 'Coca-cola');
@@ -523,6 +574,7 @@ INSERT INTO `projecthistory` (`id_pr_history`, `id_project`, `id_user`, `stage`,
 
 
 # Dumping structure for table portal.projects
+DROP TABLE IF EXISTS `projects`;
 CREATE TABLE IF NOT EXISTS `projects` (
   `id_project` int(11) NOT NULL AUTO_INCREMENT,
   `id_owner` int(11) NOT NULL,
@@ -544,6 +596,7 @@ CREATE TABLE IF NOT EXISTS `projects` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.projects: ~1 rows (approximately)
+DELETE FROM `projects`;
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
 INSERT INTO `projects` (`id_project`, `id_owner`, `name`, `description`, `date_of_creation`, `date_of_closing`, `id_category`, `version`, `license`, `stage_of_development`) VALUES
 	(1, 1, 'test', 'tested project', '2011-05-01', '2011-05-02', 1, 1, NULL, 'alpha-test');
@@ -551,6 +604,7 @@ INSERT INTO `projects` (`id_project`, `id_owner`, `name`, `description`, `date_o
 
 
 # Dumping structure for table portal.status
+DROP TABLE IF EXISTS `status`;
 CREATE TABLE IF NOT EXISTS `status` (
   `id_stat` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -558,6 +612,7 @@ CREATE TABLE IF NOT EXISTS `status` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.status: ~3 rows (approximately)
+DELETE FROM `status`;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
 INSERT INTO `status` (`id_stat`, `name`) VALUES
 	(1, 'banned'),
@@ -567,6 +622,7 @@ INSERT INTO `status` (`id_stat`, `name`) VALUES
 
 
 # Dumping structure for table portal.tags
+DROP TABLE IF EXISTS `tags`;
 CREATE TABLE IF NOT EXISTS `tags` (
   `id_tag` int(11) NOT NULL AUTO_INCREMENT,
   `id_project` int(11) NOT NULL,
@@ -577,6 +633,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.tags: ~2 rows (approximately)
+DELETE FROM `tags`;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
 INSERT INTO `tags` (`id_tag`, `id_project`, `tag`) VALUES
 	(1, 1, 'tested'),
@@ -585,6 +642,7 @@ INSERT INTO `tags` (`id_tag`, `id_project`, `tag`) VALUES
 
 
 # Dumping structure for table portal.technologies
+DROP TABLE IF EXISTS `technologies`;
 CREATE TABLE IF NOT EXISTS `technologies` (
   `id_tech` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -592,6 +650,7 @@ CREATE TABLE IF NOT EXISTS `technologies` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.technologies: ~5 rows (approximately)
+DELETE FROM `technologies`;
 /*!40000 ALTER TABLE `technologies` DISABLE KEYS */;
 INSERT INTO `technologies` (`id_tech`, `name`) VALUES
 	(1, '.NET'),
@@ -603,6 +662,7 @@ INSERT INTO `technologies` (`id_tech`, `name`) VALUES
 
 
 # Dumping structure for table portal.type_edu
+DROP TABLE IF EXISTS `type_edu`;
 CREATE TABLE IF NOT EXISTS `type_edu` (
   `id_type_edu` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(75) NOT NULL,
@@ -610,6 +670,7 @@ CREATE TABLE IF NOT EXISTS `type_edu` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.type_edu: ~6 rows (approximately)
+DELETE FROM `type_edu`;
 /*!40000 ALTER TABLE `type_edu` DISABLE KEYS */;
 INSERT INTO `type_edu` (`id_type_edu`, `name`) VALUES
 	(1, 'primary school'),
@@ -622,6 +683,7 @@ INSERT INTO `type_edu` (`id_type_edu`, `name`) VALUES
 
 
 # Dumping structure for table portal.usergroup
+DROP TABLE IF EXISTS `usergroup`;
 CREATE TABLE IF NOT EXISTS `usergroup` (
   `id_user_group` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -629,15 +691,17 @@ CREATE TABLE IF NOT EXISTS `usergroup` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.usergroup: ~3 rows (approximately)
+DELETE FROM `usergroup`;
 /*!40000 ALTER TABLE `usergroup` DISABLE KEYS */;
 INSERT INTO `usergroup` (`id_user_group`, `name`) VALUES
-	(1, 'USer'),
+	(1, 'Administrator'),
 	(2, 'Moderator'),
-	(3, 'Admin');
+	(3, 'Redactor');
 /*!40000 ALTER TABLE `usergroup` ENABLE KEYS */;
 
 
 # Dumping structure for table portal.userhistory
+DROP TABLE IF EXISTS `userhistory`;
 CREATE TABLE IF NOT EXISTS `userhistory` (
   `id_usr_history` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
@@ -655,6 +719,7 @@ CREATE TABLE IF NOT EXISTS `userhistory` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.userhistory: ~2 rows (approximately)
+DELETE FROM `userhistory`;
 /*!40000 ALTER TABLE `userhistory` DISABLE KEYS */;
 INSERT INTO `userhistory` (`id_usr_history`, `id_user`, `date`, `name`, `surname`, `id_status`, `iq`, `number_of_cations`) VALUES
 	(1, 1, '2011-05-28', 'Oleg', 'Panassyuk', 1, 110, 0),
@@ -663,6 +728,7 @@ INSERT INTO `userhistory` (`id_usr_history`, `id_user`, `date`, `name`, `surname
 
 
 # Dumping structure for table portal.userpositionhistory
+DROP TABLE IF EXISTS `userpositionhistory`;
 CREATE TABLE IF NOT EXISTS `userpositionhistory` (
   `id_usr_position_hist` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
@@ -679,6 +745,7 @@ CREATE TABLE IF NOT EXISTS `userpositionhistory` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.userpositionhistory: ~1 rows (approximately)
+DELETE FROM `userpositionhistory`;
 /*!40000 ALTER TABLE `userpositionhistory` DISABLE KEYS */;
 INSERT INTO `userpositionhistory` (`id_usr_position_hist`, `id_user`, `date`, `id_pos`, `id_project`) VALUES
 	(1, 1, '2011-05-28', 3, 1);
@@ -686,11 +753,12 @@ INSERT INTO `userpositionhistory` (`id_usr_position_hist`, `id_user`, `date`, `i
 
 
 # Dumping structure for table portal.users
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(25) NOT NULL,
   `surname` varchar(50) NOT NULL,
-  `email` varchar(70) NOT NULL,
+  `email` varchar(70) NOT NULL UNIQUE,
   `date_of_birth` date DEFAULT NULL,
   `telephone` varchar(25) DEFAULT NULL,
   `password` varchar(350) NOT NULL,
@@ -714,13 +782,13 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 # Dumping data for table portal.users: ~4 rows (approximately)
+DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id_user`, `name`, `surname`, `email`, `date_of_birth`, `telephone`, `password`, `sex`, `skype`, `isq`, `IQ`, `id_stat`, `picture`, `date_of_last_visit`, `number_of_cautions`, `id_user_group`) VALUES
 	(1, 'Oleg', 'Panasyuk', 'oleg.panasyuk@inbox.ru', '1989-08-09', '+375336426294', 'password', 1, 'oleg.panasyuk89', '409122811', 100, 1, '', '2011-05-21', 5, 3),
-	(2, 'IVAN', 'RUSSIAN', 'oleg.panasyuk@inbox.ru', '1989-08-09', '+375336426294', 'password', 1, 'oleg.panasyuk89', '409122811', 100, 1, '', '2011-05-21', 5, 2),
+	(2, 'IVAN', 'RUSSIAN', 'oleg.panasyuk@inbox.by', '1989-08-09', '+375336426294', 'password', 1, 'oleg.panasyuk89', '409122811', 100, 1, '', '2011-05-21', 5, 2),
 	(3, 'Robyn', 'Scherbatzky', 'RobSche@inbox.ru', '1980-02-09', '+375336426294', 'password', 0, 'rob', '432122811', 100, 1, '', '2011-05-21', 5, 1),
 	(4, 'Ted', 'Mozeby', 'TMOZ@inbox.ru', '1987-12-03', '+375336426294', 'password', 1, 'oleg.panasyuk89', '409122811', 100, 1, '', '2011-05-21', 5, 1);
-	
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
