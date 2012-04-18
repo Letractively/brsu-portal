@@ -57,7 +57,7 @@ public class testMessageDao {
 	
 	@Test
 	public void testFindMessageById() {
-		Message msg = msgDao.findMessageById(2);
+		//Message msg = msgDao.findMessageById(2);
 		Assert.assertNotNull(msg);
 	}
 	

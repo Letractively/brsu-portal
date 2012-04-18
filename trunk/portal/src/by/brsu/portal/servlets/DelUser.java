@@ -24,7 +24,7 @@ public class DelUser implements Action {
 		// TODO Auto-generated method stub
 		id = Integer.parseInt(request.getParameter("id"));
 		user = DAO.deleteUser(id);
-		map.put("user", user);
+		map.put("user", "");
 		
 		return true;
 	}

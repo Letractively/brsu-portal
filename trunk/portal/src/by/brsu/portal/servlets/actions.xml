@@ -1,100 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-incstance">
+<actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="schema.xsd">
 	<action name="ShowNews">
+		<role>Administrator</role>
+		<role>Moderator</role>
 		<class>by.brsu.portal.servlets.ShowNews</class>
 		<forward-url>news1.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="ShowProjects">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.ShowProjects</class>
 		<forward-url>project1.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="AddProject">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.AddProject</class>
 		<forward-url>addProjectTemplate.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="AddUser">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.AddUser</class>
 		<forward-url>addUserOK.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="ShowMainPage">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.ShowMainPage</class>
 		<forward-url>index.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="ShowUserProf">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.ShowUserProf</class>
 		<forward-url>profile.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
-	
 	<action name="EditUser">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.EditUser</class>
 		<forward-url>edit.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
-	
-<action name="ShowFullUser">
+	<action name="ShowFullUser">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.ShowFullUser</class>
 		<forward-url>onlyProfile.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
-<action name="ShowLanguages">
+	<action name="ShowLanguages">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.ShowLanguages</class>
 		<forward-url>addProjectTemplate.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
-<action name="SaveEditUser">
+	<action name="SaveEditUser">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.SaveEditUser</class>
 		<forward-url>SaveEdit.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="DelUser">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.DelUser</class>
 		<forward-url>Del.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="NewMessage">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.NewMessage</class>
 		<forward-url>templateNewMessage.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="IncomingMessages">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.IncomingMessages</class>
 		<forward-url>templateMenuMessage.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="SentMessages">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.SentMessages</class>
 		<forward-url>templateSentMessages.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="SendMessage">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.SendMessage</class>
 		<forward-url>templateMenuMessage.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="DelMessage">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.DelMessage</class>
-		<forward-url>index.jsp</forward-url>
+		<forward-url>regestration.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="OpenIncomingMessage">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.OpenMessage</class>
 		<forward-url>templateOpenIncomingMessage.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="OpenSentMessage">
+		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.OpenMessage</class>
 		<forward-url>templateOpenSentMessage.jsp</forward-url>
-		<error-url>index.jsp</error-url>
-	</action>
-	<action name="Login">
-		<class>by.brsu.portal.servlets.Login</class>
-		<forward-url>Servlet/ShowUserProf</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 </actions>

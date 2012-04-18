@@ -4,6 +4,9 @@
  */
 package by.brsu.portal.servlets;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.stream.StreamSource;
@@ -27,6 +30,7 @@ public class ActionHandler extends DefaultHandler {
 	private String currentElement;
 	private String forwardURL;
 	private String errorURL;
+	private List<String> roles = new ArrayList<String>(0);
 
 	public ActionHandler(String actionName) {
 		className = "";
@@ -91,6 +95,11 @@ public class ActionHandler extends DefaultHandler {
 			errorURL = new String(buf, offset, len);
 			currentElement = "";
 		}
+		if ((currentElement.equals("role"))
+				&& (currentAction.equals(actionName))) {
+			roles.add(new String(buf, offset, len));
+			currentElement = "";
+		}
 	}
 
 	public String getClassName() {
@@ -103,5 +112,9 @@ public class ActionHandler extends DefaultHandler {
 
 	public String getErrorURL() {
 		return errorURL;
+	}
+	
+	public List<String> getRoles(){
+		return roles;
 	}
 }
