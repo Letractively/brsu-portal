@@ -24,6 +24,7 @@ public class ConnectionManager {
 			try {
 				connections[i] = DriverManager.getConnection(
 						"jdbc:mysql://localhost/portal", "brsujgadmin", "1");
+				//"jdbc:mysql://mysql-test-portal.jelastic.dogado.eu/portal", "root", "zhSDQWURel");
 			} catch (SQLException ex) {
 			}
 		}
@@ -72,7 +73,6 @@ public class ConnectionManager {
 		try {
 			conn.rollback();
 		} catch (SQLException e) {
-			// TODO Log it
 		}
 		for (int i = 0; i < poolsize; i++) {
 			if (connections[i] == null) {

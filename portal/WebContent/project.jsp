@@ -1,8 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib uri="/WEB-INF/security.tld" prefix="sec"%>
-<div id="tabl"><sec:permission role="admin">
-	<h2>Menu item visible for admin</h2>
-</sec:permission>
 <table cellspacing="0">
 	<thead>
 		<tr>

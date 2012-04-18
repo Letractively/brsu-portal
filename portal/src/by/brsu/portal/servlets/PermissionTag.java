@@ -6,16 +6,17 @@ package by.brsu.portal.servlets;
 
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
+import by.brsu.portal.user.User;
+
 /**
  * @author Roman Ulezlo
- *
+ * 
  */
-
-
 
 public class PermissionTag extends SimpleTagSupport {
 	private String role;
@@ -43,12 +44,15 @@ public class PermissionTag extends SimpleTagSupport {
 	@Override
 	public void doTag() throws JspException, IOException {
 		PageContext pageContext = (PageContext) getJspContext();
-		HttpServletRequest request = (HttpServletRequest) pageContext
+		HttpServletRequest httpRequest = (HttpServletRequest) pageContext
 				.getRequest();
-		if (request.isUserInRole(role)) {
-			getJspBody().invoke(null);
+		HttpSession session = httpRequest.getSession();
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			if (role.equals(user.getRole().name())) {
+				getJspBody().invoke(null);
+			}
 		}
 	}
 
 }
-

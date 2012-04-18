@@ -6,6 +6,7 @@
 				<xs:element name="action" minOccurs="1" maxOccurs="unbounded">
 					<xs:complexType>
 						<xs:sequence>
+							<xs:element name="role" minOccurs="1" maxOccurs="unbounded"/>
 							<xs:element name="class" type="xs:string"></xs:element>
 							<xs:element name="forward-url" type="xs:string"></xs:element>
 							<xs:element name="error-url" type="xs:string"></xs:element>
@@ -13,6 +14,7 @@
 						<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
 					</xs:complexType>
 				</xs:element>
+				
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

@@ -556,7 +556,7 @@ public class ProjectDAO {
 	 */
 	public List<Project> findAllProjects() {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from Projects";
+		String sql = "Select * from projects";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
@@ -581,6 +581,7 @@ public class ProjectDAO {
 			}
 			return proj;
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		} finally {
 			try {
 				if (rs != null)
@@ -589,6 +590,7 @@ public class ProjectDAO {
 					st.close();
 				ConnectionManager.getConnectorPool().releaseConnection(conn);
 			} catch (SQLException ex) {
+				System.out.println(ex.getMessage());
 			}
 		}
 		return null;
