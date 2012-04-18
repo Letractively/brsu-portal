@@ -9,5 +9,5 @@ package by.brsu.portal.user;
  * 
  */
 public enum Role {
-	Admin, User, Moderator;
+	Administrator, Redactor, Moderator, Visitor;
 }
