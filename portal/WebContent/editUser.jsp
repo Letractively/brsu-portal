@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>BRSU Portal Profile</title>
+<title>BRSU Portal</title>
 </head>
 <body background="/portal/images/bgb.jpg">
 	<jsp:include page="/template.jsp">
-		<jsp:param name="content" value="onlyProfileUserContent.jsp" />
+		<jsp:param name="content" value="editUserContent.jsp" />
 	</jsp:include>
 </body>
 </html>

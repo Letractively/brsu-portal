@@ -8,7 +8,7 @@
 </head>
 <body background="/portal/images/bgb.jpg">
 	<jsp:include page="/template.jsp">
-		<jsp:param name="content" value="onlyProfileUserContent.jsp" />
-	</jsp:include>
+		<jsp:param name="content" value="deletUserContent.jsp" />
+		</jsp:include>
 </body>
 </html>

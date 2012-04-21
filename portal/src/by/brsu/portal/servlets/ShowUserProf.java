@@ -3,7 +3,6 @@
  * (c) 2011, BrSU Java Group
  */
 
-
 package by.brsu.portal.servlets;
 
 import java.util.HashMap;
@@ -18,19 +17,19 @@ import by.brsu.portal.user.User;
 
 public class ShowUserProf implements Action {
 	private UserDAO DAO = new UserDAO();
-	private List<User> listuser  = DAO.FindAllUser();
-	private Map<String, Object> ma_p = new HashMap<String, Object>();
+	private List<User> listUser = DAO.findAllUser();
+	private Map<String, Object> map = new HashMap<String, Object>();
 
 	@Override
 	public boolean perform(HttpServletRequest request,
-			HttpServletResponse response){
+			HttpServletResponse response) {
+		map.put("users", listUser);
 		return true;
 	}
 
 	@Override
 	public Map<String, Object> getParametersMap() {
-		ma_p.put("users", listuser);
-		return ma_p;
+		return map;
 	}
 
 }
