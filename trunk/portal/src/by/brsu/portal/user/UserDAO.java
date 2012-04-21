@@ -197,7 +197,7 @@ public class UserDAO {
 		return null;
 	}
 
-	public List<User> FindAllUser() {
+	public List<User> findAllUser() {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		ResultSet rs = null;
 		PreparedStatement st = null;
@@ -261,7 +261,7 @@ public class UserDAO {
 		return false;
 	}
 
-	public User updateUser(long id) throws IOException {
+	public User UpdateUser(long id) throws IOException {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "update users set surname=? where id_user=?";
 		ResultSet rs = null;

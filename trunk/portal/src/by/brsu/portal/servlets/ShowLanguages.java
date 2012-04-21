@@ -34,7 +34,7 @@ public class ShowLanguages implements Action
 		//ma_pl.put("languages", listprlanguage);
 		ma_pl.put("languages", plDAO.findAllLanguages());
 		ma_pl.put("technology", tDAO.findAllTechologies());
-		ma_pl.put("owner", uDAO.FindAllUser());		
+		ma_pl.put("owner", uDAO.findAllUser());		
 		return true;
 	}
 

@@ -12,20 +12,18 @@ import by.brsu.portal.user.UserDAO;
 
 public class DelUser implements Action {
 
-	private Map<String, Object> map = new HashMap<String, Object>();
-	private User user;
 	private UserDAO DAO = new UserDAO();
+	private User user;
+	private Map<String, Object> map = new HashMap<String, Object>();
 	int id;
-	
-	
+
 	@Override
 	public boolean perform(HttpServletRequest request,
-			HttpServletResponse response) throws IOException{
-		// TODO Auto-generated method stub
+			HttpServletResponse response) throws IOException {
 		id = Integer.parseInt(request.getParameter("id"));
 		user = DAO.deleteUser(id);
 		map.put("user", "");
-		
+
 		return true;
 	}
 

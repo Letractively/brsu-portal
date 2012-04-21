@@ -8,8 +8,7 @@
 </head>
 <body background="/portal/images/1.gif">
 	<jsp:include page="/template.jsp">
-		<jsp:param name="content" value="ok.jsp" />
-		<jsp:param name="secondaryMenu" value="secondaryMenu.jsp"/>
+		<jsp:param name="content" value="/addUserOkContent.jsp" />
 	</jsp:include>
 </body>
 </html>

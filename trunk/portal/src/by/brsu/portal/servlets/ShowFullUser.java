@@ -19,21 +19,21 @@ public class ShowFullUser implements Action {
 
 	private UserDAO DAO = new UserDAO();
 	private int id;
-	private User listuser_id;
-	private Map<String, Object> ma_p = new HashMap<String, Object>();
+	private User listUserid;
+	private Map<String, Object> map = new HashMap<String, Object>();
 
 	@Override
 	public Map<String, Object> getParametersMap() {
-		
-		return ma_p;
+
+		return map;
 	}
 
 	@Override
 	public boolean perform(HttpServletRequest request,
-			HttpServletResponse response) throws IOException{
+			HttpServletResponse response) throws IOException {
 		id = Integer.parseInt(request.getParameter("id"));
-		listuser_id = DAO.findUserById(id);
-		ma_p.put("users_id", listuser_id);
+		listUserid = DAO.findUserById(id);
+		map.put("users_id", listUserid);
 		return true;
 	}
 

@@ -10,7 +10,7 @@
 					<input type="text" name="userName" size="10"> <input
 						type="password" name="password" size="10"> <input
 						type="submit" value="Log In" style="height: 18"><br>
-					<a href="/registration.jsp">Registration</a>
+					<a href="/portal/registration.jsp">Registration</a>
 				</form>
 			</c:when>
 			<c:otherwise>
