@@ -3,7 +3,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <form action="/portal/Servlet/SendMessage" method="post">
-<div id="message">
+<div id="content">
 <label for="user">To:</label><input type="text" name="user" />
 <label for="subject">Subject:</label><input type="text"	name="subject" />
 <label for="text">Text: </label><textarea name="text"></textarea>

@@ -1,6 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="/WEB-INF/tags/security.tld" prefix="sec"%>
-<div id="nav">
+
+
+<div id="navigation">
+
+		<div id="menu">
 	<ul>
 		<%
 			request.setAttribute("currentPage", request.getParameter("currentPage"));
@@ -69,4 +73,5 @@
 			</c:otherwise>
 		</c:choose>
 	</ul>
+</div>
 </div>

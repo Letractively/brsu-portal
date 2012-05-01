@@ -1,10 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div id="header">
-	<div id="headerLeft">
-		<h3>BRSU Portal</h3>
-	</div>
-	<div id="headerRight">
-		<c:choose>
+
+	<div id="registration">
+			<c:choose>
 			<c:when test="${empty user}">
 				<form action="Login" method="post">
 					<input type="text" name="userName" size="10"> <input
@@ -26,4 +23,3 @@
 				value="search" style="height: 18">
 		</form>
 	</div>
-</div>
