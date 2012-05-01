@@ -2,19 +2,26 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <form action="/portal/Servlet/SendMessage" method="post">
 <div id="content">
-<label for="user">To:</label><input type="text" name="user" />
-<label for="subject">Subject:</label><input type="text"	name="subject" />
-<label for="text">Text: </label><textarea name="text"></textarea>
+<div id="content_message">
+<fieldset title="New Message">
+<legend title="New  Message">New Message</legend>
+
+<label for="user">To:</label><input type="text" name="user" /> <br>
+<label for="subject">Subject:</label><input type="text"	name="subject" /><br>
+<label for="text">Text: </label> <textarea name="text" >Theme 1</textarea><br>
 	<label for="priority">Priority:</label>
 		<select name="priority">
 		<c:forEach var="priority" items="${prioritys}">
 			<option value="${priority}">${priority}</option>
 		</c:forEach>
 		</select>
-</div>
-<div id="button">
+<br>
 <input type="submit" value="Send" name="send"/><input type="button" value="Save" name="save" /><input type="reset" value="Clear"/>
+</fieldset>
+</div>
 </div>
 </form>
+

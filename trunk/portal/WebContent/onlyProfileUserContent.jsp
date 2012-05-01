@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<div id="content">
 <div id="table">
 <form>
 	<table>
@@ -34,4 +35,5 @@
 <center>
 <a href="/portal/Servlet/EditUser?id=<c:out value="${users_id.id}"></c:out>">Edit Profile</a>
 </center>
+</div>
 </div>

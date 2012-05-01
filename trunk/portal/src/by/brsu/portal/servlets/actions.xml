@@ -70,7 +70,7 @@
 	</action>
 	<action name="NewMessage">
 		<role>Administrator</role>
-		<class>by.brsu.portal.servlets.NewMessage</class>
+		<class>by.brsu.portal.servlets.SendMessage</class>
 		<forward-url>templateNewMessage.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
