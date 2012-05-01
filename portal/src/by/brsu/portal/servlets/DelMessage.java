@@ -37,7 +37,6 @@ public class DelMessage implements Action {
 	
 	@Override
 	public Map<String, Object> getParametersMap() {
-		map.put("message", msg);
 		return map;
 	}
 
