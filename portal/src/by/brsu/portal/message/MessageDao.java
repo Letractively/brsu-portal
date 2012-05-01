@@ -74,6 +74,29 @@ public class MessageDao {
 		return false;
 	}	
 	
+	public boolean updateMessages(Message msg) {
+		PreparedStatement stat = null;
+		try {
+			stat = conn.prepareStatement("UPDATE message SET message.is_readed=1 WHERE message.id_message=?");
+			stat.setLong(1, msg.getId());
+			if (stat.executeUpdate() != 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (stat != null) {
+					stat.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			ConnectionManager.getConnectorPool().releaseConnection(conn);
+		}
+		return false;
+	}
+	
 	public boolean delMessage(long idMessage,long idUser) {
 		String query = "DELETE FROM l_user_to WHERE id_message=? and id_user=?";
 		String query2 = "DELETE FROM message WHERE id_message=?";

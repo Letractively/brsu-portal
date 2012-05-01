@@ -11,7 +11,7 @@
 
 <label for="user">To:</label><input type="text" name="user" /> <br>
 <label for="subject">Subject:</label><input type="text"	name="subject" /><br>
-<label for="text">Text: </label> <textarea name="text" >Theme 1</textarea><br>
+<label for="text">Text: </label> <textarea name="text" ></textarea><br>
 	<label for="priority">Priority:</label>
 		<select name="priority">
 		<c:forEach var="priority" items="${prioritys}">

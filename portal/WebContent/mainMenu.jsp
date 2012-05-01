@@ -51,6 +51,7 @@
 				</c:otherwise>
 			</c:choose>
 		</sec:permission>
+		<sec:permission role="Administrator">
 		<c:choose>
 			<c:when test='${currentPage=="IncomingMessages"}'>
 				<li><a href="/portal/Servlet/IncomingMessages"
@@ -62,6 +63,7 @@
 				</li>
 			</c:otherwise>
 		</c:choose>
+		</sec:permission>
 		<c:choose>
 			<c:when test='${currentPage=="CV/Job"}'>
 				<li><a href="#" style="color: Red">CV/Job</a>
