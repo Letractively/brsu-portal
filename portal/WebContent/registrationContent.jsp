@@ -74,7 +74,9 @@ function valid(id){
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
+
 <body onLoad="initialize()">
+<div id="content">
 	<div id="table">	
 		<form action="Servlet/AddUser" method="post" name="adduserForm" >
 			<table>
@@ -95,5 +97,7 @@ function valid(id){
 			<center><input type="submit" id="but" name="but"  value="Add User" /></center>
 		</form>
 	</div>
+	</div>
 </body>
+
 </html>

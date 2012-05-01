@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<div id="content">
 <div id="table">
 <form>
 <table>
@@ -32,4 +32,5 @@
 	</c:forEach>
 </table>
 </form>
+</div>
 </div>

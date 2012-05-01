@@ -8,6 +8,7 @@
 <title>Welcome to BRSU Portal</title>
 </head>
 <body>
+<div id="content">
 <form
 	action="Servlet/SaveEditUser?id=<c:out value="${edit.id}"></c:out>"
 	method="post">
@@ -61,6 +62,6 @@
 
 </table>
 </form>
-
+</div>
 </body>
 </html>

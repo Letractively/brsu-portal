@@ -290,3 +290,23 @@ table a:visited {
 table a:hover {
 		border-bottom: 1px dashed #bbb;
 }
+
+#content fieldset {
+background: #EFF4FB;
+}
+
+#content_message label {
+width: 80px;
+float: left;
+}
+
+#content_message input {
+
+width: 80px;
+margin: 0px 1px 0px 1px;
+}
+
+#content_message textarea {
+margin: 0px 1px 0px 1px;
+width: 200px; 
+}

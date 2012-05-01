@@ -4,6 +4,7 @@
 <input type="checkbox" name="withResults"/>
 <label>With Results</label>
 <input type="button" name="search" value="Search"/>
+<div id="content">
 <div id="table">
 
 <form action="/portal/Servlet/DelMessage" method="get">
@@ -31,4 +32,5 @@
 	</tbody>
 </table>
 </form>
+</div>
 </div>
