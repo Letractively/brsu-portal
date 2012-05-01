@@ -20,6 +20,17 @@
 	</thead>
 	<tbody>
 	<c:forEach var="message" items="${messages}">
+	<c:if test="${message.readed==0}" >
+		<tr bgcolor="silver">
+			<td><input type="checkbox" name="idMessage" value="${message.id}" /></td>
+			<td><a href="/portal/Servlet/OpenIncomingMessage?idMessage=${message.id}&idUserFrom=${message.idUserFrom}"><c:out value="${message.priority}"/></a></td>
+			<td><a href="/portal/Servlet/OpenIncomingMessage?idMessage=${message.id}&idUserFrom=${message.idUserFrom}"><c:out value="${message.idUserFrom}"/></a></td>
+			<td><a href="/portal/Servlet/OpenIncomingMessage?idMessage=${message.id}&idUserFrom=${message.idUserFrom}"><c:out value="${message.title}"/></a></td>
+			<td><a href="/portal/Servlet/OpenIncomingMessage?idMessage=${message.id}&idUserFrom=${message.idUserFrom}"><c:out value="${message.date}"/></a></td>
+			<td><a href="/portal/Servlet/DelMessage?idMessage=${message.id}&idUserTo=${message.idUserTo}">X</a></td>
+		</tr>
+	</c:if>
+	<c:if test="${message.readed!=0}" >
 		<tr>
 			<td><input type="checkbox" name="idMessage" value="${message.id}" /></td>
 			<td><a href="/portal/Servlet/OpenIncomingMessage?idMessage=${message.id}&idUserFrom=${message.idUserFrom}"><c:out value="${message.priority}"/></a></td>
@@ -28,6 +39,7 @@
 			<td><a href="/portal/Servlet/OpenIncomingMessage?idMessage=${message.id}&idUserFrom=${message.idUserFrom}"><c:out value="${message.date}"/></a></td>
 			<td><a href="/portal/Servlet/DelMessage?idMessage=${message.id}&idUserTo=${message.idUserTo}">X</a></td>
 		</tr>
+	</c:if>
 	</c:forEach> 
 	</tbody>
 </table>
