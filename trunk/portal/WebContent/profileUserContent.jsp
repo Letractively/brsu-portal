@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div>
+<div id="table">
 <form>
-<table class="tabl">
+<table>
 	<tr>
 		<td>ID</td>
 		<td>Surname and Name</td>
@@ -27,8 +27,7 @@
 			</c:if></td>
 
 			<td><c:out value="${user.dateOfLastVisit}"></c:out></td>
-			<td><a
-				href="Servlet/DelUser?id=<c:out value="${user.id}"></c:out>">X</a></td>
+			<td><a	href="Servlet/DelUser?id=<c:out value="${user.id}"></c:out>"> X</a></td>
 		</tr>
 	</c:forEach>
 </table>

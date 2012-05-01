@@ -1,12 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div id="buttomSearch">
 <input type="text" name="textSearch"/>
 <input type="checkbox" name="withResults"/>
 <label>With Results</label>
 <input type="button" name="search" value="Search"/>
-</div>
 <div id="table">
+
 <form action="/portal/Servlet/DelMessage" method="get">
 <table>
 	<thead>

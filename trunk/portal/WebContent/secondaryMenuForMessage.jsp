@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<div id="secondaryMenu">
+<div id="secondary_menu">
 <ul>
 	<li><a href="/portal/Servlet/NewMessage">New Message</a></li>
 	<li><a href="/portal/Servlet/IncomingMessages">Incoming Messages</a></li>
