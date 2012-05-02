@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="message">
 <form action="/portal/Servlet/SendMessage" method="post">
-<label>To:</label><input type="text" readonly="readonly" value="${message.idUserTo}"/>
+<label>To:</label><input type="text" readonly="readonly" value="${message.userTo.email}"/>
 <label>Title:</label><input type="text" readonly="readonly" value="${message.title}"/>
 <label>Date:</label><input type="text" readonly="readonly" value="${message.date}"/>
 <label>Priority:</label><input type="text" readonly="readonly" value="${message.priority}"/>

@@ -4,12 +4,15 @@
  */
 package by.brsu.portal.message;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
+
+import by.brsu.portal.user.UserDAO;
 
 
 /**
@@ -19,15 +22,20 @@ import org.junit.Test;
 public class testMessageDao {
 	private MessageDao msgDao = new MessageDao();
 	private Message msg = new Message();
+	private UserDAO userDao = new UserDAO();
 	private String emailFrom="ediktrutsik@gmail.com";
 	
 	@Test
 	public void testCreateMessage() {		
 			Date date = new Date(System.currentTimeMillis());
 			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-			msg.setDate(sqlDate);
-			msg.setIdUserTo(2);
-			msg.setIdUserFrom(3);
+			try {
+				msg.setDate(sqlDate);			
+				msg.setUserTo(userDao.findUserById(2));			
+				msg.setUserFrom(userDao.findUserById(3));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			msg.setPrevious(0);
 			msg.setPriority(4);
 			msg.setReaded(0);

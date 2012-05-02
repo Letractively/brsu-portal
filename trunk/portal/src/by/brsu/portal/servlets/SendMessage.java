@@ -4,6 +4,7 @@
  */
 package by.brsu.portal.servlets;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import by.brsu.portal.message.*;
 import by.brsu.portal.user.User;
+import by.brsu.portal.user.UserDAO;
 
 
 /**
@@ -21,8 +23,9 @@ import by.brsu.portal.user.User;
  *
  */
 public class SendMessage implements Action{
-	private MessageDao mDao = new MessageDao();
-	private Message msg = new Message();
+	private MessageDao mDao;
+	private Message msg;
+	private UserDAO userDao;
 	private Map<String, Object> map = new HashMap<String, Object>();
 	
 	@Override
@@ -30,25 +33,34 @@ public class SendMessage implements Action{
 			HttpServletResponse response){
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
+		userDao = new UserDAO();
+		mDao = new MessageDao();
+		msg = new Message();
 		int priority;
-		long idUserTo=mDao.findIdUserByEmail(request.getParameter("user"));
-		if(idUserTo==0) {
-			return false;		
-		}
-		Date date = new Date(System.currentTimeMillis());
-		java.sql.Date sqlDate = new java.sql.Date(date.getTime());		
-		msg.setDate(sqlDate);
-		msg.setIdUserTo(idUserTo);
-		msg.setIdUserFrom(user.getId());	
-		msg.setTitle(request.getParameter("subject"));
-		msg.setText(request.getParameter("text"));
-		priority=Integer.valueOf(request.getParameter("priority")).intValue();		
-		msg.setPriority(priority);
-		msg.setReaded(0);		
-		msg.setPrevious(0); // I don't no
-		mDao.creatMessages(msg);
-		map.put("message", msg);
+		try {
+			long idUserTo = mDao.findIdUserByEmail(request.getParameter("user"));
+			if (idUserTo == 0) {
+				return false;
+			}
+			Date date = new Date(System.currentTimeMillis());
+			java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+			msg.setDate(sqlDate);
+			msg.setUserTo(userDao.findUserById(idUserTo));
+			msg.setUserFrom(user);
+			msg.setTitle(request.getParameter("subject"));
+			msg.setText(request.getParameter("text"));
+			priority = Integer.valueOf(request.getParameter("priority")).intValue();
+			msg.setPriority(priority);
+			msg.setReaded(0);
+			msg.setPrevious(0); // I don't no
+			mDao.creatMessages(msg);
+			map.put("message", msg);
 		return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
 	}
 	
 	@Override

@@ -13,22 +13,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import by.brsu.portal.message.Message;
 import by.brsu.portal.message.MessageDao;
+import by.brsu.portal.user.UserDAO;
 
 /**
  * @author Thug
  *
  */
 public class OpenMessage implements Action{
-	private MessageDao mDao = new MessageDao();
-	private Message msg = new Message();
+	private MessageDao mDao;
+	private Message msg;
+	private UserDAO userDao;
 	private Map<String, Object> map = new HashMap<String, Object>();
 	
 	@Override
 	public boolean perform(HttpServletRequest request,
-			HttpServletResponse response){
-		long idUser=0;
-		String temp;
+			HttpServletResponse response){		
 		try{
+			userDao = new UserDAO();
+			mDao = new MessageDao();
+			msg = new Message();
+			long idUser=0;
+			String temp;
+			
 			msg=mDao.findMessageById(Long.valueOf(request.getParameter("idMessage")));
 			msg.setReaded(1);
 			temp=request.getParameter("idUserTo");
@@ -37,7 +43,7 @@ public class OpenMessage implements Action{
 				idUser=Long.valueOf(temp);
 			} else {
 				idUser=Long.valueOf(temp);
-				msg.setIdUserTo(idUser);
+				msg.setUserTo(userDao.findUserById(idUser));
 			}
 			mDao.updateMessages(msg);
 			map.put("message", msg);

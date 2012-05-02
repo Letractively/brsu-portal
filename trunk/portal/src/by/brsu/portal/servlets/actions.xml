@@ -95,7 +95,7 @@
 	<action name="DelMessage">
 		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.DelMessage</class>
-		<forward-url>regestration.jsp</forward-url>
+		<forward-url>templateMenuMessage.jsp</forward-url>
 		<error-url>errorPage.jsp</error-url>
 	</action>
 	<action name="OpenIncomingMessage">

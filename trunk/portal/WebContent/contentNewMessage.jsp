@@ -19,7 +19,9 @@
 		</c:forEach>
 		</select>
 <br>
+<div id="button">
 <input type="submit" value="Send" name="send"/><input type="button" value="Save" name="save" /><input type="reset" value="Clear"/>
+</div>
 </fieldset>
 </div>
 </div>

@@ -24,7 +24,7 @@ import by.brsu.portal.user.User;
 public class IncomingMessages implements Action {
 	private MessageDao messageDao = new MessageDao();
 	private List<Message> messages;
-	private Map<String, Object> mp = new HashMap<String, Object>();
+	private Map<String, Object> map = new HashMap<String, Object>();
 	
 	@Override
 	public boolean perform(HttpServletRequest request,
@@ -34,6 +34,7 @@ public class IncomingMessages implements Action {
 		if (user != null) {
 			messages = messageDao.findAllMessageUserTo(user.getId());
 			if (messages != null) {
+				map.put("messages", messages);
 				return true;
 			}
 		}
@@ -41,9 +42,8 @@ public class IncomingMessages implements Action {
 	}
 	
 	@Override
-	public Map<String, Object> getParametersMap() {
-		mp.put("messages", messages);
-		return mp;
+	public Map<String, Object> getParametersMap() {		
+		return map;
 	}
 
 }
