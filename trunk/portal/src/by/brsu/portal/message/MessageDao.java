@@ -103,20 +103,20 @@ public class MessageDao {
 	
 	public boolean delMessage(long idMessage,long idUser) {
 		String query = "DELETE FROM l_user_to WHERE id_message=? and id_user=?";
-		String query2 = "DELETE FROM message WHERE id_message=?";
+//		String query2 = "DELETE FROM message WHERE id_message=?";
 		PreparedStatement stat=null;		
-		PreparedStatement stat2=null;		
+//		PreparedStatement stat2=null;		
 		try {
 			if (idMessage != 0 && idUser != 0) {
 				stat = conn.prepareStatement(query);
 				stat.setLong(1, idMessage);
 				stat.setLong(2, idUser);
-				stat2 = conn.prepareStatement(query2);
-				stat2.setLong(1, idMessage);
+//				stat2 = conn.prepareStatement(query2);
+//				stat2.setLong(1, idMessage);
 				if (stat.executeUpdate() != 0) {
-					if(stat2.executeUpdate() != 0) {
-						return true;
-					}					
+//					if(stat2.executeUpdate() != 0) {
+//						return true;
+//					}					
 				}
 			}			
 		} catch (SQLException e) {
@@ -126,9 +126,9 @@ public class MessageDao {
 				if (stat != null) {
 					stat.close();
 				}
-				if (stat2 != null) {
-					stat2.close();
-				}
+//				if (stat2 != null) {
+//					stat2.close();
+//				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -174,7 +174,7 @@ public class MessageDao {
 		PreparedStatement stat=null;
 		try 
 		{
-			stat = conn.prepareStatement("Select l_user_to.id_user, message.* from Message,l_user_to where Message.id_message=? and l_user_to.id_message=Message.id_message");
+			stat = conn.prepareStatement("Select l_user_to.id_user, message.* from message,l_user_to where message.id_message=? and l_user_to.id_message=message.id_message");
 			stat.setLong(1, idMessage);
 			rs = stat.executeQuery();
 			if (rs.next()) 
@@ -257,17 +257,17 @@ public class MessageDao {
 			rs = stat.executeQuery();			
 			while (rs.next()) 
 			{
-				tempMessage= this.findMessageById(rs.getLong(1));
-				try {
+					tempMessage= this.findMessageById(rs.getLong(1));
 					tempMessage.setUserTo(userDao.findUserById(idUserTo));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				msg.add(tempMessage);				
+					msg.add(tempMessage);											
 			}
 			return msg;
 		} 
 		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e) 
 		{
 			e.printStackTrace();
 		}
@@ -291,7 +291,7 @@ public class MessageDao {
 	public List<Message> findAllMessageUserFrom(long idUserFrom) {
 		PreparedStatement stat = null;
 		ResultSet rs = null;		
-		String query = "Select l_user_to.id_user,Message.* from Message,l_user_to where Message.id_user_from=? and l_user_to.id_message=Message.id_message";	
+		String query = "Select l_user_to.id_user,message.* from message,l_user_to where message.id_user_from=? and l_user_to.id_message=message.id_message";	
 		List<Message> msg = new ArrayList<Message>();
 		try 
 		{
@@ -300,14 +300,13 @@ public class MessageDao {
 			rs = stat.executeQuery();			
 			while (rs.next()) 
 			{				
-				try {
-					msg.add(new Message(rs.getLong(2),rs.getString(3),rs.getString(4),rs.getDate(5),userDao.findUserById(rs.getLong(1)),userDao.findUserById(rs.getLong(6)),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				msg.add(new Message(rs.getLong(2),rs.getString(3),rs.getString(4),rs.getDate(5),userDao.findUserById(rs.getLong(1)),userDao.findUserById(rs.getLong(6)),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
 			}
-			return msg;
-		} 
+			return msg;		 
+		} catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
