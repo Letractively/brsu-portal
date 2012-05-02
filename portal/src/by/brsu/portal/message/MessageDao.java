@@ -290,8 +290,9 @@ public class MessageDao {
 	
 	public List<Message> findAllMessageUserFrom(long idUserFrom) {
 		PreparedStatement stat = null;
-		ResultSet rs = null;		
+		ResultSet rs = null;	
 		String query = "Select l_user_to.id_user,message.* from message,l_user_to where message.id_user_from=? and l_user_to.id_message=message.id_message";	
+		//String query = "Select * from message where message.id_user_from=?";	
 		List<Message> msg = new ArrayList<Message>();
 		try 
 		{
@@ -299,8 +300,9 @@ public class MessageDao {
 			stat.setLong(1, idUserFrom);
 			rs = stat.executeQuery();			
 			while (rs.next()) 
-			{				
+			{	
 				msg.add(new Message(rs.getLong(2),rs.getString(3),rs.getString(4),rs.getDate(5),userDao.findUserById(rs.getLong(1)),userDao.findUserById(rs.getLong(6)),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+				//msg.add(new Message(rs.getLong(2),rs.getString(3),rs.getString(4),rs.getDate(5),userDao.findUserById(rs.getLong(6)),userDao.findUserById(rs.getLong(6)),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
 			}
 			return msg;		 
 		} catch (IOException e) 
