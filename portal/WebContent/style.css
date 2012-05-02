@@ -30,6 +30,17 @@ h2 {
 h3 {
 	font: bold 1em Tahoma, sans-serif;
 }
+
+.Read {
+	font-size: 10pt;	
+	}
+.notRead {
+	font-size: 12pt;	
+	}
+.news {
+	margin-top: 30px;
+	border-bottom: 2px #5C87B2 solid;
+		}
 /************* Registration ****************/
 #registration {
 	font-size: 9pt;
@@ -91,8 +102,7 @@ h3 {
 #menu {
 	border-bottom: 1px #5C87B2 solid;
 	text-align: left;
-	margin: 0px 230px 0px 230px;
-	
+	margin: 0px 230px 0px 230px;	
 }
 
 #menu li {
@@ -103,7 +113,7 @@ h3 {
 #menu li a {
 	padding: 10px 20px;
 	font-weight: bold;
-	text-decoration: underline;;
+	text-decoration: none;
 	line-height: 30px;
 	background-color: #e9eef4;
 	color: #034af3;
@@ -120,7 +130,7 @@ h3 {
 }
 
 #menu li.selected a {
-	background-color: #fff;
+	background-color: black;
 	color: white;
 }
 
@@ -139,7 +149,7 @@ h3 {
 #secondary_menu li a {
 	padding: 3px 8px;
 	font-weight: bold;
-	text-decoration: underline;;
+	text-decoration: none;
 	line-height: 13px;
 	background-color: #5C87B2;
 	color:#FFF;
@@ -302,11 +312,24 @@ float: left;
 
 #content_message input {
 
-width: 80px;
-margin: 0px 1px 0px 1px;
+width: 250px;
+margin: 2px 1px 2px 1px;
 }
 
 #content_message textarea {
-margin: 0px 1px 0px 1px;
-width: 200px; 
+margin: 2px 1px 2px 1px;
+width:500px;
+max-width: 500px;
+max-height: 300px;
+min-width: 500px;
+min-height: 150px;
+
+}
+#content_message select {
+	margin: 4px 0px;
+}
+#button input {
+	margin-top: 10px;
+width: auto;
+float: left;
 }

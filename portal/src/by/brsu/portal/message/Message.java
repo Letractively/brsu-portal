@@ -1,6 +1,8 @@
 package by.brsu.portal.message;
 
 import java.sql.Date;
+
+import by.brsu.portal.user.User;
 //import java.util.*;
 
 //import by.brsu.portal.user.User;
@@ -10,8 +12,8 @@ public class Message {
 	private String title;
 	private String text;
 	private Date date;
-	private long idUserTo;
-	private long idUserFrom;	
+	private User UserTo;
+	private User UserFrom;	
 	private int previous;
 	private int readed;
 	private int priority;
@@ -28,8 +30,8 @@ public class Message {
 		this.title=msg.title;
 		this.text=msg.text;
 		this.date=msg.date;
-		this.idUserTo=msg.idUserTo;
-		this.idUserFrom=msg.idUserFrom;
+		this.UserTo=msg.UserTo;
+		this.UserFrom=msg.UserFrom;
 		this.previous=msg.previous;
 		this.readed=msg.readed;
 		this.priority=msg.priority;
@@ -44,14 +46,14 @@ public class Message {
 	 * @param author
 	 */
 	public Message(long idMessage,String title, String text,
-			Date date,long idUserTo, long idUserFrom, int previous, int readed, int priority) {
+			Date date,User UserTo, User UserFrom, int previous, int readed, int priority) {
 		super();
 		this.id=idMessage;
 		this.title = title;
 		this.text = text;
 		this.date = date;
-		this.idUserTo = idUserTo;
-		this.idUserFrom = idUserFrom;
+		this.UserTo = UserTo;
+		this.UserFrom = UserFrom;
 		this.previous = previous;
 		this.readed = readed;
 		this.priority = priority;
@@ -108,14 +110,14 @@ public class Message {
 	/**
 	 * @return the user
 	 */
-	public long getIdUserFrom() {
-		return idUserFrom;
+	public User getUserFrom() {
+		return UserFrom;
 	}
 	/**
 	 * @param user the user to set
 	 */
-	public void setIdUserFrom(long idUserFrom) {
-		this.idUserFrom = idUserFrom;
+	public void setUserFrom(User UserFrom) {
+		this.UserFrom = UserFrom;
 	}
 	/**
 	 * @return the previous
@@ -156,14 +158,14 @@ public class Message {
 	/**
 	 * @param idToUser the idToUser to set
 	 */
-	public void setIdUserTo(long idUserTo) {
-		this.idUserTo = idUserTo;
+	public void setUserTo(User UserTo) {
+		this.UserTo = UserTo;
 	}
 	/**
 	 * @return the idToUser
 	 */
-	public long getIdUserTo() {
-		return idUserTo;
+	public User getUserTo() {
+		return UserTo;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -174,8 +176,8 @@ public class Message {
 		int result = 1;
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + (int) (idUserTo ^ (idUserTo >>> 32));
-		result = prime * result + (int) (idUserFrom ^ (idUserFrom >>> 32));		
+		result = prime * result + (int) (UserTo.getId() ^ (UserTo.getId() >>> 32));
+		result = prime * result + (int) (UserFrom.getId() ^ (UserFrom.getId() >>> 32));		
 		result = prime * result + previous;
 		result = prime * result + priority;
 		result = prime * result + readed;
@@ -202,9 +204,9 @@ public class Message {
 			return false;
 		if (id != other.id)
 			return false;
-		if (idUserTo != other.idUserTo)
+		if (UserTo != other.UserTo)
 			return false;
-		if (idUserFrom != other.idUserFrom)
+		if (UserFrom != other.UserFrom)
 			return false;		
 		if (previous != other.previous)
 			return false;
@@ -229,8 +231,8 @@ public class Message {
 	 */
 	@Override
 	public String toString() {
-		return "Message [idMessage="+id+", date=" + date + ", idToUser=" + idUserTo + ", idUserFrom="
-				+ idUserFrom + ", previous=" + previous + ", priority="
+		return "Message [idMessage="+id+", date=" + date + ", idToUser=" + UserTo.getId() + ", idUserFrom="
+				+ UserFrom.getId() + ", previous=" + previous + ", priority="
 				+ priority + ", readed=" + readed + ", text=" + text
 				+ ", title=" + title + "]";
 	}	

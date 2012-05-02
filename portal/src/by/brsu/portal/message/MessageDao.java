@@ -1,9 +1,11 @@
 package by.brsu.portal.message;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import by.brsu.portal.ConnectionManager;
+import by.brsu.portal.user.UserDAO;
 
 /**
  * @author Trutsik Eduard
@@ -12,6 +14,7 @@ import by.brsu.portal.ConnectionManager;
 
 public class MessageDao {
 	private Connection conn;
+	private UserDAO userDao;
 	
 	/**
 	 * @param conn
@@ -19,6 +22,7 @@ public class MessageDao {
 	public MessageDao() {
 		try {
 			this.conn = ConnectionManager.getConnectorPool().getConnection();
+			userDao = new UserDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -35,7 +39,7 @@ public class MessageDao {
 			stat.setString(1, msg.getTitle());
 			stat.setString(2, msg.getText());
 			stat.setDate(3, date);
-			stat.setLong(4, msg.getIdUserFrom());
+			stat.setLong(4, msg.getUserFrom().getId());
 			stat.setLong(5, msg.getReaded());
 			stat.setLong(6, msg.getPriority());
 			if (stat.executeUpdate() != 0) {
@@ -46,7 +50,7 @@ public class MessageDao {
 					if (res != 0) {
 						stat = conn.prepareStatement("INSERT INTO l_user_to VALUES(?,?)");
 						stat.setLong(1, res);
-						stat.setLong(2, msg.getIdUserTo());
+						stat.setLong(2, msg.getUserTo().getId());
 						if (stat.executeUpdate() != 0) {
 							return true;
 						}
@@ -175,10 +179,13 @@ public class MessageDao {
 			rs = stat.executeQuery();
 			if (rs.next()) 
 			{
-				return new Message(idMessage,rs.getString(3),rs.getString(4),rs.getDate(5),rs.getLong(1),rs.getLong(6),rs.getInt(7),rs.getInt(8),rs.getInt(9));
+				return new Message(idMessage,rs.getString(3),rs.getString(4),rs.getDate(5),userDao.findUserById(rs.getLong(1)),userDao.findUserById(rs.getLong(6)),rs.getInt(7),rs.getInt(8),rs.getInt(9));
 			} 
 		} 
 		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		} catch (IOException e) 
 		{
 			e.printStackTrace();
 		}
@@ -251,7 +258,11 @@ public class MessageDao {
 			while (rs.next()) 
 			{
 				tempMessage= this.findMessageById(rs.getLong(1));
-				tempMessage.setIdUserTo(idUserTo);
+				try {
+					tempMessage.setUserTo(userDao.findUserById(idUserTo));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				msg.add(tempMessage);				
 			}
 			return msg;
@@ -289,7 +300,11 @@ public class MessageDao {
 			rs = stat.executeQuery();			
 			while (rs.next()) 
 			{				
-				msg.add(new Message(rs.getLong(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getLong(1),rs.getLong(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+				try {
+					msg.add(new Message(rs.getLong(2),rs.getString(3),rs.getString(4),rs.getDate(5),userDao.findUserById(rs.getLong(1)),userDao.findUserById(rs.getLong(6)),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 			return msg;
 		} 

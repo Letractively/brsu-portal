@@ -11,7 +11,7 @@
 		%>
 		<c:choose>
 			<c:when test='${currentPage=="Main"}'>
-				<li><a href="/portal/index.jsp" style="color: Red">Main</a>
+				<li class="link_active"><a href="/portal/index.jsp">Main</a>
 				</li>
 			</c:when>
 			<c:otherwise>
@@ -21,7 +21,7 @@
 		</c:choose>
 		<c:choose>
 			<c:when test='${currentPage=="Projects"}'>
-				<li><a href="/portal/Servlet/ShowProjects" style="color: Red">Projects</a>
+				<li><a href="/portal/Servlet/ShowProjects" >Projects</a>
 				</li>
 			</c:when>
 			<c:otherwise>

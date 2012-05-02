@@ -20,14 +20,14 @@ import by.brsu.portal.message.MessageDao;
 public class NewMessage implements Action {
 	private MessageDao messageDao = new MessageDao();
 	private List<Long> prioritys;
-	private Map<String, Object> mp = new HashMap<String, Object>();
+	private Map<String, Object> map = new HashMap<String, Object>();
 	
 	@Override
 	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response){
 		prioritys=messageDao.findAllPriority();
 		if(prioritys!=null) {
-			mp.put("prioritys", prioritys);
+			map.put("prioritys", prioritys);
 			return true;
 		}
 		return false;
@@ -35,7 +35,7 @@ public class NewMessage implements Action {
 	
 	@Override
 	public Map<String, Object> getParametersMap() {		
-		return mp;
+		return map;
 	}
 
 }

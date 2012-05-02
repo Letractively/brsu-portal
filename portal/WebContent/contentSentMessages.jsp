@@ -20,12 +20,13 @@
 	</thead>
 	<tbody>
 	<c:forEach var="message" items="${messages}">
+	<c:set var="url" value="/portal/Servlet/OpenSentMessage?idMessage=${message.id}&idUserTo=${message.userTo.id}"></c:set>
 		<tr><td><input type="checkbox" name="idMessage" value="${message.id}"></td>
-			<td><a href="/portal/Servlet/OpenSentMessage?idMessage=${message.id}&idUserTo=${message.idUserTo}"><c:out value="${message.priority}"/></a></td>
-			<td><a href="/portal/Servlet/OpenSentMessage?idMessage=${message.id}&idUserTo=${message.idUserTo}"><c:out value="${message.idUserTo}"/></a></td>
-			<td><a href="/portal/Servlet/OpenSentMessage?idMessage=${message.id}&idUserTo=${message.idUserTo}"><c:out value="${message.title}"/></a></td>
-			<td><a href="/portal/Servlet/OpenSentMessage?idMessage=${message.id}&idUserTo=${message.idUserTo}"><c:out value="${message.date}"/></a></td>
-			<td><a href="/portal/Servlet/DelMessage?idMessage=${message.id}&idUserTo=${message.idUserTo}">X</a></td>
+			<td><a href="${url}"><c:out value="${message.priority}"/></a></td>
+			<td><a href="${url}"><c:out value="${message.userTo.email}"/></a></td>
+			<td><a href="${url}"><c:out value="${message.title}"/></a></td>
+			<td><a href="${url}"><c:out value="${message.date}"/></a></td>
+			<td><a href="/portal/Servlet/DelMessage?idMessage=${message.id}&idUserTo=${message.userTo.id}">X</a></td>
 		</tr>
 	</c:forEach> 
 	</tbody>
