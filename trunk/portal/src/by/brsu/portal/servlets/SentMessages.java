@@ -30,8 +30,9 @@ public class SentMessages implements Action {
 			HttpServletResponse response){
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		messages = messageDao.findAllMessageUserFrom(user.getId());
-		if(messages!=null) {
+		
+		if(user!=null) {
+			messages = messageDao.findAllMessageUserFrom(user.getId());
 			map.put("messages", messages);
 			return true;
 		}
