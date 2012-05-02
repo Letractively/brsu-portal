@@ -32,10 +32,10 @@ h3 {
 }
 
 .Read {
-	font-size: 10pt;	
+	
 	}
 .notRead {
-	font-size: 12pt;	
+	background-color: silver;	
 	}
 .news {
 	margin-top: 30px;
@@ -332,4 +332,15 @@ min-height: 150px;
 	margin-top: 10px;
 width: auto;
 float: left;
+}
+
+.tableEmail {
+	width: 200px;
+}
+
+.tableTitle {
+	width: 200px;
+}
+#table {
+	margin-top: 10px;
 }
