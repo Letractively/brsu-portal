@@ -48,9 +48,12 @@ public class PermissionTag extends SimpleTagSupport {
 				.getRequest();
 		HttpSession session = httpRequest.getSession();
 		User user = (User) session.getAttribute("user");
+		String[] roles = role.split(",");
 		if (user != null) {
-			if (role.equals(user.getRole().name())) {
-				getJspBody().invoke(null);
+			for (int i = 0; i < role.split(",").length; i++) {
+				if (roles[i].equals(user.getRole().name())) {
+					getJspBody().invoke(null);
+				}
 			}
 		}
 	}

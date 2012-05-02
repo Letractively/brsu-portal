@@ -51,7 +51,7 @@
 				</c:otherwise>
 			</c:choose>
 		</sec:permission>
-		<sec:permission role="Administrator">
+		<sec:permission role="Moderator,Administrator">
 		<c:choose>
 			<c:when test='${currentPage=="IncomingMessages"}'>
 				<li><a href="/portal/Servlet/IncomingMessages"
