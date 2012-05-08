@@ -11,27 +11,27 @@
 		%>
 		<c:choose>
 			<c:when test='${currentPage=="Main"}'>
-				<li class="link_active"><a href="/portal/index.jsp">Main</a>
+				<li class="link_active"><a href="/portal/index.jsp" style="background-color: #9FB6CD">Main</a>
 				</li>
 			</c:when>
 			<c:otherwise>
-				<li><a href="/portal/index.jsp">Main</a>
+				<li><a href="/portal/index.jsp" >Main</a>
 				</li>
 			</c:otherwise>
 		</c:choose>
 		<c:choose>
 			<c:when test='${currentPage=="Projects"}'>
-				<li><a href="/portal/Servlet/ShowProjects" >Projects</a>
+				<li><a href="/portal/Servlet/ShowProjects" style="background-color: #9FB6CD" >Projects</a>
 				</li>
 			</c:when>
 			<c:otherwise>
-				<li><a href="/portal/Servlet/ShowProjects">Projects</a>
+				<li><a href="/portal/Servlet/ShowProjects" >Projects</a>
 				</li>
 			</c:otherwise>
 		</c:choose>
 		<c:choose>
 			<c:when test='${currentPage=="News"}'>
-				<li><a href="/portal/Servlet/ShowNews" style="color: Red">News</a>
+				<li><a href="/portal/Servlet/ShowNews" style="background-color: #9FB6CD ">News</a>
 				</li>
 			</c:when>
 			<c:otherwise>
@@ -42,7 +42,7 @@
 		<sec:permission role="Administrator">
 			<c:choose>
 				<c:when test='${currentPage=="Users"}'>
-					<li><a href="/portal/Servlet/ShowUserProf" style="color: Red">Users</a>
+					<li><a href="/portal/Servlet/ShowUserProf" style="background-color: #9FB6CD">Users</a>
 					</li>
 				</c:when>
 				<c:otherwise>
@@ -66,7 +66,7 @@
 		</sec:permission>
 		<c:choose>
 			<c:when test='${currentPage=="CV/Job"}'>
-				<li><a href="#" style="color: Red">CV/Job</a>
+				<li><a href="#" style="background-color: #9FB6CD">CV/Job</a>
 				</li>
 			</c:when>
 			<c:otherwise>

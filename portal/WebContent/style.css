@@ -9,6 +9,7 @@ body {
 
 a {
 	color: #06A;
+	text-decoration: none;
 }
 
 a:hover {
@@ -58,7 +59,7 @@ h3 {
 ------------------------------------------- */
 #layout_wrapper {
 	margin: 10px auto 0px;
-	width: 1100px;
+	width: 1200px;
 	background: #FFF;
 	padding: 0px 3px ;
 	display: block;
@@ -86,6 +87,7 @@ h3 {
 	float: left;
 	margin-top: 0px;
 }
+
 
 #registration {
 	float: right;
@@ -125,14 +127,11 @@ h3 {
 }
 
 #menu li a:active {
-	background-color: #a6e2a6;
+	background-color:#5C87B2;
 	text-decoration: none;
 }
 
-#menu li.selected a {
-	background-color: black;
-	color: white;
-}
+
 
 /************* secondary_meny ***************/
 #secondary_menu {
@@ -156,19 +155,15 @@ h3 {
 }
 
 #secondary_menu li a:hover {
-	background-color: #a6e2a6 ;
+	background-color: #305A7A ;
 	text-decoration: none;
 }
 
 #secondary_menu li a:active {
-	background-color: #a6e2a6;
+	background-color: #5C87B2;
 	text-decoration: none;
 }
 
-#secondary_menu li.selected a {
-	background-color: #fff;
-	color: white;
-}
 
 /************** main_content ****************/
 
@@ -277,6 +272,7 @@ table {
 		width: auto;
 		height: auto;
 		display: block;
+		border-top: 1px solid  #bbb;
 		
 		
 		
