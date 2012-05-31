@@ -80,16 +80,16 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 			st = conn.prepareStatement(sql);
 			st.setString(1, name);
 			st.executeUpdate();
-		} catch (SQLException e) {
-			throw new PortalTechnicalException(
-					"Error of performance of inquiry!");
+		} catch (Exception e) {
+			// throw new PortalTechnicalException(
+			// "Error of performance of inquiry!");
 		} finally {
 			try {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
-				throw new PortalTechnicalException(
-						"Error closing object PreparedStatement!");
+				// throw new PortalTechnicalException(
+				// "Error closing object PreparedStatement!");
 			}
 		}
 	}
@@ -101,10 +101,9 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 	 *            - id of category project
 	 * @throws PortalTechnicalException
 	 */
-	public ProjectCategory findProjectCategoryById(long id)
-			throws PortalTechnicalException {
+	public ProjectCategory findProjectCategoryById(long id) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "select id_category, name from categories_pr where id_category=?";
+		String sql = "select * from categories_pr where id_category=?";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
@@ -112,23 +111,22 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 			st.setLong(1, id);
 			rs = st.executeQuery();
 			if (rs.next()) {
-				ProjectCategory prc = new ProjectCategory();
-				prc.setId(rs.getLong(1));
-				prc.setName(rs.getString(2));
-				return prc;
+				ProjectCategory projectCategory = new ProjectCategory();
+				projectCategory.setId(rs.getLong(1));
+				projectCategory.setName(rs.getString(2));
+				return projectCategory;
 			}
-		} catch (SQLException e) {
-			throw new PortalTechnicalException(
-					"Error of performance of inquiry!");
+		} catch (Exception e) {
+			System.out.println(e);
 		} finally {
 			try {
+				ConnectionManager.getConnectorPool().releaseConnection(conn);
 				if (rs != null)
 					rs.close();
 				if (st != null)
 					st.close();
-			} catch (SQLException ex) {
-				throw new PortalTechnicalException(
-						"Error closing object ResultSet or PreparedStatement!");
+			} catch (Exception ex) {
+				System.out.println(ex);
 			}
 		}
 		return null;
@@ -178,38 +176,37 @@ public class ProjectCategoryDAO implements IProjectCategoryDAO {
 	 * Finds all categories of project
 	 * 
 	 * @return list of categories of project
-	 * @throws PortalTechnicalException
+	 * 
 	 */
-	public List<ProjectCategory> findAllProjectCategory()
-			throws PortalTechnicalException {
+	public List<ProjectCategory> findAllProjectCategory() {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from categories_pr";
+		String sql = "select * from categories_pr";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement("");
-			rs = st.executeQuery(sql);
+			st = conn.prepareStatement(sql);
+			rs = st.executeQuery();
 			List<ProjectCategory> techn = new ArrayList<ProjectCategory>();
-			ProjectCategory tempcat = new ProjectCategory();
-			if (rs.next()) {
-				tempcat.setId(rs.getLong(1));
-				tempcat.setName(rs.getString(2));
-				techn.add(tempcat);
+			while (rs.next()) {
+				ProjectCategory projectCategory = new ProjectCategory();
+				projectCategory.setId(rs.getLong(1));
+				projectCategory.setName(rs.getString(2));
+				techn.add(projectCategory);
 			}
 			return techn;
-		} catch (SQLException e) {
-			throw new PortalTechnicalException(
-					"Error of performance of inquiry!");
+		} catch (Exception e) {
+			System.out.println(e);
 		} finally {
 			try {
+				ConnectionManager.getConnectorPool().releaseConnection(conn);
 				if (rs != null)
 					rs.close();
 				if (st != null)
 					st.close();
-			} catch (SQLException ex) {
-				throw new PortalTechnicalException(
-						"Error closing object ResultSet or PreparedStatement!");
+			} catch (Exception ex) {
+				System.out.println(ex);
 			}
 		}
+		return null;
 	}
 }

@@ -1,4 +1,7 @@
-#Sun Sep 04 12:42:41 EEST 2011
+#Thu May 31 21:23:14 GMT+02:00 2012
 eclipse.preferences.version=1
+encoding//WebContent/addPersonsInProjectContent.jsp=UTF-8
+encoding//WebContent/addProjectContent.jsp=UTF-8
 encoding//WebContent/registration.jsp=UTF-8
+encoding//WebContent/temp.jsp=UTF-8
 encoding/<project>=UTF-8

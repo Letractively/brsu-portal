@@ -5,19 +5,19 @@
 		<role>Administrator</role>
 		<role>Moderator</role>
 		<class>by.brsu.portal.servlets.ShowNews</class>
-		<forward-url>news1.jsp</forward-url>
+		<forward-url>news.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="ShowProjects">
 		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.ShowProjects</class>
-		<forward-url>project1.jsp</forward-url>
+		<forward-url>projects.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
-	<action name="AddProject">
+	<action name="SaveNewProject">
 		<role>Administrator</role>
-		<class>by.brsu.portal.servlets.AddProject</class>
-		<forward-url>addProjectTemplate.jsp</forward-url>
+		<class>by.brsu.portal.servlets.SaveNewProject</class>
+		<forward-url>addPersonsInProject.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="AddUser">
@@ -50,10 +50,10 @@
 		<forward-url>onlyProfileUser.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
-	<action name="ShowLanguages">
+	<action name="AddNewProject">
 		<role>Administrator</role>
-		<class>by.brsu.portal.servlets.ShowLanguages</class>
-		<forward-url>addProjectTemplate.jsp</forward-url>
+		<class>by.brsu.portal.servlets.AddNewProject</class>
+		<forward-url>addProject.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="SaveEditUser">
@@ -108,6 +108,12 @@
 		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.OpenMessage</class>
 		<forward-url>templateOpenSentMessage.jsp</forward-url>
+		<error-url>errorPage.jsp</error-url>
+	</action>
+	<action name="AddParticipantsInProject">
+		<role>Administrator</role>
+		<class>by.brsu.portal.servlets.AddParticipantsInProject</class>
+		<forward-url>/Servlet/ShowProjects</forward-url>
 		<error-url>errorPage.jsp</error-url>
 	</action>
 </actions>

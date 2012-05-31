@@ -24,7 +24,7 @@ public class ConnectionManager {
 			try {
 				connections[i] = DriverManager.getConnection(
 						"jdbc:mysql://localhost/portal", "brsujgadmin", "1");
-				//"jdbc:mysql://mysql-test-portal.jelastic.dogado.eu/portal", "root", "zhSDQWURel");
+				//"jdbc:mysql://mysql-tesp-portal.jelastic.dogado.eu/portal", "brsujgadmin", "1");
 			} catch (SQLException ex) {
 			}
 		}
