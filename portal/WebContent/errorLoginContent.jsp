@@ -1,3 +1,4 @@
+<div id="errors">${passwordError}<br>${loginError}</div>
 <div id="content">
 <form action="Login" method="post">
 	<label for="userName">User name:</label> <input type="text"
