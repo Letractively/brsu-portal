@@ -23,7 +23,7 @@
 	<action name="AddUser">
 		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.AddUser</class>
-		<forward-url>addUserOk.jsp</forward-url>
+		<forward-url>addUserOK.jsp</forward-url>
 		<error-url>index.jsp</error-url>
 	</action>
 	<action name="ShowMainPage">
