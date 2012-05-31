@@ -60,5 +60,6 @@
 	<filter-mapping>
 		<filter-name>AuthenticationFilter</filter-name>
 		<url-pattern>/Servlet/ShowUserProf</url-pattern>
+		<url-pattern>/Servlet/OpenIncomingMessage</url-pattern>
 	</filter-mapping>
 </web-app>

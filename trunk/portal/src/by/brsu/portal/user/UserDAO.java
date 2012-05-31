@@ -203,9 +203,9 @@ public class UserDAO {
 		PreparedStatement st = null;
 		List<User> us = new ArrayList<User>();
 		try {
-			st = conn.prepareStatement("");
+			st = conn.prepareStatement("select * from users");
 
-			rs = st.executeQuery("Select * from users");
+			rs = st.executeQuery();
 
 			while (rs.next()) {
 				User users = new User();

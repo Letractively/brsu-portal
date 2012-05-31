@@ -4,9 +4,9 @@
  */
 package by.brsu.portal.project;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import by.brsu.portal.cv.ProgrammingLanguage;
 import by.brsu.portal.cv.Technology;
 
@@ -28,6 +28,7 @@ public class Project
 	private String stageOfDevelopment;
 	private List<Technology> technology;
 	private List<ProgrammingLanguage> languages;
+	private List<Link> links;
 	
 	/**
 	 * 
@@ -35,6 +36,9 @@ public class Project
 	public Project() 
 	{
 		super();
+		technology = new ArrayList<Technology>();
+		languages = new ArrayList<ProgrammingLanguage>();
+		links = new ArrayList<Link>();
 	}
 	
 	/**
@@ -61,6 +65,20 @@ public class Project
 	}
 
 	
+	/**
+	 * @return the links
+	 */
+	public List<Link> getLinks() {
+		return links;
+	}
+
+	/**
+	 * @param links the links to set
+	 */
+	public void setLinks(List<Link> links) {
+		this.links = links;
+	}
+
 	/**
 	 * @return the idProject
 	 */

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import by.brsu.portal.user.User;
 import by.brsu.portal.user.UserDAO;
 
@@ -67,7 +66,6 @@ public class Login extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		session.setAttribute("user", user);
-		System.out.println(user.getName());
 		RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
 		view.forward(request, response);
 	}

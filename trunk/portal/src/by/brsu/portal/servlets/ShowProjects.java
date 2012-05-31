@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import by.brsu.portal.project.Project;
 import by.brsu.portal.project.ProjectDAO;
-import by.brsu.portal.user.User;
 
 /**
  * @author Roman Ulezlo
@@ -20,19 +19,17 @@ import by.brsu.portal.user.User;
 public class ShowProjects implements Action {
 	private ProjectDAO pDAO = new ProjectDAO();
 	private List<Project> projects = pDAO.findAllProjects();
-	private Map<String, Object> mp = new HashMap<String, Object>();
+	private Map<String, Object> map = new HashMap<String, Object>();
 
 	@Override
 	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response){
-		System.out.println(((User) request.getSession().getAttribute("user")));
+		map.put("projects", projects);
 		return true;
 	}
 	
 	@Override
 	public Map<String, Object> getParametersMap() {
-		System.out.println(projects.get(0).getName());
-		mp.put("projects", projects);
-		return mp;
+		return map;
 	}
 }

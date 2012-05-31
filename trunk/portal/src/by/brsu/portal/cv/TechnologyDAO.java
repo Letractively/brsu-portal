@@ -99,12 +99,10 @@ public class TechnologyDAO implements ITechnologyDAO {
 	 * 
 	 * @param id
 	 *            - id of technology
-	 * @throws PortalTechnicalException
 	 */
-	public Technology findTechnologyById(long id)
-			throws PortalTechnicalException {
+	public Technology findTechnologyById(long id) {
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "select id_tech, name from technologies where id_tech=?";
+		String sql = "select * from technologies where id_tech=?";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
@@ -117,18 +115,17 @@ public class TechnologyDAO implements ITechnologyDAO {
 				techn.setName(rs.getString(2));
 				return techn;
 			}
-		} catch (SQLException e) {
-			throw new PortalTechnicalException(
-					"Error of performance of inquiry!");
+		} catch (Exception e) {
+			System.out.println(e);
 		} finally {
 			try {
+				ConnectionManager.getConnectorPool().releaseConnection(conn);
 				if (rs != null)
 					rs.close();
 				if (st != null)
 					st.close();
-			} catch (SQLException ex) {
-				throw new PortalTechnicalException(
-						"Error closing object ResultSet or PreparedStatement!");
+			} catch (Exception ex) {
+				System.out.println(ex);
 			}
 		}
 		return null;
@@ -181,7 +178,7 @@ public class TechnologyDAO implements ITechnologyDAO {
 	 * @throws PortalTechnicalException
 	 */
 	public List<Technology> findAllTechologies()
-			/*throws PortalTechnicalException*/ {
+	/* throws PortalTechnicalException */{
 		conn = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "Select * from technologies";
 		ResultSet rs = null;
@@ -189,7 +186,7 @@ public class TechnologyDAO implements ITechnologyDAO {
 		try {
 			st = conn.prepareStatement("");
 			rs = st.executeQuery(sql);
-			List<Technology> techn = new ArrayList<Technology>();			
+			List<Technology> techn = new ArrayList<Technology>();
 			while (rs.next()) {
 				Technology temptechn = new Technology();
 				temptechn.setId(rs.getLong(1));
@@ -197,18 +194,17 @@ public class TechnologyDAO implements ITechnologyDAO {
 				techn.add(temptechn);
 			}
 			return techn;
-		} catch (SQLException e) {
-			/*throw new PortalTechnicalException(
-					"Error of performance of inquiry!");*/
+		} catch (Exception e) {
+			System.out.print(e);
 		} finally {
 			try {
+				ConnectionManager.getConnectorPool().releaseConnection(conn);
 				if (rs != null)
 					rs.close();
 				if (st != null)
 					st.close();
-			} catch (SQLException ex) {
-				/*throw new PortalTechnicalException(
-						"Error closing object ResultSet or PreparedStatement!");*/
+			} catch (Exception ex) {
+				System.out.println(ex);
 			}
 		}
 		return null;

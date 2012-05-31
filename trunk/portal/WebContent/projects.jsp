@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>News</title>
+<title>All Projects</title>
 </head>
 <body>
 	<jsp:include page="/template.jsp">
-		<jsp:param name="content" value="news.jsp" />
-		<jsp:param name="secondaryMenu" value="secondaryMenuForNews.jsp"/>
-		<jsp:param name="currentPage" value="News"/>
+		<jsp:param name="content" value="projectsContent.jsp" />
+		<jsp:param name="secondaryMenu" value="secondaryMenuForProjects.jsp"/>
+		<jsp:param name="currentPage" value="Projects"/>
 	</jsp:include>
 </body>
 </html>

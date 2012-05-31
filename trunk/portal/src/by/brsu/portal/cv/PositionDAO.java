@@ -177,25 +177,24 @@ public class PositionDAO implements IPositionDAO {
 	 * @return list of positions
 	 * @throws PortalTechnicalException
 	 */
-	public List<Position> findAllPosition() throws PortalTechnicalException {
+	public List<Position> findAllPosition(){
 		conn = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "select id_pos, name from technologies";
+		String sql = "select id_pos, name from positions";
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement("");
-			rs = st.executeQuery(sql);
+			st = conn.prepareStatement(sql);
+			rs = st.executeQuery();
 			List<Position> positions = new ArrayList<Position>();
-			Position temppos = new Position();
-			if (rs.next()) {
+			while (rs.next()) {
+				Position temppos = new Position();
 				temppos.setId(rs.getLong(1));
 				temppos.setName(rs.getString(2));
 				positions.add(temppos);
 			}
 			return positions;
 		} catch (SQLException e) {
-			throw new PortalTechnicalException(
-					"Error of performance of inquiry!");
+			System.out.println(e);
 		} finally {
 			try {
 				if (rs != null)
@@ -203,9 +202,9 @@ public class PositionDAO implements IPositionDAO {
 				if (st != null)
 					st.close();
 			} catch (SQLException ex) {
-				throw new PortalTechnicalException(
-						"Error closing object ResultSet or PreparedStatement!");
+				System.out.println(ex);
 			}
 		}
+		return null;
 	}
 }
