@@ -185,10 +185,7 @@ public class MessageDao {
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
-		} catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
+		} 
 		finally 
 		{
 			try {
@@ -267,10 +264,6 @@ public class MessageDao {
 		{
 			e.printStackTrace();
 		}
-		catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
 		finally 
 		{
 			try {
@@ -305,10 +298,7 @@ public class MessageDao {
 				//msg.add(new Message(rs.getLong(2),rs.getString(3),rs.getString(4),rs.getDate(5),userDao.findUserById(rs.getLong(6)),userDao.findUserById(rs.getLong(6)),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
 			}
 			return msg;		 
-		} catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
+		} 
 		catch (SQLException e) 
 		{
 			e.printStackTrace();

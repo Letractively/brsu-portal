@@ -79,7 +79,7 @@ public class UserDAO {
 
 	public User deleteUser(long id) throws IOException {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
-		String query = "delete from users where id_user=?";
+		String query = "UPDATE users SET id_stat=3 where id_user=?";
 		PreparedStatement st = null;
 		SimpleLayout layout = new SimpleLayout();
 		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
@@ -125,17 +125,17 @@ public class UserDAO {
 
 	}
 
-	public User findUserById(long id) throws IOException {
+	public User findUserById(long id) {
 
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		String query = "Select * from users where id_user=?";
 		SimpleLayout layout = new SimpleLayout();
-		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
-		log.addAppender(appender);
-		log.setLevel((Level) Level.DEBUG);
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		try {
+		FileAppender appender = new FileAppender(layout, "BrSU.log", false);
+		log.addAppender(appender);
+		log.setLevel((Level) Level.DEBUG);
 			st = conn.prepareStatement(query);
 			st.setLong(1, id);
 			rs = st.executeQuery();
@@ -153,7 +153,7 @@ public class UserDAO {
 				return user;
 			}
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			log.error(e);
 		} finally {
@@ -197,13 +197,13 @@ public class UserDAO {
 		return null;
 	}
 
-	public List<User> findAllUser() {
+	public List<User> findAllUsers() {
 		Connection conn = ConnectionManager.getConnectorPool().getConnection();
 		ResultSet rs = null;
 		PreparedStatement st = null;
 		List<User> us = new ArrayList<User>();
 		try {
-			st = conn.prepareStatement("select * from users");
+			st = conn.prepareStatement("select * from users where id_stat<>3");
 
 			rs = st.executeQuery();
 
@@ -309,7 +309,7 @@ public class UserDAO {
 		ResultSet resultSet = null;
 		try {
 			preparedStatement = connection
-					.prepareStatement("select users.*, usergroup.name from users, usergroup where email = ? and password = ? and users.id_user_group = usergroup.id_user_group");
+					.prepareStatement("select users.*, usergroup.name from users, usergroup where email = ? and password = ? and users.id_user_group = usergroup.id_user_group and users.id_stat<>3");//id_stat=3 - not active user
 			preparedStatement.setString(1, email);
 			preparedStatement.setString(2, password);
 			resultSet = preparedStatement.executeQuery();

@@ -41,15 +41,25 @@ public class Servlet extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		Action action = factory.create(getActionName(request), request);
 		if (action.perform(request, response)) {
-			for (Entry<String, Object> entry : action.getParametersMap()
-					.entrySet()) {
-				request.setAttribute(entry.getKey(), entry.getValue());
-			}
+			copyParamsToRequest(request, action);
+			String url = factory.getForwardURL();
+			if (url != null)
+				getServletContext().getRequestDispatcher(url).forward(request,
+						response);
+		}else{
+			copyParamsToRequest(request, action);
+			String url = factory.getErrorURL();
+			if (url != null)
+				getServletContext().getRequestDispatcher(url).forward(request,
+						response);
 		}
-		String url = factory.getForwardURL();
-		if (url != null)
-			getServletContext().getRequestDispatcher(url).forward(request,
-					response);
+	}
+
+	private void copyParamsToRequest(HttpServletRequest request, Action action) {
+		for (Entry<String, Object> entry : action.getParametersMap()
+				.entrySet()) {
+			request.setAttribute(entry.getKey(), entry.getValue());
+		}
 	}
 
 	/**

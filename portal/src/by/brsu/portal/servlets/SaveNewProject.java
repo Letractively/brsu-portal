@@ -19,6 +19,7 @@ import by.brsu.portal.project.Project;
 import by.brsu.portal.project.ProjectCategory;
 import by.brsu.portal.project.ProjectCategoryDAO;
 import by.brsu.portal.project.ProjectDAO;
+import by.brsu.portal.user.User;
 import by.brsu.portal.user.UserDAO;
 
 /**
@@ -34,7 +35,7 @@ public class SaveNewProject implements Action {
 			HttpServletResponse response) throws IOException {
 		Project project = new Project();
 		project.setName(request.getParameter("name"));
-		project.setUser(Integer.parseInt(request.getParameter("owner")));
+		project.setUser(((User)request.getSession().getAttribute("user")).getId());
 		project.setDescription(request.getParameter("description"));
 		project.setLicense(request.getParameter("license"));
 		project.setStageOfDevelopment(request
@@ -81,7 +82,7 @@ public class SaveNewProject implements Action {
 		ProjectDAO projectDAO = new ProjectDAO();
 		project = projectDAO.createProject(project);
 		map.put("project", project.getIdProject());
-		map.put("participants", uDAO.findAllUser());
+		map.put("participants", uDAO.findAllUsers());
 		map.put("positions", (new PositionDAO()).findAllPosition());
 		return true;
 	}

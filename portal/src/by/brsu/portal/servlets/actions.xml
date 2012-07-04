@@ -90,7 +90,7 @@
 		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.SendMessage</class>
 		<forward-url>templateMenuMessage.jsp</forward-url>
-		<error-url>errorPage.jsp</error-url>
+		<error-url>templateNewMessage.jsp</error-url>
 	</action>
 	<action name="DelMessage">
 		<role>Administrator</role>
@@ -113,6 +113,24 @@
 	<action name="AddParticipantsInProject">
 		<role>Administrator</role>
 		<class>by.brsu.portal.servlets.AddParticipantsInProject</class>
+		<forward-url>/Servlet/ShowProjects</forward-url>
+		<error-url>errorPage.jsp</error-url>
+	</action>
+	<action name="ShowProject">
+		<role>Administrator</role>
+		<class>by.brsu.portal.servlets.ShowProject</class>
+		<forward-url>project.jsp</forward-url>
+		<error-url>errorPage.jsp</error-url>
+	</action>
+	<action name="EditProject">
+		<role>Administrator</role>
+		<class>by.brsu.portal.servlets.EditProject</class>
+		<forward-url>editProject.jsp</forward-url>
+		<error-url>errorPage.jsp</error-url>
+	</action>
+	<action name="SaveProject">
+		<role>Administrator</role>
+		<class>by.brsu.portal.servlets.SaveProject</class>
 		<forward-url>/Servlet/ShowProjects</forward-url>
 		<error-url>errorPage.jsp</error-url>
 	</action>

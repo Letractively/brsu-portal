@@ -53,13 +53,13 @@ public class Login extends HttpServlet {
 
 		if (user == null) {
 			error = true;
-			request.setAttribute("loginError", "User name is  wrong");
-			request.setAttribute("passwordError", "Password is  wrong");
+			request.setAttribute("loginError", "User name or password is  wrong");
 		}
 
 		if (error) {
 			RequestDispatcher view = request
 					.getRequestDispatcher("/errorLogin.jsp");
+			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 			view.forward(request, response);
 			return;
 		}
