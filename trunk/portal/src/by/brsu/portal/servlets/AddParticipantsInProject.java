@@ -23,7 +23,6 @@ public class AddParticipantsInProject implements Action{
 			}
 		}
 		System.out.println(request.getParameter("project"));
-		map.put("", "");
 		return true;
 	}
 

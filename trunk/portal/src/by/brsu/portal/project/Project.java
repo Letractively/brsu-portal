@@ -17,7 +17,7 @@ import by.brsu.portal.cv.Technology;
 public class Project 
 {
 	private long idProject;
-	private int User;
+	private long User;
 	private String name;
 	private String description;
 	private Date dateOfCreation;
@@ -96,14 +96,14 @@ public class Project
 	/**
 	 * @return the user
 	 */
-	public int getUser() {
+	public long getUser() {
 		return User;
 	}
 
 	/**
 	 * @param user the user to set
 	 */
-	public void setUser(int user) {
+	public void setUser(long user) {
 		User = user;
 	}
 
@@ -265,11 +265,12 @@ public class Project
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + User;
+		result = prime * result + (int) (User ^ (User >>> 32));
 		result = prime * result
 				+ ((category == null) ? 0 : category.hashCode());
 		result = prime * result
@@ -282,6 +283,7 @@ public class Project
 		result = prime * result
 				+ ((languages == null) ? 0 : languages.hashCode());
 		result = prime * result + ((license == null) ? 0 : license.hashCode());
+		result = prime * result + ((links == null) ? 0 : links.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime
 				* result
@@ -293,9 +295,6 @@ public class Project
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -338,6 +337,11 @@ public class Project
 			if (other.license != null)
 				return false;
 		} else if (!license.equals(other.license))
+			return false;
+		if (links == null) {
+			if (other.links != null)
+				return false;
+		} else if (!links.equals(other.links))
 			return false;
 		if (name == null) {
 			if (other.name != null)

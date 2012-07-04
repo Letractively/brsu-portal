@@ -17,7 +17,9 @@ import org.apache.log4j.SimpleLayout;
  */
 public class Factory {
 	private String forwardURL;
+	private String errorURL;
 	private static final Logger log = Logger.getLogger(Factory.class);
+
 	public Action create(String actionName, HttpServletRequest request)
 			throws IOException {
 		Action actionInstance = null;
@@ -32,13 +34,16 @@ public class Factory {
 					actionInstance = (Action) Class.forName(
 							handler.getClassName()).newInstance();
 					forwardURL = handler.getForwardURL();
+					errorURL = handler.getErrorURL();
 				} catch (Exception ex) {
 					actionInstance = (Action) ShowMainPage.class.newInstance();
 					forwardURL = handler.getErrorURL();
+					errorURL = handler.getErrorURL();
 				}
 			else {
 				actionInstance = (Action) ShowMainPage.class.newInstance();
 				forwardURL = handler.getErrorURL();
+				errorURL = handler.getErrorURL();
 			}
 		} catch (Exception e) {
 			log.error(e);
@@ -49,4 +54,9 @@ public class Factory {
 	public String getForwardURL() {
 		return "/" + forwardURL;
 	}
+
+	public String getErrorURL() {
+		return "/" + errorURL;
+	}
+	
 }

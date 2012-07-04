@@ -209,4 +209,37 @@ public class TechnologyDAO implements ITechnologyDAO {
 		}
 		return null;
 	}
+
+	public List<Technology> findTechnologiesByProjectId(long id) {
+		conn = ConnectionManager.getConnectorPool().getConnection();
+		String sql = "Select technologies.id_tech, name from technologies inner join l_technologies_pr on l_technologies_pr.id_tech=technologies.id_tech where l_technologies_pr.id_project=?";
+		ResultSet rs = null;
+		PreparedStatement st = null;
+		try {
+			st = conn.prepareStatement(sql);
+			st.setLong(1, id);
+			rs = st.executeQuery();
+			List<Technology> technologies = new ArrayList<Technology>();
+			while (rs.next()) {
+				Technology technology = new Technology();
+				technology.setId(rs.getLong(1));
+				technology.setName(rs.getString(2));
+				technologies.add(technology);
+			}
+			return technologies;
+		} catch (SQLException e) {
+			System.out.print(e);
+		} finally {
+			try {
+				ConnectionManager.getConnectorPool().releaseConnection(conn);
+				if (rs != null)
+					rs.close();
+				if (st != null)
+					st.close();
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
+		}
+		return null;
+	}
 }

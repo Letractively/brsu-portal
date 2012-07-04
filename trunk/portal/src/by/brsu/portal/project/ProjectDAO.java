@@ -15,7 +15,9 @@ import java.util.Date;
 import java.util.List;
 import by.brsu.portal.ConnectionManager;
 import by.brsu.portal.cv.ProgrammingLanguage;
+import by.brsu.portal.cv.ProgrammingLanguageDAO;
 import by.brsu.portal.cv.Technology;
+import by.brsu.portal.cv.TechnologyDAO;
 
 /**
  * @author Artur Smaliuk, Roman Ulezlo
@@ -23,9 +25,13 @@ import by.brsu.portal.cv.Technology;
  */
 public class ProjectDAO {
 	private Connection connection = null;
+	private TechnologyDAO technologyDao = new TechnologyDAO();
+	private ProgrammingLanguageDAO languageDao = new ProgrammingLanguageDAO();
+	private ProjectCategoryDAO categoryDao = new ProjectCategoryDAO();
 
 	/**
 	 * Create new project
+	 * 
 	 * @param project
 	 * @return
 	 * @throws IOException
@@ -48,12 +54,12 @@ public class ProjectDAO {
 			preparedStatement.setString(7, project.getLicense());
 			preparedStatement.setString(8, project.getStageOfDevelopment());
 			preparedStatement.executeUpdate();
-			
-			//max index is got on from database
+
+			// max index is got on from database
 			sql = "select last_insert_id()";
 			preparedStatement = connection.prepareStatement(sql);
 			resultSet = preparedStatement.executeQuery();
-			if (resultSet.next()){
+			if (resultSet.next()) {
 				project.setIdProject(resultSet.getLong(1));
 			}
 
@@ -76,10 +82,10 @@ public class ProjectDAO {
 				preparedStatement.setLong(2, technology.getId());
 				preparedStatement.executeUpdate();
 			}
-			
-			//information about links is saved in database
+
+			// information about links is saved in database
 			LinkDAO linkDAO = new LinkDAO();
-			for (Link link : project.getLinks()){
+			for (Link link : project.getLinks()) {
 				linkDAO.createLink(link);
 			}
 			return project;
@@ -128,29 +134,35 @@ public class ProjectDAO {
 	 */
 	public Project findProjectById(long idProject) {
 		connection = ConnectionManager.getConnectorPool().getConnection();
-		String sql = "Select * from Projects where id=?";
+		String sql = "Select * from Projects where id_project=?";
 		ResultSet rs = null;
-		Statement st = null;
+		PreparedStatement st = null;
 		try {
-			st = connection.createStatement();
-			rs = st.executeQuery(sql);
+			st = connection.prepareStatement(sql);
+			st.setLong(1, idProject);
+			rs = st.executeQuery();
 			if (rs.next()) {
-				Project proj = new Project();
-				proj.setIdProject(rs.getLong(1));
-				proj.setUser(rs.getInt(2));
-				proj.setName(rs.getString(3));
-				proj.setDescription(rs.getString(4));
-				proj.setDateOfCreation(rs.getDate(5));
-				proj.setDateOfClosing(rs.getDate(6));
-				// proj.setCategoryForOne(rs.getString(7));
-				proj.setVersion(rs.getInt(8));
-				proj.setLicense(rs.getString(9));
-				proj.setStageOfDevelopment(rs.getString(10));
-				// proj.setTechnologyForOne(rs.getString(11));
-				// proj.setLanguagesForOne(rs.getString(12));
-				return proj;
+				Project project = new Project();
+				long id = rs.getLong(1);
+				project.setIdProject(id);
+				project.setUser(rs.getInt(2));
+				project.setName(rs.getString(3));
+				project.setDescription(rs.getString(4));
+				project.setDateOfCreation(rs.getDate(5));
+				project.setDateOfClosing(rs.getDate(6));
+				project.setCategory(categoryDao.findProjectCategoryById(rs
+						.getInt(7)));
+				project.setVersion(rs.getInt(8));
+				project.setLicense(rs.getString(9));
+				project.setStageOfDevelopment(rs.getString(10));
+				project.setTechnology(technologyDao
+						.findTechnologiesByProjectId(id));
+				project.setLanguages(languageDao
+						.findProgrammingLanguagesByProjectId(id));
+				return project;
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
 		} finally {
 			try {
 				if (rs != null)
@@ -515,7 +527,8 @@ public class ProjectDAO {
 			List<Project> projects = new ArrayList<Project>();
 			while (resultSet.next()) {
 				Project project = new Project();
-				project.setIdProject(resultSet.getLong(1));
+				long id = resultSet.getLong(1);
+				project.setIdProject(id);
 				project.setUser(resultSet.getInt(2));
 				project.setName(resultSet.getString(3));
 				project.setDescription(resultSet.getString(4));
@@ -538,8 +551,10 @@ public class ProjectDAO {
 				project.setVersion(resultSet.getInt(8));
 				project.setLicense(resultSet.getString(9));
 				project.setStageOfDevelopment(resultSet.getString(10));
-				// project.setTechnologyForOne(resultSet.getString(11));
-				// project.setLanguagesForOne(resultSet.getString(12));
+				project.setTechnology(technologyDao
+						.findTechnologiesByProjectId(id));
+				project.setLanguages(languageDao
+						.findProgrammingLanguagesByProjectId(id));
 				projects.add(project);
 			}
 			return projects;
@@ -559,8 +574,9 @@ public class ProjectDAO {
 		}
 		return null;
 	}
-	
-	public void addParticipantInProject(Long idProject, Long idUser, Long idPosition){
+
+	public void addParticipantInProject(Long idProject, Long idUser,
+			Long idPosition) {
 		connection = ConnectionManager.getConnectorPool().getConnection();
 		String sql = "insert into l_pos values(?,?,?)";
 		PreparedStatement preparedStatement = null;
@@ -585,5 +601,40 @@ public class ProjectDAO {
 				System.out.println(ex);
 			}
 		}
+	}
+
+	public boolean saveProject(Project project)  {
+		connection = ConnectionManager.getConnectorPool().getConnection();
+		String sql = "update projects set name=?, description=?, version=?, license=?, stage_of_development=? where id_project=?";
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, project.getName());
+			preparedStatement.setString(2, project.getDescription());
+			preparedStatement.setLong(3, project.getVersion());
+			preparedStatement.setString(4, project.getLicense());
+			preparedStatement.setString(5, project.getStageOfDevelopment());
+			preparedStatement.setLong(6, project.getIdProject());
+			preparedStatement.executeUpdate();
+
+			// max index is got on from database
+			
+			return true;
+		} catch (SQLException e) {
+			System.out.println(e);
+		} finally {
+			try {
+				if (resultSet != null)
+					resultSet.close();
+				if (preparedStatement != null)
+					preparedStatement.close();
+				ConnectionManager.getConnectorPool().releaseConnection(
+						connection);
+			} catch (SQLException ex) {
+				System.out.println(ex);
+			}
+		}
+		return false;
 	}
 }

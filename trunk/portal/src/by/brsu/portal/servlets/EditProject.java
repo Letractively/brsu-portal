@@ -10,28 +10,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import by.brsu.portal.cv.ProgrammingLanguageDAO;
 import by.brsu.portal.cv.TechnologyDAO;
+import by.brsu.portal.project.Project;
 import by.brsu.portal.project.ProjectCategoryDAO;
+import by.brsu.portal.project.ProjectDAO;
 import by.brsu.portal.user.UserDAO;
 
 /**
- * @author Artur Smaliuk, Roman Ulezlo
+ * @author Elena Pechko
  *
  */
-public class AddNewProject implements Action
+public class EditProject implements Action
 {
 	private ProgrammingLanguageDAO plDAO = new ProgrammingLanguageDAO();
 	private TechnologyDAO tDAO = new TechnologyDAO();
 	private UserDAO uDAO = new UserDAO();
-	private ProjectCategoryDAO pDAO = new ProjectCategoryDAO();
+	private ProjectDAO pDAO = new ProjectDAO();
+	private ProjectCategoryDAO pcDAO = new ProjectCategoryDAO();
 	private Map<String, Object> map = new HashMap<String, Object>();
 
 	@Override
 	public boolean perform(HttpServletRequest request,
 			HttpServletResponse response) {
-		map.put("projectCategory", pDAO.findAllProjectCategory());
+		map.put("projectCategory", pcDAO.findAllProjectCategory());
 		map.put("languages", plDAO.findAllLanguages());
-		map.put("technology", tDAO.findAllTechologies());
-		map.put("owner", request.getSession().getAttribute("user"));		
+		map.put("technologies", tDAO.findAllTechologies());
+		Project project = pDAO.findProjectById(Long.parseLong(request.getParameter("id")));
+		map.put("owner", uDAO.findUserById(project.getUser()));		
+		map.put("project", project);		
 		return true;
 	}
 
