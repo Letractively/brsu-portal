@@ -11,24 +11,24 @@
 <div class="box">
 <div class="box_title">Archives</div>
 <div class="box_body">
-	<ul>
+	<!-- <ul>
 		<li><a href="#">Section Link</a></li>
 		<li><a href="#">Section Link</a></li>
 		<li><a href="#">Section Link</a></li>
 		<li><a href="#">Section Link</a></li>
 		<li><a href="#">Section Link</a></li>
-	</ul>
+	</ul> -->
 	</div>
 	</div>
 	
 	<div class="box">
 	<div class="box_title">Categories</div>
 		<div class="box_body">
-		<ul>
+		<!-- <ul>
 			<li><a href="#">Single Column</a> (5)</li>
 			<li><a href="#">Three Columns</a> (2)</li>
 			<li><a href="#">Two Columns</a> (14)</li>
-		</ul>
+		</ul> -->
 		</div>
 				</div>
 	
@@ -36,12 +36,12 @@
 	<div class="box">
 	<div class="box_title">Links</div>
 	<div class="box_body">
-	<ul>
+	<!-- <ul>
 		<li><a href="#">BRSU-portal</a></li>
 		<li><a href="#">BRSU-portal</a></li>
 		<li><a href="#">BRSU-portal</a></li>
 		<li><a href="#">BRSU-portal</a></li>
-	</ul>
+	</ul> -->
 	</div>
 		</div>
 	

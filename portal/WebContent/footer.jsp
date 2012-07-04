@@ -1,7 +1,6 @@
 <div id="footer">
 
-		<div class="left">&#169; BRSU Portal </div>
+		<div class="left">&copy; BrSU Java Group, 2011-2012 </div>
 
-		<div class="right">
-		<a href="#"> Web-site </a> by <a href="#" > Admin </a></div>
+		<div class="right">BRSU Portal </div>
 </div>
