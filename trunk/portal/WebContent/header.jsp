@@ -13,7 +13,7 @@
 			<c:otherwise>
 				<form action="/portal/LogOut" method="post">
 					<p align="right">
-						<input type="submit" value="LogOut" />
+						<input type="submit" value="LogOut" /><br>
 					</p>
 				</form>
 			</c:otherwise>

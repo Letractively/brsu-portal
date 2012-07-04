@@ -12,11 +12,12 @@
 <form action="/portal/Servlet/SendMessage" method="post">
 <div id="content">
 <div id="content_message">
+<c:out value="${error}"></c:out>
 <fieldset title="New Message">
 <legend title="New  Message">New Message</legend>
-<label for="user">To:</label><input type="text" name="user" /> <br>
-<label for="subject">Subject:</label><input type="text"	name="subject" /><br>
-<label for="text">Text: </label> <textarea name="text" ></textarea><br>
+<label for="user">To:</label><input type="text" name="userTo" value="${userTo}"/> <br>
+<label for="subject">Subject:</label><input type="text"	name="subject" value="${subject}"/><br>
+<label for="text">Text: </label> <textarea name="text" >${text}</textarea><br>
 	<label for="priority">Priority:</label>
 		<select name="priority">
 		<c:forEach var="priority" items="${prioritys}">

@@ -41,11 +41,11 @@
 		name="AddParticipantsInProject">
 		<select name="participant" id="participant">
 			<c:forEach var="participant" items="${participants}">
-				<option value="${participant.id}" label="${participant.name}"></option>
+				<option value="${participant.id}" label="${participant.name}">${participant.name}</option>
 			</c:forEach>
 		</select> <select name="position" id="position">
 			<c:forEach var="position" items="${positions}">
-				<option value="${position.id}" label="${position.name}"></option>
+				<option value="${position.id}" label="${position.name}">${position.name}</option>
 			</c:forEach>
 		</select> <br> <input onclick='addList()' type="button"
 			value='Add participant' /> <input type=button
