@@ -1,0 +1,1 @@
+A training web-project of students from Brest State University.
